@@ -67,4 +67,4 @@ config :post_bot, PostBot.Repo,
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
-import_config "prod.secret.exs"
+# import_config "prod.secret.exs"
