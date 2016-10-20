@@ -1,4 +1,4 @@
-defmodule PostBot.ErrorHelpers do
+defmodule Extra.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -32,9 +32,9 @@ defmodule PostBot.ErrorHelpers do
     #     dgettext "errors", "is invalid"
     #
     if count = opts[:count] do
-      Gettext.dngettext(PostBot.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(Extra.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(PostBot.Gettext, "errors", msg, opts)
+      Gettext.dgettext(Extra.Gettext, "errors", msg, opts)
     end
   end
 end

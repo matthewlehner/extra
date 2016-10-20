@@ -1,4 +1,4 @@
-defmodule PostBot.ModelCase do
+defmodule Extra.ModelCase do
   @moduledoc """
   This module defines the test case to be used by
   model tests.
@@ -16,20 +16,20 @@ defmodule PostBot.ModelCase do
 
   using do
     quote do
-      alias PostBot.Repo
+      alias Extra.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import PostBot.ModelCase
+      import Extra.ModelCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(PostBot.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Extra.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(PostBot.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Extra.Repo, {:shared, self()})
     end
 
     :ok
@@ -59,7 +59,7 @@ defmodule PostBot.ModelCase do
   """
   def errors_on(struct, data) do
     struct.__struct__.changeset(struct, data)
-    |> Ecto.Changeset.traverse_errors(&PostBot.ErrorHelpers.translate_error/1)
+    |> Ecto.Changeset.traverse_errors(&Extra.ErrorHelpers.translate_error/1)
     |> Enum.flat_map(fn {key, errors} -> for msg <- errors, do: {key, msg} end)
   end
 end

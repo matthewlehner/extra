@@ -1,3 +1,3 @@
-defmodule PostBot.PageViewTest do
-  use PostBot.ConnCase, async: true
+defmodule Extra.PageViewTest do
+  use Extra.ConnCase, async: true
 end

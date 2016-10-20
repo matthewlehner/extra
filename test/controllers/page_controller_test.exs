@@ -1,5 +1,5 @@
-defmodule PostBot.PageControllerTest do
-  use PostBot.ConnCase
+defmodule Extra.PageControllerTest do
+  use Extra.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"

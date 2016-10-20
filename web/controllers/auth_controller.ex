@@ -1,9 +1,9 @@
-defmodule PostBot.AuthController do
+defmodule Extra.AuthController do
   @moduledoc """
   Auth controller responsible for handling Ueberauth responses
   """
 
-  use PostBot.Web, :controller
+  use Extra.Web, :controller
   plug Ueberauth
 
   alias Ueberauth.Strategy.Helpers

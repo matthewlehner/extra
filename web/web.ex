@@ -1,12 +1,12 @@
-defmodule PostBot.Web do
+defmodule Extra.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use PostBot.Web, :controller
-      use PostBot.Web, :view
+      use Extra.Web, :controller
+      use Extra.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -30,12 +30,12 @@ defmodule PostBot.Web do
     quote do
       use Phoenix.Controller
 
-      alias PostBot.Repo
+      alias Extra.Repo
       import Ecto
       import Ecto.Query
 
-      import PostBot.Router.Helpers
-      import PostBot.Gettext
+      import Extra.Router.Helpers
+      import Extra.Gettext
     end
   end
 
@@ -49,9 +49,9 @@ defmodule PostBot.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import PostBot.Router.Helpers
-      import PostBot.ErrorHelpers
-      import PostBot.Gettext
+      import Extra.Router.Helpers
+      import Extra.ErrorHelpers
+      import Extra.Gettext
     end
   end
 
@@ -65,10 +65,10 @@ defmodule PostBot.Web do
     quote do
       use Phoenix.Channel
 
-      alias PostBot.Repo
+      alias Extra.Repo
       import Ecto
       import Ecto.Query
-      import PostBot.Gettext
+      import Extra.Gettext
     end
   end
 

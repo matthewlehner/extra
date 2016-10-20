@@ -1,3 +1,3 @@
-defmodule PostBot.LayoutViewTest do
-  use PostBot.ConnCase, async: true
+defmodule Extra.LayoutViewTest do
+  use Extra.ConnCase, async: true
 end

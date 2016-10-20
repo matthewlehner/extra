@@ -1,8 +1,8 @@
-defmodule PostBot.Mixfile do
+defmodule Extra.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :post_bot,
+    [app: :extra,
      version: "0.0.1",
      elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(Mix.env),
@@ -17,7 +17,7 @@ defmodule PostBot.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {PostBot, []},
+    [mod: {Extra, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
                     :phoenix_ecto, :postgrex, :ueberauth, :ueberauth_shopify]]
   end

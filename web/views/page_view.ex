@@ -1,3 +1,3 @@
-defmodule PostBot.PageView do
-  use PostBot.Web, :view
+defmodule Extra.PageView do
+  use Extra.Web, :view
 end

@@ -1,4 +1,4 @@
-# PostBot
+# Extra
 
 To start your Phoenix app:
 

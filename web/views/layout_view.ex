@@ -1,3 +1,3 @@
-defmodule PostBot.LayoutView do
-  use PostBot.Web, :view
+defmodule Extra.LayoutView do
+  use Extra.Web, :view
 end

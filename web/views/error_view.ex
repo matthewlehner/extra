@@ -1,5 +1,5 @@
-defmodule PostBot.ErrorView do
-  use PostBot.Web, :view
+defmodule Extra.ErrorView do
+  use Extra.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

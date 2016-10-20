@@ -6,15 +6,15 @@
 use Mix.Config
 
 # General application configuration
-config :post_bot,
-  ecto_repos: [PostBot.Repo]
+config :extra,
+  ecto_repos: [Extra.Repo]
 
 # Configures the endpoint
-config :post_bot, PostBot.Endpoint,
+config :extra, Extra.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "z+F16wmp3ZMZMi12fVGAzHhaP/4hQQOK9lcri5PbIBmHwxoiapikQbBLuA/pdWMo",
-  render_errors: [view: PostBot.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: PostBot.PubSub,
+  render_errors: [view: Extra.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: Extra.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger

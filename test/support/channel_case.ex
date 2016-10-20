@@ -1,4 +1,4 @@
-defmodule PostBot.ChannelCase do
+defmodule Extra.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -20,22 +20,22 @@ defmodule PostBot.ChannelCase do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
 
-      alias PostBot.Repo
+      alias Extra.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
 
       # The default endpoint for testing
-      @endpoint PostBot.Endpoint
+      @endpoint Extra.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(PostBot.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Extra.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(PostBot.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Extra.Repo, {:shared, self()})
     end
 
     :ok

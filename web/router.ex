@@ -1,5 +1,5 @@
-defmodule PostBot.Router do
-  use PostBot.Web, :router
+defmodule Extra.Router do
+  use Extra.Web, :router
   require Ueberauth
 
   pipeline :browser do
@@ -14,13 +14,13 @@ defmodule PostBot.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", PostBot do
+  scope "/", Extra do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
   end
 
-  scope "/auth", PostBot do
+  scope "/auth", Extra do
     pipe_through :browser
 
     get "/:provider", AuthController, :request
@@ -30,7 +30,7 @@ defmodule PostBot.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", PostBot do
+  # scope "/api", Extra do
   #   pipe_through :api
   # end
 end
