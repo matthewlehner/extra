@@ -10,7 +10,8 @@ defmodule Extra.Mixfile do
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      aliases: aliases(),
-     deps: deps()]
+     deps: deps(),
+     dialyzer: [plt_add_deps: :transitive]]
   end
 
   # Configuration for the OTP application.
@@ -18,8 +19,8 @@ defmodule Extra.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Extra, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :ueberauth, :ueberauth_shopify]]
+     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger,
+                    :gettext, :phoenix_ecto, :postgrex, :ueberauth_shopify]]
   end
 
   # Specifies which paths to compile per environment.
@@ -38,7 +39,10 @@ defmodule Extra.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:ueberauth_shopify, github: "matthewlehner/ueberauth_shopify"}]
+     {:ueberauth_shopify, github: "matthewlehner/ueberauth_shopify"},
+
+     {:dialyxir, "~> 0.3.5", only: [:dev]},
+     {:credo, "~> 0.4", only: [:dev, :test]}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
