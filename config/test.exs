@@ -12,7 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :extra, Extra.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "matthew",
+  username: System.get_env("DATABASE_POSTGRESQL_USERNAME") || "matthew",
+  password: System.get_env("DATABASE_POSTGRESQL_PASSWORD") || nil,
   database: "extra_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
