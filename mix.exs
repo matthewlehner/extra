@@ -40,6 +40,7 @@ defmodule Extra.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:ueberauth_shopify, github: "matthewlehner/ueberauth_shopify"},
+     {:ecto_enum, "~> 0.3.0"},
 
      {:dialyxir, "~> 0.3.5", only: [:dev]},
      {:credo, "~> 0.4", only: [:dev, :test]}]
