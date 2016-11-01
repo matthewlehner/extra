@@ -5,18 +5,15 @@ defmodule Extra.AuthController do
 
   use Extra.Web, :controller
 
-  # alias Ueberauth.Strategy.Helpers
+  alias Ueberauth.Strategy.Helpers
 
-  # def callback(%{assigns: %{ueberauth_failure: _fails}} = conn, _params) do
-  #   conn
-  #   |> put_flash(:error, "Failed to authenticate")
-  #   |> redirect(to: "/")
-  # end
-  #
-  require IEx
-  # def callback(%{assigns: %{ueberauth_auth: auth}} = conn, params) do
-  def callback(conn, params) do
-    IEx.pry
+  def callback(%{assigns: %{ueberauth_failure: _fails}} = conn, _params) do
+    conn
+    |> put_flash(:error, "Failed to authenticate")
+    |> redirect(to: "/")
+  end
+
+  def callback(%{assigns: %{ueberauth_auth: auth}} = conn, params) do
     conn
   end
 end
