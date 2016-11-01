@@ -3,6 +3,7 @@ defmodule Extra.User do
 
   schema "users" do
 
+    has_many :auth_tokens, Extra.AuthToken
     timestamps()
   end
 
