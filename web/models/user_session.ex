@@ -17,6 +17,11 @@ defmodule Extra.UserSession do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:user_agent, :login_ip, :last_activity_at, :last_activity_ip])
-    |> validate_required([:user_agent, :login_ip, :last_activity_at, :last_activity_ip])
+    |> validate_required([:user_id])
+  end
+
+  def for_user(conn, user) do
+    build_assoc(user, :user_sessions)
+    |> Extra.Repo.insert!
   end
 end
