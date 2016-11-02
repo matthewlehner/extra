@@ -20,7 +20,8 @@ defmodule Extra.UserSession do
     |> validate_required([:user_id])
   end
 
-  def for_user(conn, user) do
+  # conn is here to assign user_agent, last_activity_at, etc.
+  def for_user(_conn, user) do
     build_assoc(user, :user_sessions)
     |> Extra.Repo.insert!
   end
