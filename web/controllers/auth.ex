@@ -13,11 +13,15 @@ defmodule Extra.Auth do
   end
 
   def login_from_user(conn, user) do
-    session = Extra.UserSession.for_user(conn, user)
+    if get_session(conn, :session_id) do
+      conn
+    else
+      session = Extra.UserSession.for_user(conn, user)
 
-    conn
-    |> put_session(:session_id, session.id)
-    |> configure_session(renew: true)
+      conn
+      |> put_session(:session_id, session.id)
+      |> configure_session(renew: true)
+    end
   end
 
   defp user_query(session_id) do
