@@ -2,8 +2,9 @@ defmodule Extra.User do
   use Extra.Web, :model
 
   schema "users" do
-
     has_many :auth_tokens, Extra.AuthToken
+    has_many :user_sessions, Extra.UserSession
+
     timestamps()
   end
 
