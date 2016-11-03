@@ -1,5 +1,9 @@
 defmodule Extra.Auth do
+  alias Extra.Router.Helpers
+
   import Plug.Conn
+  import Phoenix.Controller
+
   require Ecto.Query
 
   def init(opts) do
@@ -10,6 +14,17 @@ defmodule Extra.Auth do
     session_id = get_session(conn, :session_id)
     user       = session_id && repo.one(user_query(session_id))
     assign(conn, :current_user, user)
+  end
+
+  def authenticate_user(conn, _opts) do
+    if conn.assigns.current_user do
+      conn
+    else
+      conn
+      |> put_flash(:error, "You must be logged in to access that page")
+      |> redirect(to: Helpers.page_path(conn, :index))
+      |> halt()
+    end
   end
 
   def login_from_user(conn, user) do

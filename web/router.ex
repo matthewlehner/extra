@@ -21,6 +21,12 @@ defmodule Extra.Router do
     get "/", PageController, :index
   end
 
+  scope "/app", Extra do
+    pipe_through [:browser, :authenticate_user]
+
+    get "/", DashboardController, :index
+  end
+
   scope "/auth", Extra do
     pipe_through [:browser, Ueberauth]
 
