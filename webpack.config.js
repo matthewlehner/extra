@@ -10,20 +10,28 @@ module.exports = {
   },
 
   resolve: {
-    modulesDirectories: [ "node_modules", __dirname + "/web/static/js" ]
+    modules: [
+      "node_modules",
+      __dirname + "/web/static/js"
+    ]
   },
 
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
       exclude: /node_modules/,
       loader: "babel",
-      query: {
-        presets: ["es2016", "es2015"]
+      options: {
+        presets: ["es2016", ["es2015", {"modules": false}]]
       }
     }, {
       test: /\.css$/,
-      loader: ExtractTextPlugin.extract("style", "css")
+      loader: ExtractTextPlugin.extract({
+        fallbackLoader: "style-loader",
+        loader: [{
+          loader: "css-loader"
+        }]
+      })
     }]
   },
 
