@@ -1,4 +1,8 @@
 defmodule Extra.User do
+  @moduledoc """
+  The User module is for storing individual user data.
+  """
+
   use Extra.Web, :model
 
   schema "users" do

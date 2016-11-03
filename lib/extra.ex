@@ -1,4 +1,8 @@
 defmodule Extra do
+  @moduledoc """
+  The core module for the Phoenix application, Extra.
+  """
+
   use Application
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html

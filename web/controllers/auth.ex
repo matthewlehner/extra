@@ -1,4 +1,8 @@
 defmodule Extra.Auth do
+  @moduledoc """
+  Authentication helper methods and plugs.
+  """
+
   alias Extra.Router.Helpers
 
   import Plug.Conn

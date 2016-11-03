@@ -11,6 +11,7 @@ defmodule Extra.UserSessionTest do
     assert changeset.valid?
   end
 
+  @tag skip: "Pending"
   test "changeset with invalid attributes" do
     changeset = UserSession.changeset(%UserSession{}, @invalid_attrs)
     refute changeset.valid?

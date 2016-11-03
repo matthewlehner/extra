@@ -1,4 +1,8 @@
 defmodule Extra.UserSession do
+  @moduledoc """
+  User Session is used for individual device sessions. Users have many sessions
+  which can be invalidated.
+  """
   use Extra.Web, :model
 
   schema "user_sessions" do
@@ -22,7 +26,8 @@ defmodule Extra.UserSession do
 
   # conn is here to assign user_agent, last_activity_at, etc.
   def for_user(_conn, user) do
-    build_assoc(user, :user_sessions)
+    user
+    |> build_assoc(:user_sessions)
     |> Extra.Repo.insert!
   end
 end
