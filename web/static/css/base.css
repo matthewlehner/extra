@@ -1,0 +1,17 @@
+:root {
+  --fontSize: 1rem;
+  --mainColor: #12345678;
+  --highlightColor: hwb(190, 35%, 20%);
+
+  --centered: {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+html {
+  font-family: "Neue Haas Unica W01";
+  font-size: var(--fontSize);
+  line-height: 1;
+}

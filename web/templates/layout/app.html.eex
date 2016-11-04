@@ -30,6 +30,7 @@
       </main>
 
     </div> <!-- /container -->
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/app.js") %>" async></script>
+    <script type="text/javascript" src="//fast.fonts.net/jsapi/2ab0eeed-3334-4984-b74a-a49024483a5e.js" async></script>
   </body>
 </html>
