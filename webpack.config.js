@@ -1,12 +1,16 @@
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CopyWebpackPlugin = require("copy-webpack-plugin");
+var webpack = require("webpack");
 
 module.exports = {
-  entry: ["./web/static/css/app.css", "./web/static/js/app.js"],
+  entry: {
+    "js/app": "./web/static/js/app.js",
+    "css/app": "./web/static/css/app.css"
+  },
 
   output: {
     path: "./priv/static",
-    filename: "js/app.js"
+    filename: "[name].js"
   },
 
   resolve: {
@@ -29,17 +33,34 @@ module.exports = {
       loader: ExtractTextPlugin.extract({
         fallbackLoader: "style-loader",
         loader: [{
-          loader: "css-loader",
+          loader: "css-loader?sourceMap",
           options: { importLoaders: 1 }
         },{
-          loader: "postcss-loader",
+          loader: "postcss-loader"
         }]
       })
     }]
   },
 
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        context: __dirname + "/web/static/js",
+        postcss: [
+          require("postcss-smart-import")({
+            from: "./web/static/css/",
+            plugins: [ require("stylelint")() ]
+          }),
+          require("postcss-url")(),
+          require("postcss-cssnext"),
+          require("postcss-browser-reporter")(),
+          require("postcss-reporter")()
+        ]
+      }
+    }),
     new ExtractTextPlugin("css/app.css"),
     new CopyWebpackPlugin([{ from: "./web/static/assets" }])
-  ]
+  ],
+
+  devtool: "source-map"
 };
