@@ -60,4 +60,13 @@ main {
   & .sub-text {
     width: 24rem;
   }
+
+  & form {
+    display: flex;
+  }
+
+  & input {
+    flex: 1;
+    margin-right: 0.625rem;
+  }
 }
