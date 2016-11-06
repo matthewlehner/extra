@@ -50,6 +50,10 @@ main {
 }
 
 .sneak-text {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 5.25rem);
+  justify-content: center;
   margin-left: 1rem;
   width: 32rem;
 
