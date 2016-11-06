@@ -1,17 +1,59 @@
 :root {
-  --fontSize: 1rem;
-  --mainColor: #12345678;
+  --mainColor: #9b2fae;
   --highlightColor: hwb(190, 35%, 20%);
-
-  --centered: {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  --easyColor: #8c8c92;
+  --borderColor: #c8c8d0;
+  --border: 1px solid var(--borderColor);
+  --border-radius: 4px;
+  --inputBorder: 1px solid #d8d8df;
 }
 
 html {
-  font-family: "Neue Haas Unica W01";
-  font-size: var(--fontSize);
-  line-height: 1;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font: 16px/1 "Neue Haas Unica W01", Helvetica, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+}
+
+a:any-link {
+  color: var(--mainColor);
+}
+
+h1 {
+  font-size: 1.75rem;
+  line-height: 2.375rem;
+}
+
+main {
+  display: flex;
+  margin: auto;
+  max-width: 64rem;
+}
+
+.sub-text {
+  color: var(--easyColor);
+  font-size: 0.875rem;
+}
+
+.sneak-text {
+  margin-left: 1rem;
+  width: 32rem;
+
+  & .sub-text {
+    width: 24rem;
+  }
 }

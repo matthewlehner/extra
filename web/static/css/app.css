@@ -1,6 +1,4 @@
 /* This file is for your main application css. */
 @import "base.css";
-
-main {
-  font-size: var(--fontSize);
-}
+@import "forms.css";
+@import "page-header.css"
