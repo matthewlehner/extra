@@ -15,6 +15,10 @@ defmodule Extra.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/.well-known/acme-challenge", Extra do
+    get "/:id", LetsEncrypt, :verify
+  end
+
   scope "/", Extra do
     pipe_through :browser # Use the default browser stack
 
