@@ -1,36 +1,20 @@
-<div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}", name: "Phoenix!" %></h2>
-  <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
-</div>
+<section>
+  <h1>Automate your social media marketing in one hour per month.</h1>
+  <p class="lead">
+    Extra automates social media marketing by reposting evergreen content on a
+    smart schedule created by engagement analytics.
+  </p>
 
-<div class="row marketing">
-  <div class="col-lg-6">
-    <h4>Resources</h4>
-    <ul>
-      <li>
-        <a href="http://phoenixframework.org/docs/overview">Guides</a>
-      </li>
-      <li>
-        <a href="https://hexdocs.pm/phoenix">Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-    </ul>
-  </div>
+  <form>
+    <input type="email" placeholder="email address">
+    <button>Keep in touch</button>
+  </form>
 
-  <div class="col-lg-6">
-    <h4>Help</h4>
-    <ul>
-      <li>
-        <a href="http://groups.google.com/group/phoenix-talk">Mailing list</a>
-      </li>
-      <li>
-        <a href="http://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>
-      </li>
-    </ul>
-  </div>
-</div>
+  <p>
+    Join our beta list for product updates and early access. We’ll only send
+    emails about once a month. Extra is being built by Matthew 👻 and Liam 🐤.
+  </p>
+</section>
+<figure>
+  <img src="<%= static_path(@conn, "/images/extra-sneak-peak.png") %>" srcset="<%= static_path(@conn, "/images/extra-sneak-peak@2x.png") %> 2x">
+</figure>

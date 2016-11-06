@@ -8,19 +8,13 @@
     <meta name="author" content="">
 
     <title>Hello Extra!</title>
+    <script type="text/javascript" src="//fast.fonts.net/jsapi/2ab0eeed-3334-4984-b74a-a49024483a5e.js" async></script>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
   <body>
     <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
-        </nav>
-        <span class="logo"></span>
-      </header>
+      <header class="header"></header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
@@ -31,6 +25,5 @@
 
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>" async></script>
-    <script type="text/javascript" src="//fast.fonts.net/jsapi/2ab0eeed-3334-4984-b74a-a49024483a5e.js" async></script>
   </body>
 </html>
