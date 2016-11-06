@@ -5,11 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Extra automates social media marketing by reposting evergreen content on a smart schedule created by engagement analytics.">
-    <meta name="author" content="">
 
     <title>Hello Extra!</title>
     <script type="text/javascript" src="//fast.fonts.net/jsapi/2ab0eeed-3334-4984-b74a-a49024483a5e.js" async></script>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/public.css") %>">
   </head>
 
   <body>
@@ -26,6 +25,6 @@
       </main>
 
     </div> <!-- /container -->
-    <script src="<%= static_path(@conn, "/js/app.js") %>" async></script>
+    <!-- <script src="<%= static_path(@conn, "/js/app.js") %>" async></script> -->
   </body>
 </html>

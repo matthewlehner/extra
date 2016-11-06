@@ -1,0 +1,29 @@
+@import "app.css";
+
+.sneak-text {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 5.25rem);
+  justify-content: center;
+  margin-left: 1rem;
+  width: 32rem;
+
+  & .sub-text {
+    width: 20rem;
+  }
+
+  & form {
+    display: flex;
+    margin-bottom: 0.625rem;
+    margin-top: 0.625rem;
+  }
+
+  & input {
+    flex: 1;
+    margin-right: 0.625rem;
+  }
+
+  & h1 {
+    margin: 0;
+  }
+}
