@@ -28,9 +28,34 @@ body {
   background: no-repeat 50vw 8.125rem/1023px 968px url("/images/extra-sneak-peak@2x.png");
 }
 
-@media (width <= 1150px) {
+@media (width <= 71.875em) {
   body {
     background-position: 35.875rem 8.125rem;
+  }
+}
 
+@media (width <= 56.25em) {
+  .sneak-text {
+    margin-top: 0;
+    width: 18.125rem;
+
+    & form {
+      flex-direction: column;
+    }
+
+    & input {
+      margin-right: 0;
+      margin-bottom: 0.625rem;
+    }
+  }
+
+  body {
+    background-position: 24.6875rem 8.125rem;
+  }
+}
+
+@media (width <= 25em) {
+  body {
+    background-image: none;
   }
 }
