@@ -13,19 +13,17 @@
   </head>
 
   <body>
-    <div class="container">
-      <header class="header">
-        <img src="<%= static_url(@conn, "/images/extra-logo.svg") %>">
-      </header>
+    <header class="header">
+      <img src="<%= static_url(@conn, "/images/extra-logo.svg") %>">
+    </header>
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+    <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+    <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
-      <main role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </main>
+    <main role="main">
+      <%= render @view_module, @view_template, assigns %>
+    </main>
 
-    </div> <!-- /container -->
     <!-- <script src="<%= static_url(@conn, "/js/app.js") %>" async></script> -->
   </body>
 </html>

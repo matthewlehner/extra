@@ -1,12 +1,8 @@
 @import "app.css";
 
 .sneak-text {
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 5.25rem);
-  justify-content: center;
-  margin-left: 1rem;
-  width: 32rem;
+  margin-top: 12rem;
+  width: 31.25rem;
 
   & .sub-text {
     width: 20rem;
@@ -26,4 +22,8 @@
   & h1 {
     margin: 0;
   }
+}
+
+body {
+  background: no-repeat 35.875rem 8.125rem/456px 907px url("/images/extra-sneak-peak@2x.png");
 }

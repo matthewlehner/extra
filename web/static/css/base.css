@@ -9,6 +9,10 @@
   --border-radius: 4px;
   --inputBorder: 1px solid #d8d8df;
   --fontWeightBold: 600;
+  --outer-container: {
+    max-width: 59rem;
+    margin: auto;
+  }
 }
 
 html {
@@ -49,8 +53,8 @@ h1 {
 
 main {
   display: flex;
-  margin: auto;
-  max-width: 64rem;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
 }
 
 .sub-text {

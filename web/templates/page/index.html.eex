@@ -17,6 +17,3 @@
     </a> 👻 and <a href="https://twitter.com/liamsarsfield">Liam</a> 🐤.
   </p>
 </section>
-<figure>
-  <img src="<%= static_url(@conn, "/images/extra-sneak-peak.png") %>" srcset="<%= static_url(@conn, "/images/extra-sneak-peak@2x.png") %> 2x">
-</figure>
