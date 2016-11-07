@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <header class="header">
+    <header class="site-header">
       <img src="<%= static_url(@conn, "/images/extra-logo.svg") %>">
     </header>
 
