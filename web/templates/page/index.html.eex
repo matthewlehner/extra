@@ -18,5 +18,5 @@
   </p>
 </section>
 <figure>
-  <img src="<%= static_path(@conn, "/images/extra-sneak-peak.png") %>" srcset="<%= static_path(@conn, "/images/extra-sneak-peak@2x.png") %> 2x">
+  <img src="<%= static_url(@conn, "/images/extra-sneak-peak.png") %>" srcset="<%= static_url(@conn, "/images/extra-sneak-peak@2x.png") %> 2x">
 </figure>

@@ -8,14 +8,14 @@
 
     <title>Hello Extra!</title>
     <script type="text/javascript" src="//fast.fonts.net/jsapi/2ab0eeed-3334-4984-b74a-a49024483a5e.js" async></script>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/public.css") %>">
+    <link rel="stylesheet" href="<%= static_url(@conn, "/css/public.css") %>">
     <%= render "analytics.html" %>
   </head>
 
   <body>
     <div class="container">
       <header class="header">
-        <img src="<%= static_path(@conn, "/images/extra-logo.svg") %>">
+        <img src="<%= static_url(@conn, "/images/extra-logo.svg") %>">
       </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
@@ -26,6 +26,6 @@
       </main>
 
     </div> <!-- /container -->
-    <!-- <script src="<%= static_path(@conn, "/js/app.js") %>" async></script> -->
+    <!-- <script src="<%= static_url(@conn, "/js/app.js") %>" async></script> -->
   </body>
 </html>
