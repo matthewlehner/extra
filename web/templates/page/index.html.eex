@@ -5,8 +5,14 @@
     smart schedule created by engagement analytics.
   </p>
 
-  <form>
-    <input type="email" placeholder="email address">
+  <form action="//social.us14.list-manage.com/subscribe/post?u=5a5e467899e3df54dfcdf9ab2&amp;id=48c0648c2c"
+        method="post"
+        id="mc-embedded-subscribe-form"
+        name="mc-embedded-subscribe-form"
+        class="validate"
+        target="_blank"
+        novalidate>
+    <input id="mce-EMAIL" type="email" placeholder="email address" name="EMAIL" value="">
     <button>Keep in touch</button>
   </form>
 
