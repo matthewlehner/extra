@@ -6,7 +6,7 @@ module.exports = {
   entry: {
     "js/app": "./web/static/js/app.js",
     "css/app": "./web/static/css/app.css",
-    "css/public": "./web/static/css/app.css"
+    "css/public": "./web/static/css/public.css"
   },
 
   output: {
