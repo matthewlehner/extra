@@ -30,4 +30,4 @@
   "ranch": {:hex, :ranch, "1.2.1", "a6fb992c10f2187b46ffd17ce398ddf8a54f691b81768f9ef5f461ea7e28c762", [:make], []},
   "ssl_verify_fun": {:hex, :ssl_verify_fun, "1.1.0", "edee20847c42e379bf91261db474ffbe373f8acb56e9079acb6038d4e0bf414f", [:rebar, :make], []},
   "ueberauth": {:hex, :ueberauth, "0.4.0", "bc72d5e5a7bdcbfcf28a756e34630816edabc926303bdce7e171f7ac7ffa4f91", [:mix], [{:plug, "~> 1.2", [hex: :plug, optional: false]}]},
-  "ueberauth_shopify": {:git, "https://github.com/matthewlehner/ueberauth_shopify.git", "b3c3b9d019003fa673bdc6f00abab34787210c38", []}}
+  "ueberauth_shopify": {:hex, :ueberauth_shopify, "0.1.1", "8074140e5c5317fa924ad2914a1a2c5548fa633d0717e2f319067122c14b570a", [:mix], [{:oauth2, "~> 0.8.0", [hex: :oauth2, optional: false]}, {:ueberauth, "~> 0.4.0", [hex: :ueberauth, optional: false]}]}}

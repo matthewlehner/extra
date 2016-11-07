@@ -39,7 +39,7 @@ defmodule Extra.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:ueberauth_shopify, github: "matthewlehner/ueberauth_shopify"},
+     {:ueberauth_shopify, "~> 0.1.1"},
      {:ecto_enum, "~> 0.3.0"},
 
      {:dialyxir, "~> 0.3.5", only: [:dev]},
