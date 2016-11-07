@@ -25,5 +25,12 @@
 }
 
 body {
-  background: no-repeat 35.875rem 8.125rem/456px 907px url("/images/extra-sneak-peak@2x.png");
+  background: no-repeat 50vw 8.125rem/1023px 968px url("/images/extra-sneak-peak@2x.png");
+}
+
+@media (width <= 1150px) {
+  body {
+    background-position: 35.875rem 8.125rem;
+
+  }
 }
