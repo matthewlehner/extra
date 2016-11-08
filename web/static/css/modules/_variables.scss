@@ -14,7 +14,6 @@ $base-line-height: 1.625;
 $heading-line-height: 2.375rem;
 
 // Other Sizes
-$base-border-radius: 3px;
 $base-spacing: $base-line-height * 1em;
 $small-spacing: $base-spacing / 2;
 $base-z-index: 0;
@@ -24,6 +23,8 @@ $base-border-color: $light-gray;
 $base-border: 1px solid $base-border-color;
 $base-border-radius: 4px;
 
+$input-border: 1px solid $lighter-gray;
+
 // Background Colors
 $base-background-color: #fff;
 $secondary-background-color: tint($base-border-color, 75%);
@@ -31,6 +32,3 @@ $secondary-background-color: tint($base-border-color, 75%);
 // Animations
 $base-duration: 150ms;
 $base-timing: ease;
-
-// Forms
-

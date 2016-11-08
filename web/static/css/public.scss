@@ -1,5 +1,15 @@
 @import "partials/base";
 
+body {
+  background: no-repeat 45.875rem 8.125rem / 1023px 968px url("/images/extra-sneak-peak@2x.png");
+}
+
+.site-header {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2.5rem;
+}
+
 .sneak-text {
   margin-top: 12rem;
   width: 31.25rem;
@@ -24,8 +34,9 @@
   }
 }
 
-body {
-  background: no-repeat 45.875rem 8.125rem / 1023px 968px url("/images/extra-sneak-peak@2x.png");
+.sub-text {
+  color: $gray;
+  font-size: 0.875rem;
 }
 
 @media (max-width: 71.875em) {
@@ -44,8 +55,8 @@ body {
     }
 
     input {
-      margin-right: 0;
       margin-bottom: 0.625rem;
+      margin-right: 0;
     }
 
     h1 {
