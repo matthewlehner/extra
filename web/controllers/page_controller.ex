@@ -4,4 +4,8 @@ defmodule Extra.PageController do
   def index(conn, _params) do
     render conn, "index.html"
   end
+
+  def styleguide(conn, _) do
+    render conn, "styleguide.html", layout: {Extra.LayoutView, "app.html"}
+  end
 end

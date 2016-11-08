@@ -8,7 +8,7 @@
 
     <title>Hello Extra!</title>
     <script type="text/javascript" src="//fast.fonts.net/jsapi/2ab0eeed-3334-4984-b74a-a49024483a5e.js" async></script>
-    <link rel="stylesheet" href="<%= static_url(@conn, "/css/public.css") %>">
+    <link rel="stylesheet" href="<%= static_url(@conn, "/css/app.css") %>">
     <%= render "analytics.html" %>
   </head>
 
@@ -24,6 +24,6 @@
       <%= render @view_module, @view_template, assigns %>
     </main>
 
-    <!-- <script src="<%= static_url(@conn, "/js/app.js") %>" async></script> -->
+    <script src="<%= static_url(@conn, "/js/app.js") %>" async></script>
   </body>
 </html>

@@ -15,14 +15,19 @@ defmodule Extra.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :public_layout do
+    plug :put_layout, {Extra.LayoutView, :public}
+  end
+
   scope "/.well-known/acme-challenge", Extra do
     get "/:id", LetsEncrypt, :verify
   end
 
   scope "/", Extra do
-    pipe_through :browser # Use the default browser stack
+    pipe_through [:browser, :public_layout] # Use the default browser stack
 
     get "/", PageController, :index
+    get "/styleguide", PageController, :styleguide
   end
 
   scope "/app", Extra do

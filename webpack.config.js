@@ -4,14 +4,13 @@ var webpack = require("webpack");
 
 module.exports = {
   entry: {
-    "js/app": "./web/static/js/app.js",
-    // "css/app": "./web/static/css/app.css",
-    "css/public": "./web/static/css/public.scss"
+    "app": ["./web/static/css/app.scss", "./web/static/js/app.js"],
+    "public": "./web/static/css/public.scss"
   },
 
   output: {
     path: "./priv/static",
-    filename: "[name].js"
+    filename: "js/[name].js"
   },
 
   resolve: {
@@ -65,8 +64,7 @@ module.exports = {
         ]
       }
     }),
-    // new ExtractTextPlugin("css/app.css"),
-    new ExtractTextPlugin("css/public.css"),
+    new ExtractTextPlugin("css/[name].css"),
     new CopyWebpackPlugin([{ from: "./web/static/assets" }])
   ],
 
