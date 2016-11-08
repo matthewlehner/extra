@@ -1,0 +1,8 @@
+:root {
+  --darkGrey: #303030;
+  --lightGrey: #f1f1f5;
+  --mainColor: #9b2fae;
+  --highlightColor: hwb(190, 35%, 20%);
+  --easyColor: #8c8c92;
+  --borderColor: #c8c8d0;
+}

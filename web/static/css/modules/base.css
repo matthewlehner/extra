@@ -1,10 +1,6 @@
+@import "./colors.css";
+
 :root {
-  --darkGrey: #303030;
-  --lightGrey: #f1f1f5;
-  --mainColor: #9b2fae;
-  --highlightColor: hwb(190, 35%, 20%);
-  --easyColor: #8c8c92;
-  --borderColor: #c8c8d0;
   --border: 1px solid var(--borderColor);
   --border-radius: 4px;
   --inputBorder: 1px solid #d8d8df;
@@ -40,8 +36,10 @@ body {
   margin: 0;
 }
 
-a:any-link {
-  color: var(--mainColor);
+a {
+  &:any-link {
+    color: var(--mainColor);
+  }
 }
 
 p {

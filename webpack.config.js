@@ -5,8 +5,8 @@ var webpack = require("webpack");
 module.exports = {
   entry: {
     "js/app": "./web/static/js/app.js",
-    "css/app": "./web/static/css/app.css",
-    "css/public": "./web/static/css/public.css"
+    // "css/app": "./web/static/css/app.css",
+    "css/public": "./web/static/css/public.scss"
   },
 
   output: {
@@ -30,36 +30,39 @@ module.exports = {
         presets: ["es2016", ["es2015", {"modules": false}]]
       }
     }, {
-      test: /\.css$/,
+      test: /\.scss$/,
       loader: ExtractTextPlugin.extract({
         fallbackLoader: "style-loader",
         loader: [{
           loader: "css-loader?sourceMap",
           options: { importLoaders: 1 }
         },{
-          loader: "postcss-loader"
+          loader: "sass-loader",
+          options: {
+            includePaths: [__dirname + "/web/static/css"]
+          }
         }]
       })
     }]
   },
 
   plugins: [
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        context: __dirname + "/web/static/js",
-        postcss: [
-          require("postcss-smart-import")({
-            from: "./web/static/css/",
-            plugins: [ require("stylelint")() ]
-          }),
-          require("postcss-url")(),
-          require("postcss-cssnext"),
-          require("postcss-browser-reporter")(),
-          require("postcss-reporter")()
-        ]
-      }
-    }),
-    new ExtractTextPlugin("css/app.css"),
+    // new webpack.LoaderOptionsPlugin({
+    //   options: {
+    //     context: __dirname + "/web/static/js",
+    //     postcss: [
+    //       require("postcss-smart-import")({
+    //         from: "./web/static/css/",
+    //         plugins: [ require("stylelint")() ]
+    //       }),
+    //       require("postcss-url")(),
+    //       require("postcss-cssnext"),
+    //       require("postcss-browser-reporter")(),
+    //       require("postcss-reporter")()
+    //     ]
+    //   }
+    // }),
+    // new ExtractTextPlugin("css/app.css"),
     new ExtractTextPlugin("css/public.css"),
     new CopyWebpackPlugin([{ from: "./web/static/assets" }])
   ],
