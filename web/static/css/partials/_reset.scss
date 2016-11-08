@@ -1,0 +1,44 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  text-size-adjust: 100%;
+}
+
+body {
+  color: $base-font-color;
+  // Interpolated so Sass doesn't do division here.
+  font: #{$base-font-size} / $base-line-height $base-font-family;
+  margin: 0;
+}
+
+::selection {
+  background: lighten($action-color, 30%);
+}
+
+:any-link {
+  color: $action-color;
+}
+
+p {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+h1 {
+  font-size: 1.75rem;
+  line-height: $heading-line-height;
+}
+
+main {
+  display: flex;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}

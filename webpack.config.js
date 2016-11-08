@@ -37,6 +37,8 @@ module.exports = {
           loader: "css-loader?sourceMap",
           options: { importLoaders: 1 }
         },{
+          loader: "postcss-loader"
+        },{
           loader: "sass-loader",
           options: {
             includePaths: [__dirname + "/web/static/css"]
@@ -47,21 +49,22 @@ module.exports = {
   },
 
   plugins: [
-    // new webpack.LoaderOptionsPlugin({
-    //   options: {
-    //     context: __dirname + "/web/static/js",
-    //     postcss: [
-    //       require("postcss-smart-import")({
-    //         from: "./web/static/css/",
-    //         plugins: [ require("stylelint")() ]
-    //       }),
-    //       require("postcss-url")(),
-    //       require("postcss-cssnext"),
-    //       require("postcss-browser-reporter")(),
-    //       require("postcss-reporter")()
-    //     ]
-    //   }
-    // }),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        context: __dirname + "/web/static/js",
+        postcss: [
+          // require("postcss-smart-import")({
+          //   from: "./web/static/css/",
+          //   plugins: [ require("stylelint")() ]
+          // }),
+          // require("postcss-url")(),
+          // require("postcss-cssnext"),
+          require('autoprefixer')({browsers: ["> 5%"]})
+          // require("postcss-browser-reporter")(),
+          // require("postcss-reporter")()
+        ]
+      }
+    }),
     // new ExtractTextPlugin("css/app.css"),
     new ExtractTextPlugin("css/public.css"),
     new CopyWebpackPlugin([{ from: "./web/static/assets" }])

@@ -1,3 +1,79 @@
-html {
-  background: grey;
+@import "partials/base";
+
+.sneak-text {
+  margin-top: 12rem;
+  width: 31.25rem;
+
+  .sub-text {
+    width: 20rem;
+  }
+
+  form {
+    display: flex;
+    margin-bottom: 0.625rem;
+    margin-top: 0.625rem;
+  }
+
+  input {
+    flex: 1;
+    margin-right: 0.625rem;
+  }
+
+  h1 {
+    margin: 0;
+  }
+}
+
+body {
+  background: no-repeat 45.875rem 8.125rem / 1023px 968px url("/images/extra-sneak-peak@2x.png");
+}
+
+@media (max-width: 71.875em) {
+  body {
+    background-position: 35.875rem 8.125rem;
+  }
+}
+
+@media (max-width: 56.25em) {
+  .sneak-text {
+    margin-top: 0;
+    width: 18.125rem;
+
+    form {
+      flex-direction: column;
+    }
+
+    input {
+      margin-right: 0;
+      margin-bottom: 0.625rem;
+    }
+
+    h1 {
+      font-size: 1.375rem;
+      line-height: 2rem;
+    }
+  }
+
+  body {
+    background-position: 24.6875rem 8.125rem;
+  }
+
+  .site-header {
+    padding: 1.875rem;
+  }
+
+  main {
+    margin-left: 1.875rem;
+    margin-right: 1.8875rem;
+  }
+}
+
+@media (max-width: 25em) {
+  body {
+    background-image: none;
+  }
+
+  .sneak-text {
+    width: 100%;
+  }
 }
