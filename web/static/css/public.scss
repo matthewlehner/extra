@@ -1,54 +1,65 @@
-@import "app.css";
+@import "partials/base";
+
+body {
+  background: no-repeat 45.875rem 8.125rem / 1023px 968px url("/images/extra-sneak-peak@2x.png");
+}
+
+.site-header {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2.5rem;
+}
 
 .sneak-text {
   margin-top: 12rem;
   width: 31.25rem;
 
-  & .sub-text {
+  .sub-text {
     width: 20rem;
   }
 
-  & form {
+  form {
     display: flex;
     margin-bottom: 0.625rem;
     margin-top: 0.625rem;
   }
 
-  & input {
+  input {
     flex: 1;
     margin-right: 0.625rem;
   }
 
-  & h1 {
+  h1 {
     margin: 0;
   }
 }
 
-body {
-  background: no-repeat 45.875rem 8.125rem/1023px 968px url("/images/extra-sneak-peak@2x.png");
+.sub-text {
+  color: $gray;
+  font-size: 0.875rem;
 }
 
-@media (width <= 71.875em) {
+@media (max-width: 71.875em) {
   body {
     background-position: 35.875rem 8.125rem;
   }
 }
 
-@media (width <= 56.25em) {
+@media (max-width: 56.25em) {
   .sneak-text {
     margin-top: 0;
     width: 18.125rem;
 
-    & form {
+    form {
       flex-direction: column;
     }
 
-    & input {
-      margin-right: 0;
+    input {
       margin-bottom: 0.625rem;
+      margin-right: 0;
     }
 
-    & h1 {
+    h1 {
       font-size: 1.375rem;
       line-height: 2rem;
     }
@@ -68,7 +79,7 @@ body {
   }
 }
 
-@media (width <= 25em) {
+@media (max-width: 25em) {
   body {
     background-image: none;
   }
