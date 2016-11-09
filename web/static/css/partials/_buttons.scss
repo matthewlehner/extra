@@ -9,7 +9,7 @@ button {
   font-family: $base-font-family;
   font-size: 1rem;
   font-weight: 600;
-  padding: $small-spacing $base-spacing * 0.75;
+  padding: calc(#{$small-spacing} - 1px) $base-spacing * 0.75 calc(#{$small-spacing} + 1px);
   text-align: center;
   text-decoration: none;
   transition: border-color $base-duration $base-timing;

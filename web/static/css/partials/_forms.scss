@@ -19,7 +19,7 @@ textarea {
   border: $input-border;
   border-radius: $base-border-radius;
   font-size: 1rem;
-  padding: $small-spacing;
+  padding: calc(#{$small-spacing} - 1px) $small-spacing calc(#{$small-spacing} + 1px);
   transition: border-color $base-duration $base-timing;
   width: 100%;
 
