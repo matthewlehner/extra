@@ -1,1 +1,6 @@
 @import "partials/base";
+@import "partials/side-nav";
+
+body {
+  display: flex;
+}

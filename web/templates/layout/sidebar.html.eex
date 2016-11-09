@@ -1,0 +1,27 @@
+<section>
+  <h3>Playlists</h3>
+  <ul>
+    <li><a href="#">My first playlist</a></li>
+    <li><a href="#">Inspirational</a></li>
+    <li><a href="#">Add new</a></li>
+  </ul>
+</section>
+
+<section>
+  <h3>Channels</h3>
+  <ul>
+    <li><a href="#">Getliteristic</a></li>
+    <li><a href="#">Literistic</a></li>
+    <li><a href="#">Literistic</a></li>
+    <li><a href="#">Add new</a></li>
+  </ul>
+</section>
+
+<section>
+  <h3>General</h3>
+  <ul>
+    <li><a href="#">Performance</a></li>
+    <li><a href="#">Account</a></li>
+    <li><a href="#">Logout</a></li>
+  </ul>
+</section>

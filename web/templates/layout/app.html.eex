@@ -13,9 +13,14 @@
   </head>
 
   <body>
-    <header class="site-header">
+    <section class="sidebar">
       <img src="<%= static_url(@conn, "/images/extra-logo.svg") %>">
-    </header>
+      <nav class="site-nav">
+        <%= render "sidebar.html" %>
+      </nav>
+
+      <div class="gradient-container"><div class="gradient"></div></div>
+    </section>
 
     <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
     <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
