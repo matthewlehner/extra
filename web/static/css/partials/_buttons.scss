@@ -1,3 +1,4 @@
+.button,
 button {
   appearance: none;
   background-color: $base-background-color;
@@ -30,5 +31,12 @@ button {
     &:hover {
       background-color: $action-color;
     }
+  }
+
+  &.small {
+    $horizontal-spacing: 0.875rem;
+    $vertical-spacing: 0.375rem;
+    font-size: 0.8125rem;
+    padding: calc(#{$vertical-spacing} - 1px) $horizontal-spacing calc(#{$vertical-spacing} + 1px);
   }
 }
