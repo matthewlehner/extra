@@ -1,27 +1,29 @@
 <section>
   <h3>Playlists</h3>
   <ul>
-    <li><%= icon("collection") %><a href="#" class="active">My first playlist</a></li>
-    <li><%= icon("collection") %><a href="#">Inspiration</a></li>
-    <li><%= icon("add-new") %><a href="#">Add new</a></li>
+    <li>
+      <a href="#" class="active"><%= icon("collection") %>My first playlist</a>
+    </li>
+    <li><a href="#"><%= icon("collection") %>Inspiration</a></li>
+    <li><a href="#"><%= icon("add-new") %>Add new</a></li>
   </ul>
 </section>
 
 <section>
   <h3>Channels</h3>
   <ul>
-    <li><%= icon("twitter-badge") %><a href="#">Getliteristic</a></li>
-    <li><%= icon("facebook-badge") %><a href="#">Literistic</a></li>
-    <li><%= icon("pinterest-badge") %><a href="#">Literistic</a></li>
-    <li><%= icon("add-new") %><a href="#">Add new</a></li>
+    <li><a href="#"><%= icon("twitter-badge") %>Getliteristic</a></li>
+    <li><a href="#"><%= icon("facebook-badge") %>Literistic</a></li>
+    <li><a href="#"><%= icon("pinterest-badge") %>Literistic</a></li>
+    <li><a href="#"><%= icon("add-new") %>Add new</a></li>
   </ul>
 </section>
 
 <section>
   <h3>General</h3>
   <ul>
-    <li><%= icon("performance") %><a href="#">Performance</a></li>
-    <li><%= icon("account") %><a href="#">Account</a></li>
-    <li><%= icon("logout") %><a href="#">Logout</a></li>
+    <li><a href="#"><%= icon("performance") %>Performance</a></li>
+    <li><a href="#"><%= icon("account") %>Account</a></li>
+    <li><a href="#"><%= icon("logout") %>Logout</a></li>
   </ul>
 </section>
