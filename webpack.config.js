@@ -30,6 +30,7 @@ module.exports = {
       }
     }, {
       test: /\.scss$/,
+      exclude: /node_modules/,
       loader: ExtractTextPlugin.extract({
         fallbackLoader: "style-loader",
         loader: [{
@@ -44,6 +45,17 @@ module.exports = {
           }
         }]
       })
+    }, {
+      test: /.*\.svg$/,
+      exclude: /node_modules/,
+      loader: [{
+        loader: "svg-sprite-loader",
+        options: {
+          name: "[name]-icon"
+        }
+      }, {
+        loader: "svgo-loader",
+      }]
     }]
   },
 

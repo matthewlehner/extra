@@ -23,6 +23,9 @@
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "stylelint": "^7.5.0",
+    "svg-sprite-loader": "^0.0.31",
+    "svgo": "^0.7.1",
+    "svgo-loader": "^1.1.2",
     "webpack": "2.1.0-beta.25"
   }
 }
