@@ -14,9 +14,9 @@
 
   <body>
     <section class="sidebar">
-      <img src="<%= static_url(@conn, "/images/extra-logo.svg") %>">
+      <img src="<%= static_url(@conn, "/images/extra-logo.svg") %>" class="logo">
       <nav class="site-nav">
-        <%= render "sidebar.html" %>
+        <%= render "sidebar.html", conn: @conn %>
       </nav>
 
       <div class="gradient-container"><div class="gradient"></div></div>
