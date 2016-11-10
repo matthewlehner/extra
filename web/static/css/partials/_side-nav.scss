@@ -1,7 +1,8 @@
 .sidebar {
-  padding: 1.875rem;
-  width: 18.125rem;
   font-size: 0.875rem;
+  padding: 1.875rem;
+  position: relative;
+  width: 18.125rem;
 
   :any-link {
     color: rgba(255, 255, 255, 0.8);
@@ -49,6 +50,7 @@
     height: 100vh;
     top: 0;
     width: 100%;
+    z-index: -1;
   }
 
   .gradient {
