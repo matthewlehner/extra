@@ -2,7 +2,7 @@
   <h3>Playlists</h3>
   <ul>
     <li><%= icon("collection") %><a href="#">My first playlist</a></li>
-    <li><%= icon("collection") %><a href="#">Inspirational</a></li>
+    <li><%= icon("collection") %><a href="#">Inspiration</a></li>
     <li><%= icon("add-new") %><a href="#">Add new</a></li>
   </ul>
 </section>
