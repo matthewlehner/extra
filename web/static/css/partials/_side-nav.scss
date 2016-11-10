@@ -7,14 +7,18 @@
   :any-link {
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
+
+    &.active {
+      color: white;
+      font-weight: bold;
+    }
   }
 
   .icon {
+    fill: white;
     height: 12px;
     margin-right: 10px;
     width: 12px;
-
-    fill: white;
   }
 
   .logo {
