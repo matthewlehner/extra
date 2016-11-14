@@ -1,4 +1,7 @@
 .posts-list {
+  $badge-diameter: 1.625rem;
+  $post-padding: 1.25rem;
+
   list-style-type: none;
   padding: 0;
 
@@ -8,7 +11,7 @@
     box-shadow: $base-box-shadow;
     margin-bottom: 1rem;
     margin-top: 1rem;
-    padding: 1.25rem;
+    padding: $post-padding;
     position: relative;
   }
 
@@ -16,28 +19,27 @@
     margin: 0;
   }
 
-  figure {
+  .post-image-preview {
     margin-bottom: 1.25rem;
   }
 
   .badge {
-    $diameter: 1.625rem;
     align-items: center;
     background: $white;
     border: $base-border;
     border-radius: 50%;
     display: flex;
-    fill: $gray;
-    height: $diameter;
+    height: $badge-diameter;
     justify-content: center;
-    left: $diameter /-2;
+    left: $badge-diameter / -2;
     position: absolute;
-    top: 1rem;
-    width: $diameter;
+    top: 0.625rem;
+    width: $badge-diameter;
+  }
 
-    .icon {
-      height: 1em;
-      width: 1em;
-    }
+  .icon {
+    fill: $gray;
+    height: 1em;
+    width: 1em;
   }
 }

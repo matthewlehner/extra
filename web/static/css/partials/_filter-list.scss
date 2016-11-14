@@ -1,0 +1,41 @@
+.filter-list {
+  display: flex;
+  margin-bottom: 1.875rem;
+  margin-top: 1rem;
+
+  [type="radio"] {
+    display: none;
+
+    &:checked + label {
+      background-image: linear-gradient(to right, rgb(48, 35, 174) 5%, rgb(200, 109, 215));
+      color: white;
+      font-weight: bold;
+    }
+
+    & + label {
+    $horizontal-spacing: 0.875rem;
+    $vertical-spacing: 0.375rem;
+    font-size: 0.8125rem;
+    padding: calc(#{$vertical-spacing} - 1px) $horizontal-spacing calc(#{$vertical-spacing} + 1px);
+      border: $base-border;
+      border-bottom-left-radius: $base-border-radius;
+      border-top-left-radius: $base-border-radius;
+
+      & + input + label {
+        border-bottom-left-radius: 0;
+        border-left: 0;
+        border-top-left-radius: 0;
+      }
+    }
+  }
+
+  label {
+    box-shadow: $base-box-shadow;
+    padding: 10px;
+
+    &:last-child {
+      border-bottom-right-radius: $base-border-radius;
+      border-top-right-radius: $base-border-radius;
+    }
+  }
+}

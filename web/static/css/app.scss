@@ -3,6 +3,7 @@ $base-font-color: lighten($dark-gray, 11%);
 @import "partials/base";
 @import "themes/app";
 @import "partials/side-nav";
+@import "partials/filter-list";
 @import "partials/posts-list";
 
 body {
