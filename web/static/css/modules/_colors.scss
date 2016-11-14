@@ -1,8 +1,15 @@
 $dark-gray: #303030;
 $gray: #8c8c92;
-$light-gray: #c8c8d0;
-$lighter-gray: #d8d8df;
-$lightest-gray: #f1f1f5;
+$gray-light: #c8c8d0;
+$gray-lighter: #d8d8df;
+$gray-lightest: #f1f1f5;
 
 $extra-purple: #9b2fae;
+$purple-dark: rgb(48, 35, 174);
+$purple-light: rgb(200, 109, 215);
 $white: #fff;
+
+// TODO - DELETE THESE!
+$light-gray: $gray-light;
+$lighter-gray: $gray-lighter;
+$lightest-gray: $gray-lightest;

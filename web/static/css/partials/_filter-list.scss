@@ -7,7 +7,7 @@
     display: none;
 
     &:checked + label {
-      background-image: linear-gradient(to right, rgb(48, 35, 174) 5%, rgb(200, 109, 215));
+      background-image: $extra-gradient;
       color: white;
       font-weight: bold;
     }
