@@ -4,7 +4,7 @@ button {
   background-color: $base-background-color;
   border: $base-border;
   border-radius: $base-border-radius;
-  box-shadow: 0 1px 2px $lightest-gray;
+  box-shadow: $base-box-shadow;
   color: $action-color;
   cursor: pointer;
   font-family: $base-font-family;

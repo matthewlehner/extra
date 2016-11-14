@@ -1,4 +1,5 @@
 h1 {
+  color: $dark-gray;
   font-size: 1.5rem;
 }
 
@@ -22,14 +23,16 @@ h2 {
 
 .filter-list {
   display: flex;
+  margin-bottom: 1.875rem;
+  margin-top: 1rem;
 
-  input[type="radio"] {
+  [type="radio"] {
     display: none;
 
     &:checked + label {
+      background-image: linear-gradient(to right, rgb(48, 35, 174) 5%, rgb(200, 109, 215));
       color: white;
       font-weight: bold;
-      background-image: linear-gradient(to right, rgb(48, 35, 174) 5%, rgb(200, 109, 215));
     }
 
     & + label {
@@ -50,7 +53,9 @@ h2 {
   }
 
   label {
+    box-shadow: $base-box-shadow;
     padding: 10px;
+
     &:last-child {
       border-bottom-right-radius: $base-border-radius;
       border-top-right-radius: $base-border-radius;
