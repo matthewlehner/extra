@@ -1,3 +1,5 @@
+@import "modules/variables";
+$base-font-color: lighten($dark-gray, 11%);
 @import "partials/base";
 @import "themes/app";
 @import "partials/side-nav";
