@@ -15,3 +15,39 @@
   <input type="radio" name="social-filter" value="Pinterest" id="r4">
   <label for="r4">Pinterest</label>
 </div>
+
+<ul class="posts-list">
+  <li class="post-preview facebook">
+    <p>
+      &ldquo;You remember too much,&rdquo; my mother said to me recently.
+      &ldquo;Why hold onto all that?&rdquo; And I said, &ldquo;where can I put
+      it down?&rdquo; — Ann Carson
+    </p>
+
+    <div class="badge"><%= icon("facebook-badge") %></div>
+  </li>
+
+  <li class="post-preview twitter">
+    <p>
+      &ldquo;You remember too much,&rdquo; my mother said to me recently.
+      &ldquo;Why hold onto all that?&rdquo; And I said, &ldquo;where can I put
+      it down?&rdquo; — Ann Carson
+    </p>
+    <div class="badge"><%= icon("twitter-badge") %></div>
+  </li>
+
+  <li class="post-preview pinterest">
+    <figure class="post-image-preview">
+      <img src="http://pipsum.com/800x800.jpg">
+    </figure>
+    <p>
+      The most recent presidential debate is the single darkest thing I&rsquo;ve ever
+      watched on television. While I&rsquo;ve been able to maintain detachment from
+      this presidential race (mental health; not being an American; the
+      trajectory of Americanism over the past three decades), I feel nauseous,
+      disturbed and overwhelmed. This is a very, very dark time for the United
+      States and by extension the rest of world.
+    </p>
+    <div class="badge"><%= icon("pinterest-badge") %></div>
+  </li>
+</ul>

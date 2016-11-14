@@ -1,0 +1,43 @@
+.posts-list {
+  list-style-type: none;
+  padding: 0;
+
+  .post-preview {
+    border: $base-border;
+    border-radius: $base-border-radius;
+    box-shadow: $base-box-shadow;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    padding: 1.25rem;
+    position: relative;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  figure {
+    margin-bottom: 1.25rem;
+  }
+
+  .badge {
+    $diameter: 1.625rem;
+    align-items: center;
+    background: $white;
+    border: $base-border;
+    border-radius: 50%;
+    display: flex;
+    fill: $gray;
+    height: $diameter;
+    justify-content: center;
+    left: $diameter /-2;
+    position: absolute;
+    top: 1rem;
+    width: $diameter;
+
+    .icon {
+      height: 1em;
+      width: 1em;
+    }
+  }
+}
