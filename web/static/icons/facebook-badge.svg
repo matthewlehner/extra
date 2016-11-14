@@ -4,8 +4,8 @@
     <title>401-facebook</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="1.0" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.8">
-        <g id="1@2x" transform="translate(-33.000000, -300.000000)" fill="#FFFFFF">
+    <g id="1.0" stroke="none" stroke-width="1" fill-rule="evenodd" opacity="0.8">
+        <g id="1@2x" transform="translate(-33.000000, -300.000000)">
             <path d="M38.5,302.0625 L38.5,300 L36.78125,300 C35.454375,300 34.375,301.079375 34.375,302.40625 L34.375,303.4375 L33,303.4375 L33,305.5 L34.375,305.5 L34.375,311 L36.4375,311 L36.4375,305.5 L38.15625,305.5 L38.5,303.4375 L36.4375,303.4375 L36.4375,302.40625 C36.4375,302.219938 36.5949375,302.0625 36.78125,302.0625 L38.5,302.0625 Z" id="401-facebook"></path>
         </g>
     </g>
