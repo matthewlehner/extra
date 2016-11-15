@@ -18,13 +18,13 @@
 
 <div class="filter-list">
   <input type="radio" name="social-filter" value="All" id="r1" checked>
-  <label for="r1" title="All">All</label>
+  <label for="r1" data-title="All">All</label>
   <input type="radio" name="social-filter" value="Facebook" id="r2">
-  <label for="r2" title="Facebook">Facebook</label>
+  <label for="r2" data-title="Facebook">Facebook</label>
   <input type="radio" name="social-filter" value="Twitter" id="r3">
-  <label for="r3" title="Twitter">Twitter</label>
+  <label for="r3" data-title="Twitter">Twitter</label>
   <input type="radio" name="social-filter" value="Pinterest" id="r4">
-  <label for="r4" title="Pinterest">Pinterest</label>
+  <label for="r4" data-title="Pinterest">Pinterest</label>
 </div>
 
 <ul class="posts-list">
@@ -78,19 +78,19 @@
   <div class="tab-container">
     <nav role="tablist" class="tablist">
       <a href="#" class="tab" role="tab" id="monday-tab" aria-controls="monday"
-         aria-selected="true" title="Monday">Monday</a>
+         aria-selected="true" data-title="Monday">Monday</a>
       <a href="#" class="tab" role="tab" id="tuesday-tab"
-         aria-controls="tuesday" title="Tuesday">Tuesday</a>
+         aria-controls="tuesday" data-title="Tuesday">Tuesday</a>
       <a href="#" class="tab" role="tab" id="wednesday-tab"
-         aria-controls="wednesday" title="Wednesday">Wednesday</a>
+         aria-controls="wednesday" data-title="Wednesday">Wednesday</a>
       <a href="#" class="tab" role="tab" id="thursday-tab"
-         aria-controls="thursday" title="Thursday">Thursday</a>
+         aria-controls="thursday" data-title="Thursday">Thursday</a>
       <a href="#" class="tab" role="tab" id="friday-tab"
-         aria-controls="friday" title="Friday">Friday</a>
+         aria-controls="friday" data-title="Friday">Friday</a>
       <a href="#" class="tab" role="tab" id="saturday-tab"
-         aria-controls="saturday" title="Saturday">Saturday</a>
+         aria-controls="saturday" data-title="Saturday">Saturday</a>
       <a href="#" class="tab" role="tab" id="sunday-tab" aria-controls="sunday"
-         title="Sunday">Sunday</a>
+         data-title="Sunday">Sunday</a>
     </nav>
 
     <div id="monday" class="tabpanel" role="tabpanel" aria-labelledby="monday-tab" aria-hidden="false">
