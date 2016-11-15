@@ -10,6 +10,16 @@ $vertical-spacing: 0.375rem !default;
            $horizontal-spacing
            calc(#{$vertical-spacing} + 1px);
 
+  &::after {
+    color: transparent;
+    content: attr(title);
+    display: block;
+    font-weight: bold;
+    height: 1px;
+    overflow: hidden;
+    visibility: hidden;
+  }
+
   &:first-of-type {
     border-bottom-left-radius: $base-border-radius;
     border-top-left-radius: $base-border-radius;
