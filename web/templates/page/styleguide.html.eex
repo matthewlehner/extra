@@ -94,7 +94,32 @@
     </nav>
 
     <div id="monday" class="tabpanel" role="tabpanel" aria-labelledby="monday-tab" aria-hidden="false">
-      It's Monday! (This thing will require some JavaScript to work.)
+      <table>
+        <thead>
+          <tr>
+            <th>Time Slot</th>
+            <th>Recurrence</th>
+            <th>Collection</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>03:30</td>
+            <td><select><option selected>Only Mondays</option></select></td>
+            <td><select><option selected>My first collection</option></select></td>
+          </tr>
+          <tr>
+            <td>04:30</td>
+            <td><select><option selected>Everyday</option></select></td>
+            <td><select><option selected>My first collection</option></select></td>
+          </tr>
+          <tr>
+            <td>05:30</td>
+            <td><select><option selected>Everyday</option></select></td>
+            <td><select><option selected>My first collection</option></select></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div id="tuesday" class="tabpanel" role="tabpanel" aria-labelledby="tuesday-tab" aria-hidden="true">
     </div>

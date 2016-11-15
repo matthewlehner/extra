@@ -8,6 +8,7 @@ $base-font-color: lighten($dark-gray, 11%);
 @import "partials/posts-list";
 @import "partials/toggle-switch";
 @import "partials/tab-container";
+@import "partials/tables";
 
 body {
   display: flex;
