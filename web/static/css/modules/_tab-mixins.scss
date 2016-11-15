@@ -29,7 +29,7 @@ $vertical-spacing: 0.375rem !default;
   color: $white;
   font-weight: bold;
   padding: $vertical-spacing
-           calc($horizontal-spacing + 1px)
+           calc(#{$horizontal-spacing} + 1px)
            calc(#{$vertical-spacing} + 2px);
 
   + input + label,
