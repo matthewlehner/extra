@@ -6,6 +6,7 @@ $base-font-color: lighten($dark-gray, 11%);
 @import "partials/filter-list";
 @import "partials/posts-list";
 @import "partials/toggle-switch";
+@import "partials/tab-container";
 
 body {
   display: flex;
@@ -15,4 +16,8 @@ main {
   font-size: 0.875rem;
   margin: 3.75rem;
   width: 38.4375rem;
+}
+
+:any-link {
+  text-decoration: none;
 }

@@ -1,0 +1,38 @@
+@import "../modules/tab-mixins";
+
+.tab-container {
+  $tablist-height: 2.25rem;
+
+  border: $base-border;
+  border-radius: $base-border-radius;
+  margin-top: 3rem;
+  position: relative;
+
+  .tablist {
+    display: flex;
+    height: $tablist-height;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    top: -1rem;
+    width: 100%;
+  }
+
+  .tab {
+    @extend %tab-style;
+    z-index: 10;
+
+    &[aria-selected="true"] {
+      @extend %tab-active;
+    }
+  }
+
+  .tabpanel {
+    padding: 3rem 2rem 2rem;
+  }
+
+  [aria-hidden="true"] {
+    display: none;
+  }
+}

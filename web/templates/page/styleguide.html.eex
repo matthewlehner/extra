@@ -52,12 +52,12 @@
       <img src="http://pipsum.com/800x800.jpg">
     </figure>
     <p>
-      The most recent presidential debate is the single darkest thing I&rsquo;ve ever
-      watched on television. While I&rsquo;ve been able to maintain detachment from
-      this presidential race (mental health; not being an American; the
-      trajectory of Americanism over the past three decades), I feel nauseous,
-      disturbed and overwhelmed. This is a very, very dark time for the United
-      States and by extension the rest of world.
+      The most recent presidential debate is the single darkest thing I&rsquo;ve
+      ever watched on television. While I&rsquo;ve been able to maintain
+      detachment from this presidential race (mental health; not being an
+      American; the trajectory of Americanism over the past three decades), I
+      feel nauseous, disturbed and overwhelmed. This is a very, very dark time
+      for the United States and by extension the rest of world.
     </p>
     <div class="badge"><%= icon("pinterest-badge") %></div>
   </li>
@@ -74,4 +74,33 @@
     <strong>Schedule autopilot.</strong> Great for beginners and those with
     massive collections.
   </p>
+
+  <div class="tab-container">
+    <nav role="tablist" class="tablist">
+      <a href="#" class="tab" role="tab" id="monday-tab" aria-controls="monday"
+         aria-selected="true">Monday</a>
+      <a href="#" class="tab" role="tab" id="tuesday-tab" aria-controls="tuesday">Tuesday</a>
+      <a href="#" class="tab" role="tab" id="wednesday-tab" aria-controls="wednesday">Wednesday</a>
+      <a href="#" class="tab" role="tab" id="thursday-tab" aria-controls="thursday">Thursday</a>
+      <a href="#" class="tab" role="tab" id="friday-tab" aria-controls="friday">Friday</a>
+      <a href="#" class="tab" role="tab" id="saturday-tab" aria-controls="saturday">Saturday</a>
+      <a href="#" class="tab" role="tab" id="sunday-tab" aria-controls="sunday">Sunday</a>
+    </nav>
+
+    <div id="monday" class="tabpanel" role="tabpanel" aria-labelledby="monday-tab" aria-hidden="false">
+      It's Monday! (This thing will require some JavaScript to work.)
+    </div>
+    <div id="tuesday" class="tabpanel" role="tabpanel" aria-labelledby="tuesday-tab" aria-hidden="true">
+    </div>
+    <div id="wednesday" class="tabpanel" role="tabpanel" aria-labelledby="wednesday-tab" aria-hidden="true">
+    </div>
+    <div id="thursday" class="tabpanel" role="tabpanel" aria-labelledby="thursday-tab" aria-hidden="true">
+    </div>
+    <div id="friday" class="tabpanel" role="tabpanel" aria-labelledby="friday-tab" aria-hidden="true">
+    </div>
+    <div id="saturday" class="tabpanel" role="tabpanel" aria-labelledby="saturday-tab" aria-hidden="true">
+    </div>
+    <div id="sunday" class="tabpanel" role="tabpanel" aria-labelledby="sunday-tab" aria-hidden="true">
+    </div>
+  </div>
 </section>
