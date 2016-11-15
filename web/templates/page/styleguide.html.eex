@@ -63,9 +63,15 @@
   </li>
 </ul>
 
-<h2>Schedule</h2>
+<section class="schedule-controls">
+  <h2>Schedule</h2>
 
-<div class="toggle-switch">
-  <input type="checkbox" name="checkbox" id="toggler" class="input" checked>
-  <label for="toggler" class="label"></label>
-</div>
+  <p>
+    <span class="toggle-switch">
+      <input type="checkbox" name="checkbox" id="toggler" class="input">
+      <label for="toggler" class="label"></label>
+    </span>
+    <strong>Schedule autopilot.</strong> Great for beginners and those with
+    massive collections.
+  </p>
+</section>

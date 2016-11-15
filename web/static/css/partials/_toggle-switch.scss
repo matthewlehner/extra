@@ -1,5 +1,6 @@
 .toggle-switch {
-  transition: 0.25s ease-in-out;
+  display: inline-block;
+  vertical-align: text-bottom;
 
   .input {
     border: none;
@@ -12,13 +13,12 @@
 
   .label {
     background: $extra-gradient;
-    border-radius: 18px;
+    border-radius: 1.375rem;
     box-shadow: inset 0 0 0 1px $base-border-color,
                 inset 0 0 0 20px darken($gray-lightest, 2%);
     cursor: pointer;
     display: block;
     height: 1.375rem;
-    margin-bottom: 20px;
     position: relative;
     transition: box-shadow 0.25s ease-in-out;
     width: 2.1875rem;
@@ -46,9 +46,9 @@
     box-shadow: inset 0 0 0 1px transparent;
 
     &::before {
-      left: 1rem;
       box-shadow: inset 0 0 0 1px transparent,
                   0 1px 1px transparent;
+      left: 1rem;
     }
   }
 }
