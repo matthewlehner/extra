@@ -1,5 +1,6 @@
 @import "modules/variables";
 $base-font-color: lighten($dark-gray, 11%);
+@import "modules/tab-mixins";
 @import "partials/base";
 @import "themes/app";
 @import "partials/side-nav";
