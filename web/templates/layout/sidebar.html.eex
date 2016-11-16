@@ -1,8 +1,8 @@
 <section>
-  <h3>Playlists</h3>
+  <h3>Collections</h3>
   <ul>
     <li>
-      <a href="#" class="active"><%= icon("collection") %>My first playlist</a>
+      <a href="#" class="active"><%= icon("collection") %>My first collection</a>
     </li>
     <li><a href="#"><%= icon("collection") %>Inspiration</a></li>
     <li><a href="#"><%= icon("add-new") %>Add new</a></li>
