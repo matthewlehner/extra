@@ -22,14 +22,18 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-config :ueberauth, Ueberauth,
-  providers: [
-    shopify: {Ueberauth.Strategy.Shopify, []}
-  ]
+config :ueberauth, Ueberauth, providers: [
+  shopify: {Ueberauth.Strategy.Shopify, []},
+  twitter: {Ueberauth.Strategy.Twitter, []}
+]
 
 config :ueberauth, Uberauth.Strategy.Shopify.OAuth,
   client_id: "",
   client_secret: ""
+
+config :ueberauth, Ueberauth.Strategy.Twitter.OAuth,
+  consumer_key: "",
+  consumer_secret: ""
 
 
 # Import environment specific config. This must remain at the bottom

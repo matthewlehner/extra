@@ -40,6 +40,8 @@ defmodule Extra.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:ueberauth_shopify, "~> 0.1.1"},
+     {:ueberauth_twitter, "~> 0.2"},
+     {:oauth, github: "tim/erlang-oauth"},
      {:ecto_enum, "~> 0.3.0"},
 
      {:dialyxir, "~> 0.3.5", only: [:dev]},
