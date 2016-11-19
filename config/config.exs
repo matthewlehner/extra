@@ -24,7 +24,8 @@ config :logger, :console,
 
 config :ueberauth, Ueberauth, providers: [
   shopify: {Ueberauth.Strategy.Shopify, []},
-  twitter: {Ueberauth.Strategy.Twitter, []}
+  twitter: {Ueberauth.Strategy.Twitter, []},
+  facebook: {Ueberauth.Strategy.Facebook, []}
 ]
 
 config :ueberauth, Uberauth.Strategy.Shopify.OAuth,
@@ -35,6 +36,9 @@ config :ueberauth, Ueberauth.Strategy.Twitter.OAuth,
   consumer_key: "",
   consumer_secret: ""
 
+config :ueberauth, Ueberauth.Strategy.Facebook.OAuth,
+  client_id: "",
+  client_secret: ""
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
