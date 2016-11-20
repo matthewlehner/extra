@@ -1,0 +1,8 @@
+#!/bin/bash -ex
+
+brew install elixir node yarn
+
+mix local.hex --force
+mix deps.get
+
+yarn install
