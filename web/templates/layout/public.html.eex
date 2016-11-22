@@ -12,7 +12,7 @@
   <%= render "analytics.html" %>
 </head>
 
-<body>
+<body class="<%= body_class_name(@conn) %>">
   <header class="site-header">
     <img src="<%= static_url(@conn, "/images/extra-logo.svg") %>">
   </header>
