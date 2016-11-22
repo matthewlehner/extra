@@ -1,0 +1,15 @@
+<%= form_tag @callback_url, method: "post" do %>
+  <div class="form-group">
+    <%= label :user, :email %>
+    <%= email_input :user, :email %>
+  </div>
+
+  <div class="form-group">
+    <%= label :user, :password %>
+    <%= password_input :user, :email %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Sign In", class: "button" %>
+  </div>
+<% end %>

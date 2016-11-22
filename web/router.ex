@@ -40,7 +40,7 @@ defmodule Extra.Router do
   end
 
   scope "/auth", Extra do
-    pipe_through [:browser, Ueberauth]
+    pipe_through [:browser]
 
     get "/:provider", AuthController, :request
     get "/:provider/callback", AuthController, :callback
