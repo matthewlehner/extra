@@ -21,7 +21,7 @@ defmodule Extra.Mixfile do
     [mod: {Extra, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger,
                     :gettext, :phoenix_ecto, :postgrex, :ueberauth_shopify,
-                    :ueberauth_facebook]]
+                    :ueberauth_facebook, :comeonin]]
   end
 
   # Specifies which paths to compile per environment.
@@ -40,6 +40,7 @@ defmodule Extra.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
+     {:comeonin, "~> 2.6"},
      {:ueberauth_shopify, "~> 0.1.1"},
      {:ueberauth_twitter, "~> 0.2"},
      {:oauth, github: "tim/erlang-oauth"},
