@@ -28,6 +28,8 @@ defmodule Extra.Router do
 
     get "/", PageController, :index
     get "/styleguide", PageController, :styleguide
+
+    resources "/registrations", RegistrationController, only: [:new, :create]
   end
 
   scope "/app", Extra do
