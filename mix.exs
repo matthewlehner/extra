@@ -47,6 +47,7 @@ defmodule Extra.Mixfile do
      {:ueberauth_facebook, github: "matthewlehner/ueberauth_facebook", tag: "with-oauth2-0.8.0" },
      {:ecto_enum, "~> 0.3.0"},
 
+     {:mix_test_watch, "~> 0.2", only: :dev},
      {:dialyxir, "~> 0.3.5", only: [:dev]},
      {:credo, "~> 0.4", only: [:dev, :test]}]
   end
