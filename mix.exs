@@ -21,7 +21,7 @@ defmodule Extra.Mixfile do
     [mod: {Extra, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger,
                     :gettext, :phoenix_ecto, :postgrex, :ueberauth_shopify,
-                    :ueberauth_facebook, :comeonin]]
+                    :ueberauth_facebook, :ueberauth_identity, :comeonin]]
   end
 
   # Specifies which paths to compile per environment.
@@ -45,6 +45,7 @@ defmodule Extra.Mixfile do
      {:ueberauth_twitter, "~> 0.2"},
      {:oauth, github: "tim/erlang-oauth"},
      {:ueberauth_facebook, github: "matthewlehner/ueberauth_facebook", tag: "with-oauth2-0.8.0" },
+     {:ueberauth_identity, "~> 0.2.0"},
      {:ecto_enum, "~> 0.3.0"},
 
      {:mix_test_watch, "~> 0.2", only: :dev},

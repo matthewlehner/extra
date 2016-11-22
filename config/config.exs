@@ -25,7 +25,12 @@ config :logger, :console,
 config :ueberauth, Ueberauth, providers: [
   shopify: {Ueberauth.Strategy.Shopify, []},
   twitter: {Ueberauth.Strategy.Twitter, []},
-  facebook: {Ueberauth.Strategy.Facebook, []}
+  facebook: {Ueberauth.Strategy.Facebook, []},
+  identity: { Ueberauth.Strategy.Identity, [
+      callback_methods: ["POST"],
+      uid_field: :email,
+      nickname_field: :email,
+    ] }
 ]
 
 config :ueberauth, Ueberauth.Strategy.Shopify.OAuth,
