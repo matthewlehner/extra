@@ -23,6 +23,7 @@ defmodule Extra.User do
     struct
     |> cast(params, ~w(email))
     |> validate_required([:email])
+    |> unique_constraint(:email)
   end
 
   def registration_changeset(struct, params \\ %{}) do
@@ -33,6 +34,8 @@ defmodule Extra.User do
     |> put_pass_hash()
   end
 
+  # Would be nice to handle this on the PG side of things exclusively.
+  # http://www.meetspaceapp.com/2016/04/12/passwords-postgresql-pgcrypto.html
   defp put_pass_hash(changeset) do
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->
