@@ -24,6 +24,10 @@
   <ul>
     <li><a href="#"><%= icon("performance") %>Performance</a></li>
     <li><a href="#"><%= icon("account") %>Account</a></li>
-    <li><a href="#"><%= icon("logout") %>Logout</a></li>
+    <li>
+      <%= link to: session_path(@conn, :delete), method: :delete do %>
+        <%= icon("logout") %>Logout
+      <% end %>
+    </li>
   </ul>
 </section>

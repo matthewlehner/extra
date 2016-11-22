@@ -30,6 +30,7 @@ defmodule Extra.Router do
     get "/styleguide", PageController, :styleguide
 
     resources "/registrations", RegistrationController, only: [:new, :create]
+    delete "/logout", SessionController, :delete
   end
 
   scope "/app", Extra do
