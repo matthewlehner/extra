@@ -3,12 +3,9 @@ defmodule Extra.SessionController do
 
   alias Extra.UserSession
 
-  plug :authenticate_user, only: :delete
-
-  # def new(conn, _params) do
-  #   changeset = UserSession.changeset(%UserSession{})
-  #   render(conn, "new.html", changeset: changeset)
-  # end
+  def new(conn, _params) do
+    render(conn, "new.html", callback_url: auth_path(conn, :callback, "identity"))
+  end
 
   # def create(conn, %{"session" => session_params}) do
   #   changeset = UserSession.changeset(%UserSession{}, session_params)
