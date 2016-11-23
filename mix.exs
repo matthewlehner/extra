@@ -40,6 +40,7 @@ defmodule Extra.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
+     {:guardian, "~> 0.13.0"},
      {:comeonin, "~> 2.6"},
      {:ueberauth_shopify, "~> 0.1.1"},
      {:ueberauth_twitter, "~> 0.2"},
@@ -49,7 +50,7 @@ defmodule Extra.Mixfile do
      {:ecto_enum, "~> 0.3.0"},
 
      {:mix_test_watch, "~> 0.2", only: :dev},
-     {:dialyxir, "~> 0.3.5", only: [:dev]},
+     {:dialyxir, "~> 0.4.0", only: [:dev]},
      {:credo, "~> 0.4", only: [:dev, :test]}]
   end
 

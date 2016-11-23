@@ -22,6 +22,12 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+config :guardian, Guardian,
+  issuer: "Extra",
+  ttl: { 30, :days },
+  secret_key: System.get_env("SECRET_KEY"),
+  serializer: Extra.GuardianSerializer
+
 config :ueberauth, Ueberauth, providers: [
   shopify: {Ueberauth.Strategy.Shopify, []},
   twitter: {Ueberauth.Strategy.Twitter, []},
