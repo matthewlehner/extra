@@ -2,23 +2,24 @@ defmodule Extra.SessionController do
   use Extra.Web, :controller
 
   alias Extra.UserSession
+  import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
 
   def new(conn, _params) do
-    render(conn, "new.html", callback_url: auth_path(conn, :callback, "identity"))
+    render(conn, "new.html")
   end
 
-  # def create(conn, %{"session" => session_params}) do
-  #   changeset = UserSession.changeset(%UserSession{}, session_params)
-  #
-  #   case Repo.insert(changeset) do
-  #     {:ok, _session} ->
-  #       conn
-  #       |> put_flash(:info, "Session created successfully.")
-  #       |> redirect(to: session_path(conn, :index))
-  #     {:error, changeset} ->
-  #       render(conn, "new.html", changeset: changeset)
-  #   end
-  # end
+  def create(conn, %{"session" => %{"email" => email, "password" => password}}) do
+    case Extra.Auth.login_by_email_and_pass(conn, email, password, repo: Repo) do
+      {:ok, conn} ->
+        conn
+        |> put_flash(:info, "Welcome back")
+        |> redirect(to: dashboard_path(conn, :index))
+      {:error, _reason, conn} ->
+        conn
+        |> put_flash(:error, "We couldn't find your email and passwore combination")
+        |> render("new.html")
+    end
+  end
 
   def delete(conn, _params) do
     session_id = get_session(conn, :session_id)
