@@ -25,7 +25,7 @@ defmodule Extra.Router do
 
   pipeline :require_login do
     plug Guardian.Plug.EnsureAuthenticated
-    plug Extra.Auth, repo: Extra.Repo
+    plug Extra.Auth
   end
 
   scope "/", Extra do

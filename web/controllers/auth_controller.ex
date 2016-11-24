@@ -22,7 +22,7 @@ defmodule Extra.AuthController do
       {:ok, user} ->
         conn
         |> put_flash(:info, "Successfully authenticated")
-        |> Extra.Auth.login_from_user(user)
+        |> Guardian.Plug.sign_in(user)
         |> redirect(to: "/")
 
       {:error, reason} ->

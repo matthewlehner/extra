@@ -15,7 +15,7 @@ defmodule Extra.RegistrationController do
       {:ok, user} ->
         conn
         |> put_flash(:info, "Registration created successfully.")
-        |> Extra.Auth.login_from_user(user)
+        |> Guardian.Plug.sign_in(user)
         |> redirect(to: dashboard_path(conn, :index))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)

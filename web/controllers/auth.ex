@@ -8,11 +8,10 @@ defmodule Extra.Auth do
 
   require Ecto.Query
 
-  def init(opts) do
-    Keyword.fetch!(opts, :repo)
+  def init(_) do
   end
 
-  def call(conn, repo) do
+  def call(conn, _) do
     user = Guardian.Plug.current_resource(conn)
     assign(conn, :current_user, user)
   end
