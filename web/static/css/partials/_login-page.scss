@@ -104,18 +104,21 @@
   }
 
   button {
-    border: 1px solid $base-background-color;
+    border: none;
     box-shadow: 0 1px 1px $purple-darker;
     font-size: $smaller-font-size;
     line-height: normal;
+    transition: box-shadow $base-duration $base-timing;
     width: 100%;
 
     &:hover {
-      border-color: $base-background-color;
+      box-shadow: 0 1px 1px $purple-darker,
+                  0 0 0 2px transparentize($white, 0.75);
     }
 
     &:focus {
-      border-color: $action-color;
+      box-shadow: 0 1px 1px $purple-darker,
+                  0 0 0 4px transparentize($white, 0.75);
     }
   }
 
