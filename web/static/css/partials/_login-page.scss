@@ -71,11 +71,11 @@
 
     &:hover,
     &:focus {
-      border-color: $base-border-color;
+      border-color: $base-background-color;
       outline: none;
 
       span {
-        border-color: $white;
+        border-color: $base-background-color;
       }
     }
 
@@ -119,6 +119,7 @@
     margin-bottom: 0.625rem;
     transition: border-color 0.25s ease-in-out;
 
+    &:hover,
     &:focus {
       border-color: $base-background-color;
 
