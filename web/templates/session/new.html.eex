@@ -1,4 +1,4 @@
-<section class="extra-login">
+<section class="extra-authentication">
   <%= link to: auth_path(@conn, :request, "facebook"), class: "social-login" do %>
     <%= icon("facebook-badge") %>
     <span>Login with Facebook</span>
@@ -23,10 +23,10 @@
     <div class="form-group">
       <%= submit "Login", class: "button" %>
     </div>
-
-    <div class="links">
-      <%= link "Forgot your password?", to: "#", class: "registration-link" %>
-      <%= link "Register", to: registration_path(@conn, :new), class: "registration-link" %>
-    </div>
   <% end %>
+
+  <div class="links">
+    <%= link "Forgot your password?", to: "#", class: "registration-link" %>
+    <%= link "Register", to: registration_path(@conn, :new), class: "registration-link" %>
+  </div>
 </section>
