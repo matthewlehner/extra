@@ -14,9 +14,11 @@
   $border: 1px solid $border-color;
 
   background-image: linear-gradient(to bottom right, $extra-gradient-colors);
+  height: 100%;
   min-height: 100vh;
   min-width: 100vw;
   position: relative;
+  width: 100%;
   z-index: 100;
 
   // Gradient animation
