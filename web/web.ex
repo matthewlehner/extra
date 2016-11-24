@@ -36,7 +36,6 @@ defmodule Extra.Web do
 
       import Extra.Router.Helpers
       import Extra.Gettext
-      import Extra.Auth, only: [authenticate_user: 2]
     end
   end
 
@@ -60,8 +59,6 @@ defmodule Extra.Web do
   def router do
     quote do
       use Phoenix.Router
-
-      import Extra.Auth, only: [authenticate_user: 2]
     end
   end
 

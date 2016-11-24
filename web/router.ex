@@ -8,7 +8,6 @@ defmodule Extra.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug Extra.Auth, repo: Extra.Repo
   end
 
   pipeline :api do
@@ -19,12 +18,18 @@ defmodule Extra.Router do
     plug :put_layout, {Extra.LayoutView, :public}
   end
 
-  scope "/.well-known/acme-challenge", Extra do
-    get "/:id", LetsEncrypt, :verify
+  pipeline :browser_session do
+    plug Guardian.Plug.VerifySession
+    plug Guardian.Plug.LoadResource
+  end
+
+  pipeline :require_login do
+    plug Guardian.Plug.EnsureAuthenticated
+    plug Extra.Auth, repo: Extra.Repo
   end
 
   scope "/", Extra do
-    pipe_through [:browser, :public_layout] # Use the default browser stack
+    pipe_through [:browser, :browser_session, :public_layout]
 
     get "/", PageController, :index
     get "/styleguide", PageController, :styleguide
@@ -36,7 +41,7 @@ defmodule Extra.Router do
   end
 
   scope "/app", Extra do
-    pipe_through [:browser, :authenticate_user]
+    pipe_through [:browser, :browser_session, :require_login]
 
     get "/", DashboardController, :index
   end
@@ -50,8 +55,7 @@ defmodule Extra.Router do
     delete "/logout", AuthController, :delete
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", Extra do
-  #   pipe_through :api
-  # end
+  scope "/.well-known/acme-challenge", Extra do
+    get "/:id", LetsEncrypt, :verify
+  end
 end
