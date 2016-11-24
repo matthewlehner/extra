@@ -37,13 +37,17 @@ module.exports = {
       loader: ExtractTextPlugin.extract({
         fallbackLoader: "style-loader",
         loader: [{
-          loader: "css-loader?sourceMap",
-          options: { importLoaders: 1 }
+          loader: "css-loader",
+          options: {
+            sourceMap: true,
+            importLoaders: 1
+          }
         },{
           loader: "postcss-loader"
         },{
           loader: "sass-loader",
           options: {
+            sourceMap: true,
             includePaths: [__dirname + "/web/static/css"]
           }
         }]
