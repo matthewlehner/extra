@@ -42,6 +42,8 @@ defmodule Extra.Router do
   end
 
   scope "/admin", Extra do
+    pipe_through [:browser]
+
     get "/styleguide", PageController, :styleguide
   end
 
