@@ -26,7 +26,11 @@
   <% end %>
 
   <div class="links">
-    <%= link "Forgot your password?", to: "#", class: "registration-link" %>
-    <%= link "Register", to: registration_path(@conn, :new), class: "registration-link" %>
+    <div class="registration-link">
+      <%= link "Forgot your password?", to: "#" %>
+    </div>
+    <div class="registration-link">
+      <%= link "Register", to: registration_path(@conn, :new) %>
+    </div>
   </div>
 </section>

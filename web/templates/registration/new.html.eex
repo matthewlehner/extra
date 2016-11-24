@@ -34,7 +34,9 @@
   <% end %>
 
   <div class="links">
-    <%= link "Login", to: session_path(@conn, :new), class: "registration-link" %>
+    <div class="registration-link">
+      <%= link "Login", to: session_path(@conn, :new) %>
+    </div>
     <div class="registration-link"></div>
   </div>
 </section>
