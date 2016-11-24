@@ -43,6 +43,11 @@
   :any-link {
     color: $base-background-color;
     font-size: 0.875rem;
+
+    &:focus {
+      outline-color: $base-background-color;
+      outline-width: 2px;
+    }
   }
 
   .extra-authentication {
@@ -97,7 +102,7 @@
   }
 
   button {
-    border: none;
+    border: 1px solid $base-background-color;
     box-shadow: 0 1px 1px $purple-darker;
     width: 100%;
   }
