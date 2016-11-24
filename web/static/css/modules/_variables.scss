@@ -36,8 +36,8 @@ $extra-gradient-colors: $extra-gradient-start 5%, $extra-gradient-end;
 $extra-gradient: linear-gradient(to right, $extra-gradient-colors);
 
 // Animations
-$base-duration: 150ms;
-$base-timing: ease;
+$base-duration: 200ms;
+$base-timing: ease-out;
 
 // Breakpoints
 $small-screen: "max-width: 25rem";

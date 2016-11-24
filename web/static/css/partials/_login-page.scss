@@ -67,7 +67,7 @@
     padding: #{$small-spacing} $base-spacing * 0.75 calc(#{$small-spacing} + 1px);
     position: relative;
     text-decoration: none;
-    transition: border-color 0.25s ease-in-out;
+    transition: border-color $base-duration $base-timing;
 
     &:hover,
     &:focus {
@@ -83,7 +83,7 @@
       border-left: $border;
       margin-left: 3 - ($base-spacing * 0.75);
       padding-left: 1rem;
-      transition: border-color 0.25s ease-in-out;
+      transition: border-color $base-duration $base-timing;
     }
   }
 
@@ -117,7 +117,7 @@
     border: $border;
     color: $base-background-color;
     margin-bottom: 0.625rem;
-    transition: border-color 0.25s ease-in-out;
+    transition: border-color $base-duration $base-timing;
 
     &:hover,
     &:focus {
@@ -131,7 +131,7 @@
 
   ::placeholder {
     color: $border-color;
-    transition: color 0.25s ease-in-out;
+    transition: color $base-duration $base-timing;
   }
 
   .links {
