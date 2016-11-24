@@ -30,9 +30,16 @@ $input-border: $secondary-border;
 // Background Colors
 $base-background-color: #fff;
 $secondary-background-color: tint($base-border-color, 75%);
-$extra-gradient-colors: $purple-dark 5%, $purple-light;
+$extra-gradient-start: $purple-dark;
+$extra-gradient-end: $purple-light;
+$extra-gradient-colors: $extra-gradient-start 5%, $extra-gradient-end;
 $extra-gradient: linear-gradient(to right, $extra-gradient-colors);
 
 // Animations
 $base-duration: 150ms;
 $base-timing: ease;
+
+// Breakpoints
+$small-screen: "max-width: 25rem";
+$medium-screen: "max-width: 56.25rem";
+$large-screen: "max-width: 71.875rem";

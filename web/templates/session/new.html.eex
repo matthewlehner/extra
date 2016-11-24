@@ -1,15 +1,13 @@
 <section class="extra-login">
-  <div>
-    <%= link to: auth_path(@conn, :request, "twitter"), class: "social-login" do %>
-      <%= icon("twitter-badge") %> Login with Twitter
-    <% end %>
-  </div>
+  <%= link to: auth_path(@conn, :request, "facebook"), class: "social-login" do %>
+    <%= icon("facebook-badge") %>
+    <span>Login with Facebook</span>
+  <% end %>
 
-  <div>
-    <%= link to: auth_path(@conn, :request, "facebook"), class: "social-login" do %>
-      <%= icon("facebook-badge") %> Login with Facebook
-    <% end %>
-  </div>
+  <%= link to: auth_path(@conn, :request, "twitter"), class: "social-login" do %>
+    <%= icon("twitter-badge") %>
+    <span>Login with Twitter</span>
+  <% end %>
 
   <%= form_tag session_url(@conn, :create), method: "post" do %>
     <div class="form-group">
@@ -31,6 +29,4 @@
       <%= link "Register", to: registration_path(@conn, :new), class: "registration-link" %>
     </div>
   <% end %>
-
-
 </section>

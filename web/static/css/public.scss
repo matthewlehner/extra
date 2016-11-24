@@ -5,13 +5,15 @@
 
 .page-index {
   background: no-repeat 45.875rem 8.125rem / 1023px 968px url("/images/extra-sneak-peak@2x.png");
-}
 
-.sneak-text {
-  margin-top: 12rem;
-  width: 31.25rem;
+  .sneak-text {
+    margin-top: 12rem;
+    width: 31.25rem;
+  }
 
   .sub-text {
+    color: $gray;
+    font-size: 0.875rem;
     width: 20rem;
   }
 
@@ -29,23 +31,18 @@
   h1 {
     margin: 0;
   }
-}
 
-.sub-text {
-  color: $gray;
-  font-size: 0.875rem;
-}
-
-@media (max-width: 71.875em) {
-  body {
+  @media ($large-screen) {
     background-position: 35.875rem 8.125rem;
   }
-}
 
-@media (max-width: 56.25em) {
-  .sneak-text {
-    margin-top: 0;
-    width: 18.125rem;
+  @media ($medium-screen) {
+    background-position: 24.6875rem 8.125rem;
+
+    .sneak-text {
+      margin-top: 0;
+      width: 18.125rem;
+    }
 
     form {
       flex-direction: column;
@@ -62,26 +59,20 @@
     }
   }
 
-  body {
-    background-position: 24.6875rem 8.125rem;
-  }
-
-  main {
-    margin-left: 1.875rem;
-    margin-right: 1.8875rem;
-  }
-}
-
-@media (max-width: 25em) {
-  body {
+  @media ($small-screen) {
     background-image: none;
-  }
 
-  .site-header {
-    padding: 1.875rem;
-  }
+    main {
+      margin-left: 1.875rem;
+      margin-right: 1.8875rem;
+    }
 
-  .sneak-text {
-    width: 100%;
+    .site-header {
+      padding: 1.875rem;
+    }
+
+    .sneak-text {
+      width: 100%;
+    }
   }
 }
