@@ -62,11 +62,23 @@
     padding: #{$small-spacing} $base-spacing * 0.75 calc(#{$small-spacing} + 1px);
     position: relative;
     text-decoration: none;
+    transition: border-color 0.25s ease-in-out;
+
+    &:hover,
+    &:focus {
+      border-color: $base-border-color;
+      outline: none;
+
+      span {
+        border-color: $white;
+      }
+    }
 
     span {
       border-left: $border;
       margin-left: 3 - ($base-spacing * 0.75);
       padding-left: 1rem;
+      transition: border-color 0.25s ease-in-out;
     }
   }
 
@@ -100,10 +112,20 @@
     border: $border;
     color: $base-background-color;
     margin-bottom: 0.625rem;
+    transition: border-color 0.25s ease-in-out;
+
+    &:focus {
+      border-color: $base-background-color;
+
+      &::placeholder {
+        color: transparentize($base-background-color, 0.2);
+      }
+    }
   }
 
   ::placeholder {
     color: $border-color;
+    transition: color 0.25s ease-in-out;
   }
 
   .links {
