@@ -4,8 +4,8 @@
     <title>Group 14</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="1.0" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.8">
-        <g id="1@2x" transform="translate(-32.000000, -460.000000)" fill="#FFFFFF">
+    <g id="1.0" stroke="none" stroke-width="1" fill-rule="evenodd">
+        <g id="1@2x" transform="translate(-32.000000, -460.000000)">
             <g id="Group-14" transform="translate(32.000000, 460.000000)">
                 <ellipse id="Oval-5" cx="5" cy="10" rx="5" ry="3"></ellipse>
                 <circle id="Oval-5" cx="5" cy="3" r="3"></circle>
