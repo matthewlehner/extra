@@ -1,3 +1,7 @@
+$border-color: transparentize($gray-lighter, 0.6);
+$border: 1px solid $border-color;
+$smaller-font-size: 0.875rem;
+
 @keyframes opacify {
   from {
     opacity: 0;
@@ -8,13 +12,12 @@
   }
 }
 
+.registration-create,
 .registration-new,
+.session-create,
 .session-new {
-  $border-color: transparentize($gray-lighter, 0.6);
-  $border: 1px solid $border-color;
-  $smaller-font-size: 0.875rem;
-
   background-image: linear-gradient(to bottom right, $extra-gradient-colors);
+  color: $base-background-color;
   height: 100%;
   min-height: 100vh;
   min-width: 100vw;
@@ -40,6 +43,12 @@
     width: 100%;
     z-index: -100;
   }
+}
+
+.extra-authentication {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 22rem;
 
   :any-link {
     color: $base-background-color;
@@ -52,41 +61,9 @@
     }
   }
 
-  .extra-authentication {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5rem;
-    max-width: 22rem;
-  }
-
-  .social-login {
-    border: $border;
-    border-radius: $base-border-radius;
-    color: $base-background-color;
-    display: block;
-    fill: $base-background-color;
-    margin-bottom: 0.625rem;
-    padding: #{$small-spacing} $base-spacing * 0.75 calc(#{$small-spacing} + 1px);
-    position: relative;
-    text-decoration: none;
-    transition: border-color $base-duration $base-timing;
-
-    &:hover,
-    &:focus {
-      border-color: $base-background-color;
-      outline: none;
-
-      span {
-        border-color: $base-background-color;
-      }
-    }
-
-    span {
-      border-left: $border;
-      margin-left: 3 - ($base-spacing * 0.75);
-      padding-left: 1rem;
-      transition: border-color $base-duration $base-timing;
-    }
+  .help-block,
+  p {
+    font-size: $smaller-font-size;
   }
 
   .icon {
@@ -126,12 +103,15 @@
     display: none;
   }
 
+  .form-group {
+    margin-bottom: 0.625rem;
+  }
+
   [type="email"],
   [type="password"] {
     background: transparent;
     border: $border;
     color: $base-background-color;
-    margin-bottom: 0.625rem;
     transition: border-color $base-duration $base-timing;
 
     &:hover,
@@ -148,6 +128,36 @@
     color: $border-color;
     font-size: $smaller-font-size;
     transition: color $base-duration $base-timing;
+  }
+
+  .social-login {
+    border: $border;
+    border-radius: $base-border-radius;
+    color: $base-background-color;
+    display: block;
+    fill: $base-background-color;
+    margin-bottom: 0.625rem;
+    padding: #{$small-spacing} $base-spacing * 0.75 calc(#{$small-spacing} + 1px);
+    position: relative;
+    text-decoration: none;
+    transition: border-color $base-duration $base-timing;
+
+    &:hover,
+    &:focus {
+      border-color: $base-background-color;
+      outline: none;
+
+      span {
+        border-color: $base-background-color;
+      }
+    }
+
+    span {
+      border-left: $border;
+      margin-left: 3 - ($base-spacing * 0.75);
+      padding-left: 1rem;
+      transition: border-color $base-duration $base-timing;
+    }
   }
 
   .links {
