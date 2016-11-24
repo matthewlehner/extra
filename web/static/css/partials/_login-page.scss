@@ -12,6 +12,7 @@
 .session-new {
   $border-color: transparentize($gray-lighter, 0.6);
   $border: 1px solid $border-color;
+  $smaller-font-size: 0.875rem;
 
   background-image: linear-gradient(to bottom right, $extra-gradient-colors);
   height: 100%;
@@ -42,7 +43,8 @@
 
   :any-link {
     color: $base-background-color;
-    font-size: 0.875rem;
+    font-size: $smaller-font-size;
+    line-height: normal;
 
     &:focus {
       outline-color: $base-background-color;
@@ -104,7 +106,17 @@
   button {
     border: 1px solid $base-background-color;
     box-shadow: 0 1px 1px $purple-darker;
+    font-size: $smaller-font-size;
+    line-height: normal;
     width: 100%;
+
+    &:hover {
+      border-color: $base-background-color;
+    }
+
+    &:focus {
+      border-color: $action-color;
+    }
   }
 
   label {
@@ -131,6 +143,7 @@
 
   ::placeholder {
     color: $border-color;
+    font-size: $smaller-font-size;
     transition: color $base-duration $base-timing;
   }
 
