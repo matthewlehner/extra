@@ -25,7 +25,7 @@ config :logger, :console,
 config :guardian, Guardian,
   issuer: "Extra",
   ttl: { 30, :days },
-  secret_key: System.get_env("SECRET_KEY"),
+  secret_key: System.get_env("GUARDIAN_KEY"),
   serializer: Extra.GuardianSerializer
 
 config :ueberauth, Ueberauth, providers: [
