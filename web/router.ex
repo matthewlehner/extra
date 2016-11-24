@@ -10,10 +10,6 @@ defmodule Extra.Router do
     plug :put_secure_browser_headers
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
-  end
-
   pipeline :public_layout do
     plug :put_layout, {Extra.LayoutView, :public}
   end
@@ -32,7 +28,6 @@ defmodule Extra.Router do
     pipe_through [:browser, :browser_session, :public_layout]
 
     get "/", PageController, :index
-    get "/styleguide", PageController, :styleguide
 
     get "/login", SessionController, :new
     post "/login", SessionController, :create
@@ -44,6 +39,10 @@ defmodule Extra.Router do
     pipe_through [:browser, :browser_session, :require_login]
 
     get "/", DashboardController, :index
+  end
+
+  scope "/admin", Extra do
+    get "/styleguide", PageController, :styleguide
   end
 
   scope "/auth", Extra do

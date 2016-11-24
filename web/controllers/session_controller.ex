@@ -1,5 +1,6 @@
 defmodule Extra.SessionController do
   use Extra.Web, :controller
+  plug :put_layout, {Extra.LayoutView, :public}
 
   def new(conn, _params) do
     render(conn, "new.html")
