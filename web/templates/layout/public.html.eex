@@ -20,5 +20,6 @@
   <main role="main">
     <%= render @view_module, @view_template, assigns %>
   </main>
+  <script src="<%= static_url(@conn, "/js/public.js") %>" async></script>
 </body>
 </html>

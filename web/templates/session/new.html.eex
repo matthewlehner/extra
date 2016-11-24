@@ -1,15 +1,36 @@
-<%= form_tag session_url(@conn, :create), method: "post" do %>
-  <div class="form-group">
-    <%= label :session, :email %>
-    <%= email_input :session, :email %>
+<section class="extra-login">
+  <div>
+    <%= link to: auth_path(@conn, :request, "twitter"), class: "social-login" do %>
+      <%= icon("twitter-badge") %> Login with Twitter
+    <% end %>
   </div>
 
-  <div class="form-group">
-    <%= label :session, :password %>
-    <%= password_input :session, :password %>
+  <div>
+    <%= link to: auth_path(@conn, :request, "facebook"), class: "social-login" do %>
+      <%= icon("facebook-badge") %> Login with Facebook
+    <% end %>
   </div>
 
-  <div class="form-group">
-    <%= submit "Sign In", class: "button" %>
-  </div>
-<% end %>
+  <%= form_tag session_url(@conn, :create), method: "post" do %>
+    <div class="form-group">
+      <%= label :session, :email %>
+      <%= email_input :session, :email, placeholder: "email" %>
+    </div>
+
+    <div class="form-group">
+      <%= label :session, :password %>
+      <%= password_input :session, :password, placeholder: "password" %>
+    </div>
+
+    <div class="form-group">
+      <%= submit "Login", class: "button" %>
+    </div>
+
+    <div class="links">
+      <%= link "Forgot your password?", to: "#", class: "registration-link" %>
+      <%= link "Register", to: registration_path(@conn, :new), class: "registration-link" %>
+    </div>
+  <% end %>
+
+
+</section>

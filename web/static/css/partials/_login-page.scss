@@ -1,0 +1,72 @@
+.session-new {
+  $border: 1px solid transparentize($gray-lighter, 0.6);
+
+  background-image: linear-gradient(to bottom right, $extra-gradient-colors);
+  min-height: 100vh;
+  min-width: 100vw;
+
+  :any-link {
+    color: $base-background-color;
+    font-size: 0.875rem;
+  }
+
+  .extra-login {
+    margin-left: auto;
+    margin-right: auto;
+    width: 22rem;
+  }
+
+  .social-login {
+    border: $border;
+    border-radius: $base-border-radius;
+    color: $base-background-color;
+    display: block;
+    margin-bottom: 1em;
+    padding: calc(#{$small-spacing} - 1px) $base-spacing * 0.75 calc(#{$small-spacing} + 1px);
+    text-decoration: none;
+  }
+
+  .icon {
+    fill: $base-background-color;
+    max-height: 1em;
+    max-width: 1em;
+  }
+
+  form {
+    border-bottom: $border;
+    border-top: $border;
+    margin: 2rem 0;
+    padding-top: 2rem;
+  }
+
+  button {
+    border: none;
+    box-shadow: 0 1px 1px $purple-darker;
+    width: 100%;
+  }
+
+  label {
+    display: none;
+  }
+
+  [type="email"],
+  [type="password"] {
+    background: transparent;
+    border: $border;
+    color: $base-background-color;
+    margin-bottom: 0.625rem;
+  }
+
+  .links {
+    display: flex;
+    margin: 2rem 0;
+  }
+
+  .registration-link {
+    flex: 1;
+
+    &:last-child {
+      text-align: right;
+    }
+  }
+}

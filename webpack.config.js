@@ -5,7 +5,10 @@ var webpack = require("webpack");
 module.exports = {
   entry: {
     "app": ["./web/static/css/app.scss", "./web/static/js/app.js"],
-    "public": "./web/static/css/public.scss"
+    "public": [
+      "./web/static/css/public.scss",
+      "./web/static/js/public/index.js"
+    ]
   },
 
   output: {

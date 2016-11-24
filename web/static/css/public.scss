@@ -1,19 +1,10 @@
 @import "modules/variables";
 @import "partials/base";
+@import "themes/public";
+@import "partials/login-page";
 
 .page-index {
   background: no-repeat 45.875rem 8.125rem / 1023px 968px url("/images/extra-sneak-peak@2x.png");
-}
-
-main {
-  margin-left: 2.5rem;
-  margin-right: 2.5rem;
-}
-
-.site-header {
-  margin-left: auto;
-  margin-right: auto;
-  padding: 2.5rem;
 }
 
 .sneak-text {
