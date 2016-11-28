@@ -48,6 +48,27 @@ let common = {
           ]
         }
       }]
+    }, {
+      test: /\.scss$/,
+      exclude: /node_modules/,
+      loader: ExtractTextPlugin.extract({
+        fallbackLoader: "style-loader",
+        loader: [{
+          loader: "css-loader",
+          options: {
+            sourceMap: true,
+            importLoaders: 1
+          }
+        },
+        "postcss-loader",
+        {
+          loader: "sass-loader",
+          options: {
+            sourceMap: true,
+            includePaths: [__dirname + "/web/static/css"]
+          }
+        }]
+      })
     }]
   },
 
@@ -71,7 +92,8 @@ let common = {
     new CopyWebpackPlugin([{
       from: { glob: "**/*", dot: false },
       context: "./web/static/assets"
-    }])
+    }]),
+    new ExtractTextPlugin("css/[name].css")
   ],
 
   devtool: "source-map"
@@ -81,62 +103,10 @@ let config;
 
 switch(process.env.npm_lifecycle_event) {
   case "deploy":
-    config = merge(common, {
-      module: {
-        rules: [
-          {
-            test: /\.scss$/,
-            exclude: /node_modules/,
-            loader: ExtractTextPlugin.extract({
-              fallbackLoader: "style-loader",
-              loader: [{
-                loader: "css-loader",
-                options: {
-                  sourceMap: true,
-                  importLoaders: 1
-                }
-              },
-              "postcss-loader",
-              {
-                loader: "sass-loader",
-                options: {
-                  sourceMap: true,
-                  includePaths: [__dirname + "/web/static/css"]
-                }
-              }]
-            })
-          }
-        ]
-      },
-      plugins: [
-        new ExtractTextPlugin("css/[name].css")
-      ]
-    });
+    config = merge(common, {});
     break;
   default:
-    config = merge(common, {
-      module: {
-        rules: [{
-          test: /\.scss$/,
-          exclude: /node_modules/,
-          loader: [
-            "style-loader",
-            {
-              loader: "css-loader",
-              options: { sourceMap: true, importLoaders: 1 }
-            },
-            "postcss-loader",
-            {
-              loader: "sass-loader",
-              options: {
-                sourceMap: true,
-                includePaths: [__dirname + "/web/static/css"]
-              }
-            }
-          ]
-        }]
-      }
-    });
+    config = merge(common, {});
 }
 
 module.exports = config;
