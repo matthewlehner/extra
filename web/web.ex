@@ -53,6 +53,7 @@ defmodule Extra.Web do
       import Extra.ErrorHelpers
       import Extra.Gettext
       import Extra.ExtraHelpers
+      import Extra.InputHelpers
     end
   end
 
