@@ -5,7 +5,7 @@ defmodule Extra.InputHelpers do
   defp label_opts, do: [class: "control-label"]
 
   def input(form, field, opts \\ []) do
-    type = opts[:using] ||  Phoenix.HTML.Form.input_type(form, field)
+    type = opts[:using] || Phoenix.HTML.Form.input_type(form, field)
 
     input_opts = Phoenix.HTML.Form.input_validations(form, field)
                  |> Keyword.merge(extend_input_opts(form, field))

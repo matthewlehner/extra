@@ -9,15 +9,15 @@
     <span>Login with Twitter</span>
   <% end %>
 
-  <%= form_tag session_url(@conn, :create), method: "post" do %>
+  <%= form_tag session_url(@conn, :create), method: "post", novalidate: true do %>
     <div class="form-group">
-      <%= label :session, :email %>
-      <%= email_input :session, :email, placeholder: "email" %>
+      <%= email_input :session, :email, required: true %>
+      <%= label :session, :email, "email" %>
     </div>
 
     <div class="form-group">
-      <%= label :session, :password %>
-      <%= password_input :session, :password, placeholder: "password" %>
+      <%= password_input :session, :password, required: true, minlength: 8 %>
+      <%= label :session, :password, "password" %>
     </div>
 
     <div class="form-group">
