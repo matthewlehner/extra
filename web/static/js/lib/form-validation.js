@@ -31,18 +31,17 @@ function onActivateValidations(e) {
 function activateValidations(element) {
   element.addEventListener("input", (e) => runValidations(e.target));
   element.parentNode.classList.add(dirtyClass);
-  runValidations(element);
+  return runValidations(element);
 }
 
 function runValidations(element) {
-  validateInput(element);
-
   if (element.value.length > 0) {
     element.parentNode.classList.remove(placeholderShownClass);
-    return;
+  } else {
+    element.parentNode.classList.add(placeholderShownClass);
   }
 
-  element.parentNode.classList.add(placeholderShownClass);
+  return validateInput(element);
 }
 
 function errorElString(el) {
@@ -87,15 +86,14 @@ window.addEventListener("focus", function(event) {
   }
 }, true);
 
-[...document.getElementsByTagName("form")].forEach((el) => {
-  el.addEventListener("submit", function(event) {
-    const inputs = [...event.target.getElementsByClassName("form-control")];
-    const inputsValid = inputs.map(activateValidations).every((value) => value);
+window.addEventListener("submit", function(event) {
+  if (event.target.tagName !== "FORM") { return; }
+  const inputs = [...event.target.getElementsByClassName("form-control")];
+  const inputsValid = inputs.map(activateValidations).every((value) => value);
 
-    if (inputsValid) {
-      return;
-    }
+  if (inputsValid) {
+    return;
+  }
 
-    event.preventDefault();
-  }, false);
-});
+  event.preventDefault();
+}, true);
