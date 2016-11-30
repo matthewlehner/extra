@@ -5,14 +5,17 @@
 //   - add `dirty` class to `.form-control`
 //   - look for `.help-block` if not present, add error string.
 import errorMessageFor from "./forms/error-messages";
+import { whichAnimationEvent } from "./which-transition-event";
 
 const dirtyClass = "dirty";
 const placeholderShownClass = "input-empty";
 const helpMessage = {
   position: "beforebegin",
-  tagName: "span",
+  tagName: "div",
   className: "help-block"
 };
+
+const animationEndEvent = whichAnimationEvent();
 
 function isNotDirty(element) {
   // Check that it is an input
@@ -53,7 +56,7 @@ function errorElString(el) {
   const content = errorMessageFor(el.validity, el.type);
   const {tagName, className} = helpMessage;
 
-  return `<${tagName} class="${className}">${content}</${tagName}>`;
+  return `<${tagName} class="${className}"><span>${content}</span></${tagName}>`;
 }
 
 function renderErrorForInput(el) {
@@ -80,7 +83,7 @@ function validateInput(inputEl) {
   }
 
   if (isHelpEl(helpEl)) {
-    helpEl.innerText = errorMessageFor(inputEl.validity, inputEl.type);
+    helpEl.children[0].innerText = errorMessageFor(inputEl.validity, inputEl.type);
     return false;
   }
 
@@ -91,7 +94,16 @@ function validateInput(inputEl) {
 function isHelpEl(el) {
   const { className, tagName } = helpMessage;
 
-  if (el && el.tagName === tagName.toUpperCase() && el.classList.contains(className)) {
+  if (
+    // Element exists
+    el &&
+      // It is a help message tag
+      el.tagName === tagName.toUpperCase() &&
+      // It has the help message class name
+      el.classList.contains(className) &&
+      // It is not being removed.
+      !el.classList.contains("removing")
+  ) {
     return true;
   }
 
@@ -100,8 +112,21 @@ function isHelpEl(el) {
 
 function removeHelpBlock(el) {
   if (isHelpEl(el)) {
-    el.parentNode.removeChild(el);
+    animatedElementRemoval(el)
   }
+}
+
+function animatedElementRemoval(el) {
+  if (animationEndEvent) {
+    el.classList.add("removing");
+    el.addEventListener(
+      animationEndEvent,
+      () => el.parentNode.removeChild(el)
+    );
+    return;
+  }
+
+  el.parentNode.removeChild(el);
 }
 
 window.addEventListener("focus", function(event) {

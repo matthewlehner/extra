@@ -23,7 +23,7 @@ export default function messageFor(validityState, inputType) {
 }
 
 function emailErrorFor(errorType) {
-  switch(errorType) {
+  switch (errorType) {
     case VALUE_MISSING:
       return "Please enter your email address.";
     case TYPE_MISMATCH:
@@ -34,7 +34,7 @@ function emailErrorFor(errorType) {
 }
 
 function passwordErrorFor(errorType) {
-  switch(errorType) {
+  switch (errorType) {
     case VALUE_MISSING:
       return "Please enter a password.";
     case TOO_SHORT:
@@ -45,7 +45,7 @@ function passwordErrorFor(errorType) {
 }
 
 function defaultErrorFor(errorType) {
-  switch(errorType) {
+  switch (errorType) {
     default:
       return "There is a problem with this field.";
   }
