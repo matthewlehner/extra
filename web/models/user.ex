@@ -23,7 +23,7 @@ defmodule Extra.User do
     struct
     |> cast(params, ~w(email))
     |> validate_required([:email])
-    |> validate_format(:email, ~r/\A.+@.+\z/)
+    |> validate_format(:email, ~r/.+@.+\..+/)
     |> unique_constraint(:email)
   end
 
