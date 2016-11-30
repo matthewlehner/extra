@@ -14,23 +14,46 @@
   },
   "plugins": [
     "react"
+  ],
+  "rules": {
+    "indent": [
+      "error", 2,
+      { "SwitchCase": 1 }
     ],
-    "rules": {
-      "indent": [
-        "error", 2,
-        { "SwitchCase": 1 }
-      ],
-      "linebreak-style": [
-        "error",
-        "unix"
-      ],
-      "quotes": [
-        "error",
-        "double"
-      ],
-      "semi": [
-        "error",
-        "always"
-      ]
-    }
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "func-call-spacing": [
+      "error",
+      "never"
+    ],
+    "space-before-function-paren": [
+      "error",
+      "never"
+    ],
+    "space-before-blocks": [
+      "error",
+      "always"
+    ],
+    "keyword-spacing": [
+      "error",
+      {
+        "before": true,
+        "after": true
+      }
+    ],
+    "space-in-parens": [
+      "error",
+      "never"
+    ]
+  }
 }
