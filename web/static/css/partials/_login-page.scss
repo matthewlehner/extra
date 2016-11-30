@@ -1,6 +1,7 @@
 $border-color: transparentize($gray-lighter, 0.6);
 $border: 1px solid $border-color;
 $smaller-font-size: 0.875rem;
+$element-padding: #{$small-spacing} $base-spacing * 0.75 calc(#{$small-spacing} + 1px);
 
 @keyframes opacify {
   from {
@@ -99,12 +100,38 @@ $smaller-font-size: 0.875rem;
     }
   }
 
-  label {
-    display: none;
-  }
-
   .form-group {
     margin-bottom: 0.625rem;
+    position: relative;
+
+    &.dirty {
+      label {
+        opacity: 0;
+
+      }
+
+      input {
+        &:invalid {
+          border-color: $amber;
+        }
+      }
+    }
+
+    &.input-empty {
+      label {
+        opacity: 1;
+      }
+    }
+  }
+
+  label {
+    color: $border-color;
+    font-size: $smaller-font-size;
+    left: 0.75rem;
+    position: absolute;
+    top: 0.75rem;
+    transition: color $base-duration $base-timing,
+                opacity $base-duration $base-timing;
   }
 
   [type="email"],
@@ -117,17 +144,41 @@ $smaller-font-size: 0.875rem;
     &:hover,
     &:focus {
       border-color: $base-background-color;
+    }
 
-      &::placeholder {
+
+    &:hover {
+      + label {
         color: transparentize($base-background-color, 0.2);
+      }
+    }
+
+    &:focus {
+      + label {
+        opacity: 0;
       }
     }
   }
 
-  ::placeholder {
-    color: $border-color;
-    font-size: $smaller-font-size;
-    transition: color $base-duration $base-timing;
+  .help-block {
+    background: $white;
+    box-shadow: 0 1px 2px $purple-darker;
+    color: $base-font-color;
+    display: block;
+    margin-top: 0.625rem;
+    padding: $element-padding;
+    position: relative;
+
+    &::after {
+      border-color: transparent transparent $white;
+      border-style: solid;
+      border-width: 0 0.375rem 0.375rem;
+      bottom: 100%;
+      content: " ";
+      display: block;
+      left: 0.625rem;
+      position: absolute;
+    }
   }
 
   .social-login {
@@ -137,7 +188,7 @@ $smaller-font-size: 0.875rem;
     display: block;
     fill: $base-background-color;
     margin-bottom: 0.625rem;
-    padding: #{$small-spacing} $base-spacing * 0.75 calc(#{$small-spacing} + 1px);
+    padding: $element-padding;
     position: relative;
     text-decoration: none;
     transition: border-color $base-duration $base-timing;

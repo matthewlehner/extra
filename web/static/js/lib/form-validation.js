@@ -19,19 +19,22 @@ function isNotDirty(element) {
 function onInput(e) {
   const element = e.target;
   element.removeEventListener(e.type, onInput);
-  element.addEventListener("blur", activateValidations);
+  element.addEventListener("blur", onActivateValidations);
 }
 
-function activateValidations(e) {
+function onActivateValidations(e) {
   const element = e.target;
   element.removeEventListener(e.type, activateValidations);
-  element.parentNode.classList.add(dirtyClass);
-  runValidations(e);
-  element.addEventListener("input", runValidations);
+  activateValidations(element);
 }
 
-function runValidations(e) {
-  const element = e.target;
+function activateValidations(element) {
+  element.addEventListener("input", (e) => runValidations(e.target));
+  element.parentNode.classList.add(dirtyClass);
+  runValidations(element);
+}
+
+function runValidations(element) {
   validateInput(element);
 
   if (element.value.length > 0) {
@@ -57,15 +60,16 @@ function validateInput(el) {
   const sibling = el.nextElementSibling;
   if (el.checkValidity()) {
     removeHelpBlock(el.nextElementSibling);
-    return;
+    return true;
   }
 
   if (isErrorEl(sibling)) {
     sibling.innerText = errorMessageFor(el.validity, el.type);
-    return;
+    return false;
   }
 
   displayError(el);
+  return false;
 }
 
 function isErrorEl(el) {
@@ -82,3 +86,16 @@ window.addEventListener("focus", function(event) {
     return false;
   }
 }, true);
+
+[...document.getElementsByTagName("form")].forEach((el) => {
+  el.addEventListener("submit", function(event) {
+    const inputs = [...event.target.getElementsByClassName("form-control")];
+    const inputsValid = inputs.map(activateValidations).every((value) => value);
+
+    if (inputsValid) {
+      return;
+    }
+
+    event.preventDefault();
+  }, false);
+});
