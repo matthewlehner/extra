@@ -3,16 +3,6 @@ $border: 1px solid $border-color;
 $smaller-font-size: 0.875rem;
 $element-padding: #{$small-spacing} $base-spacing * 0.75 calc(#{$small-spacing} + 1px);
 
-@keyframes opacify {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
 .registration-create,
 .registration-new,
 .session-create,
@@ -28,11 +18,7 @@ $element-padding: #{$small-spacing} $base-spacing * 0.75 calc(#{$small-spacing} 
 
   // Gradient animation
   &::before {
-    animation-direction: alternate;
-    animation-duration: 20s;
-    animation-iteration-count: infinite;
-    animation-name: opacify;
-    animation-timing-function: ease-in-out;
+    @include opacify;
     background-image: linear-gradient(to bottom right, $extra-gradient-end, $extra-gradient-start 95%);
     content: "";
     display: block;
@@ -103,24 +89,24 @@ $element-padding: #{$small-spacing} $base-spacing * 0.75 calc(#{$small-spacing} 
   .form-group {
     margin-bottom: 0.625rem;
     position: relative;
+  }
 
-    &.dirty {
-      label {
-        opacity: 0;
+  .dirty {
+    label {
+      opacity: 0;
 
-      }
-
-      input {
-        &:invalid {
-          border-color: $amber;
-        }
-      }
     }
 
-    &.input-empty {
-      label {
-        opacity: 1;
+    input {
+      &:invalid {
+        border-color: $amber;
       }
+    }
+  }
+
+  .input-empty {
+    label {
+      opacity: 1;
     }
   }
 
@@ -146,7 +132,6 @@ $element-padding: #{$small-spacing} $base-spacing * 0.75 calc(#{$small-spacing} 
       border-color: $base-background-color;
     }
 
-
     &:hover {
       + label {
         color: transparentize($base-background-color, 0.2);
@@ -161,23 +146,31 @@ $element-padding: #{$small-spacing} $base-spacing * 0.75 calc(#{$small-spacing} 
   }
 
   .help-block {
-    background: $white;
-    box-shadow: 0 1px 2px $purple-darker;
-    color: $base-font-color;
-    display: block;
-    margin-top: 0.625rem;
-    padding: $element-padding;
-    position: relative;
+    @include animate-insert;
 
-    &::after {
-      border-color: transparent transparent $white;
-      border-style: solid;
-      border-width: 0 0.375rem 0.375rem;
-      bottom: 100%;
-      content: " ";
+    &.removing {
+      @include animate-remove;
+    }
+
+    span {
+      background: $white;
+      box-shadow: 0 1px 2px $purple-darker;
+      color: $base-font-color;
       display: block;
-      left: 0.625rem;
-      position: absolute;
+      margin-bottom: 0.625rem;
+      padding: $element-padding;
+      position: relative;
+
+      &::after {
+        border-color: $white transparent transparent;
+        border-style: solid;
+        border-width: 0.375rem 0.375rem 0;
+        content: " ";
+        display: block;
+        left: 0.625rem;
+        position: absolute;
+        top: 100%;
+      }
     }
   }
 

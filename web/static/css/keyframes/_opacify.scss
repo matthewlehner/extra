@@ -1,0 +1,17 @@
+@keyframes opacify {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@mixin opacify() {
+  animation-direction: alternate;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-name: opacify;
+  animation-timing-function: ease-in-out;
+}
