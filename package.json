@@ -3,7 +3,8 @@
   "license": "MIT",
   "scripts": {
     "deploy": "webpack -p",
-    "watch": "webpack --watch-stdin --progress --color"
+    "watch": "webpack --watch-stdin --progress --color",
+    "lint": "eslint web/static/js --ext .js"
   },
   "engine": "node >= 6.8.0",
   "dependencies": {
@@ -17,6 +18,8 @@
     "babel-preset-es2016": "^6.16.0",
     "copy-webpack-plugin": "^4.0.0",
     "css-loader": "^0.25.0",
+    "eslint": "^3.11.1",
+    "eslint-plugin-react": "^6.7.1",
     "extract-text-webpack-plugin": "2.0.0-beta.4",
     "node-sass": "^3.11.2",
     "postcss-loader": "^1.1.0",
