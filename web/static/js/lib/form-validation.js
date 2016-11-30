@@ -8,6 +8,11 @@ import errorMessageFor from "./forms/error-messages";
 
 const dirtyClass = "dirty";
 const placeholderShownClass = "input-empty";
+const helpMessage = {
+  position: "beforebegin",
+  tagName: "span",
+  className: "help-block"
+};
 
 function isNotDirty(element) {
   // Check that it is an input
@@ -46,37 +51,57 @@ function runValidations(element) {
 
 function errorElString(el) {
   const content = errorMessageFor(el.validity, el.type);
+  const {tagName, className} = helpMessage;
 
-  return `<span class="help-block">${content}</span>`;
+  return `<${tagName} class="${className}">${content}</${tagName}>`;
 }
 
-function displayError(el) {
+function renderErrorForInput(el) {
   const errorMsg = errorElString(el);
-  el.insertAdjacentHTML("afterend", errorMsg);
+  el.insertAdjacentHTML(helpMessage.position, errorMsg);
 }
 
-function validateInput(el) {
-  const sibling = el.nextElementSibling;
-  if (el.checkValidity()) {
-    removeHelpBlock(el.nextElementSibling);
+function findHelpEl(el) {
+  switch (helpMessage.position) {
+    case "beforebegin":
+      return el.previousElementSibling;
+    case "afterend":
+      return el.nextElementSibling;
+    default:
+      throw "You must define `helpMessagePosition`";
+  }
+}
+
+function validateInput(inputEl) {
+  const helpEl = findHelpEl(inputEl);
+  if (inputEl.checkValidity()) {
+    removeHelpBlock(helpEl);
     return true;
   }
 
-  if (isErrorEl(sibling)) {
-    sibling.innerText = errorMessageFor(el.validity, el.type);
+  if (isHelpEl(helpEl)) {
+    helpEl.innerText = errorMessageFor(inputEl.validity, inputEl.type);
     return false;
   }
 
-  displayError(el);
+  renderErrorForInput(inputEl);
   return false;
 }
 
-function isErrorEl(el) {
-  return el.tagName === "SPAN" && el.classList.contains("help-block");
+function isHelpEl(el) {
+  const { className, tagName } = helpMessage;
+
+  if (el && el.tagName === tagName.toUpperCase() && el.classList.contains(className)) {
+    return true;
+  }
+
+  return false;
 }
 
 function removeHelpBlock(el) {
-  if (isErrorEl(el)) el.parentNode.removeChild(el);
+  if (isHelpEl(el)) {
+    el.parentNode.removeChild(el);
+  }
 }
 
 window.addEventListener("focus", function(event) {
