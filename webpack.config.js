@@ -38,7 +38,8 @@ let common = {
       loader: [{
         loader: "svg-sprite-loader",
         options: {
-          name: "[name]-icon"
+          name: "[name]-icon",
+          esModule: true
         }
       }, {
         loader: "svgo-loader",
@@ -59,9 +60,9 @@ let common = {
             sourceMap: true,
             importLoaders: 1
           }
-        },
-        "postcss-loader",
-        {
+        }, {
+          loader:  "postcss-loader"
+        }, {
           loader: "sass-loader",
           options: {
             sourceMap: true,
