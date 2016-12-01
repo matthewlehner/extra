@@ -1,13 +1,15 @@
-$border-color: transparentize($gray-lighter, 0.6);
+$border-color: $lavender;
 $border: 1px solid $border-color;
 $smaller-font-size: 0.875rem;
 $element-padding: #{$small-spacing} $base-spacing * 0.75 calc(#{$small-spacing} + 1px);
+$extra-gradient-start: $midnight-blue;
+$extra-gradient-end: $deep-lilac;
 
 .registration-create,
 .registration-new,
 .session-create,
 .session-new {
-  background-image: linear-gradient(to bottom right, $extra-gradient-colors);
+  background-image: linear-gradient(to bottom right, $extra-gradient-start 5%, $extra-gradient-end);
   color: $base-background-color;
   height: 100%;
   min-height: 100vh;

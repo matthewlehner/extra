@@ -28,7 +28,7 @@ $secondary-border: 1px solid $lighter-gray;
 $input-border: $secondary-border;
 
 // Background Colors
-$base-background-color: #fff;
+$base-background-color: $white;
 $secondary-background-color: tint($base-border-color, 75%);
 $extra-gradient-start: $purple-dark;
 $extra-gradient-end: $purple-light;
