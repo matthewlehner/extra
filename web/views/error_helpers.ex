@@ -11,7 +11,7 @@ defmodule Extra.ErrorHelpers do
   def error_tag(form, field) do
     if error = form.errors[field] do
       content_tag :div, class: "help-block" do
-        content_tag :span, "#{to_string field} #{translate_error(error)}"
+        content_tag :span, "The #{to_string field} #{translate_error(error)}"
       end
     end
   end

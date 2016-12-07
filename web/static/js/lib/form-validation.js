@@ -10,7 +10,7 @@ import { whichAnimationEvent } from "./which-transition-event";
 const dirtyClass = "dirty";
 const placeholderShownClass = "input-empty";
 const helpMessage = {
-  position: "beforebegin",
+  position: "afterend",
   tagName: "div",
   className: "help-block"
 };
@@ -71,7 +71,7 @@ function findHelpEl(el) {
     case "afterend":
       return el.nextElementSibling;
     default:
-      throw "You must define `helpMessagePosition`";
+      throw "You must define `helpMessage.position`";
   }
 }
 

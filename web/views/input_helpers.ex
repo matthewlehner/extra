@@ -11,13 +11,13 @@ defmodule Extra.InputHelpers do
                  |> Keyword.merge(extend_input_opts(form, field))
                  |> Keyword.merge(input_opts)
 
-    wrapper_opts = [class: "form-group #{state_class(form, field)}"]
+    wrapper_opts = [class: "form-group #{state_class(form, field)} #{presence_class(form, field)}"]
 
     content_tag :div, wrapper_opts do
       input = input(type, form, field, input_opts)
       label = label(form, field, humanize(field), label_opts)
       error = Extra.ErrorHelpers.error_tag(form, field) || ""
-      [input, label, error]
+      [input, error, label]
     end
   end
 
@@ -27,6 +27,18 @@ defmodule Extra.InputHelpers do
       !form.source.action -> ""
       form.errors[field] -> "has-error"
       true -> "has-success"
+    end
+  end
+
+  defp presence_class(%{source: %{changes: changes}}, _) when changes == %{},  do: nil
+
+  defp presence_class(_, :password), do: nil
+
+  defp presence_class(%{source: %{changes: changes}}, field) do
+    case changes[field] do
+      nil -> "input-empty dirty"
+      "" -> "input-empty dirty"
+      _ -> "dirty"
     end
   end
 
