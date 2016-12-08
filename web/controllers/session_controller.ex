@@ -1,12 +1,14 @@
 defmodule Extra.SessionController do
   use Extra.Web, :controller
+  alias Extra.User
   plug :put_layout, {Extra.LayoutView, :public}
 
   def new(conn, _params) do
-    render(conn, "new.html")
+    changeset = User.registration_changeset(%User{})
+    render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"session" => %{"email" => email, "password" => password}}) do
+  def create(conn, %{"user" => %{"email" => email, "password" => password}}) do
     case Extra.Auth.login_by_email_and_pass(conn, email, password, repo: Repo) do
       {:ok, user} ->
         conn

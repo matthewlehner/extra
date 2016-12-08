@@ -9,18 +9,11 @@
     <span>Login with Twitter</span>
   <% end %>
 
-  <%= form_tag session_url(@conn, :create), method: "post", novalidate: true do %>
+  <%= form_for @changeset, session_url(@conn, :create), [novalidate: true], fn f -> %>
     <%= render_flash(@conn) %>
 
-    <div class="form-group">
-      <%= email_input :session, :email, required: true %>
-      <%= label :session, :email, "email" %>
-    </div>
-
-    <div class="form-group">
-      <%= password_input :session, :password, required: true, minlength: 8 %>
-      <%= label :session, :password, "password" %>
-    </div>
+    <%= input f, :email %>
+    <%= input f, :password %>
 
     <div class="form-group">
       <%= submit "Login", class: "button" %>
