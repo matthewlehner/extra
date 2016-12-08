@@ -13,9 +13,9 @@ defmodule Extra.SessionController do
         |> Guardian.Plug.sign_in(user)
         |> put_flash(:info, "Welcome back")
         |> redirect(to: dashboard_path(conn, :index))
-      {:error, _reason, conn} ->
+      {:error, reason, conn} ->
         conn
-        |> put_flash(:error, "We couldn't find your email and password combination")
+        |> put_flash(:error, reason)
         |> render("new.html")
     end
   end

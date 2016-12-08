@@ -4,6 +4,7 @@ $smaller-font-size: 0.875rem;
 $element-padding: #{$small-spacing} $base-spacing * 0.75 calc(#{$small-spacing} + 1px);
 $extra-gradient-start: $midnight-blue;
 $extra-gradient-end: $deep-lilac;
+$input-padding: 0.75rem;
 
 .registration-create,
 .registration-new,
@@ -160,7 +161,7 @@ $extra-gradient-end: $deep-lilac;
       color: $base-font-color;
       display: block;
       margin-top: 0.625rem;
-      padding: $element-padding;
+      padding: $small-spacing $input-padding;
       position: relative;
 
       &::after {
@@ -181,7 +182,7 @@ $extra-gradient-end: $deep-lilac;
     box-shadow: 0 1px 2px $purple-darker;
     color: $base-font-color;
     margin: 0 0 0.625rem;
-    padding: $element-padding;
+    padding: $small-spacing $input-padding;
   }
 
   .social-login {

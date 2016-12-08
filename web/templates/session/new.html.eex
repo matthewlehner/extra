@@ -10,6 +10,8 @@
   <% end %>
 
   <%= form_tag session_url(@conn, :create), method: "post", novalidate: true do %>
+    <%= render_flash(@conn) %>
+
     <div class="form-group">
       <%= email_input :session, :email, required: true %>
       <%= label :session, :email, "email" %>

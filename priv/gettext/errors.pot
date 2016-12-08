@@ -89,3 +89,9 @@ msgstr ""
 
 msgid "must be equal to %{number}"
 msgstr ""
+
+msgid "user not found"
+msgstr ""
+
+msgid "bad password"
+msgstr ""

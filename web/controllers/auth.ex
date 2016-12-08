@@ -25,9 +25,9 @@ defmodule Extra.Auth do
         {:ok, user}
       user ->
         dummy_checkpw()
-        {:error, :unauthorized, conn}
+        {:error, "bad password", conn}
       true ->
-        {:error, :not_found, conn}
+        {:error, "user not found", conn}
     end
   end
 

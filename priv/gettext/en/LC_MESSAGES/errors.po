@@ -91,3 +91,9 @@ msgstr ""
 
 msgid "must be equal to %{number}"
 msgstr ""
+
+msgid "user not found"
+msgstr "We couldn't find an account with that email address."
+
+msgid "bad password"
+msgstr "The password you've entered doesn't match the one we've got on file."
