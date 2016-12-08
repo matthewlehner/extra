@@ -1,41 +1,11 @@
-$border-color: $lavender;
-$border: 1px solid $border-color;
-$smaller-font-size: 0.875rem;
-$element-padding: #{$small-spacing} $base-spacing * 0.75 calc(#{$small-spacing} + 1px);
-$extra-gradient-start: $midnight-blue;
-$extra-gradient-end: $deep-lilac;
-$input-padding: 0.75rem;
-
-.registration-create,
-.registration-new,
-.session-create,
-.session-new {
-  background-image: linear-gradient(to bottom right, $extra-gradient-start 5%, $extra-gradient-end);
-  color: $base-background-color;
-  height: 100%;
-  min-height: 100vh;
-  min-width: 100vw;
-  position: relative;
-  width: 100%;
-  z-index: 100;
-
-  // Gradient animation
-  &::before {
-    @include opacify;
-    background-image: linear-gradient(to bottom right, $extra-gradient-end, $extra-gradient-start 95%);
-    content: "";
-    display: block;
-    height: 100%;
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: -100;
-  }
-}
-
 .extra-authentication {
+  $border-color: $lavender;
+  $placeholder-color: $quartz;
+  $border: 1px solid $border-color;
+  $smaller-font-size: 0.875rem;
+  $element-padding: #{$small-spacing} $base-spacing * 0.75 calc(#{$small-spacing} + 1px);
+  $input-padding: 0.75rem;
+
   margin-left: auto;
   margin-right: auto;
   max-width: 22rem;
@@ -97,7 +67,6 @@ $input-padding: 0.75rem;
   .dirty {
     .control-label {
       opacity: 0;
-
     }
 
     input {
@@ -114,7 +83,7 @@ $input-padding: 0.75rem;
   }
 
   .control-label {
-    color: $border-color;
+    color: $placeholder-color;
     font-size: $smaller-font-size;
     left: 0.75rem;
     position: absolute;
@@ -229,5 +198,37 @@ $input-padding: 0.75rem;
     &:last-child {
       text-align: right;
     }
+  }
+}
+
+.registration-create,
+.registration-new,
+.session-create,
+.session-new {
+  $extra-gradient-start: $midnight-blue;
+  $extra-gradient-end: $deep-lilac;
+
+  background-image: linear-gradient(to bottom right, $extra-gradient-start 5%, $extra-gradient-end);
+  color: $base-background-color;
+  height: 100%;
+  min-height: 100vh;
+  min-width: 100vw;
+  position: relative;
+  width: 100%;
+  z-index: 100;
+
+  // Gradient animation
+  &::before {
+    @include opacify;
+    background-image: linear-gradient(to bottom right, $extra-gradient-end, $extra-gradient-start 95%);
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -100;
   }
 }
