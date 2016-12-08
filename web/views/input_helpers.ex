@@ -1,7 +1,7 @@
 defmodule Extra.InputHelpers do
   use Phoenix.HTML
 
-  defp input_opts, do: [class: "form-control"]
+  defp input_opts, do: [class: "form-control", placeholder: " "]
   defp label_opts, do: [class: "control-label"]
 
   def input(form, field, opts \\ []) do

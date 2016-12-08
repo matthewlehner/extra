@@ -95,7 +95,7 @@ $input-padding: 0.75rem;
   }
 
   .dirty {
-    label {
+    .control-label {
       opacity: 0;
 
     }
@@ -108,12 +108,12 @@ $input-padding: 0.75rem;
   }
 
   .input-empty {
-    label {
+    .control-label {
       opacity: 1;
     }
   }
 
-  label {
+  .control-label {
     color: $border-color;
     font-size: $smaller-font-size;
     left: 0.75rem;
@@ -121,6 +121,7 @@ $input-padding: 0.75rem;
     top: 0.75rem;
     transition: color $base-duration $base-timing,
                 opacity $base-duration $base-timing;
+    z-index: -1; // Puts the label behind the autofill background color
   }
 
   [type="email"],
@@ -136,13 +137,14 @@ $input-padding: 0.75rem;
     }
 
     &:hover {
-      + label {
+      ~ .control-label {
         color: transparentize($base-background-color, 0.2);
       }
     }
 
-    &:focus {
-      + label {
+    &:focus,
+    &:not(:placeholder-shown) {
+      ~ .control-label {
         opacity: 0;
       }
     }
