@@ -46,6 +46,8 @@ function passwordErrorFor(errorType) {
 
 function defaultErrorFor(errorType) {
   switch (errorType) {
+    case VALUE_MISSING:
+      return "Please fill out this field.";
     default:
       return "There is a problem with this field.";
   }

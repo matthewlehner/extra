@@ -1,13 +1,5 @@
 <section class="extra-authentication">
-  <%= link to: auth_path(@conn, :request, "facebook"), class: "social-login" do %>
-    <%= icon("facebook-badge") %>
-    <span>Login with Facebook</span>
-  <% end %>
-
-  <%= link to: auth_path(@conn, :request, "twitter"), class: "social-login" do %>
-    <%= icon("twitter-badge") %>
-    <span>Login with Twitter</span>
-  <% end %>
+  <h1><%= gettext "Sign in to Extra" %></h1>
 
   <%= form_for @changeset, session_url(@conn, :create), [novalidate: true], fn f -> %>
     <%= render_flash(@conn) %>

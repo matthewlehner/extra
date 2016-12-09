@@ -1,14 +1,5 @@
 <section class="extra-authentication">
-  <%= link to: auth_path(@conn, :request, "twitter"), class: "social-login" do %>
-    <%= icon("twitter-badge") %>
-    <span>Register with Twitter</span>
-  <% end %>
-
-  <%= link to: auth_path(@conn, :request, "facebook"), class: "social-login" do %>
-    <%= icon("facebook-badge") %>
-    <span>Register with Facebook</span>
-  <% end %>
-
+  <h1><%= gettext "Sign up for Extra" %></h1>
   <%= form_for @changeset, registration_path(@conn, :create), [novalidate: true], fn f -> %>
     <%= if @changeset.action do %>
       <p class="alert alert-danger">
@@ -17,6 +8,7 @@
       </p>
     <% end %>
 
+    <%= input f, :full_name %>
     <%= input f, :email %>
     <%= input f, :password %>
 
