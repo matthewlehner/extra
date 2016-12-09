@@ -12,7 +12,7 @@ defmodule Extra.UserTest do
   end
 
   test "changeset with blank email" do
-    assert {:email, "can't be blank"} in errors_on(%User{}, @invalid_attrs)
+    refute {:email, "can't be blank"} in errors_on(%User{}, @invalid_attrs)
   end
 
   test "changeset with improper" do

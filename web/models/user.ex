@@ -22,7 +22,6 @@ defmodule Extra.User do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, ~w(email))
-    |> validate_required([:email])
     |> validate_format(:email, ~r/.+@.+\..+/)
     |> unique_constraint(:email)
   end
@@ -31,6 +30,7 @@ defmodule Extra.User do
     struct
     |> changeset(params)
     |> cast(params, [:password])
+    |> validate_required([:email])
     |> validate_length(:password, min: 8)
     |> validate_required([:password])
     |> put_pass_hash()
