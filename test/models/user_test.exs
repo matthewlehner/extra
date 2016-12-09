@@ -3,7 +3,9 @@ defmodule Extra.UserTest do
 
   alias Extra.User
 
-  @valid_attrs %{email: "hi@theretime.com"}
+  @valid_attrs %{
+    email: "hi@there.com", password: "cool password", full_name: "Henry Ford"
+  }
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do
@@ -20,7 +22,7 @@ defmodule Extra.UserTest do
   end
 
   test "registration_changeset with valid attributes" do
-    changeset = User.registration_changeset(%User{}, %{email: "hi@there.com", password: "its a password!"})
+    changeset = User.registration_changeset(%User{}, @valid_attrs)
     assert changeset.valid?
   end
 

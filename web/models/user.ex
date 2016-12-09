@@ -6,6 +6,8 @@ defmodule Extra.User do
   use Extra.Web, :model
 
   schema "users" do
+    field :full_name, :string
+    field :nickname, :string
     field :email, :string
     field :password, :string, virtual: true
     field :password_hash, :string
@@ -29,10 +31,9 @@ defmodule Extra.User do
   def registration_changeset(struct, params \\ %{}) do
     struct
     |> changeset(params)
-    |> cast(params, [:password])
-    |> validate_required([:email])
+    |> cast(params, [:password, :email, :full_name, :nickname])
+    |> validate_required([:password, :email, :full_name])
     |> validate_length(:password, min: 8)
-    |> validate_required([:password])
     |> put_pass_hash()
   end
 

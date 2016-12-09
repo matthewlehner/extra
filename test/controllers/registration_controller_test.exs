@@ -1,7 +1,9 @@
 defmodule Extra.RegistrationControllerTest do
   use Extra.ConnCase, async: true
 
-  @valid_attrs %{email: "an@email.com", password: "something"}
+  @valid_attrs %{
+    email: "hi@there.com", password: "cool password", full_name: "Henry Ford"
+  }
   @invalid_attrs %{}
 
   test "renders form for new resources", %{conn: conn} do
