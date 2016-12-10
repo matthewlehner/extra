@@ -8,11 +8,13 @@
   :any-link {
     color: rgba($action-color, 0.8);
     fill: rgba($action-color, 0.8);
+    stroke: rgba($action-color, 0.8);
     text-decoration: none;
 
     &.active {
       color: $action-color;
       fill: $action-color;
+      stroke: $action-color;
       font-weight: bold;
     }
   }
