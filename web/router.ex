@@ -22,13 +22,13 @@ defmodule Extra.Router do
   pipeline :require_login do
     plug Guardian.Plug.EnsureAuthenticated
     plug Extra.Auth
+    plug Extra.LoadSidebarEntities, repo: Extra.Repo
   end
 
   scope "/", Extra do
     pipe_through [:browser, :browser_session, :public_layout]
 
     get "/", PageController, :index
-
     get "/login", SessionController, :new
     post "/login", SessionController, :create
     delete "/logout", SessionController, :delete
@@ -39,6 +39,7 @@ defmodule Extra.Router do
     pipe_through [:browser, :browser_session, :require_login]
 
     get "/", DashboardController, :index
+    resources "/channels", SocialChannelController, only: [:new, :show]
   end
 
   scope "/admin", Extra do
@@ -48,12 +49,11 @@ defmodule Extra.Router do
   end
 
   scope "/auth", Extra do
-    pipe_through [:browser]
+    pipe_through [:browser, :browser_session, :require_login]
 
     get "/:provider", AuthController, :request
     get "/:provider/callback", AuthController, :callback
     post "/:provider/callback", AuthController, :callback
-    delete "/logout", AuthController, :delete
   end
 
   scope "/.well-known/acme-challenge", Extra do
