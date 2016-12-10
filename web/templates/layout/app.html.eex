@@ -16,7 +16,7 @@
     <section class="sidebar">
       <img src="<%= static_url(@conn, "/images/extra-logo.svg") %>" class="logo">
       <nav class="site-nav">
-        <%= render "sidebar.html", conn: @conn %>
+        <%= render "sidebar.html", conn: @conn, current_user: @current_user %>
       </nav>
 
       <div class="gradient-container"><div class="gradient"></div></div>

@@ -17,18 +17,19 @@ defmodule Extra.AuthController do
     |> redirect(to: "/")
   end
 
-  def callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
-    case Extra.UserFromAuth.find_or_create(auth) do
-      {:ok, user} ->
+  def callback(%{assigns: %{ueberauth_auth: auth, current_user: current_user}} = conn, _params) do
+    changeset = Extra.SocialChannel.changeset_from_auth(auth, current_user)
+
+    case Repo.insert(changeset) do
+      {:ok, channel} ->
         conn
         |> put_flash(:info, "Successfully authenticated")
-        |> Guardian.Plug.sign_in(user)
-        |> redirect(to: "/")
+        |> redirect(to: social_channel_path(conn, :show, channel))
 
       {:error, reason} ->
         conn
         |> put_flash(:error, reason)
-        |> redirect(to: "/")
+        |> redirect(to: social_channel_path(conn, :index))
     end
   end
 end
