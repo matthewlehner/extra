@@ -49,4 +49,33 @@ button {
     max-width: 1.625em;
     vertical-align: bottom;
   }
+
+  &_facebook,
+  &_twitter {
+    transition: background-color $base-duration $base-timing;
+  }
+
+  &_facebook {
+    background-color: $facebook-blue;
+    border-color: darken($facebook-blue, 5%);
+    color: $white;
+
+    &:focus,
+    &:hover {
+      background-color: lighten($facebook-blue, 4%);
+      border-color: darken($facebook-blue, 5%);
+    }
+  }
+
+  &_twitter {
+    background-color: $twitter-blue;
+    border-color: darken($twitter-blue, 1%);
+    color: $white;
+
+    &:focus,
+    &:hover {
+      background-color: lighten($twitter-blue, 4%);
+      border-color: darken($twitter-blue, 5%);
+    }
+  }
 }

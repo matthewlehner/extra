@@ -1,0 +1,55 @@
+@mixin hide-text {
+  overflow: hidden;
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+.new-social-channel__ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.new-social-channel__li {
+  margin-right: 0.625rem;
+}
+
+.new-social-channel__section {
+  display: flex;
+  margin-bottom: 0.75rem;
+  margin-top: 0.75rem;
+
+  &:not(:last-child) {
+    border-bottom: $light-border;
+    padding-bottom: 0.75rem;
+  }
+}
+
+.social-logo {
+  border-radius: $base-border-radius;
+  fill: $white;
+  height: 2.125rem;
+  line-height: 2.215rem;
+  margin: 0 2rem 0 0;
+  text-align: center;
+  width: 2.125rem;
+
+  .icon {
+    height: 0.875rem;
+    width: 0.875rem;
+  }
+
+  span {
+    @include hide-text;
+    display: block;
+  }
+
+  &_facebook {
+    background-color: $facebook-blue;
+  }
+
+  &_twitter {
+    background-color: $twitter-blue;
+  }
+}

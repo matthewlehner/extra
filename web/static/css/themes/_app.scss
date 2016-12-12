@@ -1,10 +1,12 @@
+@import "../pages/new-social-channel";
+
 h1 {
   color: $dark-gray;
   font-size: 1.5rem;
 }
 
 h2 {
-  border-bottom: 1px solid lighten($light-gray, 10.5%);
+  border-bottom: $light-border;
   color: $light-gray;
   font-size: 0.75rem;
   margin-top: 2.8125rem;
