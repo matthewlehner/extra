@@ -46,6 +46,7 @@ defmodule Extra.Router do
     pipe_through [:browser]
 
     get "/styleguide", PageController, :styleguide
+    get "/icons", PageController, :icons
   end
 
   scope "/auth", Extra do

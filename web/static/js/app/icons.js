@@ -6,3 +6,7 @@ import "../../icons/pinterest-badge.svg";
 import "../../icons/performance.svg";
 import "../../icons/account.svg";
 import "../../icons/logout.svg";
+
+if (typeof renderSVGs === "function") {
+  renderSVGs();
+}

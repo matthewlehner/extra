@@ -1,0 +1,38 @@
+<header class="page-header">
+  <h1 class="heading-body">Available Icons</h1>
+</header>
+
+<section class="icon-demonstration">
+  <style>
+    ul {
+      list-style: none;
+      fill: rgb(76, 76, 76);
+      padding: 0;
+    }
+
+    .icon {
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      height: 1em;
+      margin-right: 1em;
+      width: 1em;
+      vertical-align: middle;
+    }
+  </style>
+  <ul class="icon-demonstration__ul">
+  </ul>
+</section>
+
+<script>
+  function renderSVGs() {
+    const symbols = document.querySelectorAll("svg defs symbol");
+    const listEl = document.getElementsByClassName("icon-demonstration__ul")[0];
+    [...symbols].forEach((symbol) => appendSVG(symbol, listEl))
+  }
+
+function appendSVG(symbol, el) {
+  const iconTemplate = `<li><svg class="icon"><use xlink:href="#${symbol.id}"></use></svg>${symbol.id.replace(/-/g, " ")}</li>`;
+
+  el.insertAdjacentHTML('beforeend', iconTemplate);
+}
+
+</script>
