@@ -1,7 +1,7 @@
 defmodule Extra.PostCollection do
   use Extra.Web, :model
 
-  schema "social_collections" do
+  schema "post_collections" do
     field :name, :string
     belongs_to :user, Extra.User
 
