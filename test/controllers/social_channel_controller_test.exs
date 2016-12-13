@@ -3,7 +3,7 @@ defmodule Extra.SocialChannelControllerTest do
   import Extra.TestHelper
 
   alias Extra.SocialChannel
-  @valid_attrs %{}
+  @valid_attrs %{name: "a great channel."}
   @invalid_attrs %{}
 
   setup do
@@ -20,10 +20,12 @@ defmodule Extra.SocialChannelControllerTest do
   end
 
   test "shows chosen resource", %{conn: conn, user: user} do
-    social_channel = Repo.insert! %SocialChannel{user_id: user.id}
+    social_channel = Repo.insert! %SocialChannel{
+      name: "great channel", provider: "twitter", user_id: user.id
+    }
     conn = sign_in(conn, user)
     conn = get conn, social_channel_path(conn, :show, social_channel)
-    assert html_response(conn, 200) =~ "Show social channel"
+    assert html_response(conn, 200) =~ social_channel.name
   end
 
   test "renders page not found when id is nonexistent", %{conn: conn, user: user} do

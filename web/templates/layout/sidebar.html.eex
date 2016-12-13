@@ -3,13 +3,13 @@
   <ul>
     <%= for collection <- @current_user.social_collections do %>
       <li>
-        <%= link to: social_collection_path(@conn, :show, collection) do %>
+        <%= link to: collection_path(@conn, :show, collection) do %>
           <%= icon("collection") %><%= collection.name %>
         <% end %>
       </li>
     <% end %>
     <li>
-      <%= link to: social_collection_path(@conn, :new) do %>
+      <%= link to: collection_path(@conn, :new) do %>
         <%= icon("add-new") %>Add new
       <% end %>
     </li>

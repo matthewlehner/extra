@@ -1,4 +1,4 @@
-defmodule Extra.SocialCollectionController do
+defmodule Extra.CollectionController do
   use Extra.Web, :controller
 
   alias Extra.SocialCollection
@@ -16,7 +16,7 @@ defmodule Extra.SocialCollectionController do
       {:ok, collection} ->
         conn
         |> put_flash(:info, "Social collection created successfully.")
-        |> redirect(to: social_collection_path(conn, :show, collection))
+        |> redirect(to: collection_path(conn, :show, collection))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
