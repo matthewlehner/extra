@@ -1,13 +1,18 @@
 <section>
   <h3>Collections</h3>
   <ul>
-    <!--
+    <%= for collection <- @current_user.social_collections do %>
+      <li>
+        <%= link to: social_collection_path(@conn, :show, collection) do %>
+          <%= icon("collection") %><%= collection.name %>
+        <% end %>
+      </li>
+    <% end %>
     <li>
-      <a href="#" class="active"><%= icon("collection") %>My first collection</a>
+      <%= link to: social_collection_path(@conn, :new) do %>
+        <%= icon("add-new") %>Add new
+      <% end %>
     </li>
-    <li><a href="#"><%= icon("collection") %>Inspiration</a></li>
-    -->
-    <li><a href="#"><%= icon("add-new") %>Add new</a></li>
   </ul>
 </section>
 
@@ -20,12 +25,6 @@
           <%= icon("#{channel.provider}-badge") %><%= channel.name %>
         <% end %>
     <% end %>
-    <!--
-    <li><a href="#"><%= icon("twitter-badge") %>Getliteristic</a></li>
-    <li><a href="#"><%= icon("facebook-badge") %>Literistic</a></li>
-    <li><a href="#"><%= icon("pinterest-badge") %>Literistic</a></li>
-    -->
-    <li><a href="#"><%= icon("add-new") %>Add new</a></li>
     <li>
       <%= link to: social_channel_path(@conn, :new) do %>
         <%= icon("add-new") %>Add new
