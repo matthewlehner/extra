@@ -1,5 +1,5 @@
 <header class="heading">
-  <h1 class="heading__body"><%= @social_collection.name %></h1>
+  <h1 class="heading__body"><%= @post_collection.name %></h1>
   <%= link "Create new post", to: "#", class: "button button_small" %>
 </header>
 

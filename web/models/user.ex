@@ -15,7 +15,7 @@ defmodule Extra.User do
     has_many :auth_tokens, Extra.AuthToken
     has_many :user_sessions, Extra.UserSession
     has_many :social_channels, Extra.SocialChannel
-    has_many :social_collections, Extra.SocialCollection
+    has_many :post_collections, Extra.PostCollection
 
     timestamps()
   end

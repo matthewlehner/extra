@@ -2,7 +2,7 @@ defmodule Extra.CollectionControllerTest do
   use Extra.ConnCase
   import Extra.TestHelper
 
-  alias Extra.SocialCollection
+  alias Extra.PostCollection
   @valid_attrs %{name: "some content"}
   @invalid_attrs %{}
 
@@ -20,27 +20,27 @@ defmodule Extra.CollectionControllerTest do
   end
 
   test "creates resource and redirects when data is valid", %{conn: conn} do
-    conn = post conn, collection_path(conn, :create), social_collection: @valid_attrs
-    new_collection = Repo.get_by!(SocialCollection, @valid_attrs)
+    conn = post conn, collection_path(conn, :create), post_collection: @valid_attrs
+    new_collection = Repo.get_by!(PostCollection, @valid_attrs)
     assert new_collection
     assert redirected_to(conn) == collection_path(conn, :show, new_collection)
   end
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do
-    conn = post conn, collection_path(conn, :create), social_collection: @invalid_attrs
+    conn = post conn, collection_path(conn, :create), post_collection: @invalid_attrs
     assert html_response(conn, 200) =~ "New social collection"
   end
 
   test "shows chosen resource", %{conn: conn, user: user} do
-    social_collection = Repo.insert! %SocialCollection{user_id: user.id, name: "collection name"}
-    conn = get conn, collection_path(conn, :show, social_collection)
-    assert html_response(conn, 200) =~ social_collection.name
+    post_collection = Repo.insert! %PostCollection{user_id: user.id, name: "collection name"}
+    conn = get conn, collection_path(conn, :show, post_collection)
+    assert html_response(conn, 200) =~ post_collection.name
   end
 
   test "renders page not found when id is nonexistent", %{conn: conn} do
-    social_collection = Repo.insert! %SocialCollection{}
+    post_collection = Repo.insert! %PostCollection{}
     assert_error_sent 404, fn ->
-      get conn, collection_path(conn, :show, social_collection)
+      get conn, collection_path(conn, :show, post_collection)
     end
   end
 end

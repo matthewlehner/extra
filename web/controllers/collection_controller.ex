@@ -1,16 +1,16 @@
 defmodule Extra.CollectionController do
   use Extra.Web, :controller
 
-  alias Extra.SocialCollection
+  alias Extra.PostCollection
 
   def new(conn, _params) do
-    changeset = SocialCollection.changeset(%SocialCollection{})
+    changeset = PostCollection.changeset(%PostCollection{})
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(%{assigns: %{current_user: user}} = conn, %{"social_collection" => params}) do
+  def create(%{assigns: %{current_user: user}} = conn, %{"post_collection" => params}) do
     params = Map.put(params, "user_id", user.id)
-    changeset = SocialCollection.changeset(%SocialCollection{}, params)
+    changeset = PostCollection.changeset(%PostCollection{}, params)
 
     case Repo.insert(changeset) do
       {:ok, collection} ->
@@ -23,7 +23,7 @@ defmodule Extra.CollectionController do
   end
 
   def show(%{assigns: %{current_user: user}} = conn, %{"id" => id}) do
-    social_collection = Repo.get_by!(SocialCollection, id: id, user_id: user.id)
-    render(conn, "show.html", social_collection: social_collection)
+    post_collection = Repo.get_by!(PostCollection, id: id, user_id: user.id)
+    render(conn, "show.html", post_collection: post_collection)
   end
 end

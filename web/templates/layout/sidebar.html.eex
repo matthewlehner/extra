@@ -1,7 +1,7 @@
 <section>
   <h3>Collections</h3>
   <ul>
-    <%= for collection <- @current_user.social_collections do %>
+    <%= for collection <- @current_user.post_collections do %>
       <li>
         <%= link to: collection_path(@conn, :show, collection) do %>
           <%= icon("collection") %><%= collection.name %>

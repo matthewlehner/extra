@@ -1,4 +1,4 @@
-defmodule Extra.SocialCollection do
+defmodule Extra.PostCollection do
   use Extra.Web, :model
 
   schema "social_collections" do

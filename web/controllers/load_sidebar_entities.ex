@@ -9,7 +9,7 @@ defmodule Extra.LoadSidebarEntities do
 
   def call(%{assigns: %{current_user: user}} = conn, repo) do
     user = user
-           |> repo.preload([:social_channels, :social_collections])
+           |> repo.preload([:social_channels, :post_collections])
 
     assign(conn, :current_user, user)
   end
