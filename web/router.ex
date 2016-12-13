@@ -38,6 +38,11 @@ defmodule Extra.Router do
   scope "/app", Extra do
     pipe_through [:browser, :browser_session, :require_login]
 
+    # These can be removed at some point, or moved to an ADMIN route with static
+    # markup, rather than pulling from current_user associations.
+    get "/styleguide", PageController, :styleguide
+    get "/icons", PageController, :icons
+
     get "/", DashboardController, :index
     resources "/channels", SocialChannelController, only: [:new, :show]
     resources "/collections", SocialCollectionController, only: [:new, :create, :show]
@@ -46,8 +51,6 @@ defmodule Extra.Router do
   scope "/admin", Extra do
     pipe_through [:browser]
 
-    get "/styleguide", PageController, :styleguide
-    get "/icons", PageController, :icons
   end
 
   scope "/auth", Extra do
