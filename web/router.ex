@@ -40,6 +40,7 @@ defmodule Extra.Router do
 
     get "/", DashboardController, :index
     resources "/channels", SocialChannelController, only: [:new, :show]
+    resources "/collections", SocialCollectionController, only: [:new, :create, :show]
   end
 
   scope "/admin", Extra do

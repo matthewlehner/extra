@@ -1,0 +1,4 @@
+<h2>New social collection</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: social_collection_path(@conn, :create) %>

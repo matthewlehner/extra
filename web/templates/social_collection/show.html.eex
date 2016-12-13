@@ -1,0 +1,15 @@
+<h2>Show social collection</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @social_collection.name %>
+  </li>
+
+  <li>
+    <strong>User:</strong>
+    <%= @social_collection.user_id %>
+  </li>
+
+</ul>
