@@ -1,15 +1,11 @@
-<h2>Show social collection</h2>
+<header class="heading">
+  <h1 class="heading__body"><%= @social_collection.name %></h1>
+  <%= link "Create new post", to: "#", class: "button button_small" %>
+</header>
 
-<ul>
+<section class="posts-collection">
+  <header>
+    <h2>Posts</h2>
+  </header>
 
-  <li>
-    <strong>Name:</strong>
-    <%= @social_collection.name %>
-  </li>
-
-  <li>
-    <strong>User:</strong>
-    <%= @social_collection.user_id %>
-  </li>
-
-</ul>
+</section>

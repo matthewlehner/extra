@@ -1,5 +1,14 @@
-<h2>Show social channel</h2>
+<header class="heading">
+  <div class="heading__body">
+    <figure class="heading__figure">
+      <img src="<%= @social_channel.image %>" alt="Profile picture">
+    </figure>
+    <h1><%= @social_channel.name %></h1>
+    <p><%= "#{String.capitalize @social_channel.provider} account" %></p>
+  </div>
+  <%= link "Delete account", to: "#", class: "button button_small" %>
+</header>
 
-<ul>
+<%# Stats section goes here, later %>
 
 </ul>

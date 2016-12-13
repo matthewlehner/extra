@@ -1,11 +1,11 @@
-<header class="page-header">
-  <h1 class="heading-body">H1 in Header</h1>
+<header class="heading">
+  <h1 class="heading__body">H1 in Header</h1>
   <a href="#" class="button button_small">Header button</a>
 </header>
 
-<header class="page-header social-account">
-  <div class="heading-body">
-    <figure class="account-image">
+<header class="heading">
+  <div class="heading__body">
+    <figure class="heading__figure">
       <img src="http://pipsum.com/100x100.jpg">
     </figure>
     <h1>Social Account Header</h1>
