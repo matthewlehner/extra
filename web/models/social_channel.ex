@@ -7,6 +7,7 @@ defmodule Extra.SocialChannel do
     field :provider, :string
     has_one :authorization, Extra.Authorization
     belongs_to :user, Extra.User
+    has_many :post_templates, Extra.PostTemplate
 
     timestamps()
   end
