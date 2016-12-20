@@ -1,13 +1,14 @@
 defmodule Extra.CollectionControllerTest do
   use Extra.ConnCase
   import Extra.TestHelper
+  import Extra.Factory
 
   alias Extra.PostCollection
   @valid_attrs %{name: "some content"}
   @invalid_attrs %{}
 
   setup do
-    user = Repo.insert!(%Extra.User{})
+    user = insert(:user)
     conn = build_conn()
            |> sign_in(user)
 
