@@ -14,4 +14,8 @@ defmodule Extra.PageController do
   def icons(conn, _) do
     render conn, "icons.html"
   end
+
+  def pitch(conn, _) do
+    render conn, "pitch.html", layout: {Extra.LayoutView, "public.html"}
+  end
 end
