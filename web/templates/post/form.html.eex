@@ -5,7 +5,26 @@
     </div>
   <% end %>
 
+  <label for="collection-select">Collection</label>
+  <select name="collection-select">
+    <option value="1" selected>Ferrari Boys</option>
+    <option>Some other thing</option>
+  </select>
+
+  <%= input f, :body %>
+
+  <label>Channel</label>
+  <label>
+    <input type="checkbox">
+    matthewpearse
+  </label>
+  <label>
+    <input type="checkbox">
+    Matthew Lehner
+  </label>
+
   <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
+    <%= link "Cancel", to: "#" %> <!-- collection_path(@conn, :show,  -->
+    <%= submit "Create Post", class: "btn btn-primary" %>
   </div>
 <% end %>
