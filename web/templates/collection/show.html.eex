@@ -1,6 +1,6 @@
 <header class="heading">
   <h1 class="heading__body"><%= @post_collection.name %></h1>
-  <%= link "Create new post", to: "#", class: "button button_small" %>
+  <%= link "Create new post", to: post_path(@conn, :new), class: "button button_small" %>
 </header>
 
 <section class="posts-collection">
