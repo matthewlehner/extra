@@ -87,9 +87,9 @@
 </ul>
 
 <section>
-  <div>
-    <p class="speech-bubble speech-bubble__from-them">But that's a complete fantasy, right?</p>
-    <p class="speech-bubble speech-bubble__from-us">Nope! Not with <em>Extra</em>🍻.</p>
+  <div class="speech-bubbles">
+    <div class="speech-bubbles__p speech-bubbles__p_from-them">But that's a complete fantasy, right?</div>
+    <div class="speech-bubbles__p speech-bubbles__p_from-us">Nope! Not with <em>Extra</em> 🍻.</div>
   </div>
 
   <p>

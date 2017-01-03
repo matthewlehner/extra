@@ -92,47 +92,76 @@ li {
   max-width: 68rem;
 }
 
-.speech-bubble {
-  border-radius: 0.8rem;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-  font-size: 0.94rem;
-  padding: 0.5em 1em;
-  position: relative;
+.speech-bubbles {
+  @include clearfix;
 
-  &::before {
-    bottom: 0;
-    content: " ";
-    height: 20px;
-    position: absolute;
-    z-index: -1;
-  }
+  margin: 5rem auto;
+  max-width: 18rem;
 
-  &__from-us {
-    background-color: $gray-lighter;
-    float: right;
+  &__p {
+    border-radius: 0.8rem;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    font-size: 0.94rem;
+    padding: 0.5em 1em;
+    margin: 0.5rem 0;
+    position: relative;
 
     &::before {
-      border-bottom-left-radius: 16px 14px;
-      border-right: 20px solid $gray-lighter;
-      right: -7px;
-    }
-
-    &::after {
-      background: $white;
-      border-bottom-left-radius: 10px;
       bottom: 0;
       content: " ";
       height: 20px;
       position: absolute;
-      right: -26px;
+      z-index: -1;
+    }
+
+    &::after {
+      background: $white;
+      bottom: 0;
+      content: " ";
+      height: 20px;
+      position: absolute;
       width: 26px;
       z-index: 1;
     }
   }
 
-  &__from-them {
+  &__p_from-us {
+    $bg-color: lighten($gray-lighter, 7%);
+    background-color: $bg-color;
+    float: right;
+
+    &::before {
+      border-bottom-left-radius: 16px 14px;
+      border-right: 20px solid $bg-color;
+      right: -7px;
+    }
+
+    &::after {
+      border-bottom-left-radius: 10px;
+      right: -26px;
+    }
+  }
+
+  &__p_from-them {
     background-image: $extra-gradient;
     color: $white;
     float: left;
+
+    &::before {
+      border-bottom-right-radius: 16px 14px;
+      border-left: 20px solid $extra-gradient-start;
+      left: -7px;
+    }
+
+    &::after {
+      border-bottom-right-radius: 10px;
+      left: -26px;
+    }
+  }
+
+  em {
+    color: $action-color;
+    font-style: normal;
+    font-weight: bold;
   }
 }
