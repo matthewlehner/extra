@@ -9,6 +9,10 @@ let common = {
     "public": [
       "./web/static/css/public.scss",
       "./web/static/js/public/index.js"
+    ],
+    "marketing": [
+      "./web/static/css/marketing.scss",
+      "./web/static/js/marketing.js"
     ]
   },
 
