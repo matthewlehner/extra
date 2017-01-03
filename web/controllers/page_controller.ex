@@ -16,6 +16,6 @@ defmodule Extra.PageController do
   end
 
   def pitch(conn, _) do
-    render conn, "pitch.html", layout: {Extra.LayoutView, "public.html"}
+    render conn, "pitch.html", layout: {Extra.LayoutView, "marketing.html"}
   end
 end

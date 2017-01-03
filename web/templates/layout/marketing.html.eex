@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Extra automates social media marketing by reposting evergreen content on a smart schedule created by engagement analytics.">
+
+  <title>Extra – Social Media Automation Software That Saves You Time</title>
+  <link rel="stylesheet" href="<%= static_url(@conn, "/css/marketing.css") %>">
+  <%= render "analytics.html" %>
+</head>
+
+<body class="<%= body_class_name(@conn) %>">
+  <header class="site-header">
+    <div class="container">
+      <nav>
+        <%= link "Login", to: session_path(@conn, :new), class: "site-header_a" %>
+      </nav>
+    </div>
+  </header>
+
+  <main role="main">
+    <%= render @view_module, @view_template, assigns %>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <section>
+        © 2017 Extra Automation Inc.
+        <!-- Extra is
+        <a href="https://twitter.com/matthewpearse">Matthew</a> 👻 and
+        <a href="https://twitter.com/liamsarsfield">Liam</a> 🐤.
+        -->
+      </section>
+
+      <nav>
+        <%= link "Contact", to: "#" %>
+        <%= link "Privacy Policy", to: "#" %>
+      </nav>
+    </div>
+  </footer>
+  <script src="<%= static_url(@conn, "/js/marketing.js") %>" async></script>
+</body>
+</html>

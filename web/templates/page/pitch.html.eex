@@ -1,4 +1,4 @@
-<h2>
+<h2 class="header-quote">
   Social media is only a small part of what I do, and it’s constantly pulling me
   away from higher-value tasks.
 </h2>
@@ -9,7 +9,7 @@
   water.
 </p>
 
-<h3>It's also hard to optimize:</h3>
+<h4>It's also hard to optimize:</h4>
 
 <ul>
   <li>
@@ -28,7 +28,7 @@
   </li>
   <li>
     You worry about investing too much time into a particular piece of content
-    because you're afraid nobody is going ot see it. But the only way to be
+    because you're afraid nobody is going to see it. But the only way to be
     effective with content marketing is to produce high-quality content.
   </li>
   <li>
@@ -44,7 +44,7 @@
   But they aren't as difficult to solve as you might imagine.
 </p>
 
-<h3>What if:</h3>
+<h4>What if:</h4>
 
 <ul>
   <li>
@@ -65,7 +65,7 @@
   </li>
 </ul>
 
-<h3>That would mean:</h3>
+<h4>That would mean:</h4>
 
 <ul>
   <li>
@@ -107,7 +107,7 @@
 </section>
 
 <section>
-  <h3>Does reposting content meaningfully increase traffic?</h3>
+  <h4>Does reposting content meaningfully increase traffic?</h4>
 
   <p>
     Reposting content has been shown to substantially increase engagement and
@@ -123,7 +123,7 @@
 </section>
 
 <section>
-  <h3>Extra allows you to:</h3>
+  <h4>Extra allows you to:</h4>
 
   <ul>
     <li>
@@ -148,10 +148,4 @@
 
     <button>Subscribe</button>
   </form>
-
-  <p class="sub-text">
-    Extra is
-    <a href="https://twitter.com/matthewpearse">Matthew</a> 👻 and
-    <a href="https://twitter.com/liamsarsfield">Liam</a> 🐤.
-  </p>
 </section>
