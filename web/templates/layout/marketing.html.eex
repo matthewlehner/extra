@@ -26,7 +26,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <section>
+      <section class="site-footer__copyright">
         © 2017 Extra Automation Inc.
         <!-- Extra is
         <a href="https://twitter.com/matthewpearse">Matthew</a> 👻 and
@@ -34,7 +34,7 @@
         -->
       </section>
 
-      <nav>
+      <nav class="site-footer__links">
         <%= link "Contact", to: "#" %>
         <%= link "Privacy Policy", to: "#" %>
       </nav>

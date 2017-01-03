@@ -87,10 +87,10 @@
 </ul>
 
 <section>
-  <figure>
-    <p>But that's a complete fantasy, right?</p>
-    <p>Nope! Not with <em>Extra</em>🍻.</p>
-  </figure>
+  <div>
+    <p class="speech-bubble speech-bubble__from-them">But that's a complete fantasy, right?</p>
+    <p class="speech-bubble speech-bubble__from-us">Nope! Not with <em>Extra</em>🍻.</p>
+  </div>
 
   <p>
     <strong>Extra</strong> is a social media automation tool that aims to limit
