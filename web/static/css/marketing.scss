@@ -1,9 +1,10 @@
 $base-font-color: #191919;
-$base-font-family: Georgia, serif;
+$base-font-family: "Tiempos Text", Georgia, serif;
 $base-font-size: 15px;
 $base-line-height: 1.6;
 $action-color: #9041ad;
 
+@import "modules/tiempos-text";
 @import "modules/variables";
 @import "partials/base";
 
