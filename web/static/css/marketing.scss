@@ -2,14 +2,24 @@ $base-font-color: #191919;
 $base-font-family: Georgia, serif;
 $base-font-size: 15px;
 $base-line-height: 1.6;
+$action-color: #9041ad;
 
 @import "modules/variables";
 @import "partials/base";
 
 main {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 35rem;
+  background: $white;
+  box-shadow: 0 5px 4px -4px transparentize($black, 0.68);
+  margin-bottom: 5rem;
+  padding-bottom: 5rem;
+  position: relative;
+  z-index: 2;
+
+  section {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 35rem;
+  }
 }
 
 h4 {
@@ -28,18 +38,19 @@ li {
   margin-bottom: 1em;
   text-align: center;
 
-  // &::before {
-  //   content: "“";
-  // }
-
   &::after {
     border-bottom: 2px solid $gray-lighter;
-    content: " ";
+    content: "";
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-top: 2rem;
     width: 2.6rem;
+  }
+
+  svg {
+    display: block;
+    margin: 1rem auto;
   }
 }
 
@@ -48,31 +59,39 @@ li {
   text-align: right;
 }
 
-.site-header_a {
+.button-style__a {
   border: $base-border;
   border-radius: $base-spacing;
   box-shadow: 0 1px 4px 0 lighten($gray-lighter, 4%);
   display: inline-block;
   font-weight: bold;
   line-height: 2.8rem;
+  padding: 0;
   text-align: center;
   text-decoration: none;
   width: 7rem;
 }
 
 .site-footer {
-  background-image: $extra-gradient;
-  box-shadow: inset 0 1px 4px 0 transparentize($black, .68);
+  $extra-gradient-start: $midnight-blue;
+  $extra-gradient-end: $deep-lilac;
+  background-image: linear-gradient(to right, $extra-gradient-start 5%, $extra-gradient-end);
+  bottom: 0;
   color: $white;
-  margin-top: 20rem;
+  height: 5rem;
   padding: 1.25rem;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
 
   :any-link {
     color: $white;
   }
 
   .container {
+    align-items: center;
     display: flex;
+    height: 100%;
   }
 
   &__copyright {
@@ -102,8 +121,8 @@ li {
     border-radius: 0.8rem;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
     font-size: 0.94rem;
-    padding: 0.5em 1em;
     margin: 0.5rem 0;
+    padding: 0.5em 1em;
     position: relative;
 
     &::before {
@@ -163,5 +182,17 @@ li {
     color: $action-color;
     font-style: normal;
     font-weight: bold;
+  }
+}
+
+.fancy-list {
+  padding-left: 1.6rem;
+
+  &_star {
+    list-style-image: url("/images/star.svg");
+  }
+
+  &_checkmark {
+    list-style-image: url("/images/checkmark.svg");
   }
 }

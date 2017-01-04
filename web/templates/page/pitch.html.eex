@@ -1,90 +1,107 @@
-<h2 class="header-quote">
-  Social media is only a small part of what I do, and it’s constantly pulling me
-  away from higher-value tasks.
-</h2>
+<section>
+  <h2 class="header-quote">
+    <svg width="31px" height="22px" viewBox="0 0 31 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1">
+          <stop stop-color="#3023AE" offset="0%"></stop>
+          <stop stop-color="#C96DD8" offset="100%"></stop>
+        </linearGradient>
+      </defs>
+      <path d="M6.6475,9.4 C7.2975,6.215 9.5725,5.175 14.0575,4.785 L14.0575,0.95 C4.8925,1.21 0.4725,5.565 0.4725,12.975 C0.4725,18.435 3.2675,21.23 7.5575,21.23 C11.5875,21.23 13.7975,18.5 13.7975,15.315 C13.7975,12.065 12.2375,9.985 9.4425,9.4 L6.6475,9.4 Z M23.3525,9.4 C24.0025,6.215 26.2775,5.175 30.7625,4.785 L30.7625,0.95 C21.5975,1.21 17.1775,5.565 17.1775,12.975 C17.1775,18.435 19.9725,21.23 24.2625,21.23 C28.2925,21.23 30.5025,18.5 30.5025,15.315 C30.5025,12.065 28.9425,9.985 26.1475,9.4 L23.3525,9.4 Z" id="“" stroke="none" fill="url(#linearGradient-1)" fill-rule="evenodd"></path>
+    </svg>
+    Social media is only a small part of what I do, and it’s constantly pulling me
+    away from higher-value tasks.
+  </h2>
 
-<p>
-  SOUND FAMILIAR? – It's something we hear from marketers a lot. Social media
-  management takes a lot of time. It's easy to feel like you're only treading
-  water.
-</p>
+  <p>
+    SOUND FAMILIAR? – It's something we hear from marketers a lot. Social media
+    management takes a lot of time. It's easy to feel like you're only treading
+    water.
+  </p>
+</section>
 
-<h4>It's also hard to optimize:</h4>
+<section>
+  <h4>It's also hard to optimize:</h4>
 
-<ul>
-  <li>
-    You spend hours every week trawling for new content to post. At least some
-    of these hours could have been better spent on tasks with a higher ROI.
-  </li>
-  <li>
-    You've produced a lot of posts and podcasts over teh past few years, but
-    they don't seem to drive much traffic. You wonder if it's because nobody saw
-    them, or because you did something wrong.
-  </li>
-  <li>
-    You've tried being in constant social media contact, but it seems to require
-    more work than it's worth. You see larger brands doing it, but think they
-    must have staff, or a secret workflow to make it easier.
-  </li>
-  <li>
-    You worry about investing too much time into a particular piece of content
-    because you're afraid nobody is going to see it. But the only way to be
-    effective with content marketing is to produce high-quality content.
-  </li>
-  <li>
-    You're finding content increasingly expensive to produce (video, in
-    particular, seems way outside your budget) and now it seems that you have to
-    pay for distribution. You wonder if there's a viable way to distribute
-    content across social networks for free anymore.
-  </li>
-</ul>
+  <ul class="fancy-list fancy-list_star">
+    <li>
+      You spend hours every week trawling for new content to post. At least some
+      of these hours could have been better spent on tasks with a higher ROI.
+    </li>
+    <li>
+      You've produced a lot of posts and podcasts over teh past few years, but
+      they don't seem to drive much traffic. You wonder if it's because nobody saw
+      them, or because you did something wrong.
+    </li>
+    <li>
+      You've tried being in constant social media contact, but it seems to require
+      more work than it's worth. You see larger brands doing it, but think they
+      must have staff, or a secret workflow to make it easier.
+    </li>
+    <li>
+      You worry about investing too much time into a particular piece of content
+      because you're afraid nobody is going to see it. But the only way to be
+      effective with content marketing is to produce high-quality content.
+    </li>
+    <li>
+      You're finding content increasingly expensive to produce (video, in
+      particular, seems way outside your budget) and now it seems that you have to
+      pay for distribution. You wonder if there's a viable way to distribute
+      content across social networks for free anymore.
+    </li>
+  </ul>
 
-<p>
-  These are problems every digital marketer has to grapple with <em>in 2016.</em>
-  But they aren't as difficult to solve as you might imagine.
-</p>
+  <p>
+    These are problems every digital marketer has to grapple with <em>in 2016.</em>
+    But they aren't as difficult to solve as you might imagine.
+  </p>
+</section>
 
-<h4>What if:</h4>
+<section>
+  <h4>What if:</h4>
 
-<ul>
-  <li>
-    You didn't have to spend more than an hour or two every week adding new
-    content to your social media accounts.
-  </li>
-  <li>
-    Your work could "stack" or compound, meaning an hour spent on social media
-    this month would mean an hour saved next month.
-  </li>
-  <li>
-    You had the perfect editorial calendar, generated based on actual customer
-    engagement patterns.
-  </li>
-  <li>
-    You could automatically post, according to that editorial calendar, at the
-    perfect time of day, every day.
-  </li>
-</ul>
+  <ul class="fancy-list fancy-list_star">
+    <li>
+      You didn't have to spend more than an hour or two every week adding new
+      content to your social media accounts.
+    </li>
+    <li>
+      Your work could "stack" or compound, meaning an hour spent on social media
+      this month would mean an hour saved next month.
+    </li>
+    <li>
+      You had the perfect editorial calendar, generated based on actual customer
+      engagement patterns.
+    </li>
+    <li>
+      You could automatically post, according to that editorial calendar, at the
+      perfect time of day, every day.
+    </li>
+  </ul>
+</section>
 
-<h4>That would mean:</h4>
+<section>
+  <h4>That would mean:</h4>
 
-<ul>
-  <li>
-    You could get off the hamster wheel of collecting, scheduling, posting, and
-    reposting content.
-  </li>
-  <li>
-    You could focus on producing your own, higher-value content (like video) or
-    marketing tasks.
-  </li>
-  <li>
-    You'd be able to maintain a consistent presence across all platforms without
-    having to hire a lacky.
-  </li>
-  <li>
-    You'd be able to drive some traffic to your site without having to sponsor
-    every single post.
-  </li>
-</ul>
+  <ul class="fancy-list fancy-list_star">
+    <li>
+      You could get off the hamster wheel of collecting, scheduling, posting, and
+      reposting content.
+    </li>
+    <li>
+      You could focus on producing your own, higher-value content (like video) or
+      marketing tasks.
+    </li>
+    <li>
+      You'd be able to maintain a consistent presence across all platforms without
+      having to hire a lacky.
+    </li>
+    <li>
+      You'd be able to drive some traffic to your site without having to sponsor
+      every single post.
+    </li>
+  </ul>
+</section>
 
 <section>
   <div class="speech-bubbles">
@@ -125,7 +142,7 @@
 <section>
   <h4>Extra allows you to:</h4>
 
-  <ul>
+  <ul class="fancy-list fancy-list_checkmark">
     <li>
       Automate posting and reposting to Facebook and Twitter
     </li>
@@ -145,7 +162,6 @@
   <form>
     <label>Email address</label>
     <input type="email">
-
-    <button>Subscribe</button>
+    <button class="button-style__a">Subscribe</button>
   </form>
 </section>
