@@ -12,17 +12,19 @@
 </head>
 
 <body class="<%= body_class_name(@conn) %>">
-  <header class="site-header">
-    <div class="container">
-      <nav>
-        <%= link "Login", to: session_path(@conn, :new), class: "button-style__a" %>
-      </nav>
-    </div>
-  </header>
+  <div class="page-wrap">
+    <header class="site-header">
+      <div class="container">
+        <nav>
+          <%= link "Login", to: session_path(@conn, :new), class: "button-style__a" %>
+        </nav>
+      </div>
+    </header>
 
-  <main role="main">
-    <%= render @view_module, @view_template, assigns %>
-  </main>
+    <main role="main">
+      <%= render @view_module, @view_template, assigns %>
+    </main>
+  </div>
 
   <footer class="site-footer">
     <div class="container">

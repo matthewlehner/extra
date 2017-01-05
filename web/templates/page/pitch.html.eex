@@ -1,18 +1,18 @@
-<section>
-  <h2 class="header-quote">
-    <svg width="31px" height="22px" viewBox="0 0 31 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <defs>
-        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1">
-          <stop stop-color="#3023AE" offset="0%"></stop>
-          <stop stop-color="#C96DD8" offset="100%"></stop>
-        </linearGradient>
-      </defs>
-      <path d="M6.6475,9.4 C7.2975,6.215 9.5725,5.175 14.0575,4.785 L14.0575,0.95 C4.8925,1.21 0.4725,5.565 0.4725,12.975 C0.4725,18.435 3.2675,21.23 7.5575,21.23 C11.5875,21.23 13.7975,18.5 13.7975,15.315 C13.7975,12.065 12.2375,9.985 9.4425,9.4 L6.6475,9.4 Z M23.3525,9.4 C24.0025,6.215 26.2775,5.175 30.7625,4.785 L30.7625,0.95 C21.5975,1.21 17.1775,5.565 17.1775,12.975 C17.1775,18.435 19.9725,21.23 24.2625,21.23 C28.2925,21.23 30.5025,18.5 30.5025,15.315 C30.5025,12.065 28.9425,9.985 26.1475,9.4 L23.3525,9.4 Z" id="“" stroke="none" fill="url(#linearGradient-1)" fill-rule="evenodd"></path>
-    </svg>
-    Social media is only a small part of what I do, and it’s constantly pulling me
-    away from higher-value tasks.
-  </h2>
+<h2 class="header-quote">
+  <svg width="31px" height="22px" viewBox="0 0 31 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+      <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1">
+        <stop stop-color="#3023AE" offset="0%"></stop>
+        <stop stop-color="#C96DD8" offset="100%"></stop>
+      </linearGradient>
+    </defs>
+    <path d="M6.6475,9.4 C7.2975,6.215 9.5725,5.175 14.0575,4.785 L14.0575,0.95 C4.8925,1.21 0.4725,5.565 0.4725,12.975 C0.4725,18.435 3.2675,21.23 7.5575,21.23 C11.5875,21.23 13.7975,18.5 13.7975,15.315 C13.7975,12.065 12.2375,9.985 9.4425,9.4 L6.6475,9.4 Z M23.3525,9.4 C24.0025,6.215 26.2775,5.175 30.7625,4.785 L30.7625,0.95 C21.5975,1.21 17.1775,5.565 17.1775,12.975 C17.1775,18.435 19.9725,21.23 24.2625,21.23 C28.2925,21.23 30.5025,18.5 30.5025,15.315 C30.5025,12.065 28.9425,9.985 26.1475,9.4 L23.3525,9.4 Z" id="“" stroke="none" fill="url(#linearGradient-1)" fill-rule="evenodd"></path>
+  </svg>
+  Social media is only a small part of what I do, and it’s constantly pulling me
+  away from higher-value tasks.
+</h2>
 
+<section>
   <p>
     SOUND FAMILIAR? – It's something we hear from marketers a lot. Social media
     management takes a lot of time. It's easy to feel like you're only treading
