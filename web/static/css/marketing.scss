@@ -4,7 +4,9 @@ $base-font-color: #191919;
 $base-font-family: "Tiempos Text", Georgia, serif;
 $base-font-size: 15px;
 $base-line-height: 1.6;
-$action-color: #9041ad;
+$action-color: $muted-lilac;
+$base-border-color: $solitude;
+$input-border: 1px solid $gray-lighter;
 
 @import "modules/tiempos-text";
 @import "modules/variables";
@@ -238,4 +240,72 @@ li {
     right: 0;
     text-decoration: none;
   }
+}
+
+.impressions-graph {
+  display: flex;
+  flex-direction: column;
+  font-family: $system-font-stack;
+  font-size: 0.75rem;
+  padding-bottom: 1rem;
+
+  &__caption {
+    font-weight: bold;
+    line-height: 1.5rem;
+    margin-bottom: 0.625rem;
+    margin-top: 1rem;
+  }
+
+  &__container {
+    border: $base-border;
+    border-radius: 0.5rem;
+    display: flex;
+    flex: 1;
+    padding: 1.25rem;
+  }
+
+  &__column {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    font-size: 0.8125rem;
+    text-align: center;
+  }
+
+  &__label {
+    color: $gray-light;
+    margin-top: 0.5rem;
+    order: 2;
+  }
+
+  &__value {
+    border-radius: 0.25rem;
+    color: $white;
+    flex: 1;
+    margin-left: auto;
+    margin-right: auto;
+    order: 1;
+    overflow: hidden;
+    width: 3.25rem;
+  }
+
+  &__bar {
+    background-image: linear-gradient(to bottom, $extra-gradient-start, $extra-gradient-end);
+    height: 100%;
+    padding-top: 0.5rem;
+  }
+}
+
+.two-columns {
+  display: flex;
+}
+
+.column {
+  flex: 1;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid $base-border-color;
+  max-width: 35rem;
 }

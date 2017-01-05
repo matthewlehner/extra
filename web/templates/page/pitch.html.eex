@@ -123,21 +123,55 @@
   </p>
 </section>
 
-<section>
-  <h4>Does reposting content meaningfully increase traffic?</h4>
+<hr>
 
-  <p>
-    Reposting content has been shown to substantially increase engagement and
-    impressions. Reposts degrade at an average rate of 30%. A post recycled by
-    Extra twice is likely to receive <strong>double the impressions</strong> of
-    what it would have received originally. That's enough to make or break your
-    next social media campaign.
-  </p>
+<section class="two-columns">
+  <div class="column">
+    <h4>Does reposting content meaningfully increase traffic?</h4>
 
-  <figure>
-    <figcaption>Total retweets per repost</figcaption>
+    <p>
+      Reposting content has been shown to substantially increase engagement and
+      impressions. Reposts degrade at an average rate of 30%. A post recycled by
+      Extra twice is likely to receive <strong>double the impressions</strong> of
+      what it would have received originally. That's enough to make or break your
+      next social media campaign.
+    </p>
+  </div>
+
+  <figure class="impressions-graph column">
+    <figcaption class="impressions-graph__caption">
+      Avg. number of retweets per repost
+    </figcaption>
+    <div class="impressions-graph__container">
+      <div class="impressions-graph__column">
+        <div class="impressions-graph__label">1</div>
+        <div class="impressions-graph__value">
+          <div class="impressions-graph__bar">
+            4.9
+          </div>
+        </div>
+      </div>
+      <div class="impressions-graph__column">
+        <div class="impressions-graph__label">2</div>
+        <div class="impressions-graph__value">
+          <div class="impressions-graph__bar">
+            8.6
+          </div>
+        </div>
+      </div>
+      <div class="impressions-graph__column">
+        <div class="impressions-graph__label">3</div>
+        <div class="impressions-graph__value">
+          <div class="impressions-graph__bar">
+            11.3
+          </div>
+        </div>
+      </div>
+    </div>
   </figure>
 </section>
+
+<hr>
 
 <section>
   <h4>Extra allows you to:</h4>
@@ -166,3 +200,5 @@
     <!-- <p>We will never spam you! Unsubscribe at any time.</p> -->
   </form>
 </section>
+
+<hr>
