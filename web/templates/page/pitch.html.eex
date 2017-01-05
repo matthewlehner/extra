@@ -159,9 +159,10 @@
     access by entering your information below.
   </p>
 
-  <form>
-    <label>Email address</label>
-    <input type="email">
-    <button class="button-style__a">Subscribe</button>
+  <form class="beta-signup">
+    <label class="beta-signup_label">Email address</label>
+    <input class="beta-signup_input" type="email" placeholder="Email address">
+    <button class="beta-signup_button">Subscribe</button>
+    <!-- <p>We will never spam you! Unsubscribe at any time.</p> -->
   </form>
 </section>

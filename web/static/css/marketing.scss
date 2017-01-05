@@ -62,15 +62,13 @@ li {
 
 .button-style__a {
   border: $base-border;
-  border-radius: $base-spacing;
+  border-radius: 2rem;
   box-shadow: 0 1px 4px 0 lighten($gray-lighter, 4%);
   display: inline-block;
+  font-size: 0.875rem;
   font-weight: bold;
-  line-height: 2.8rem;
-  padding: 0;
-  text-align: center;
+  padding: 0.5rem 2rem calc(0.5rem + 1px);
   text-decoration: none;
-  width: 7rem;
 }
 
 .site-footer {
@@ -195,5 +193,40 @@ li {
 
   &_checkmark {
     list-style-image: url("/images/checkmark.svg");
+  }
+}
+
+.beta-signup {
+  position: relative;
+
+  &_label {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  [type=email] {
+    border-color: $gray-lighter;
+    border-radius: $base-spacing;
+    font-size: 14px;
+    padding: 0.75em 1.4rem;
+  }
+
+  &_button {
+    border: $base-border;
+    border-radius: $base-spacing;
+    bottom: 0;
+    box-shadow: 0 1px 4px 0 lighten($gray-lighter, 4%);
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0.75em 2rem;
+    position: absolute;
+    right: 0;
+    text-decoration: none;
   }
 }

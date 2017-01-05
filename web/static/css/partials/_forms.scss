@@ -18,6 +18,7 @@ textarea {
   background-color: $base-background-color;
   border: $input-border;
   border-radius: $base-border-radius;
+  font-family: $base-font-family;
   font-size: 1rem;
   padding: $small-spacing $small-spacing calc(#{$small-spacing} + 1px);
   transition: border-color $base-duration $base-timing;
