@@ -86,7 +86,7 @@
     font-size: $smaller-font-size;
     left: 0.75rem;
     position: absolute;
-    top: 0.75rem;
+    top: 0.95rem;
     transition: color $base-duration $base-timing,
                 opacity $base-duration $base-timing;
     z-index: -1; // Puts the label behind the autofill background color
