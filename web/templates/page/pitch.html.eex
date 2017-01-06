@@ -146,7 +146,7 @@
       <div class="impressions-graph__column">
         <div class="impressions-graph__label">1</div>
         <div class="impressions-graph__value">
-          <div class="impressions-graph__bar">
+          <div class="impressions-graph__bar" style="height: 56%">
             4.9
           </div>
         </div>
@@ -154,7 +154,7 @@
       <div class="impressions-graph__column">
         <div class="impressions-graph__label">2</div>
         <div class="impressions-graph__value">
-          <div class="impressions-graph__bar">
+          <div class="impressions-graph__bar" style="height: 76%">
             8.6
           </div>
         </div>
