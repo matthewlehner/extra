@@ -7,6 +7,7 @@ $base-line-height: 1.6;
 $action-color: $muted-lilac;
 $base-border-color: $solitude;
 $input-border: 1px solid $gray-lighter;
+$wrapper-width: 35.375rem;
 
 @import "modules/tiempos-text";
 @import "modules/variables";
@@ -28,7 +29,7 @@ main {
   > section {
     margin-left: auto;
     margin-right: auto;
-    max-width: 35.375rem;
+    max-width: $wrapper-width;
   }
 }
 
@@ -88,6 +89,7 @@ li {
   background-image: linear-gradient(to right, $extra-gradient-start 5%, $extra-gradient-end);
   bottom: 0;
   color: $white;
+  font-size: 0.8125rem;
   height: 5rem;
   padding: 1.25rem;
   position: fixed;
@@ -197,19 +199,43 @@ li {
 }
 
 .fancy-list {
-  padding-left: 1.6rem;
+  list-style-type: none;
+  padding-left: 2.4em;
+
+  li {
+    position: relative;
+
+    &::before {
+      background-position: center;
+      background-repeat: no-repeat;
+      content: "";
+      display: block;
+      height: 1.6em;
+      left: -1.8em;
+      position: absolute;
+      width: 1.6em;
+    }
+  }
 
   &_star {
-    list-style-image: url("/images/star.svg");
+    li {
+      &::before {
+        background-image: url("/images/star.svg");
+      }
+    }
   }
 
   &_checkmark {
-    list-style-image: url("/images/checkmark.svg");
+    li {
+      &::before {
+        background-image: url("/images/checkmark.svg");
+      }
+    }
   }
 }
 
 .beta-signup {
-  position: relative;
+  margin-top: 2rem;
 
   &_label {
     border: 0;
@@ -220,6 +246,10 @@ li {
     padding: 0;
     position: absolute;
     width: 1px;
+  }
+
+  &_form-fields {
+    position: relative;
   }
 
   [type=email] {
@@ -297,11 +327,14 @@ li {
     height: 100%;
     padding-top: 0.5rem;
   }
+
+  p {
+    margin: 1.25rem inherit;
+  }
 }
 
 .two-columns {
   display: flex;
-  margin-top: -1rem;
 }
 
 .column {
@@ -316,5 +349,34 @@ hr {
   border: none;
   border-top: 1px solid $base-border-color;
   margin: 2.5rem auto;
-  max-width: 35rem;
+  max-width: $wrapper-width;
+
+  + .two-columns {
+    margin-top: -1rem;
+  }
+}
+
+.call-to-action {
+  + hr {
+    margin-top: 1.25rem;
+  }
+}
+
+.early-access-screenshots {
+  display: flex;
+  flex-wrap: wrap;
+
+  figure {
+    margin-left: 2%;
+    width: 32%;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.p__muted {
+  color: lighten($gray, 8%);
+  font: 0.8125rem $system-font-stack;
 }

@@ -173,7 +173,7 @@
 
 <hr>
 
-<section>
+<section class="call-to-action">
   <h4>Extra allows you to:</h4>
 
   <ul class="fancy-list fancy-list_checkmark">
@@ -189,16 +189,36 @@
   </ul>
 
   <p>
-    We're currently in private beta. But you're welcome to sign up for early
-    access by entering your information below.
+    Extra is currently in private beta. Get on our early access list below.
   </p>
 
-  <form class="beta-signup">
-    <label class="beta-signup_label">Email address</label>
-    <input class="beta-signup_input" type="email" placeholder="Email address">
-    <button class="beta-signup_button">Subscribe</button>
-    <!-- <p>We will never spam you! Unsubscribe at any time.</p> -->
+  <form action="https://www.getdrip.com/forms/48462088/submissions"
+        method="post" class="beta-signup" data-drip-embedded-form="48462088">
+
+    <label for="fields[email]" class="beta-signup_label">Email address</label>
+
+    <div class="beta-signup_form-fields">
+      <input type="email" name="fields[email]" class="beta-signup_input"
+             placeholder="Email address">
+
+      <button class="beta-signup_button" data-drip-attribute="sign-up-button">
+        Get Early Access
+      </button>
+    </div>
+    <p class="p__muted">We will never spam you. Unsubscribe at any time.</p>
   </form>
 </section>
-
 <hr>
+
+<section class="early-access-screenshots">
+  <figure>
+    <img src="<%= static_path(@conn, "/images/marketing/screenshot1.png") %>">
+  </figure>
+  <figure>
+    <img src="<%= static_path(@conn, "/images/marketing/screenshot2.png") %>">
+  </figure>
+  <figure>
+    <img src="<%= static_path(@conn, "/images/marketing/screenshot3.png") %>">
+  </figure>
+  <p class="p__muted">Early access screenshots</p>
+</section>
