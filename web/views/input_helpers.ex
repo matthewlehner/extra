@@ -9,13 +9,13 @@ defmodule Extra.InputHelpers do
 
     input_opts = Phoenix.HTML.Form.input_validations(form, field)
                  |> Keyword.merge(extend_input_opts(form, field))
-                 |> Keyword.merge(input_opts)
+                 |> Keyword.merge(input_opts())
 
     wrapper_opts = [class: "form-group #{state_class(form, field)} #{presence_class(form, field)}"]
 
     content_tag :div, wrapper_opts do
       input = input(type, form, field, input_opts)
-      label = label(form, field, humanize(field), label_opts)
+      label = label(form, field, humanize(field), label_opts())
       error = Extra.ErrorHelpers.error_tag(form, field) || ""
       [input, error, label]
     end

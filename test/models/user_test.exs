@@ -5,7 +5,6 @@ defmodule Extra.UserTest do
   alias Extra.User
 
   @valid_attrs params_for(:user)
-  @invalid_attrs %{}
 
   describe "User.changeset" do
     test "with valid attributes" do

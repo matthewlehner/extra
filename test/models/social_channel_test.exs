@@ -4,7 +4,6 @@ defmodule Extra.SocialChannelTest do
   alias Extra.SocialChannel
 
   @valid_attrs %{name: "some content", provider: "test", authorization: %{}}
-  @invalid_attrs %{}
 
   test "changeset with valid attributes" do
     errors = errors_on(%SocialChannel{}, @valid_attrs)

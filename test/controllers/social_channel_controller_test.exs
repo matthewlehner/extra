@@ -3,8 +3,6 @@ defmodule Extra.SocialChannelControllerTest do
   import Extra.TestHelper
 
   alias Extra.SocialChannel
-  @valid_attrs %{name: "a great channel."}
-  @invalid_attrs %{}
 
   setup do
     conn = build_conn()
