@@ -16,7 +16,7 @@
     <header class="site-header">
       <div class="container">
         <nav>
-          <%= link "Login", to: session_path(@conn, :new), class: "button-style__a" %>
+          <%= link "Login", to: session_path(@conn, :new), class: "button button-style__a" %>
         </nav>
       </div>
     </header>
