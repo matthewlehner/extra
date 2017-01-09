@@ -42,10 +42,10 @@ defmodule Extra.Mixfile do
      {:cowboy, "~> 1.0"},
      {:guardian, "~> 0.14.0"},
      {:comeonin, "~> 3.0"},
-     {:ueberauth_shopify, "~> 0.1.1"},
+     {:ueberauth_shopify, github: "matthewlehner/ueberauth_shopify", tag: "fix-compiler-warnings"},
      {:ueberauth_twitter, "~> 0.2"},
      {:oauth, github: "tim/erlang-oauth"},
-     {:ueberauth_facebook, github: "matthewlehner/ueberauth_facebook", tag: "with-oauth2-0.8.0" },
+     {:ueberauth_facebook, github: "matthewlehner/ueberauth_facebook", tag: "elixir-14-deprecations" },
      {:ueberauth_identity, "~> 0.2.0"},
      {:ecto_enum, "~> 0.3.0"},
 
