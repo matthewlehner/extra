@@ -1,7 +1,7 @@
-@import "modules/colors";
 @import "modules/neue-haas-unica";
-@import "modules/variables";
+@import "modules/colors";
 $base-font-color: lighten($gray-dark, 11%);
+@import "modules/variables";
 
 @import "modules/tab-mixins";
 @import "partials/base";
