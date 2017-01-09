@@ -5,6 +5,11 @@
 @import "themes/public";
 @import "partials/login-page";
 
+.extra-logo {
+  height: 2.875rem;
+  width: 2.875rem;
+}
+
 .page-index {
   background: no-repeat 45.875rem 8.125rem / 1023px 968px url("/images/extra-sneak-peak@2x.png");
 

@@ -14,7 +14,7 @@
 
   <body>
     <section class="sidebar">
-      <img src="<%= static_url(@conn, "/images/extra-logo.svg") %>" class="logo">
+      <img src="<%= static_url(@conn, "/images/extra-logo.svg") %>" class="extra-logo">
       <nav class="site-nav">
         <%= render "sidebar.html", conn: @conn, current_user: @current_user %>
       </nav>
