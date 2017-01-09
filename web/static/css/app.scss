@@ -6,7 +6,7 @@ $base-font-color: lighten($gray-dark, 11%);
 @import "modules/tab-mixins";
 @import "partials/base";
 @import "themes/app";
-@import "partials/side-nav";
+@import "partials/sidebar";
 @import "partials/filter-list";
 @import "partials/posts-list";
 @import "partials/toggle-switch";
