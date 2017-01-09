@@ -16,9 +16,10 @@ defmodule Extra.SessionController do
         |> put_flash(:info, "Welcome back")
         |> redirect(to: dashboard_path(conn, :index))
       {:error, reason, conn} ->
+        changeset = User.changeset(%User{}, %{email: email})
         conn
         |> put_flash(:error, reason)
-        |> render("new.html")
+        |> render("new.html", changeset: changeset)
     end
   end
 
