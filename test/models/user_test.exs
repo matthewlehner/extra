@@ -1,6 +1,5 @@
 defmodule Extra.UserTest do
   use Extra.ModelCase
-  import Extra.Factory
 
   alias Extra.User
 
