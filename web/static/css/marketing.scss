@@ -9,6 +9,11 @@ $base-border-color: $solitude;
 $input-border: 1px solid $gray-lighter;
 $wrapper-width: 35.375rem;
 
+$footer-line-height: 1.25rem;
+$footer-font-size: 0.8125rem;
+$footer-vertical-padding: 1.375rem;
+$footer-height: (2 * $footer-vertical-padding) + $footer-line-height;
+
 @import "modules/tiempos-text";
 @import "modules/variables";
 @import "partials/base";
@@ -19,8 +24,9 @@ $wrapper-width: 35.375rem;
   background-repeat: no-repeat;
   background-position: top center;
   box-shadow: 0 5px 4px -4px transparentize($black, 0.68);
-  margin-bottom: 5rem;
-  padding-bottom: 5rem;
+  margin-bottom: $footer-height;
+  padding: 0 0.625rem 10rem;
+  padding-bottom: 10rem;
   position: relative;
   z-index: 2;
 }
@@ -46,18 +52,18 @@ li {
   color: $gray-darkest;
   font-size: 1.5626rem;
   line-height: 1.44;
-  margin: 5.5rem auto 1em;
+  margin: 3rem auto 1em;
   max-width: 38rem;
   text-align: center;
 
   &::after {
-    border-bottom: 2px solid $gray-lighter;
+    border-bottom: 2px solid lighten($gray-lighter, 7%);
     content: "";
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-top: 2rem;
-    width: 2.6rem;
+    width: 1.8rem;
   }
 
   svg {
@@ -89,9 +95,9 @@ li {
   background-image: linear-gradient(to right, $extra-gradient-start 5%, $extra-gradient-end);
   bottom: 0;
   color: $white;
-  font-size: 0.8125rem;
-  height: 5rem;
-  padding: 1.25rem;
+  font-size: $footer-font-size;
+  line-height: $footer-line-height;
+  padding: $footer-vertical-padding 0;
   position: fixed;
   width: 100%;
   z-index: 1;
@@ -199,8 +205,10 @@ li {
 }
 
 .fancy-list {
+  $left-indent: 1.75rem;
+
   list-style-type: none;
-  padding-left: 2.4em;
+  padding-left: $left-indent;
 
   li {
     position: relative;
@@ -210,10 +218,8 @@ li {
       background-repeat: no-repeat;
       content: "";
       display: block;
-      height: 1.6em;
-      left: -1.8em;
+      left: -$left-indent;
       position: absolute;
-      width: 1.6em;
     }
   }
 
@@ -221,6 +227,8 @@ li {
     li {
       &::before {
         background-image: url("/images/star.svg");
+        height: 1.6rem;
+        width: 0.75rem;
       }
     }
   }
@@ -229,6 +237,8 @@ li {
     li {
       &::before {
         background-image: url("/images/checkmark.svg");
+        height: 1.6em;
+        width: 1.6em;
       }
     }
   }
@@ -356,12 +366,6 @@ hr {
   }
 }
 
-.call-to-action {
-  + hr {
-    margin-top: 1.25rem;
-  }
-}
-
 .early-access-screenshots {
   display: flex;
   flex-wrap: wrap;
@@ -379,4 +383,9 @@ hr {
 .p__muted {
   color: lighten($gray, 8%);
   font: 0.8125rem $system-font-stack;
+}
+
+.small-caps {
+  font-feature-settings: "c2sc", "smcp";
+  letter-spacing: 0.05em;
 }
