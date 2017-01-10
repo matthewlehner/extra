@@ -1,18 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
-    <title>Group 10</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="1.0" stroke="none" stroke-width="1" fill-rule="evenodd" stroke-linecap="square">
-        <g id="1@2x" transform="translate(1, 1)">
-            <g id="Group-10">
-                <circle id="Oval-4" cx="6" cy="6" r="6" fill="none"></circle>
-                <g id="Group-7" transform="translate(3.428571, 3.428571)">
-                    <path d="M2.57142857,7.13714802e-17 L2.57142857,5.14285714" id="Line"></path>
-                    <path d="M0,2.57142857 L5.14285714,2.57142857" id="Line"></path>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg width="26" height="26" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg"><title>add-new</title><g fill-rule="evenodd"><path d="M13.002 26C20.18 26 26 20.18 26 13.002 26 5.822 20.18.003 13.002.003 5.822.003.003 5.823.003 13.002S5.823 26 13.002 26zM13 24c6.075 0 11-4.925 11-11S19.075 2 13 2 2 6.925 2 13s4.925 11 11 11z"/><path d="M12.023 12.023V7H14v5h5v2h-5v5h-1.977L12 14H7v-1.977z"/></g></svg>
