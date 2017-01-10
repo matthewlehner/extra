@@ -8,21 +8,20 @@
   :any-link {
     color: rgba($action-color, 0.8);
     fill: rgba($action-color, 0.8);
-    stroke: rgba($action-color, 0.8);
     text-decoration: none;
 
     &.active {
       color: $action-color;
       fill: $action-color;
-      stroke: $action-color;
       font-weight: bold;
     }
   }
 
   .icon {
-    height: 12px;
-    margin-right: 10px;
-    width: 12px;
+    height: 0.75rem;
+    margin-bottom: -0.0625rem;
+    margin-right: 0.625rem;
+    width: 0.75rem;
   }
 
   .extra-logo {
