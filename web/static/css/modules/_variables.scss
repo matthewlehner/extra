@@ -39,6 +39,11 @@ $base-duration: 200ms;
 $base-timing: ease-out;
 
 // Breakpoints
+$screen-sm-min: "min-width: 48rem";
+$screen-md-min: "min-width: 62rem";
+$screen-lg-min: "min-width: 75rem";
+
+// Deprecated Breakpoints
 $small-screen: "max-width: 25rem";
 $medium-screen: "max-width: 56.25rem";
 $large-screen: "max-width: 71.875rem";
