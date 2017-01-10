@@ -126,7 +126,7 @@ li {
   }
 
   &__links {
-    a {
+    a:not(:first-child) {
       margin-left: 2.2rem;
     }
   }
