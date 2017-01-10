@@ -299,16 +299,17 @@ li {
 }
 
 .impressions-graph {
-  display: flex;
-  flex-direction: column;
   font-family: $system-font-stack;
   font-size: 0.75rem;
   min-height: 16rem;
 
   @media($screen-sm-min) {
-    flex: 1;
     margin-left: 3.125rem;
     padding-bottom: 1rem;
+  }
+
+  svg {
+    max-width: 100%;
   }
 
   &__caption {
@@ -319,43 +320,15 @@ li {
   }
 
   &__container {
-    border: $base-border;
-    border-radius: 0.5rem;
-    display: flex;
-    flex: 1;
-    padding: 1.125rem;
-  }
-
-  &__column {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    font-size: 0.8125rem;
-    text-align: center;
+    stroke: $base-border-color;
   }
 
   &__label {
-    color: $gray-light;
-    margin-top: 0.5rem;
-    order: 2;
+    fill: $gray-light;
   }
 
   &__value {
-    align-items: flex-end;
-    color: $white;
-    display: flex;
-    flex: 1;
-    margin: 0 auto;
-    vertical-align: bottom;
-    width: 3.25rem;
-  }
-
-  &__bar {
-    background-image: linear-gradient(to bottom, $extra-gradient-start, $extra-gradient-end);
-    border-radius: 0.25rem;
-    flex: 1;
-    height: 100%;
-    padding-top: 0.5rem;
+    fill: $white;
   }
 
   p {
