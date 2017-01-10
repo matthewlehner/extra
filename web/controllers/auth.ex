@@ -13,8 +13,11 @@ defmodule Extra.Auth do
 
   def call(conn, _) do
     user = Guardian.Plug.current_resource(conn)
+
     if user do
       assign(conn, :current_user, user)
+    else
+      conn
     end
   end
 
