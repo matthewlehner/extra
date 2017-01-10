@@ -8,4 +8,14 @@ defmodule Extra.Factory do
       password: "some long password string"
     }
   end
+
+  def authorization_factory do
+    %Extra.Authorization{
+      expires_at: 42,
+      provider: "twitter",
+      refresh_token: "some content",
+      token: "some content",
+      uid: "some content"
+    }
+  end
 end

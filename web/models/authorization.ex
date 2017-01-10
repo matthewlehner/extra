@@ -20,5 +20,6 @@ defmodule Extra.Authorization do
     struct
     |> cast(params, [:provider, :uid, :token, :refresh_token, :expires_at])
     |> validate_required([:provider, :uid, :token])
+    |> unique_constraint(:uid, name: :authorizations_provider_uid_index)
   end
 end
