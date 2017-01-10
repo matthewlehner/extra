@@ -13,7 +13,9 @@ defmodule Extra.Auth do
 
   def call(conn, _) do
     user = Guardian.Plug.current_resource(conn)
-    assign(conn, :current_user, user)
+    if user do
+      assign(conn, :current_user, user)
+    end
   end
 
   def login_by_email_and_pass(conn, email, given_pass, opts) do

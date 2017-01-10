@@ -17,11 +17,11 @@ defmodule Extra.Router do
   pipeline :browser_session do
     plug Guardian.Plug.VerifySession
     plug Guardian.Plug.LoadResource
+    plug Extra.Auth
   end
 
   pipeline :require_login do
     plug Guardian.Plug.EnsureAuthenticated
-    plug Extra.Auth
     plug Extra.LoadSidebarEntities, repo: Extra.Repo
   end
 
