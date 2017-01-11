@@ -13,7 +13,7 @@ button {
   font: bold #{$button-font-size}/#{1.5} $base-font-family;
   padding: 0.5rem 1.25rem 0.625rem;
   text-decoration: none;
-  transition: all $base-duration $base-timing;
+  transition: border-color $base-duration $base-timing;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
