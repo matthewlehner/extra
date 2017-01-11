@@ -7,8 +7,8 @@
 import errorMessageFor from "./forms/error-messages";
 import { whichAnimationEvent } from "./which-transition-event";
 
+const inputClass = "form__control"
 const dirtyClass = "dirty";
-const placeholderShownClass = "input-empty";
 const helpMessage = {
   position: "afterend",
   tagName: "div",
@@ -37,18 +37,8 @@ function onActivateValidations(e) {
 }
 
 function activateValidations(element) {
-  element.addEventListener("input", (e) => runValidations(e.target));
+  element.addEventListener("input", (e) => validateInput(e.target));
   element.parentNode.classList.add(dirtyClass);
-  return runValidations(element);
-}
-
-function runValidations(element) {
-  if (element.value.length > 0) {
-    element.parentNode.classList.remove(placeholderShownClass);
-  } else {
-    element.parentNode.classList.add(placeholderShownClass);
-  }
-
   return validateInput(element);
 }
 
@@ -138,7 +128,7 @@ window.addEventListener("focus", function(event) {
 
 window.addEventListener("submit", function(event) {
   if (event.target.tagName !== "FORM") { return; }
-  const inputs = [...event.target.getElementsByClassName("form-control")];
+  const inputs = [...event.target.getElementsByClassName(inputClass)];
   const inputsValid = inputs.map(activateValidations).every((value) => value);
 
   if (inputsValid) {
