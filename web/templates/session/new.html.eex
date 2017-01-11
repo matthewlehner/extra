@@ -5,15 +5,12 @@
     <%= input f, :email %>
     <%= input f, :password %>
 
-    <div class="form-group">
+    <div class="form__actions">
       <%= submit "Login", class: "button" %>
     </div>
   <% end %>
 
   <div class="links">
-    <div class="registration-link">
-      <%#= link "Register", to: registration_path(@conn, :new) %>
-    </div>
     <div class="registration-link">
       <%= link "Forgot your password?", to: "#" %>
     </div>
