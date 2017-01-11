@@ -21,3 +21,5 @@ import "app/icons";
 
 // import socket from "./socket"
 // import "app/services/react-hooks";
+import Turbolinks from "turbolinks";
+Turbolinks.start();
