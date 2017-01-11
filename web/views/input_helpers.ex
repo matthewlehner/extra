@@ -12,13 +12,13 @@ defmodule Extra.InputHelpers do
                  |> Keyword.merge(input_defaults())
                  |> Keyword.merge(Keyword.get(opts, :input))
 
-    wrapper_opts = [class: "form__group #{state_class(form, field)} #{presence_class(form, field)}"]
+    wrapper_opts = [class: "form__control-group #{state_class(form, field)} #{presence_class(form, field)}"]
 
     content_tag :div, wrapper_opts do
       input = input(type, form, field, input_opts)
       label = label(form, field, humanize(field), label_defaults())
       error = Extra.ErrorHelpers.error_tag(form, field) || ""
-      [input, error, label]
+      [label, input, error]
     end
   end
 
