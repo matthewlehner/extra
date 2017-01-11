@@ -6,13 +6,13 @@ table {
 
 tbody {
   tr {
-    border-top: 1px solid lighten($light-gray, 10.5%);
+    border-top: 1px solid lighten($gray-light, 10.5%);
 
   }
 }
 
 th {
-  color: $light-gray;
+  color: $gray-light;
   font-size: 0.75rem;
   padding-bottom: 0.75rem;
   text-align: left;
