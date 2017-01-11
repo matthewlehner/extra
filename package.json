@@ -21,16 +21,16 @@
     "eslint": "^3.11.1",
     "eslint-plugin-react": "^6.7.1",
     "extract-text-webpack-plugin": "2.0.0-beta.4",
-    "node-sass": "^3.11.2",
+    "node-sass": "^4.2.0",
     "postcss-loader": "^1.1.0",
     "postcss-scss": "^0.4.0",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "stylelint": "^7.5.0",
-    "svg-sprite-loader": "^0.0.31",
+    "svg-sprite-loader": "matthewlehner/svg-sprite-loader",
     "svgo": "^0.7.1",
     "svgo-loader": "^1.1.2",
     "webpack": "2.1.0-beta.25",
-    "webpack-merge": "^1.0.1"
+    "webpack-merge": "^2.3.1"
   }
 }

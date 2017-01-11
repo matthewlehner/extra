@@ -88,7 +88,7 @@ let common = {
           // }),
           // require("postcss-url")(),
           // require("postcss-cssnext"),
-          require('autoprefixer')({browsers: ["> 5%"]})
+          require("autoprefixer")({browsers: ["> 5%"]})
           // require("postcss-browser-reporter")(),
           // require("postcss-reporter")()
         ]
@@ -99,19 +99,19 @@ let common = {
       context: "./web/static/assets"
     }]),
     new ExtractTextPlugin("css/[name].css")
-  ],
-
-  devtool: "source-map"
+  ]
 };
 
 let config;
 
-switch(process.env.npm_lifecycle_event) {
+switch (process.env.npm_lifecycle_event) {
   case "deploy":
     config = merge(common, {});
     break;
   default:
-    config = merge(common, {});
+    config = merge(common, {
+      devtool: "source-map"
+    });
 }
 
 module.exports = config;
