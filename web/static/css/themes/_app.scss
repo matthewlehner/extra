@@ -53,3 +53,35 @@ main {
     margin-right: 1rem;
   }
 }
+
+.form {
+  margin-bottom: 1.5625rem;
+  margin-top: 1.5625rem;
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__control-group {
+    border-bottom: $light-border;
+    display: flex;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  &__control {
+    line-height: 1.25rem;
+  }
+
+  &__control-label {
+    line-height: 1.25rem;
+    padding-bottom: 0.625rem;
+    padding-top: 0.5625rem;
+    width: 6.625rem;
+  }
+}
+
+label {
+  font-weight: bold;
+}

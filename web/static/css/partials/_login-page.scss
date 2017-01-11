@@ -3,7 +3,7 @@
   $placeholder-color: $quartz;
   $border: 1px solid $border-color;
   $smaller-font-size: 0.875rem;
-  $element-padding: 0.625rem 0.9375rem 0.8125rem;
+  $smaller-element-padding: 0.8125rem 0.9375rem;
   $input-padding: 0.75rem;
 
   margin-left: auto;
@@ -21,6 +21,13 @@
     }
   }
 
+  h1 {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5625rem;
+    margin-top: 10vh;
+  }
+
   .help-block,
   p {
     font-size: $smaller-font-size;
@@ -35,16 +42,15 @@
   }
 
   form {
-    margin: 2rem 0 1.625rem;
-    padding-top: 2rem;
+    margin: 0 0 1.625rem;
   }
 
   .button {
     border: none;
     box-shadow: 0 1px 1px $purple-darker;
-    font-size: $base-font-size;
+    font-size: $smaller-font-size;
     line-height: normal;
-    padding: $element-padding;
+    padding: $smaller-element-padding;
     transition: box-shadow $base-duration $base-timing;
     width: 100%;
 
@@ -68,6 +74,33 @@
     &__control-label {
       @include visually-hidden;
     }
+
+    &__control {
+      background: transparent;
+      border: $border;
+      color: $base-background-color;
+      font-size: 1rem;
+      line-height: normal;
+      padding: 0.625rem 1rem 0.6875rem;
+      transition: border-color $base-duration $base-timing;
+
+      &:hover,
+      &:focus {
+        border-color: $base-background-color;
+      }
+
+      &:hover {
+        &::placeholder {
+          color: transparentize($base-background-color, 0.2);
+        }
+      }
+
+      &::placeholder {
+        color: $placeholder-color;
+        font-size: $smaller-font-size;
+        line-height: 1.5rem;
+      }
+    }
   }
 
   .dirty {
@@ -75,33 +108,6 @@
       &:invalid {
         border-color: $amber;
       }
-    }
-  }
-
-  [type="text"],
-  [type="email"],
-  [type="password"] {
-    background: transparent;
-    border: $border;
-    color: $base-background-color;
-    font-size: 1rem;
-    transition: border-color $base-duration $base-timing;
-
-    &:hover,
-    &:focus {
-      border-color: $base-background-color;
-    }
-
-    &:hover {
-      &::placeholder {
-        color: transparentize($base-background-color, 0.2);
-      }
-    }
-
-    &::placeholder {
-      color: $placeholder-color;
-      font-size: $smaller-font-size;
-      line-height: 1.5rem;
     }
   }
 
@@ -142,39 +148,9 @@
     padding: $small-spacing $input-padding;
   }
 
-  .social-login {
-    border: $border;
-    border-radius: $base-border-radius;
-    color: $base-background-color;
-    display: block;
-    fill: $base-background-color;
-    margin-bottom: 0.625rem;
-    padding: $element-padding;
-    position: relative;
-    text-decoration: none;
-    transition: border-color $base-duration $base-timing;
-
-    &:hover,
-    &:focus {
-      border-color: $base-background-color;
-      outline: none;
-
-      span {
-        border-color: $base-background-color;
-      }
-    }
-
-    span {
-      border-left: $border;
-      margin-left: 3 - ($base-spacing * 0.75);
-      padding-left: 1rem;
-      transition: border-color $base-duration $base-timing;
-    }
-  }
-
   .links {
     display: flex;
-    font-size: 0.875rem;
+    font-size: $smaller-font-size;
     justify-content: flex-end;
     margin: 1.625rem 0;
   }
@@ -188,7 +164,7 @@
   }
 }
 
-.public-page {
+.public-page:not(.page-index) {
   $extra-gradient-start: $midnight-blue;
   $extra-gradient-end: $deep-lilac;
 

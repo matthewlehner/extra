@@ -1,4 +1,5 @@
 <section class="extra-authentication">
+  <h1>Login</h1>
   <%= form_for @changeset, session_url(@conn, :create), [novalidate: true], fn f -> %>
     <%= render_flash(@conn) %>
 
