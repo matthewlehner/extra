@@ -19,8 +19,8 @@ textarea {
   border: $input-border;
   border-radius: $base-border-radius;
   font-family: $base-font-family;
-  font-size: 1rem;
-  padding: $small-spacing $small-spacing calc(#{$small-spacing} + 1px);
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem 0.5625rem;
   transition: border-color $base-duration $base-timing;
   width: 100%;
 
@@ -44,5 +44,37 @@ textarea {
 
   &::placeholder {
     color: tint($base-font-color, 40%);
+  }
+}
+
+label {
+  font-weight: bold;
+}
+
+.form {
+  margin-bottom: 1.5625rem;
+  margin-top: 1.5625rem;
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__control-group {
+    border-bottom: $light-border;
+    display: flex;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  &__control {
+    line-height: 1.25rem;
+  }
+
+  &__control-label {
+    line-height: 1.25rem;
+    padding-bottom: 0.625rem;
+    padding-top: 0.5625rem;
+    width: 6.625rem;
   }
 }

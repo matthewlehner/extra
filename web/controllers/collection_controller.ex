@@ -5,7 +5,9 @@ defmodule Extra.CollectionController do
 
   def new(conn, _params) do
     changeset = PostCollection.changeset(%PostCollection{})
-    render(conn, "new.html", changeset: changeset)
+    cancel_url = referer_or_fallback(conn)
+    render(conn, "new.html", changeset: changeset,
+                             cancel_url: cancel_url)
   end
 
   def create(%{assigns: %{current_user: user}} = conn, %{"post_collection" => params}) do
@@ -25,5 +27,15 @@ defmodule Extra.CollectionController do
   def show(%{assigns: %{current_user: user}} = conn, %{"id" => id}) do
     post_collection = Repo.get_by!(PostCollection, id: id, user_id: user.id)
     render(conn, "show.html", post_collection: post_collection)
+  end
+
+  defp referer_or_fallback(conn) do
+    Plug.Conn.get_req_header(conn, "referer")
+    |> referer_or_fallback(conn)
+  end
+
+  defp referer_or_fallback([url], _) when is_binary(url), do: url
+  defp referer_or_fallback(_, conn) do
+    dashboard_path(conn, :index)
   end
 end

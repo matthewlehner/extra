@@ -3,7 +3,7 @@ defmodule Extra.SessionController do
   alias Extra.User
   plug :put_layout, {Extra.LayoutView, :public}
 
-  def new(%{assigns: %{current_user: user = %User{}}} = conn, _) do
+  def new(%{assigns: %{current_user: %User{}}} = conn, _) do
     conn
     |> redirect(to: dashboard_path(conn, :index))
   end

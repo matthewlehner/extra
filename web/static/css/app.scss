@@ -12,6 +12,7 @@ $base-font-color: lighten($gray-dark, 11%);
 @import "partials/toggle-switch";
 @import "partials/tab-container";
 @import "partials/tables";
+@import "partials/modal";
 
 body {
   display: flex;

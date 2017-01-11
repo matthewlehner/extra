@@ -84,6 +84,7 @@
     background: transparent;
     border: $border;
     color: $base-background-color;
+    font-size: 1rem;
     transition: border-color $base-duration $base-timing;
 
     &:hover,
