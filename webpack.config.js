@@ -1,7 +1,11 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractSVGPlugin = require("svg-sprite-loader/lib/extract-svg-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
+
+let extractCSS = new ExtractTextPlugin("css/[name].css");
+let extractSVG = new ExtractSVGPlugin("images/[name].svg");
 
 let common = {
   entry: {
@@ -39,24 +43,26 @@ let common = {
     }, {
       test: /.*\.svg$/,
       exclude: /node_modules/,
-      loader: [{
-        loader: "svg-sprite-loader",
-        options: {
-          name: "[name]-icon",
-          esModule: true
-        }
-      }, {
-        loader: "svgo-loader",
-        options: {
-          plugins: [
-            {removeTitle: true}
-          ]
-        }
-      }]
+      loader: extractSVG.extract({
+        loader: [{
+          loader: "svg-sprite-loader",
+          options: {
+            name: "[name]-icon",
+            esModule: true
+          }
+        }, {
+          loader: "svgo-loader",
+          options: {
+            plugins: [
+              {removeTitle: true}
+            ]
+          }
+        }]
+      })
     }, {
       test: /\.scss$/,
       exclude: /node_modules/,
-      loader: ExtractTextPlugin.extract({
+      loader: extractCSS.extract({
         fallbackLoader: "style-loader",
         loader: [{
           loader: "css-loader",
@@ -98,7 +104,8 @@ let common = {
       from: { glob: "**/*", dot: false },
       context: "./web/static/assets"
     }]),
-    new ExtractTextPlugin("css/[name].css")
+    extractCSS,
+    extractSVG
   ]
 };
 

@@ -4,13 +4,13 @@
     <%= for collection <- @current_user.post_collections do %>
       <li>
         <%= link to: collection_path(@conn, :show, collection) do %>
-          <%= icon("collection") %><%= collection.name %>
+          <%= icon(@conn, "collection") %><%= collection.name %>
         <% end %>
       </li>
     <% end %>
     <li>
       <%= link to: collection_path(@conn, :new) do %>
-        <%= icon("add-new") %>Add new
+        <%= icon(@conn, "add-new") %>Add new
       <% end %>
     </li>
   </ul>
@@ -22,12 +22,12 @@
     <%= for channel <- @current_user.social_channels do %>
       <li>
         <%= link to: social_channel_path(@conn, :show, channel) do %>
-          <%= icon("#{channel.provider}-badge") %><%= channel.name %>
+          <%= icon(@conn, "#{channel.provider}-badge") %><%= channel.name %>
         <% end %>
     <% end %>
     <li>
       <%= link to: social_channel_path(@conn, :new) do %>
-        <%= icon("add-new") %>Add new
+        <%= icon(@conn, "add-new") %>Add new
       <% end %>
     </li>
   </ul>
@@ -36,11 +36,11 @@
 <section>
   <h3>General</h3>
   <ul>
-    <li><a href="#"><%= icon("performance") %>Performance</a></li>
-    <li><a href="#"><%= icon("account") %>Account</a></li>
+    <li><a href="#"><%= icon(@conn, "performance") %>Performance</a></li>
+    <li><a href="#"><%= icon(@conn, "account") %>Account</a></li>
     <li>
       <%= link to: session_path(@conn, :delete), method: :delete do %>
-        <%= icon("logout") %>Logout
+        <%= icon(@conn, "logout") %>Logout
       <% end %>
     </li>
   </ul>
