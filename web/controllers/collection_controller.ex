@@ -20,7 +20,7 @@ defmodule Extra.CollectionController do
         |> put_flash(:info, "Social collection created successfully.")
         |> redirect(to: collection_path(conn, :show, collection))
       {:error, changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        render(conn, "new.html", changeset: changeset, cancel_url: referer_or_fallback(nil, conn))
     end
   end
 

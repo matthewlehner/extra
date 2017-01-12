@@ -16,7 +16,7 @@ defmodule Extra.CollectionControllerTest do
 
   test "renders form for new resources", %{conn: conn} do
     conn = get conn, collection_path(conn, :new)
-    assert html_response(conn, 200) =~ "New social collection"
+    assert html_response(conn, 200) =~ "Create a new collection"
   end
 
   test "creates resource and redirects when data is valid", %{conn: conn} do
@@ -28,7 +28,7 @@ defmodule Extra.CollectionControllerTest do
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do
     conn = post conn, collection_path(conn, :create), post_collection: @invalid_attrs
-    assert html_response(conn, 200) =~ "New social collection"
+    assert html_response(conn, 200) =~ "Create a new collection"
   end
 
   test "shows chosen resource", %{conn: conn, user: user} do
