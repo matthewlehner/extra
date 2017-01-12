@@ -13,7 +13,7 @@ defmodule Extra.ExtraHelpers do
     template = get_template_name(conn)
                |> String.replace(".html", "")
     content_tag(:svg, class: "icon") do
-      content_tag(:use, "", "xlink:href": "#{static_url(conn, "/images/#{template}.svg")}##{name}")
+      content_tag(:use, "", "xlink:href": "#{static_path(conn, "/images/#{template}.svg")}##{name}")
     end
   end
 
