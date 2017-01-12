@@ -31,7 +31,7 @@
     "svg-sprite-loader": "matthewlehner/svg-sprite-loader",
     "svgo": "^0.7.1",
     "svgo-loader": "^1.1.2",
-    "webpack": "2.1.0-beta.25",
+    "webpack": "^2.2.0-rc.4",
     "webpack-merge": "^2.3.1"
   }
 }
