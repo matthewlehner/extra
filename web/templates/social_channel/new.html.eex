@@ -8,7 +8,7 @@
 
   <section class="new-social-channel__section">
     <h3 class="social-logo social-logo_facebook">
-      <%= icon("facebook-badge") %>
+      <%= icon(@conn, "facebook-badge") %>
       <span>Facebook</span>
     </h3>
 
@@ -27,7 +27,7 @@
 
   <section class="new-social-channel__section">
     <h3 class="social-logo social-logo_twitter">
-      <%= icon("twitter-badge") %>
+      <%= icon(@conn, "twitter-badge") %>
       <span>Twitter</span>
     </h3>
 
