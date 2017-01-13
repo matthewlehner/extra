@@ -1,15 +1,6 @@
 <h2 class="header-quote">
-  <svg width="31px" height="22px" viewBox="0 0 31 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <defs>
-      <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1">
-        <stop stop-color="#3023AE" offset="0%"></stop>
-        <stop stop-color="#C96DD8" offset="100%"></stop>
-      </linearGradient>
-    </defs>
-    <path d="M6.6475,9.4 C7.2975,6.215 9.5725,5.175 14.0575,4.785 L14.0575,0.95 C4.8925,1.21 0.4725,5.565 0.4725,12.975 C0.4725,18.435 3.2675,21.23 7.5575,21.23 C11.5875,21.23 13.7975,18.5 13.7975,15.315 C13.7975,12.065 12.2375,9.985 9.4425,9.4 L6.6475,9.4 Z M23.3525,9.4 C24.0025,6.215 26.2775,5.175 30.7625,4.785 L30.7625,0.95 C21.5975,1.21 17.1775,5.565 17.1775,12.975 C17.1775,18.435 19.9725,21.23 24.2625,21.23 C28.2925,21.23 30.5025,18.5 30.5025,15.315 C30.5025,12.065 28.9425,9.985 26.1475,9.4 L23.3525,9.4 Z" id="“" stroke="none" fill="url(#linearGradient-1)" fill-rule="evenodd"></path>
-  </svg>
-  Social media is only a small part of what I do, and it’s constantly pulling me
-  away from higher-value tasks.
+  “Social media is only a small part of what I do, and it’s constantly pulling me
+  away from higher-value tasks.”
 </h2>
 
 <section>
@@ -104,16 +95,15 @@
 </section>
 
 <section>
-  <div class="speech-bubbles">
-    <div class="speech-bubbles__p speech-bubbles__p_from-them">But that’s a complete fantasy, right?</div>
-    <div class="speech-bubbles__p speech-bubbles__p_from-us">Nope! Not with <em>Extra</em> 🍻.</div>
-  </div>
+  <p>
+    But that’s a complete fantasy, right? Nope! Not with Extra 🍻.
+  </p>
 
   <p>
-    <strong>Extra</strong> is a social media automation tool that aims to limit
-    the amount of time that you spend on social media to just one hour per week.
-    It does this by reposting content strategically, maximizing impressions,
-    while minimizing repeats.
+    Extra is a social media automation tool that aims to limit the amount of
+    time that you spend on social media to just one hour per week. It does this
+    by reposting content strategically, maximizing impressions, while minimizing
+    repeats.
   </p>
 
   <p>
@@ -123,8 +113,6 @@
   </p>
 </section>
 
-<hr>
-
 <section class="reposting-stats">
   <div class="reposting-stats__content">
     <h4>Does reposting content meaningfully increase traffic?</h4>
@@ -133,13 +121,12 @@
       Reposting content has been shown to substantially increase engagement and
       impressions. Reposts capture an average of 70% of the engagement of the
       original post. A post recycled by Extra twice is likely to receive
-      <strong>double the impressions</strong> of what it would have received
-      originally. That’s enough to make or break your next social media
-      campaign.
+      double the impressions of what it would have received originally. That’s
+      enough to make or break your next social media campaign.
     </p>
   </div>
 
-  <figure class="impressions-graph reposting-stats__content">
+  <figure class="impressions-graph">
     <figcaption class="impressions-graph__caption">
       Avg. number of retweets per repost
     </figcaption>
@@ -147,8 +134,6 @@
     <svg viewBox="0 0 229 245" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Reposting Graph</title><defs><rect id="a" width="100%" height="100%" rx="8"/><mask id="b" x="0" y="0" width="100%" height="100%" fill="#fff"><use xlink:href="#a"/></mask><linearGradient x1="0%" y1="0%" x2="20%" y2="100%" id="c"><stop stop-color="#3023AE" offset="0%"/><stop stop-color="#C96DD8" offset="100%"/></linearGradient></defs><g fill="none" fill-rule="evenodd"><use class="impressions-graph__container" mask="url(#b)" stroke-width="2" stroke-linecap="square" xlink:href="#a"/><rect fill="url(#c)" x="156" y="20" width="53" height="181" rx="4"/><rect fill="url(#c)" x="88" y="55" width="53" height="146" rx="4"/><rect fill="url(#c)" x="20" y="80" width="53" height="121" rx="4"/><path d="M44.994 100.738v-.988h-1.43v-5.512h-1.599l-3.718 5.421v1.079h4.134V103h1.183v-2.262h1.43zm-5.603-.988l1.001-1.443a121.614 121.614 0 0 0 2.015-3.016h.026a137.356 137.356 0 0 0-.039 3.263v1.196h-3.003zm8.086 3.25v-1.521h-1.404V103h1.404zm4.082.182c2.067 0 3.263-1.703 3.263-4.901 0-2.821-1.105-4.225-3.094-4.225-1.781 0-2.99 1.222-2.99 3.016 0 1.716 1.118 2.873 2.769 2.873.936 0 1.664-.403 2.158-1.118h.026c-.052 2.301-.871 3.315-2.093 3.315-.858 0-1.365-.481-1.521-1.391h-1.222c.143 1.508 1.131 2.431 2.704 2.431zm.156-4.212c-1.053 0-1.742-.78-1.742-1.924 0-1.183.702-1.95 1.755-1.95 1.079 0 1.755.754 1.755 1.95 0 1.131-.715 1.924-1.768 1.924zM109.653 71.056c-1.677 0-2.886.975-2.886 2.405 0 .949.598 1.638 1.521 1.989v.026c-1.066.325-1.69 1.079-1.69 2.158 0 1.534 1.235 2.548 3.055 2.548s3.068-1.014 3.068-2.548c0-1.079-.624-1.833-1.703-2.158v-.026c.936-.351 1.534-1.04 1.534-1.989 0-1.43-1.209-2.405-2.899-2.405zm0 1.027c1.014 0 1.703.559 1.703 1.417 0 .91-.663 1.482-1.703 1.482s-1.703-.572-1.703-1.482c0-.858.689-1.417 1.703-1.417zm0 3.913c1.092 0 1.846.637 1.846 1.56 0 .962-.741 1.586-1.846 1.586s-1.846-.624-1.846-1.586c0-.923.754-1.56 1.846-1.56zM115.477 80v-1.521h-1.404V80h1.404zm4.667-8.944c-2.067 0-3.263 1.703-3.263 4.901 0 2.821 1.105 4.225 3.094 4.225 1.781 0 2.99-1.222 2.99-3.016 0-1.716-1.118-2.873-2.769-2.873-.936 0-1.664.403-2.158 1.118h-.026c.052-2.301.871-3.315 2.093-3.315.858 0 1.365.481 1.521 1.391h1.222c-.143-1.508-1.131-2.431-2.704-2.431zm-.156 4.212c1.053 0 1.742.78 1.742 1.924 0 1.183-.702 1.95-1.755 1.95-1.079 0-1.755-.754-1.755-1.95 0-1.131.715-1.924 1.768-1.924zM174.511 45v-8.762h-1.014c-.169 1.066-.767 1.469-2.132 1.469v.91h1.963V45h1.183zm7.306 0v-8.762h-1.014c-.169 1.066-.767 1.469-2.132 1.469v.91h1.963V45h1.183zm4.966 0v-1.521h-1.404V45h1.404zm4.368-8.944c-1.807 0-2.938 1.027-2.938 2.769h1.209c0-1.17.611-1.742 1.677-1.742 1.04 0 1.716.585 1.716 1.469 0 .923-.741 1.521-1.95 1.521h-.351v1.001h.351c1.352 0 2.08.559 2.08 1.586 0 .884-.715 1.495-1.781 1.495-1.183 0-1.82-.624-1.82-1.794h-1.209c0 1.768 1.092 2.821 3.029 2.821 1.781 0 3.003-1.001 3.003-2.483 0-1.131-.533-1.807-1.664-2.184v-.026c1.027-.377 1.521-1.001 1.521-2.041 0-1.443-1.105-2.392-2.873-2.392z" class="impressions-graph__value"/><path d="M47.511 226v-8.762h-1.014c-.169 1.066-.767 1.469-2.132 1.469v.91h1.963V226h1.183zM114.653 217.056c-1.742 0-2.873 1.014-2.938 2.756h1.222c.065-1.079.585-1.716 1.703-1.716.962 0 1.56.585 1.56 1.43 0 1.079-.689 1.56-2.015 2.34-2.171 1.261-2.587 2.21-2.587 3.874 0 .065 0 .169.013.26h6.045v-1.027h-4.732c.013-.819.364-1.391 2.119-2.405 1.404-.819 2.405-1.534 2.405-3.068 0-1.469-1.118-2.444-2.795-2.444zM182.601 217.056c-1.807 0-2.938 1.027-2.938 2.769h1.209c0-1.17.611-1.742 1.677-1.742 1.04 0 1.716.585 1.716 1.469 0 .923-.741 1.521-1.95 1.521h-.351v1.001h.351c1.352 0 2.08.559 2.08 1.586 0 .884-.715 1.495-1.781 1.495-1.183 0-1.82-.624-1.82-1.794h-1.209c0 1.768 1.092 2.821 3.029 2.821 1.781 0 3.003-1.001 3.003-2.483 0-1.131-.533-1.807-1.664-2.184v-.026c1.027-.377 1.521-1.001 1.521-2.041 0-1.443-1.105-2.392-2.873-2.392z" class="impressions-graph__label"/></g></svg>
   </figure>
 </section>
-
-<hr>
 
 <section class="call-to-action">
   <h4>Extra allows you to:</h4>
@@ -178,7 +163,7 @@
       <input type="email" name="fields[email]" class="beta-signup_input"
              placeholder="Email address">
 
-      <button class="beta-signup_button" data-drip-attribute="sign-up-button">
+      <button class="button beta-signup_button" data-drip-attribute="sign-up-button">
         Get Early Access
       </button>
     </div>

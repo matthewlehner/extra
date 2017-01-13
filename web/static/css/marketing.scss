@@ -2,16 +2,16 @@
 
 $base-font-color: #191919;
 $base-font-family: "Tiempos Text", Georgia, serif;
-$base-font-size: 15px;
-$base-line-height: 1.6;
+$base-font-size: 1rem;
+$base-line-height: 1.65;
 $action-color: $muted-lilac;
 $base-border-color: $solitude;
 $input-border: 1px solid $gray-lighter;
-$wrapper-width: 35.375rem;
+$wrapper-width: 37rem;
 
 $footer-line-height: 1.25rem;
 $footer-font-size: 0.8125rem;
-$footer-vertical-padding: 1.375rem;
+$footer-vertical-padding: 1.625rem;
 $footer-height: (2 * $footer-vertical-padding) + $footer-line-height;
 
 @import "modules/tiempos-text";
@@ -20,10 +20,7 @@ $footer-height: (2 * $footer-vertical-padding) + $footer-line-height;
 
 .page-wrap {
   background-color: $white;
-  background-image: url("/images/marketing/header-background.svg");
-  background-position: top center;
-  background-repeat: no-repeat;
-  box-shadow: 0 5px 4px -4px transparentize($black, 0.68);
+  border-bottom: $base-border;
   padding: 0 0.625rem 5rem;
 
   @media($screen-sm-min) {
@@ -53,25 +50,13 @@ li {
 
 .header-quote {
   color: $gray-darkest;
-  font-size: 1.5626rem;
-  line-height: 1.44;
+  font-size: 1.5625rem;
   margin: 3rem auto 1em;
-  max-width: 38rem;
+  max-width: 47rem;
   text-align: center;
 
-  &::after {
-    border-bottom: 2px solid lighten($gray-lighter, 7%);
-    content: "";
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2rem;
-    width: 1.8rem;
-  }
-
-  svg {
-    display: block;
-    margin: 1rem auto;
+  @media($screen-sm-min) {
+    font: 2.25rem / 1.35 "Tiempos Headline Bold", $base-font-family;
   }
 }
 
@@ -97,10 +82,8 @@ li {
 }
 
 .site-footer {
-  $extra-gradient-start: $midnight-blue;
-  $extra-gradient-end: $deep-lilac;
-  background-image: linear-gradient(to right, $extra-gradient-start 5%, $extra-gradient-end);
-  color: $white;
+  $footer-color: lighten($gray, 8%);
+  color: $footer-color;
   font-size: $footer-font-size;
   line-height: $footer-line-height;
   padding: $footer-vertical-padding;
@@ -122,7 +105,7 @@ li {
   }
 
   :any-link {
-    color: $white;
+    color: $footer-color;
   }
 
   &__links {
@@ -136,81 +119,6 @@ li {
   margin-left: auto;
   margin-right: auto;
   max-width: 68rem;
-}
-
-.speech-bubbles {
-  @include clearfix;
-
-  margin: 3.125rem auto;
-  max-width: 18rem;
-
-  &__p {
-    border-radius: 0.8rem;
-    font-family: $system-font-stack;
-    font-size: 0.875rem;
-    line-height: 1.5rem;
-    margin: 0.3125rem 0;
-    padding: 0.5em 1em;
-    position: relative;
-
-    &::before {
-      bottom: 0;
-      content: "";
-      height: 20px;
-      position: absolute;
-      // z-index: -1;
-    }
-
-    &::after {
-      background: $white;
-      bottom: 0;
-      content: "";
-      height: 20px;
-      position: absolute;
-      width: 26px;
-      z-index: 1;
-    }
-  }
-
-  &__p_from-us {
-    $bg-color: lighten($gray-lighter, 7%);
-    background-color: $bg-color;
-    float: right;
-
-    &::before {
-      border-bottom-left-radius: 16px 14px;
-      border-right: 20px solid $bg-color;
-      right: -7px;
-    }
-
-    &::after {
-      border-bottom-left-radius: 10px;
-      right: -26px;
-    }
-  }
-
-  &__p_from-them {
-    background-image: $extra-gradient;
-    color: $white;
-    float: left;
-
-    &::before {
-      border-bottom-right-radius: 16px 14px;
-      border-left: 20px solid $extra-gradient-start;
-      left: -7px;
-    }
-
-    &::after {
-      border-bottom-right-radius: 10px;
-      left: -26px;
-    }
-  }
-
-  em {
-    color: $action-color;
-    font-style: normal;
-    font-weight: bold;
-  }
 }
 
 .fancy-list {
@@ -254,34 +162,36 @@ li {
 }
 
 .beta-signup {
+  $input-padding: 0.625rem 1.4rem 0.75rem;
+
   margin-top: 2rem;
 
   &_label {
     @include visually-hidden;
   }
 
-  &_form-fields {
-    position: relative;
-  }
-
   [type=email] {
     border-radius: $base-spacing;
-    font-size: 14px;
-    padding: 0.75em 1.4rem calc(0.75em + 2px);
+    padding: $input-padding;
   }
 
   &_button {
     border-color: $gray-light;
     border-radius: $base-spacing;
     box-shadow: 0 1px 4px 0 lighten($gray-lighter, 4%);
-    font-size: 14px;
-    font-weight: bold;
+    line-height: normal;
     margin-top: 0.5rem;
-    padding: 0.75em 2rem calc(0.75em + 2px);
+    padding: $input-padding;
     text-decoration: none;
     width: 100%;
+  }
 
-    @media($screen-sm-min) {
+  @media($screen-sm-min) {
+    &_form-fields {
+      position: relative;
+    }
+
+    &_button {
       bottom: 0;
       margin-top: 0;
       position: absolute;
@@ -291,15 +201,30 @@ li {
   }
 }
 
+@media($screen-sm-min) {
+  .reposting-stats {
+    display: flex;
+
+    &__content {
+      flex: 1;
+    }
+
+    h4 {
+      margin-right: 1rem;
+      margin-top: 0;
+    }
+  }
+
+  .impressions-graph {
+    margin-left: 3.125rem;
+    width: 15rem;
+  }
+}
+
 .impressions-graph {
   font-family: $system-font-stack;
   font-size: 0.75rem;
   min-height: 16rem;
-
-  @media($screen-sm-min) {
-    margin-left: 3.125rem;
-    padding-bottom: 1rem;
-  }
 
   svg {
     max-width: 100%;
@@ -309,7 +234,7 @@ li {
     font-weight: bold;
     line-height: 1.5rem;
     margin-bottom: 0.625rem;
-    margin-top: 1rem;
+    margin-top: 0.625rem;
   }
 
   &__container {
@@ -326,20 +251,6 @@ li {
 
   p {
     margin: 1.25rem inherit;
-  }
-}
-
-@media($screen-sm-min) {
-  .reposting-stats {
-    display: flex;
-
-    &__content {
-      width: 18rem;
-
-      h4 {
-        margin-right: 1rem;
-      }
-    }
   }
 }
 
