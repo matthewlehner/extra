@@ -27,13 +27,12 @@ defmodule Extra.Router do
 
   scope "/", Extra do
     pipe_through [:browser]
-    get "/new-home", PageController, :pitch
+    get "/", PageController, :pitch
   end
 
   scope "/", Extra do
     pipe_through [:browser, :browser_session, :public_layout]
 
-    get "/", PageController, :index
     get "/login", SessionController, :new
     post "/login", SessionController, :create
     delete "/logout", SessionController, :delete
