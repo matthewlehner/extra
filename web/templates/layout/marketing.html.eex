@@ -4,7 +4,11 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Extra automates social media marketing by reposting evergreen content on a smart schedule created by engagement analytics.">
+  <meta property="og:title" content="Extra – Social Media Automation Software That Saves You Time">
+  <meta property="og:description" content="Extra automates social media marketing by reposting evergreen content on a smart schedule created by engagement analytics.">
+  <meta property="og:image" content="<%= static_url(@conn, "/images/marketing/extra-preview.jpg") %>">
+  <meta property="og:url" content="<%= page_url(@conn, :pitch) %>">
+  <meta name="twitter:card" content="summary_large_image">
 
   <title>Extra – Social Media Automation Software That Saves You Time</title>
   <link rel="stylesheet" href="<%= static_url(@conn, "/css/marketing.css") %>">
