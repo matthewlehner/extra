@@ -122,10 +122,8 @@ li {
 }
 
 .fancy-list {
-  $left-indent: 1.75rem;
 
   list-style-type: none;
-  padding-left: $left-indent;
 
   li {
     position: relative;
@@ -135,26 +133,33 @@ li {
       background-repeat: no-repeat;
       content: "";
       display: block;
-      left: -$left-indent;
       position: absolute;
     }
   }
 
   &_star {
+    $left-indent: 1.75rem;
+    padding-left: $left-indent;
+
     li {
       &::before {
         background-image: url("/images/star.svg");
         height: 1.6rem;
+        left: -$left-indent;
         width: 0.75rem;
       }
     }
   }
 
   &_checkmark {
+    $left-indent: 3.125rem;
+    padding-left: $left-indent;
+
     li {
       &::before {
         background-image: url("/images/checkmark.svg");
         height: 1.6em;
+        left: -$left-indent;
         width: 1.6em;
       }
     }
