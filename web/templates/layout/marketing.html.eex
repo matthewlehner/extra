@@ -9,6 +9,8 @@
   <meta property="og:image" content="<%= static_url(@conn, "/images/marketing/extra-preview.jpg") %>">
   <meta property="og:url" content="<%= page_url(@conn, :pitch) %>">
   <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Extra Social Media Automation">
 
   <title>Extra – Social Media Automation Software That Saves You Time</title>
   <link rel="stylesheet" href="<%= static_url(@conn, "/css/marketing.css") %>">
