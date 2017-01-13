@@ -7,8 +7,8 @@ $smaller-element-padding: 0.8125rem 0.9375rem;
 $input-padding: 0.75rem;
 @import "modules/variables";
 @import "partials/base";
-@import "../keyframes/opacify";
-@import "../keyframes/animate-elements";
+@import "keyframes/opacify";
+@import "keyframes/animate-elements";
 
 .extra-logo {
   height: 2.875rem;
@@ -169,7 +169,7 @@ main {
 
   &__control {
     background: transparent;
-    border: $border;
+    border: $base-border;
     color: $base-background-color;
     font-size: 1rem;
     line-height: normal;
