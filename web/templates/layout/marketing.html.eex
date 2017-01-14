@@ -7,10 +7,15 @@
   <meta property="og:title" content="Extra – Social Media Automation Software That Saves You Time">
   <meta property="og:description" content="Extra automates social media marketing by reposting evergreen content on a smart schedule created by engagement analytics.">
   <meta property="og:image" content="<%= static_url(@conn, "/images/marketing/extra-preview.jpg") %>">
+  <meta property="og:image:type" content"image/jpeg">
+  <meta property="og:image:width" content"1200">
+  <meta property="og:image:height" content"630">
   <meta property="og:url" content="<%= page_url(@conn, :pitch) %>">
   <meta name="twitter:card" content="summary_large_image">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Extra Social Media Automation">
+  <meta property="fb:app_id" content="200585757014002">
+  <meta name="twitter:site" content="@ExtraAI">
 
   <title>Extra – Social Media Automation Software That Saves You Time</title>
   <link rel="stylesheet" href="<%= static_url(@conn, "/css/marketing.css") %>">
