@@ -5,26 +5,17 @@
     </div>
   <% end %>
 
-  <label for="collection-select">Collection</label>
-  <select name="collection-select">
-    <option value="1" selected>Ferrari Boys</option>
-    <option>Some other thing</option>
-  </select>
-
-  <%= input f, :body %>
+  <%= input f, :post_collection_id, collection: (@collections |> Enum.map(&{&1.name, &1.id })) %>
+  <%= input f, :body, using: :textarea %>
 
   <label>Channel</label>
   <label>
     <input type="checkbox">
     matthewpearse
   </label>
-  <label>
-    <input type="checkbox">
-    Matthew Lehner
-  </label>
 
   <div class="form-group">
-    <%= link "Cancel", to: "#" %> <!-- collection_path(@conn, :show,  -->
-    <%= submit "Create Post", class: "btn btn-primary" %>
+    <%= link "Cancel", to: "#", class: "button button_cancel" %>
+    <%= submit "Create Post", class: "button" %>
   </div>
 <% end %>

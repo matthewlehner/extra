@@ -1,4 +1,12 @@
-<h2>Create New post</h2>
-
-<%= render "form.html", changeset: @changeset,
-                        action: post_path(@conn, :create) %>
+<div class="modal__overlay">
+  <div class="modal__container">
+    <header class="modal__header">
+      <h2>Create New post</h2>
+    </header>
+    <div class="modal__body">
+      <%= render "form.html", changeset: @changeset,
+                              collections: @current_user.post_collections,
+                              action: post_path(@conn, :create) %>
+    </div>
+  </div>
+</div>
