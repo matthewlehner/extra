@@ -8,9 +8,9 @@
       </p>
     <% end %>
 
-    <%= input f, :full_name, input: [placeholder: "Full Name"] %>
-    <%= input f, :email, input: [placeholder: "Email"] %>
-    <%= input f, :password, input: [placeholder: "Password"] %>
+    <%= input f, :full_name, placeholder: "Full Name" %>
+    <%= input f, :email, placeholder: "Email" %>
+    <%= input f, :password, placeholder: "Password" %>
 
     <div class="form-group">
       <%= submit "Register", class: "button" %>

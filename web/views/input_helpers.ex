@@ -1,16 +1,14 @@
 defmodule Extra.InputHelpers do
   use Phoenix.HTML
 
-  defp input_defaults, do: [class: "form__control", placeholder: " "]
+  @input_options [:placeholder, :using, :collection]
+
+  defp input_defaults, do: [class: "form__control"]
   defp label_defaults, do: [class: "form__control-label"]
 
   def input(form, field, opts \\ [input: [], label: []]) do
-    type = opts[:using] || Phoenix.HTML.Form.input_type(form, field)
-
-    input_opts = Phoenix.HTML.Form.input_validations(form, field)
-                 |> Keyword.merge(extend_input_opts(form, field))
-                 |> Keyword.merge(input_defaults())
-                 |> Keyword.merge(Keyword.get(opts, :input))
+    type = extra_input_type(form, field, opts)
+    input_opts = input_options_for(form, field, opts)
 
     wrapper_opts = [class: "form__control-group #{state_class(form, field)} #{presence_class(form, field)}"]
 
@@ -44,6 +42,11 @@ defmodule Extra.InputHelpers do
     end
   end
 
+  defp input(:select, form, field, opts) do
+    {options, opts} = Keyword.pop(opts, :collection, [])
+    Phoenix.HTML.Form.select(form, field, options, opts)
+  end
+
   defp input(type, form, field, opts) do
     apply(Phoenix.HTML.Form, type, [form, field, opts])
   end
@@ -53,5 +56,20 @@ defmodule Extra.InputHelpers do
       {:format, regex} -> [pattern: Regex.source(regex)]
       _ -> []
     end
+  end
+
+  defp extra_input_type(form, field, opts) do
+    cond do
+      Keyword.has_key?(opts, :using) -> opts[:using]
+      Keyword.has_key?(opts, :collection) -> :select
+      true -> Phoenix.HTML.Form.input_type(form, field)
+    end
+  end
+
+  defp input_options_for(form, field, opts) do
+    input_validations(form, field)
+    |> Keyword.merge(extend_input_opts(form, field))
+    |> Keyword.merge(input_defaults())
+    |> Keyword.merge(Keyword.take(opts, @input_options))
   end
 end
