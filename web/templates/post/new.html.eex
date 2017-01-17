@@ -6,6 +6,7 @@
     <div class="modal__body">
       <%= render "form.html", changeset: @changeset,
                               collections: @current_user.post_collections,
+                              channels: @current_user.social_channels,
                               action: post_path(@conn, :create) %>
     </div>
   </div>

@@ -10,7 +10,7 @@ defmodule Extra.InputHelpers do
     type = extra_input_type(form, field, opts)
     input_opts = input_options_for(form, field, opts)
 
-    wrapper_opts = [class: "form__control-group #{state_class(form, field)} #{presence_class(form, field)}"]
+    wrapper_opts = [class: "form__control-group #{presence_class(form, field)}"]
 
     input = input(type, form, field, input_opts)
     label = label(form, field, humanize(field), label_defaults())
@@ -21,30 +21,32 @@ defmodule Extra.InputHelpers do
     end
   end
 
-  defp state_class(form, field) do
-    cond do
-      # The form was not yet submitted
-      !form.source.action -> ""
-      form.errors[field] -> "has-error"
-      true -> "has-success"
-    end
-  end
-
-  defp presence_class(%{source: %{changes: changes}}, _) when changes == %{},  do: nil
-
+  defp presence_class(%{source: %{changes: changes}}, _) when changes == %{}, do: nil
   defp presence_class(_, :password), do: nil
 
   defp presence_class(%{source: %{changes: changes}}, field) do
-    case changes[field] do
-      nil -> "input-empty dirty"
-      "" -> "input-empty dirty"
-      _ -> "dirty"
+    if changes[field] do
+      "dirty"
     end
   end
 
   defp input(:select, form, field, opts) do
     {options, opts} = Keyword.pop(opts, :collection, [])
     Phoenix.HTML.Form.select(form, field, options, opts)
+  end
+
+  defp input(:collection_check_boxes, form, field, opts) do
+    {options, opts} = Keyword.pop(opts, :collection, [])
+
+    Enum.map(options, fn({label, value}) ->
+      opts = opts
+             |> Keyword.put_new(:id, input_id(form, field) <> "_#{value}")
+             |> Keyword.put_new(:name, input_name(form, field) <> "[#{value}]")
+      content_tag :label do
+         [input(:checkbox, form, field, Keyword.merge(opts, value: value)),
+          label]
+      end
+    end)
   end
 
   defp input(type, form, field, opts) do
