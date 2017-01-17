@@ -94,7 +94,7 @@ let common = {
           // }),
           // require("postcss-url")(),
           // require("postcss-cssnext"),
-          require("autoprefixer")({browsers: ["> 5%"]})
+          require("autoprefixer")()
           // require("postcss-browser-reporter")(),
           // require("postcss-reporter")()
         ]
