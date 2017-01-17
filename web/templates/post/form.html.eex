@@ -9,7 +9,7 @@
   <%= EasyInput.input f, :body, using: :textarea %>
   <%= EasyInput.association f, :post_templates, using: :check_boxes, collection: @channels |> Enum.map(&{&1.name, &1.id}) %>
 
-  <div class="form-group">
+  <div class="form__actions">
     <%= link "Cancel", to: "#", class: "button button_cancel" %>
     <%= submit "Create Post", class: "button" %>
   </div>
