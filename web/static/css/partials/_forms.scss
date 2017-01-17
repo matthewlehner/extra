@@ -13,6 +13,7 @@
 [type='url'],
 [type='week'],
 input:not([type]),
+select,
 textarea {
   appearance: none;
   background-color: $base-background-color;
