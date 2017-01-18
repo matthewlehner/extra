@@ -6,18 +6,20 @@ defmodule EasyInput do
   @wrapper_defaults [class: "form__control-group"]
 
   @input_options [:placeholder, :using, :collection]
+  @label_options [:label]
 
-  def association(form, field, opts) do
-    field_type = infer_field_type(form, field, opts)
-    if :check_boxes = field_type do
-      field_type = :collection_check_boxes
-    end
+  def association(form, field, opts \\ []) do
+    field_type =
+      case infer_field_type(form, field, opts) do
+        :check_boxes -> :collection_check_boxes
+        type -> type
+      end
 
     label_options = options_for(:label, form, field, opts)
     input_options = options_for(:input, form, field, opts)
     wrapper_options = options_for(:wrapper, form, field, opts)
 
-    label = content_tag(:label, humanize(field), label_options)
+    label = EasyInput.Label.render(field, label_options)
     input = EasyInput.Input.render(field_type, form, field, input_options)
     error = Extra.ErrorHelpers.error_tag(form, field) || ""
 
@@ -26,14 +28,14 @@ defmodule EasyInput do
     end
   end
 
-  def input(form, field, opts) do
+  def input(form, field, opts \\ []) do
     field_type = infer_field_type(form, field, opts)
 
     label_options = options_for(:label, form, field, opts)
     input_options = options_for(:input, form, field, opts)
     wrapper_options = options_for(:wrapper, form, field, opts)
 
-    label = label(form, field, label_options)
+    label = EasyInput.Label.render(form, field, label_options)
     input = EasyInput.Input.render(field_type, form, field, input_options)
     error = Extra.ErrorHelpers.error_tag(form, field) || ""
 
@@ -56,11 +58,12 @@ defmodule EasyInput do
     |> Keyword.merge(Keyword.take(opts, @input_options))
   end
 
-  defp options_for(:label, form, field, opts) do
+  defp options_for(:label, _form, _field, opts) do
     @label_defaults
+    |> Keyword.merge(Keyword.take(opts, @label_options))
   end
 
-  defp options_for(:wrapper, form, field, opts) do
+  defp options_for(:wrapper, form, field, _opts) do
     @wrapper_defaults
     |> Keyword.update!(:class, fn(class_list) -> wrapper_classes(class_list, form, field) end)
   end
@@ -69,7 +72,7 @@ defmodule EasyInput do
     cond do
       Keyword.has_key?(opts, :using) -> opts[:using]
       Keyword.has_key?(opts, :collection) -> :select
-      true -> Phoenix.HTML.Form.input_type(form, field)
+      true -> input_type(form, field)
     end
   end
 
