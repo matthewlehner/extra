@@ -51,19 +51,21 @@ defmodule EasyInput do
     end
   end
 
-  defp options_for(:input, form, field, opts) do
+  def options_for(type, form, field, opts \\ [])
+
+  def options_for(:input, form, field, opts) do
     input_validations(form, field)
     |> Keyword.merge(extend_input_opts(form, field))
     |> Keyword.merge(@input_defaults)
     |> Keyword.merge(Keyword.take(opts, @input_options))
   end
 
-  defp options_for(:label, _form, _field, opts) do
+  def options_for(:label, _form, _field, opts) do
     @label_defaults
     |> Keyword.merge(Keyword.take(opts, @label_options))
   end
 
-  defp options_for(:wrapper, form, field, _opts) do
+  def options_for(:wrapper, form, field, _opts) do
     @wrapper_defaults
     |> Keyword.update!(:class, fn(class_list) -> wrapper_classes(class_list, form, field) end)
   end
