@@ -5,9 +5,9 @@
     </div>
   <% end %>
 
-  <%= EasyInput.input f, :post_collection_id, collection: (@collections |> Enum.map(&{&1.name, &1.id })) %>
-  <%= EasyInput.input f, :body, using: :textarea %>
-  <%= EasyInput.association f, :post_templates, using: :check_boxes, collection: @channels |> Enum.map(&{&1.name, &1.id}) %>
+  <%= input f, :post_collection_id, label: gettext("collection"), collection: (@collections |> Enum.map(&{&1.name, &1.id })) %>
+  <%= input f, :body, label: gettext("content"), using: :textarea %>
+  <%= association f, :post_templates, label: "channel", using: :check_boxes, collection: @channels |> Enum.map(&{&1.name, &1.id}) %>
 
   <div class="form__actions">
     <%= link "Cancel", to: "#", class: "button button_cancel" %>

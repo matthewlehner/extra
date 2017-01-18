@@ -55,6 +55,8 @@ main {
 }
 
 .form {
+  $label-line-height: 1.25rem;
+
   margin-bottom: 1.5625rem;
   margin-top: 1.5625rem;
 
@@ -68,20 +70,61 @@ main {
     display: flex;
     margin-bottom: 1rem;
     padding-bottom: 1rem;
+
+    .select {
+      margin-left: auto;
+    }
   }
 
   &__control {
     line-height: 1.25rem;
+
+    &[type="checkbox"] {
+      @include visually-hidden;
+
+      &:checked ~ .form__indicator_checkbox {
+        background-image: linear-gradient(to bottom right, $extra-gradient-colors);
+        border: none;
+        box-shadow: none;
+      }
+    }
   }
 
   &__control-label {
-    line-height: 1.25rem;
-    padding-bottom: 0.625rem;
-    padding-top: 0.5625rem;
+    font-weight: bold;
+    line-height: $label-line-height;
+    min-width: 6.625rem;
+    padding-bottom: $input-padding-bottom + (1 / 16);
+    padding-top: $input-padding-top + (1 / 16);
     width: 6.625rem;
   }
-}
 
-label {
-  font-weight: bold;
+  &__collection-wrapper {
+    line-height: $label-line-height;
+
+    label {
+      align-items: center;
+      cursor: pointer;
+      display: flex;
+      padding-bottom: $input-padding-bottom + (1 / 16);
+      padding-top: $input-padding-top + (1 / 16);
+    }
+  }
+
+  &__indicator {
+    border: $input-border;
+    box-shadow: $base-box-shadow;
+    display: block;
+    height: 1.625rem;
+    left: 0;
+    margin-bottom: -0.1875rem;
+    margin-right: 1rem;
+    margin-top: -0.1875rem;
+    // position: absolute;
+    width: 1.625rem;
+
+    &_checkbox {
+      border-radius: $base-border-radius;
+    }
+  }
 }
