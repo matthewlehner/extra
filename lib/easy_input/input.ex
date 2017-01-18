@@ -24,18 +24,26 @@ defmodule EasyInput.Input do
   defp checkbox_collection(form, field, options, opts) do
     Enum.map options, fn
       {label, value} ->
-        opts =
-          opts
-          |> Keyword.put_new(:id, Form.input_id(form, field) <> "_#{value}")
-          |> Keyword.put_new(:name, Form.input_name(form, field) <> "[#{value}]")
-          |> Keyword.merge([value: value])
+        opts = checkbox_options(form, field, value, opts)
 
         Tag.content_tag :label do
           [ render(:checkbox, form, field, opts),
-            Tag.content_tag(:span, nil, class: "form__indicator form__indicator_checkbox"),
+            checkbox_indicator,
             label ]
         end
     end
   end
 
+  def checkbox_indicator([do: block]), do: checkbox_indicator(block)
+
+  def checkbox_indicator(content \\ nil) do
+    Tag.content_tag :span, content, class: "form__indicator form__indicator_checkbox"
+  end
+
+  def checkbox_options(form, field, value, opts \\ []) do
+    opts
+    |> Keyword.put_new(:id, Form.input_id(form, field) <> "_#{value}")
+    |> Keyword.put_new(:name, Form.input_name(form, field) <> "[#{value}]")
+    |> Keyword.merge([value: value])
+  end
 end
