@@ -27,16 +27,18 @@ defmodule EasyInput.Input do
         opts = checkbox_options(form, field, value, opts)
 
         Tag.content_tag :label do
-          [ render(:checkbox, form, field, opts),
-            checkbox_indicator,
-            label ]
+          [render(:checkbox, form, field, opts),
+           checkbox_indicator(),
+           label]
         end
     end
   end
 
+  def checkbox_indicator(content \\ nil)
+
   def checkbox_indicator([do: block]), do: checkbox_indicator(block)
 
-  def checkbox_indicator(content \\ nil) do
+  def checkbox_indicator(content) do
     Tag.content_tag :span, content, class: "form__indicator form__indicator_checkbox"
   end
 
