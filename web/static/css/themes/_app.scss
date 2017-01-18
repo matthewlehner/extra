@@ -103,6 +103,7 @@ main {
     &[type="checkbox"] {
       @include visually-hidden;
 
+      // scss-lint:disable SelectorFormat
       &:checked ~ .form__indicator_checkbox {
         background-image: linear-gradient(to bottom right, $extra-gradient-colors);
         border: none;
