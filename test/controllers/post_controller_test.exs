@@ -3,9 +3,7 @@ defmodule Extra.PostControllerTest do
   import Extra.TestHelper
   import Extra.Factory
 
-  alias Extra.PostContent
-  @valid_attrs %{}
-  @invalid_attrs %{}
+  # alias Extra.PostContent
 
   setup do
     user = insert(:user)
