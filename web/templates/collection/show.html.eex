@@ -1,11 +1,18 @@
 <header class="heading">
-  <h1 class="heading__body"><%= @post_collection.name %></h1>
+  <h1 class="heading__body"><%= @collection.name %></h1>
   <%= link "Create new post", to: post_path(@conn, :new), class: "button button_small" %>
 </header>
 
 <section class="posts-collection">
   <header>
     <h2>Posts</h2>
+    <%= for post <- @collection.posts do %>
+      <p>
+        ID:
+        <%= post.id %>
+        <%= post.body %>
+      </p>
+    <% end %>
   </header>
 
 </section>

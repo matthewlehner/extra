@@ -4,6 +4,7 @@ defmodule Extra.CollectionControllerTest do
   import Extra.Factory
 
   alias Extra.PostCollection
+
   @valid_attrs %{name: "some content"}
   @invalid_attrs %{}
 
@@ -20,9 +21,10 @@ defmodule Extra.CollectionControllerTest do
     assert html_response(conn, 200) =~ "Create a new collection"
   end
 
-  test "creates resource and redirects when data is valid", %{conn: conn} do
+  test "creates resource and redirects when data is valid", %{conn: conn, user: user} do
     conn = post conn, collection_path(conn, :create), post_collection: @valid_attrs
-    new_collection = Repo.get_by!(PostCollection, @valid_attrs)
+
+    new_collection = Repo.get_by!(PostCollection, Map.put(@valid_attrs, :user_id, user.id))
     assert new_collection
     assert redirected_to(conn) == collection_path(conn, :show, new_collection)
   end

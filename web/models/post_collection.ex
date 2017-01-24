@@ -4,6 +4,7 @@ defmodule Extra.PostCollection do
   schema "post_collections" do
     field :name, :string
     belongs_to :user, Extra.User
+    has_many :posts, Extra.PostContent
 
     timestamps()
   end
