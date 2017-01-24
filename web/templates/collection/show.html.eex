@@ -6,13 +6,20 @@
 <section class="posts-collection">
   <header>
     <h2>Posts</h2>
-    <%= for post <- @collection.posts do %>
-      <p>
-        ID:
-        <%= post.id %>
-        <%= post.body %>
-      </p>
-    <% end %>
   </header>
+  <ul class="posts-list">
+    <%= for post <- @collection.posts do %>
+      <li class="post-preview">
+        <%= post.id %>
+        <p><%= post.body %></p>
 
+        <%= for template <- post.templates do %>
+          <%= inspect template.social_channel %>
+          <% if template.social_channel do %>
+            <%= template.social_channel.name %>
+          <% end %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
 </section>

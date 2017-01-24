@@ -22,6 +22,12 @@ defmodule Extra.PostController do
         |> put_flash(:info, "Post created successfully.")
         |> redirect(to: collection_path(conn, :show, post.post_collection_id))
       {:error, changeset} ->
+        channels = conn.assigns[:current_user].social_channels
+
+        changeset =
+          changeset
+          |> PostContent.with_channel_templates(channels)
+
         render(conn, "new.html", changeset: changeset)
     end
   end

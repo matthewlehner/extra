@@ -18,7 +18,7 @@ defmodule Extra.PostTemplate do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:social_channel_id, :active])
-    |> validate_required([:social_channel_id, :post_content_id])
+    |> validate_required([:social_channel_id])
     |> assoc_constraint(:social_channel)
     |> assoc_constraint(:post_content)
   end

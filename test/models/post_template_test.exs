@@ -19,9 +19,5 @@ defmodule Extra.PostTemplateTest do
     test "social channel associations can't be blank" do
       assert {:social_channel_id, "can't be blank"} in errors_on(%PostTemplate{})
     end
-
-    test "post content association can't be blank" do
-      assert {:post_content_id, "can't be blank"} in errors_on(%PostTemplate{})
-    end
   end
 end

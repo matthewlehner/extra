@@ -26,8 +26,11 @@ defmodule Extra.CollectionController do
   end
 
   def show(%{assigns: %{current_user: user}} = conn, %{"id" => id}) do
-    collection = Repo.get_by!(PostCollection, id: id, user_id: user.id)
-                 |> Repo.preload(posts: [templates: :social_channel])
+    collection =
+      PostCollection
+      |> Repo.get_by!(id: id, user_id: user.id)
+      |> Repo.preload(posts: [templates: :social_channel])
+
     render(conn, "show.html", collection: collection)
   end
 
