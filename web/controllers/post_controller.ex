@@ -4,18 +4,20 @@ defmodule Extra.PostController do
   alias Extra.PostContent
 
   def new(conn, _params) do
-    changeset = PostContent.changeset(%PostContent{})
+    channels = conn.assigns[:current_user].social_channels
+    changeset = PostContent.changeset_with_post_templates(%PostContent{}, channels, %{})
+
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"post" => post_params}) do
+  def create(conn, %{"post_content" => post_params}) do
     changeset = PostContent.changeset(%PostContent{}, post_params)
 
     case Repo.insert(changeset) do
-      {:ok, _post} ->
+      {:ok, post} ->
         conn
-        |> put_flash(:info, "PostContent created successfully.")
-        |> redirect(to: post_path(conn, :index))
+        |> put_flash(:info, "Post created successfully.")
+        |> redirect(to: collection_path(conn, :show, post.post_collection_id))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end

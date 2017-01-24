@@ -50,7 +50,7 @@ defmodule Extra.Router do
     get "/", DashboardController, :index
     resources "/channels", SocialChannelController, only: [:new, :show]
     resources "/collections", CollectionController, only: [:new, :create, :show]
-    resources "/posts", PostController, only: [:new, :create, :edit, :update, :show, :delete]
+    resources "/posts", PostController, only: [:new, :create]
   end
 
   scope "/admin", Extra do

@@ -27,7 +27,8 @@ defmodule Extra.Factory do
 
   def post_content_factory do
     %Extra.PostContent{
-      body: "some content"
+      body: "some content",
+      collection: build(:post_collection)
     }
   end
 end

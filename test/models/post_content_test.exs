@@ -7,12 +7,19 @@ defmodule Extra.PostContentTest do
 
   describe "PostContent.changeset" do
     test "changeset with valid attributes" do
-      changeset = PostContent.changeset(%PostContent{}, @valid_attrs)
+      collection = insert(:post_collection, user: build(:user))
+      attrs = %{@valid_attrs | post_collection_id: collection.id}
+
+      changeset = PostContent.changeset(%PostContent{}, attrs)
       assert changeset.valid?
     end
 
     test "with blank body" do
       assert {:body, "can't be blank"} in errors_on(%PostContent{}, %{})
+    end
+
+    test "with blank user" do
+      assert {:post_collection_id, "can't be blank"} in errors_on(%PostContent{}, %{})
     end
   end
 end
