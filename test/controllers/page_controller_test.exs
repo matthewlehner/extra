@@ -1,5 +1,5 @@
 defmodule Extra.PageControllerTest do
-  use Extra.ConnCase
+  use Extra.ConnCase, async: true
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"

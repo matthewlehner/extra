@@ -1,5 +1,5 @@
 defmodule Extra.UserSessionTest do
-  use Extra.ModelCase
+  use Extra.ModelCase, async: true
 
   alias Extra.UserSession
 

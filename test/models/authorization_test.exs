@@ -1,5 +1,5 @@
 defmodule Extra.AuthorizationTest do
-  use Extra.ModelCase
+  use Extra.ModelCase, async: true
 
   alias Extra.Authorization
 
@@ -21,8 +21,10 @@ defmodule Extra.AuthorizationTest do
       auth1 = insert(:authorization)
       auth2_params = Map.merge(params_for(:authorization), %{uid: auth1.uid})
 
-      assert {:error, auth2} = Authorization.changeset(%Authorization{}, auth2_params)
+      assert {:error, auth2} = %Authorization{}
+                               |> Authorization.changeset(auth2_params)
                                |> Repo.insert()
+
       assert {:uid, "has already been taken"} in errors_on(auth2)
     end
   end

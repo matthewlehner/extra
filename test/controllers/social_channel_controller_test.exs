@@ -1,5 +1,5 @@
 defmodule Extra.SocialChannelControllerTest do
-  use Extra.ConnCase
+  use Extra.ConnCase, async: true
   import Extra.TestHelper
 
   alias Extra.SocialChannel

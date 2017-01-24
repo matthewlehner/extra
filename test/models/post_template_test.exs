@@ -1,5 +1,5 @@
 defmodule Extra.PostTemplateTest do
-  use Extra.ModelCase
+  use Extra.ModelCase, async: true
 
   alias Extra.PostTemplate
 

@@ -1,5 +1,5 @@
 defmodule Extra.UserTest do
-  use Extra.ModelCase
+  use Extra.ModelCase, async: true
 
   alias Extra.User
 
@@ -21,7 +21,8 @@ defmodule Extra.UserTest do
 
     test "with duplicate email" do
       user1 = insert(:user)
-      assert {:error, user2} = User.changeset(%User{}, %{email: user1.email})
+      assert {:error, user2} = %User{}
+                               |> User.changeset(%{email: user1.email})
                                |> Repo.insert()
       assert {:email, "has already been taken"} in errors_on(user2)
     end

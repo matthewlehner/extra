@@ -1,5 +1,5 @@
 defmodule Extra.SocialChannelTest do
-  use Extra.ModelCase
+  use Extra.ModelCase, async: true
 
   alias Extra.SocialChannel
 

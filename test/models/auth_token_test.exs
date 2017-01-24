@@ -1,5 +1,5 @@
 defmodule Extra.AuthTokenTest do
-  use Extra.ModelCase
+  use Extra.ModelCase, async: true
 
   alias Extra.AuthToken
 

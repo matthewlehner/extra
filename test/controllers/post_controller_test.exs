@@ -1,5 +1,5 @@
 defmodule Extra.PostControllerTest do
-  use Extra.ConnCase
+  use Extra.ConnCase, async: true
   import Extra.TestHelper
   import Extra.Factory
 
