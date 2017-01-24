@@ -18,4 +18,16 @@ defmodule Extra.Factory do
       uid: "some content"
     }
   end
+
+  def post_collection_factory do
+    %Extra.PostCollection{
+      name: "some content"
+    }
+  end
+
+  def post_content_factory do
+    %Extra.PostContent{
+      body: "some content"
+    }
+  end
 end

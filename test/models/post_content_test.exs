@@ -3,16 +3,16 @@ defmodule Extra.PostContentTest do
 
   alias Extra.PostContent
 
-  @valid_attrs %{body: "some content"}
-  @invalid_attrs %{}
+  @valid_attrs params_for :post_content
 
-  test "changeset with valid attributes" do
-    changeset = PostContent.changeset(%PostContent{}, @valid_attrs)
-    assert changeset.valid?
-  end
+  describe "PostContent.changeset" do
+    test "changeset with valid attributes" do
+      changeset = PostContent.changeset(%PostContent{}, @valid_attrs)
+      assert changeset.valid?
+    end
 
-  test "changeset with invalid attributes" do
-    changeset = PostContent.changeset(%PostContent{}, @invalid_attrs)
-    refute changeset.valid?
+    test "with blank body" do
+      assert {:body, "can't be blank"} in errors_on(%PostContent{}, %{})
+    end
   end
 end

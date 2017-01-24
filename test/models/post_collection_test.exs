@@ -3,16 +3,16 @@ defmodule Extra.PostCollectionTest do
 
   alias Extra.PostCollection
 
-  @valid_attrs %{name: "some content"}
-  @invalid_attrs %{}
+  @valid_attrs params_for :post_collection
 
-  test "changeset with valid attributes" do
-    changeset = PostCollection.changeset(%PostCollection{}, @valid_attrs)
-    assert changeset.valid?
-  end
+  describe "PostCollection.changeset" do
+    test "changeset with valid attributes" do
+      changeset = PostCollection.changeset(%PostCollection{}, @valid_attrs)
+      assert changeset.valid?
+    end
 
-  test "changeset with invalid attributes" do
-    changeset = PostCollection.changeset(%PostCollection{}, @invalid_attrs)
-    refute changeset.valid?
+    test "name can't be blank" do
+      assert {:name, "can't be blank"} in errors_on(%PostCollection{}, %{})
+    end
   end
 end
