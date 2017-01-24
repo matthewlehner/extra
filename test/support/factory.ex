@@ -31,4 +31,10 @@ defmodule Extra.Factory do
       collection: build(:post_collection)
     }
   end
+
+  def social_channel_factory do
+    %Extra.SocialChannel{
+      name: sequence(:name, &"Social Media Account ##{&1}")
+    }
+  end
 end
