@@ -16,15 +16,20 @@ defmodule Extra.PostContent do
     struct
     |> cast(params, [:body, :post_collection_id])
     |> validate_required([:body, :post_collection_id])
+    |> cast_assoc(:templates)
   end
 
-  def changeset_with_post_templates(struct, channels, params \\ %{}) do
-    changeset(struct, params)
-    |> put_assoc(:templates, build_templates(params, channels))
+  def with_channel_templates(changeset, channels) do
+    changeset
+    |> put_assoc(:templates, build_templates(channels))
   end
 
-  defp build_templates(params, channels) do
+  defp build_templates(channels) do
     channels
-    |> Enum.map(fn(channel) -> build_assoc(channel, :templates, %{social_channel: channel}) end)
+    |> Enum.map(&build_template/1)
+  end
+
+  defp build_template(channel) do
+    build_assoc(channel, :templates, %{social_channel: channel})
   end
 end

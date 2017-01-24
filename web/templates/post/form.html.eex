@@ -14,8 +14,9 @@
     <div class="form__collection-wrapper">
       <% channel_options = options_for(:input, f, :templates) %>
       <%= inputs_for f, :templates, fn fc -> %>
+        <%= hidden_input fc, :social_channel_id %>
         <%= content_tag :label do %>
-          <%= checkbox fc, :templates, channel_options %>
+          <%= checkbox fc, :active %>
           <%= EasyInput.Input.checkbox_indicator do %>
             <%= icon(@conn, "checkmark") %>
           <% end %>

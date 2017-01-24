@@ -5,7 +5,10 @@ defmodule Extra.PostController do
 
   def new(conn, _params) do
     channels = conn.assigns[:current_user].social_channels
-    changeset = PostContent.changeset_with_post_templates(%PostContent{}, channels, %{})
+
+    changeset =
+      PostContent.changeset(%PostContent{}, %{})
+      |> PostContent.with_channel_templates(channels)
 
     render(conn, "new.html", changeset: changeset)
   end
