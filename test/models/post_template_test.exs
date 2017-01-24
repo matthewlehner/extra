@@ -13,7 +13,7 @@ defmodule Extra.PostTemplateTest do
         |> build_assoc(:templates)
         |> PostTemplate.changeset(%{social_channel_id: channel.id})
 
-      assert {:ok, template} = Repo.insert(changeset)
+      assert {:ok, _} = Repo.insert(changeset)
     end
 
     test "social channel associations can't be blank" do
