@@ -19,9 +19,7 @@ defmodule Extra.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Extra, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger,
-                    :gettext, :phoenix_ecto, :postgrex, :ueberauth_shopify,
-                    :ueberauth_facebook, :ueberauth_identity, :comeonin]]
+     extra_applications: [:logger]]
   end
 
   # Specifies which paths to compile per environment.
@@ -45,7 +43,7 @@ defmodule Extra.Mixfile do
      {:ueberauth_shopify, github: "matthewlehner/ueberauth_shopify", tag: "fix-compiler-warnings"},
      {:ueberauth_twitter, "~> 0.2"},
      {:oauth, github: "tim/erlang-oauth"},
-     {:ueberauth_facebook, github: "matthewlehner/ueberauth_facebook", tag: "elixir-14-deprecations" },
+     {:ueberauth_facebook, "~> 0.6"},
      {:ueberauth_identity, "~> 0.2.0"},
      {:ecto_enum, "~> 0.3.0"},
 
