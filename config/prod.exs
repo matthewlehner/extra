@@ -13,9 +13,9 @@ use Mix.Config
 # which you typically run after static files are built.
 config :extra, Extra.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [scheme: "https", host: "extra.social", port: 443],
-  force_ssl: [ rewrite_on: [:x_forwarded_proto],
-               hsts: :true ],
+  url: [scheme: "https", host: "www.extra.ai", port: 443],
+  force_ssl: [rewrite_on: [:x_forwarded_proto],
+              hsts: :true],
   cache_static_manifest: "priv/static/manifest.json",
   static_url: [scheme: "https", host: "cdn.extra.social", port: 443],
   secret_key_base: System.get_env("SECRET_KEY_BASE")
