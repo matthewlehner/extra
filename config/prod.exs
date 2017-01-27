@@ -17,7 +17,7 @@ config :extra, Extra.Endpoint,
   force_ssl: [rewrite_on: [:x_forwarded_proto],
               hsts: :true],
   cache_static_manifest: "priv/static/manifest.json",
-  static_url: [scheme: "https", host: "cdn.extra.social", port: 443],
+  static_url: [scheme: "https", host: "cdn.extra.ai", port: 443],
   secret_key_base: System.get_env("SECRET_KEY_BASE")
 
 # Do not print debug messages in production
