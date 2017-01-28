@@ -38,4 +38,9 @@ defmodule Extra.Factory do
       provider: "Twitter"
     }
   end
+
+  def with_channels(user) do
+    insert_pair(:social_channel, user: user)
+    user
+  end
 end
