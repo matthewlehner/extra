@@ -3,14 +3,20 @@ defmodule Extra.SocialChannelTest do
 
   alias Extra.SocialChannel
 
-  @valid_attrs %{name: "some content", provider: "test", authorization: %{}}
+  @valid_attrs params_for(:social_channel)
 
   test "changeset with valid attributes" do
+    params =
+      @valid_attrs
+      |> Map.put(:authorization, params_for(:authorization))
+
+    changeset =
+      %SocialChannel
+      |> SocialChannel.changeset(params)
+
     errors = errors_on(%SocialChannel{}, @valid_attrs)
     refute {:name, "can't be blank"} in errors
     refute {:provider, "can't be blank"} in errors
-    # TODO - Make this better. Probably need ex_machina at this point.
-    assert Keyword.has_key?(errors, :authorization)
   end
 
   test "changeset with invalid attributes" do

@@ -24,7 +24,8 @@ defmodule Extra.SocialChannel do
   end
 
   def changeset_from_auth(auth, %Extra.User{id: user_id}) do
-    params = to_channel_params(auth)
+    params = auth
+             |> to_channel_params()
              |> Map.put(:user_id, user_id)
 
     changeset(%Extra.SocialChannel{}, params)
