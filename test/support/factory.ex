@@ -34,7 +34,8 @@ defmodule Extra.Factory do
 
   def social_channel_factory do
     %Extra.SocialChannel{
-      name: sequence(:name, &"Social Media Account ##{&1}")
+      name: sequence(:name, &"Social Media Account ##{&1}"),
+      provider: "Twitter"
     }
   end
 end
