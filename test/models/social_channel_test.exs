@@ -11,10 +11,10 @@ defmodule Extra.SocialChannelTest do
       |> Map.put(:authorization, params_for(:authorization))
 
     changeset =
-      %SocialChannel
+      %SocialChannel{}
       |> SocialChannel.changeset(params)
 
-    errors = errors_on(%SocialChannel{}, @valid_attrs)
+    errors = errors_on(changeset)
     refute {:name, "can't be blank"} in errors
     refute {:provider, "can't be blank"} in errors
   end
