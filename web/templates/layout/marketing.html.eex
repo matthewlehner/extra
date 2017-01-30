@@ -16,6 +16,7 @@
   <meta property="og:site_name" content="Extra Social Media Automation">
   <meta property="fb:app_id" content="200585757014002">
   <meta name="twitter:site" content="@ExtraAI">
+  <%= render "favicons.html", conn: @conn %>
 
   <title>Extra – Social Media Automation Software That Saves You Time</title>
   <link rel="stylesheet" href="<%= static_url(@conn, "/css/marketing.css") %>">
