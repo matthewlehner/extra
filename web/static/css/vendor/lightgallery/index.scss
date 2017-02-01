@@ -129,6 +129,7 @@
   }
 
   .lg-image {
+    box-shadow: 0 0 2px change-color($black, $alpha: 0.5);
     display: block;
     // border-radius: $base-border-radius;
     max-width: 1024px;
@@ -161,17 +162,19 @@
     }
   }
 }
-.lg-backdrop{
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+
+.lg-backdrop {
+  background-color: lighten($gray-lightest, 3.5%);
   bottom: 0;
-  z-index: $zindex-backdrop;
-  background-color: $white;
+  left: 0;
   opacity: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
   transition: opacity 0.15s ease 0s;
-  &.in{
+  z-index: $zindex-backdrop;
+
+  &.in {
     opacity: $backdrop-opacity;
   }
 }

@@ -1,19 +1,9 @@
 // default theme
 .lg-actions {
-  .lg-next,
-  .lg-prev {
-    background-color: $white;
-    border-radius: 5rem;
-    box-shadow: 0 1px 0 0 change-color($black, $alpha: 0.12),
-                0 1px 2px 0 change-color($black, $alpha: 0.22);
-    color: $gray;
-    cursor: pointer;
-    display: block;
-    height: 3.125rem;
+  .lg-icon {
     margin-top: -10px;
     position: absolute;
     top: 50%;
-    width: 3.125rem;
     z-index: $zindex-controls;
 
     &.disabled {
@@ -22,7 +12,10 @@
     }
 
     &:hover {
-      color: $action-color;
+      &::before {
+        border-right-color: $action-color;
+        border-top-color: $action-color;
+      }
     }
 
     &::before {
@@ -33,6 +26,8 @@
       height: 0.625rem;
       position: absolute;
       top: 21px;
+      transition: border-right-color $base-duration $base-timing,
+                  border-top-color $base-duration $base-timing;
       width: 0.625rem;
     }
   }
@@ -50,10 +45,22 @@
     left: 20px;
 
     &::before {
-      right: 19px;
+      right: 18.5px;
       transform: rotate(225deg);
     }
   }
+}
+
+.lg-icon {
+  background-color: $white;
+  border-radius: 5rem;
+  box-shadow: 0 1px 0 0 change-color($black, $alpha: 0.12),
+              0 1px 2px 0 change-color($black, $alpha: 0.22);
+  color: $gray;
+  cursor: pointer;
+  display: block;
+  height: 3.125rem;
+  width: 3.125rem;
 }
 
 @keyframes lg-right-end {
@@ -99,31 +106,46 @@
       position: relative;
     }
   }
+
+  // Starting effect
+  // &.lg-start-zoom {
+  //   .lg-object {
+  //     // transform: scale3d(0.5, 0.5, 0.5);
+  //     // @media screen and (min-resolution: 144dpi) {
+  //     //   transform: scale3d(0.25, 0.25, 0.25);
+  //     // }
+  //     opacity: 0;
+  //     transition: transform 250ms cubic-bezier(0, 0, 0.25, 1) 0s,
+  //                 opacity 250ms cubic-bezier(0, 0, 0.25, 1) !important;
+  //     // transform-origin: 50% 50%;
+  //   }
+  //
+  //   .lg-item.lg-complete {
+  //     .lg-object {
+  //       // transform: scale3d(1, 1, 1);
+  //       //
+  //       // @media screen and (min-resolution: 144dpi) {
+  //       //   transform: scale3d(0.5, 0.5, 0.5);
+  //       // }
+  //       opacity: 1;
+  //     }
+  //   }
+  // }
 }
 
 // lg toolbar
 .lg-toolbar {
-  z-index: $zindex-toolbar;
   left: 0;
   padding: 1.25rem;
   position: absolute;
   top: 0;
   width: 100%;
-  // background-color: $lg-toolbar-bg;
+  z-index: $zindex-toolbar;
 
   .lg-icon {
-    color: $gray;
-    cursor: pointer;
     float: right;
-    font-size: 24px;
-    height: 47px;
-    line-height: 47px;
-    outline: medium none;
-    // padding: 10px 0;
     text-align: center;
-    text-decoration: none !important;
     transition: color $base-timing $base-duration;
-    width: 50px;
 
     &:hover {
       color: $action-color;
@@ -132,106 +154,79 @@
 
   .lg-close {
     &::after {
-      background-color: $base-background-color;
-      border-radius: 5rem;
-      box-shadow: 0 1px 0 0 change-color($black, $alpha: 0.12),
-      0 1px 2px 0 change-color($black, $alpha: 0.22);
       content: "\00d7";
       display: block;
+      font-size: 1.75rem;
       height: 3.125rem;
       line-height: 3.125rem;
-      width: 3.125rem;
     }
   }
 
   .lg-download {
-    &:after {
+    &::after {
       content: "\e0f2";
     }
   }
 }
 
 // lightGallery title
-.lg-sub-html {
-    background-color: $lg-sub-html-bg;
-    bottom: 0;
-    color: $lg-sub-html-color;
-    font-size: 16px;
-    left: 0;
-    padding: 10px 40px;
-    position: fixed;
-    right: 0;
-    text-align: center;
-    z-index: $zindex-subhtml;
-
-    h4 {
-        margin: 0;
-        font-size: 13px;
-        font-weight: bold;
-    }
-
-    p {
-        font-size: 12px;
-        margin: 5px 0 0;
-    }
-}
+// .lg-sub-html {
+//     background-color: $lg-sub-html-bg;
+//     bottom: 0;
+//     color: $lg-sub-html-color;
+//     font-size: 16px;
+//     left: 0;
+//     padding: 10px 40px;
+//     position: fixed;
+//     right: 0;
+//     text-align: center;
+//     z-index: $zindex-subhtml;
+//
+//     h4 {
+//         margin: 0;
+//         font-size: 13px;
+//         font-weight: bold;
+//     }
+//
+//     p {
+//         font-size: 12px;
+//         margin: 5px 0 0;
+//     }
+// }
 
 // lg image counter
-#lg-counter {
-    color: $lg-icon-color;
-    display: inline-block;
-    font-size: $lg-counter-font-size;
-    padding-left: 20px;
-    padding-top: 12px;
-    vertical-align: middle;
-}
+// #lg-counter {
+//     color: $lg-icon-color;
+//     display: inline-block;
+//     font-size: $lg-counter-font-size;
+//     padding-left: 20px;
+//     padding-top: 12px;
+//     vertical-align: middle;
+// }
 
 // for idle state
-.lg-toolbar, .lg-prev, .lg-next {
-    opacity: 1;
-    transition: transform 0.35s cubic-bezier(0, 0, 0.25, 1) 0s, opacity 0.35s cubic-bezier(0, 0, 0.25, 1) 0s, color 0.2s linear;
+.lg-toolbar,
+.lg-prev,
+.lg-next {
+  opacity: 1;
+  transition: transform 0.35s cubic-bezier(0, 0, 0.25, 1) 0s,
+              opacity 0.35s cubic-bezier(0, 0, 0.25, 1) 0s,
+              color 0.2s linear;
 }
 
 .lg-hide-items {
-    .lg-prev {
-        opacity: 0;
-        transform: translate3d(-10px, 0, 0);
-    }
+  .lg-prev {
+    opacity: 0;
+    transform: translate3d(-10px, 0, 0);
+  }
 
-    .lg-next {
-        opacity: 0;
-        transform: translate3d(10px, 0, 0);
-    }
+  .lg-next {
+    opacity: 0;
+    transform: translate3d(10px, 0, 0);
+  }
 
-    .lg-toolbar {
-        opacity: 0;
-        transform: translate3d(0, -10px, 0);
-    }
-}
-
-// Starting effect
-.lg-outer {
-  &.lg-start-zoom{
-    .lg-object{
-
-      // transform: scale3d(0.5, 0.5, 0.5);
-      // @media screen and (min-resolution: 144dpi) {
-      //   transform: scale3d(0.25, 0.25, 0.25);
-      // }
-      opacity: 0;
-      transition: transform 250ms cubic-bezier(0, 0, 0.25, 1) 0s, opacity 250ms cubic-bezier(0, 0, 0.25, 1) !important;
-      // transform-origin: 50% 50%;
-    }
-    .lg-item.lg-complete{
-      .lg-object{
-
-        // transform: scale3d(1, 1, 1);
-        //
-        // @media screen and (min-resolution: 144dpi) {
-        //   transform: scale3d(0.5, 0.5, 0.5);
-        // }
-        opacity: 1;
-      }
-    }
+  .lg-toolbar {
+    opacity: 0;
+    transform: translate3d(0, -10px, 0);
   }
 }
