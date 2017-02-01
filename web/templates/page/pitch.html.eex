@@ -174,22 +174,18 @@
 
 <section class="early-access-screenshots">
   <p class="p__muted">Early access screenshots</p>
-  <figure>
-    <a href="https://invis.io/MB9XWXJQN">
-      <img src="<%= static_path(@conn, "/images/marketing/screenshot1.png") %>"
+  <figure id="screenshot-gallery" class="early-access-screenshots__thumbnails">
+    <%= link to: static_path(@conn, "/images/marketing/preview-1.png"), data: [width: "1024"] do %>
+      <img src="<%= static_path(@conn, "/images/marketing/screenshot-1.png") %>"
            title="Extra Screenshot 1 – Create collection of posts">
-    </a>
-  </figure>
-  <figure>
-    <a href="https://invis.io/MB9XWXJQN">
-      <img src="<%= static_path(@conn, "/images/marketing/screenshot2.png") %>"
+    <% end %>
+    <%= link to: static_path(@conn, "/images/marketing/preview-2.png") do %>
+      <img src="<%= static_path(@conn, "/images/marketing/screenshot-2.png") %>"
            title="Extra Screenshot 2 – Create your editorial calendar.">
-    </a>
-  </figure>
-  <figure>
-    <a href="https://invis.io/MB9XWXJQN">
-      <img src="<%= static_path(@conn, "/images/marketing/screenshot3.png") %>"
+    <% end %>
+    <%= link to: static_path(@conn, "/images/marketing/preview-3.png") do %>
+      <img src="<%= static_path(@conn, "/images/marketing/screenshot-3.png") %>"
         title="Extra Screenshot 3 – Let Extra manage your editorial calendar for you">
-    </a>
+    <% end %>
   </figure>
 </section>
