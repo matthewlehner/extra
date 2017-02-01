@@ -1,0 +1,5 @@
+#!/bin/bash -ex
+
+sudo heroku certs:update \
+  /etc/letsencrypt/live/extra.ai/fullchain.pem \
+  /etc/letsencrypt/live/extra.ai/privkey.pem
