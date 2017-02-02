@@ -102,6 +102,18 @@ li {
   padding: $footer-vertical-padding;
   text-align: center;
 
+  :any-link {
+    color: $footer-color;
+  }
+
+  &__links {
+    margin-top: 1rem;
+
+    a:not(:first-child) {
+      margin-left: 2.2rem;
+    }
+  }
+
   @media($screen-sm-min) {
     bottom: 0;
     position: fixed;
@@ -120,18 +132,6 @@ li {
 
     &__links {
       margin-top: 0;
-    }
-  }
-
-  :any-link {
-    color: $footer-color;
-  }
-
-  &__links {
-    margin-top: 1rem;
-
-    a:not(:first-child) {
-      margin-left: 2.2rem;
     }
   }
 }
