@@ -120,7 +120,9 @@
     Extra saves you time. <em>Lots of time.</em> As you build collections of
     posts, you'll be able to market to your customers without having to spend
     your Mondays, Tuesdays or Wednesdays searching for new content (you could
-    maybe even take a holiday). With a post schedule fine
+    maybe even take a holiday). With a post schedule fine-tuned to when your
+    customers are the most engaged, and a self-refilling queue of content that
+    your customers will love, you'll be present when it really matters.
   </p>
 </section>
 
@@ -207,56 +209,57 @@ title="Extra Screenshot 1 – Create collection of posts">
 </section>
 
 <section>
-  <h5>Will I annoy my audience by reposting?</h5>
+  <dl>
+    <dt>Will I annoy my audience by reposting?</dt>
+    <dd>
+      Most major news organizations repost content two or three times per day.
+      It's very unlikely that your users will notice Extra running in the
+      background. Unlike other automation tools, we're also intelligently
+      analyzing your customers' engagement patterns to determine the perfect
+      moment to post, which means that you can actually post <em>less</em>.
+    </dd>
 
-  <p>
-    Most major news organizations repost content two or three times per day.
-    It's very unlikely that your users will notice Extra running in the
-    background. Unlike other automation tools, we're also intelligently
-    analyzing your customers' engagement patterns to determine the perfect
-    moment to post, which means that you can actually post <em>less</em>.
-  </p>
+    <dt>
+      Is Extra going to create "duplicate content?" I've heard that's a bad thing.
+    </dt>
 
-  <h5>
-    Is Extra going to create "duplicate content?" I've heard that's a bad thing.
-  </h5>
+    <dd>
+      Nope! Duplicate content is not a concern with social media posts—you won't
+      be penalized by Google for doing it.
+    </dd>
 
-  <p>
-    Nope! Duplicate content is not a concern with social media posts—you won't
-    be penalized by Google for doing it.
-  </p>
+    <dt>How does Extra know when my customers are the most engaged?</dt>
+    <dd>
+      Extra analyzes your customers' interactions with your posts going back
+      several months. It then builds a schedule based on when your customers are
+      most likely to engage and updates that schedule as it records more data.
+    </p>
 
-  <h5>How does Extra know when my customers are the most engaged?</h5>
-  <p>
-    Extra analyzes your customers' interactions with your posts going back
-    several months. It then builds a schedule based on when your customers are
-    most likely to engage and updates that schedule as it records more data.
-  </p>
+    <dt>Can I create my own schedule? Can I have multiple schedules?</dt>
+    <dd>
+      Yep. You're welcome to override Extra's smart schedule to setup your own.
+      You'll be able to setup unique schedules for each of your social media
+      channels.
+    </dd>
 
-  <h5>Can I create my own schedule? Can I have multiple schedules?</h5>
-  <p>
-    Yep. You're welcome to override Extra's smart schedule to setup your own.
-    You'll be able to setup unique schedules for each of your social media
-    channels.
-  </p>
+    <dt>
+      Is reposting content against the terms of service of Facebook or Twitter?
+    </dt>
 
-  <h5>
-    Is reposting content against the terms of service of Facebook or Twitter?
-  </h5>
+    <dd>
+      Nope. And it won't hurt your organic reach either.
+    </p>
 
-  <p>
-    Nope. And it won't hurt your organic reach either.
-  </p>
+    <dt>What platforms will you support?</dt>
+    <dd>
+      Extra integrates with Facebook and Twitter right now, with Pinterest and
+      LinkedIn planned next!
+    </dd>
 
-  <h5>What platforms will you support?</h5>
-  <p>
-    Extra integrates with Facebook and Twitter right now, with Pinterest and
-    LinkedIn planned next!
-  </p>
-
-  <h5>How much is it going to cost?</h5>
-  <p>
-    Our pricing hasn't been finalized, but if you jump on as an early access
-    participant, we'll make sure you get a deal.
-  </p>
+    <dt>How much is it going to cost?</dt>
+    <dd>
+      Our pricing hasn't been finalized, but if you jump on as an early access
+      participant, we'll make sure you get a deal.
+    </dd>
+  </dl>
 </section>
