@@ -45,8 +45,8 @@
       </section>
 
       <nav class="site-footer__links">
-        <%= link "Contact", to: "#" %>
-        <%= link "Privacy Policy", to: "#" %>
+        <%= link "Contact", to: "mailto:hello@extra.ai" %>
+        <%#= link "Privacy Policy", to: "#" %>
       </nav>
     </div>
   </footer>
