@@ -29,6 +29,8 @@ main {
 }
 
 .select {
+  $padding-right: 1.875rem;
+
   color: $base-font-color;
   display: inline-block;
   position: relative;
@@ -36,6 +38,7 @@ main {
   select {
     box-shadow: $base-box-shadow;
     cursor: pointer;
+    padding-right: $padding-right;
     width: 100%;
 
     // Undo the Firefox inner focus ring.
@@ -47,6 +50,18 @@ main {
     &::-ms-expand {
       display: none;
     }
+  }
+
+  &::before {
+    background-image: linear-gradient(to right,
+                                      transparentize($white, 1),
+                                      $white 90%);
+    content: "";
+    display: block;
+    position: absolute;
+    right: $padding-right;
+    top: 1px;
+    width: $padding-right / 1.2;
   }
 
   &::after {

@@ -72,7 +72,11 @@ main {
     padding-bottom: 1rem;
 
     .select {
-      margin-left: auto;
+      width: 100%;
+
+      &::before {
+        height: $label-line-height + $input-padding-top + $input-padding-bottom;
+      }
     }
   }
 
@@ -98,7 +102,7 @@ main {
   }
 
   &__control {
-    line-height: 1.25rem;
+    line-height: $label-line-height;
 
     &[type="checkbox"] {
       @include visually-hidden;
