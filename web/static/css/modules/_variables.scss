@@ -27,9 +27,9 @@ $secondary-border: 1px solid $gray-light !default;
 
 // Forms
 $input-border: $secondary-border !default;
-$input-padding-top: 0.5rem;
-$input-padding-side: 1rem;
-$input-padding-bottom: 0.5625rem;
+$input-padding-top: 0.5rem !default;
+$input-padding-side: 1rem !default;
+$input-padding-bottom: 0.5625rem !default;
 $input-padding: $input-padding-top $input-padding-side $input-padding-bottom;
 
 // Background Colors

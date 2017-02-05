@@ -1,6 +1,7 @@
 @import "modules/neue-haas-unica";
 @import "modules/colors";
 $base-font-color: lighten($gray-dark, 11%);
+$input-padding-side: 0.6875rem;
 @import "modules/variables";
 
 @import "modules/tab-mixins";
