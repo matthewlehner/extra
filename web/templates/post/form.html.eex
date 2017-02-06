@@ -6,21 +6,21 @@
   <% end %>
 
   <%= input f, :post_collection_id, label: gettext("collection"), collection: (@collections |> Enum.map(&{&1.name, &1.id })) %>
-  <%= input f, :body, label: gettext("content"), using: :textarea %>
+  <%= input f, :body, label: gettext("content"), using: :textarea, rows: 3 %>
 
   <%= content_tag :div, options_for(:wrapper, f, :templates) do %>
     <%= EasyInput.Label.render :post_templates, options_for(:label, f, :post_templates, label: "channel") %>
 
     <div class="form__collection-wrapper">
       <% channel_options = options_for(:input, f, :templates) %>
-      <%= inputs_for f, :templates, fn fc -> %>
+      <%= inputs_for f, :templates, [append: templates_for(@changeset, @channels)], fn fc -> %>
         <%= hidden_input fc, :social_channel_id %>
         <%= content_tag :label do %>
           <%= checkbox fc, :active, channel_options %>
           <%= EasyInput.Input.checkbox_indicator do %>
             <%= icon(@conn, "checkmark") %>
           <% end %>
-          <%= fc.data.social_channel.name %>
+          <%= channel_label(fc, @channels) %>
         <% end %>
       <% end %>
     </div>

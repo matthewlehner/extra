@@ -39,8 +39,17 @@ defmodule Extra.Factory do
     }
   end
 
+  def post_template_factory do
+    %Extra.PostTemplate{}
+  end
+
   def with_channels(user) do
     insert_pair(:social_channel, user: user)
     user
+  end
+
+  def with_template_for(post_content, social_channel) do
+    insert(:post_template, post_content: post_content, social_channel: social_channel)
+    post_content
   end
 end

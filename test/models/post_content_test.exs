@@ -15,22 +15,22 @@ defmodule Extra.PostContentTest do
     end
 
     test "with blank body" do
-      assert {:body, "can't be blank"} in errors_on(%PostContent{}, %{})
+      assert {:body, "can't be blank"} in errors_on(%PostContent{})
     end
 
     test "with blank user" do
-      assert {:post_collection_id, "can't be blank"} in errors_on(%PostContent{}, %{})
+      assert {:post_collection_id, "can't be blank"} in errors_on(%PostContent{})
     end
 
     test "with templates params" do
-      social_channel = insert(:social_channel)
+      channel = insert(:social_channel)
       collection = insert(:post_collection)
 
       params = %{
         body: "some content",
         post_collection_id: collection.id,
         templates: %{
-          "0" => %{active: true, social_channel_id: social_channel.id}
+          "0" => %{active: true, social_channel_id: channel.id}
         }
       }
 
@@ -39,8 +39,34 @@ defmodule Extra.PostContentTest do
         |> PostContent.changeset(params)
         |> Repo.insert()
 
-      [template | _] = post.templates
-      assert template.post_content_id == post.id
+      assert [first_template | _] = post.templates
+      assert first_template.post_content_id == post.id
+    end
+  end
+
+  describe "build_unassociated_templates" do
+    test "generate a list of unassociated channels" do
+      channels = insert_pair(:social_channel)
+      [channel | unassociated_channels] = channels
+
+      post = :post_content
+             |> insert()
+             |> with_template_for(channel)
+
+      templates = PostContent.build_potential_templates(post, channels)
+
+      assert Enum.map(unassociated_channels, &(&1.id)) ==
+             Enum.map(templates, &(&1.social_channel_id))
+    end
+
+    test "works with new post templates" do
+      channels = insert_pair(:social_channel)
+
+      post = PostContent.changeset(%PostContent{})
+      templates = PostContent.build_potential_templates(post.data, channels)
+
+      assert Enum.map(channels, &(&1.id)) ==
+             Enum.map(templates, &(&1.social_channel_id))
     end
   end
 end

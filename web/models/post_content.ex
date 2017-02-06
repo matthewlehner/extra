@@ -19,14 +19,24 @@ defmodule Extra.PostContent do
     |> cast_assoc(:templates)
   end
 
-  def with_channel_templates(changeset, channels) do
-    changeset
-    |> put_assoc(:templates, build_templates(channels))
+  @doc """
+  Builds a collection of templates for PostTemplates that do not exist
+  for the SocialChannel related to the post itself.
+  """
+  def build_potential_templates(post, channels) do
+    {:ok, templates } = post
+                        |> Extra.Repo.preload(:templates)
+                        |> Map.fetch(:templates)
+
+    channels
+    |> filter_associated_channels(templates)
+    |> Enum.map(&build_template/1)
   end
 
-  defp build_templates(channels) do
-    channels
-    |> Enum.map(&build_template/1)
+  defp filter_associated_channels(channels, templates) do
+    Enum.reject channels, fn(channel) ->
+      Enum.find(templates, &(&1.social_channel_id == channel.id))
+    end
   end
 
   defp build_template(channel) do
