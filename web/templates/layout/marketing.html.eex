@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:title" content="Extra – Social Media Automation Software That Saves You Time">
-  <meta property="og:description" content="Extra automates social media marketing by reposting evergreen content on a smart schedule created by engagement analytics.">
+  <meta property="og:description" content="Extra is a social media automation tool that intelligently and automatically reposts content at the perfect moment each and every day.">
   <meta property="og:image" content="<%= static_url(@conn, "/images/siteui/extra-preview-og.jpg") %>">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
