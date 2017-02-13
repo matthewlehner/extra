@@ -1,45 +1,35 @@
 .posts-list {
-  $badge-diameter: 1.625rem;
-  $post-padding: 1.25rem;
-
   list-style-type: none;
   padding: 0;
 
-  .post-preview {
-    border: $base-border;
-    border-radius: $base-border-radius;
-    box-shadow: $base-box-shadow;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-    padding: $post-padding;
-    position: relative;
-  }
-
   p {
-    margin: 0;
+    margin-top: 0;
   }
 
   .post-image-preview {
     margin-bottom: 1.25rem;
   }
 
-  .badge {
-    align-items: center;
-    background: $white;
-    border: $base-border;
-    border-radius: 50%;
-    display: flex;
-    height: $badge-diameter;
-    justify-content: center;
-    left: $badge-diameter / -2;
-    position: absolute;
-    top: 0.625rem;
-    width: $badge-diameter;
-  }
-
   .icon {
     fill: $gray;
     height: 1em;
     width: 1em;
+
+    &_twitter-badge {
+      fill: $twitter-blue;
+    }
+  }
+}
+
+.post-preview {
+  border: $base-border;
+  border-radius: $base-border-radius;
+  box-shadow: $base-box-shadow;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  padding: 1.25rem;
+
+  &__footer {
+    margin-top: 1.5rem;
   }
 }
