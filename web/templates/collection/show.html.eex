@@ -10,15 +10,15 @@
   <ul class="posts-list">
     <%= for post <- @collection.posts do %>
       <li class="post-preview">
-        <%= post.id %>
         <p><%= post.body %></p>
 
-        <%= for template <- post.templates do %>
-          <%= inspect template.social_channel %>
-          <% if template.social_channel do %>
+        <div class="post-preview__footer">
+          <%= for template <- post.templates do %>
+            <%= icon(@conn, template.social_channel.provider <> "-badge") %>
+            <% template.social_channel.provider %>
             <%= template.social_channel.name %>
           <% end %>
-        <% end %>
+        </div>
       </li>
     <% end %>
   </ul>
