@@ -14,7 +14,6 @@
   text-decoration: none;
   transition: border-color $base-duration $base-timing;
   user-select: none;
-  vertical-align: middle;
   white-space: nowrap;
 
   + .button {
@@ -38,9 +37,9 @@
 
   &_small {
     $horizontal-spacing: 0.875rem;
-    $vertical-spacing: 0.375rem;
-    font-size: $button-font-size * 0.8125;
-    padding: calc(#{$vertical-spacing} - 1px) $horizontal-spacing calc(#{$vertical-spacing} + 1px);
+    font-size: 0.9375rem;
+    line-height: 1.1875rem;
+    padding: 0.375rem $horizontal-spacing 0.4375rem;
   }
 
   &_cancel {
