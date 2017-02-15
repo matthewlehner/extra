@@ -9,7 +9,7 @@ defmodule Extra.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/", from: :extra, gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt),
+    only: ~w(css fonts images js favicon.ico robots.txt google382af0016fa8aa6d.html),
     headers: [{"access-control-allow-origin", "*"}]
 
   # Code reloading can be explicitly enabled under the
