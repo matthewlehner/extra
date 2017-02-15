@@ -16,7 +16,7 @@ defmodule Extra.Plugs.WWWRedirectTest do
            |> Map.put(:host, hostname)
            |> WWWRedirect.call(%{})
 
-    assert redirected_to(conn) == "https://www." <> hostname
+    assert redirected_to(conn, 301) == "https://www." <> hostname
   end
 
   test "bare domain with path is redirected" do
@@ -27,6 +27,6 @@ defmodule Extra.Plugs.WWWRedirectTest do
            |> Map.put(:host, hostname)
            |> WWWRedirect.call(%{})
 
-    assert redirected_to(conn) == "https://www." <> hostname <> path
+    assert redirected_to(conn, 301) == "https://www." <> hostname <> path
   end
 end

@@ -10,6 +10,7 @@ defmodule Extra.Plugs.WWWRedirect do
   def call(conn, _options) do
     if bare_domain?(conn.host) do
       conn
+      |> put_status(:moved_permanently)
       |> Phoenix.Controller.redirect(external: www_url(conn))
       |> halt()
     else
