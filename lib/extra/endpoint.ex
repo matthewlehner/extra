@@ -23,6 +23,10 @@ defmodule Extra.Endpoint do
   plug Plug.RequestId
   plug Plug.Logger
 
+  if config[:redirect_to_www] do
+    plug Extra.Plugs.WWWRedirect
+  end
+
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],

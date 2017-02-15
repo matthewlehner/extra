@@ -18,7 +18,8 @@ config :extra, Extra.Endpoint,
               hsts: :true],
   cache_static_manifest: "priv/static/manifest.json",
   static_url: [scheme: "https", host: "cdn.extra.ai", port: 443],
-  secret_key_base: System.get_env("SECRET_KEY_BASE")
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
+  redirect_to_www: true
 
 # Do not print debug messages in production
 config :logger, level: :info
