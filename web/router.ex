@@ -27,7 +27,7 @@ defmodule Extra.Router do
 
   scope "/", Extra do
     pipe_through [:browser]
-    get "/", PageController, :pitch
+    get "/", PublicPageController, :index
   end
 
   scope "/", Extra do

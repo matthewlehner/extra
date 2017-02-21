@@ -10,7 +10,7 @@
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:url" content="<%= page_url(@conn, :pitch) %>">
+  <meta property="og:url" content="<%= public_page_url(@conn, :index) %>">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Extra Social Media Automation">
   <meta property="fb:app_id" content="200585757014002">
