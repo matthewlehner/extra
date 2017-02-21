@@ -28,6 +28,8 @@ defmodule Extra.Router do
   scope "/", Extra do
     pipe_through [:browser]
     get "/", PublicPageController, :index
+    get "/alpha-list/thanks", PublicPageController, :alpha_thanks
+    get "/alpha-list/confirmed", PublicPageController, :alpha_confirmed
   end
 
   scope "/", Extra do

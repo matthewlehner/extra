@@ -1,0 +1,7 @@
+<h1>Subscription Confirmed</h1>
+
+<p>
+  Thanks again. You'll hear from us shortly.
+</p>
+
+<%#= render "founder-info.html" %>

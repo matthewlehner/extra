@@ -1,0 +1,18 @@
+<h1>Thanks for signing up!</h1>
+
+<p>
+  Please check your email for a confirmation link. While you're waiting, how
+  about showing us some love?
+</p>
+
+<section>
+  <p class="tweet-preview">
+    Really looking forward to automating my social media workflow with
+    <a href="https://twitter.com/ExtraAi">@ExtraAI</a>. Check em out! ->
+    <a href="https://www.extra.ai">www.extra.ai</a>
+  </p>
+
+  <a class="button" href="#">Tweet this</a>
+</section>
+
+<%#= render "founder-info.html" %>
