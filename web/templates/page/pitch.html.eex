@@ -143,8 +143,9 @@
   </ul>
 
   <p>
-    Ready to sign up? Great. Extra is currently in private beta. Get on our
-    early access list below.
+    Ready to sign up? Great. Extra is just about ready for you, but we've still
+    got a little bit of work left. Get on our early access list and we'll let
+    you know when it's ready .
   </p>
 
   <form action="https://www.getdrip.com/forms/48462088/submissions"
@@ -271,6 +272,32 @@
       participant, we'll make sure you get a deal.
     </dd>
   </dl>
+</section>
+
+<hr>
+<section>
+  <h4>Sound good?</h4>
+  <p>
+    Extra is still in development, but will be ready soon. Sign up below for
+    early access when we're ready.
+  </p>
+
+  <form action="https://www.getdrip.com/forms/48462088/submissions"
+    method="post" class="beta-signup" data-drip-embedded-form="48462088">
+
+    <label for="fields[email]" class="beta-signup_label">Email address</label>
+
+    <div class="beta-signup_form-fields">
+      <input type="email" name="fields[email]" class="beta-signup_input"
+      placeholder="Email address">
+
+      <button class="button beta-signup_button"
+        data-drip-attribute="sign-up-button">
+        Get Early Access
+      </button>
+    </div>
+    <p class="p__muted">We will never spam you. Unsubscribe at any time.</p>
+  </form>
 </section>
 
 <script>
