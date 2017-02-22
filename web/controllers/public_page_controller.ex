@@ -4,7 +4,7 @@ defmodule Extra.PublicPageController do
   plug :put_layout, {Extra.LayoutView, :marketing}
 
   def index(conn, _params) do
-    render conn, "index.html"
+    render conn, "index.html", show_login: true
   end
 
   def alpha_thanks(conn, _params) do

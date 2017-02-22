@@ -1,0 +1,16 @@
+<section class="landing-section founder-info">
+  <div class="founder-info_pics">
+    <figure class="founder-info_figure">
+      <img src="<%= static_url(@conn, "/images/marketing/liam-sarsfield.png") %>"
+           alt="Liam Sarsfield"
+           srcset="<%= static_url(@conn, "/images/marketing/liam-sarsfield@2x.png") %> 2x">
+    </figure><figure class="founder-info_figure">
+      <img src="<%= static_url(@conn, "/images/marketing/matthew-lehner.png") %>"
+           alt="Matthew Lehner"
+           srcset="<%= static_url(@conn, "/images/marketing/matthew-lehner@2x.png") %> 2x">
+    </figure>
+  </div>
+  <p class="founder-info_p">
+    You'll be receiving emails from Extra's founders, <strong>Liam Sarsfield</strong> and <strong>Matthew Lehner</strong>.
+  </p>
+</secton>

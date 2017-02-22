@@ -26,6 +26,7 @@ $footer-height: (2 * $footer-vertical-padding) + $footer-line-height;
 
   @media($screen-sm-min) {
     margin-bottom: $footer-height;
+    min-height: calc(100vh - #{$footer-height});
     padding-bottom: 10rem;
     position: relative;
     z-index: 2;
@@ -90,6 +91,7 @@ li {
   display: inline-block;
   font-size: 0.875rem;
   font-weight: bold;
+  line-height: 1.4375rem;
   padding: 0.5rem 2rem calc(0.5rem + 1px);
   text-decoration: none;
 }
@@ -346,4 +348,81 @@ hr {
 
 .lg-on {
   overflow: hidden;
+}
+
+.hero-text {
+  margin-top: 2.5rem;
+  text-align: center;
+
+  &_p {
+    font-size: 1.125rem;
+  }
+
+  @media($screen-sm-min) {
+    margin: 6.25rem auto 2.5rem;
+    max-width: 37.25rem;
+
+    &_p {
+      font-size: 1.75rem;
+      line-height: 2.375rem;
+    }
+  }
+}
+
+.landing-section {
+  max-width: 31rem;
+}
+
+.tweet-preview {
+  margin-bottom: 2rem;
+  text-align: center;
+
+  &_p {
+    background: $gray-lightest;
+    border: $base-border;
+    border-radius: $base-border-radius;
+    font-family: $system-font-stack;
+    margin-bottom: -1.25rem;
+    padding: 1.25rem 1.375rem 2.5rem;
+    text-align: left;
+  }
+}
+
+.founder-info {
+  border-top: $base-border;
+  padding-top: 2.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  text-align: center;
+
+  &_p {
+    margin-top: 1rem;;
+  }
+
+  &_pics {
+    display: flex;
+    justify-content: center;
+  }
+
+  &_figure {
+    border-radius: 3rem;
+    height: 2.8125rem;
+    margin-right: 0.3125rem;
+    overflow: hidden;
+    width: 2.8125rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  @media($screen-sm-min) {
+    display: flex;
+    text-align: left;
+
+    &_p {
+      flex: 1;
+      margin: 0 0 0 1rem;
+    }
+  }
 }

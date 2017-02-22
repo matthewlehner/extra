@@ -29,13 +29,15 @@
 
 <body class="<%= body_class_name(@conn) %>">
   <div class="page-wrap">
-    <header class="site-header">
-      <div class="container">
-        <nav>
-          <%= link "Login", to: session_path(@conn, :new), class: "button button-style__a" %>
-        </nav>
-      </div>
-    </header>
+    <%= if @conn.assigns[:show_login] do %>
+      <header class="site-header">
+        <div class="container">
+          <nav>
+            <%= link "Login", to: session_path(@conn, :new), class: "button button-style__a" %>
+          </nav>
+        </div>
+      </header>
+    <% end %>
 
     <main role="main">
       <%= render @view_module, @view_template, assigns %>

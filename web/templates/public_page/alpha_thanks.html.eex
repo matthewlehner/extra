@@ -1,18 +1,20 @@
-<h1>Thanks for signing up!</h1>
+<section class="hero-text">
+  <h1>Thanks for signing up!</h1>
 
-<p>
-  Please check your email for a confirmation link. While you're waiting, how
-  about showing us some love?
-</p>
+  <p class="hero-text_p">
+    Please check your email for a confirmation link. While you're waiting, how
+    about showing us some love?
+  </p>
+</section>
 
-<section>
-  <p class="tweet-preview">
+<section class="tweet-preview landing-section">
+  <p class="tweet-preview_p">
     Really looking forward to automating my social media workflow with
     <a href="https://twitter.com/ExtraAi">@ExtraAI</a>. Check em out! ->
     <a href="https://www.extra.ai">www.extra.ai</a>
   </p>
 
-  <a class="button" href="#">Tweet this</a>
+  <a class="button button-style__a tweet-preview_a" href="#">Tweet this</a>
 </section>
 
-<%#= render "founder-info.html" %>
+<%= render "founder-info.html", conn: @conn %>

@@ -1,7 +1,7 @@
-<h1>Subscription Confirmed</h1>
+<section class="hero-text">
+  <h1>Subscription Confirmed.</h1>
 
-<p>
-  Thanks again. You'll hear from us shortly.
-</p>
+  <p class="hero-text_p">Thanks again. You'll hear from us shortly.</p>
+</section>
 
-<%#= render "founder-info.html" %>
+<%= render "founder-info.html", conn: @conn %>
