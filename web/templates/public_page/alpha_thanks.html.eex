@@ -14,7 +14,7 @@
     <a href="https://www.extra.ai">www.extra.ai</a>
   </p>
 
-  <a class="button button-style__a tweet-preview_a" href="#">Tweet this</a>
+  <a class="button button-style__a tweet-preview_a" target="_blank" rel="external" href="https://twitter.com/home?status=Really%20looking%20forward%20to%20automating%20my%20social%20media%20workflow%20with%20%40ExtraAI.%20Check%20em%20out!%20-%3E%20https%3A//www.extra.ai">Tweet this</a>
 </section>
 
 <%= render "founder-info.html", conn: @conn %>
