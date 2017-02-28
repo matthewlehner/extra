@@ -3,6 +3,8 @@ $system-font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxyge
 $base-font-family: "Neue Haas Unica W01", $system-font-stack !default;
 $base-font-color: $gray-dark !default;
 $action-color: $extra-purple !default;
+$error-color: $cinnabar !default;
+$success-color: $niagara !default;
 
 // Font Sizes
 $base-font-size: 16px !default;

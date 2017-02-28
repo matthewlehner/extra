@@ -5,17 +5,15 @@
 //   - add `dirty` class to `.form-control`
 //   - look for `.help-block` if not present, add error string.
 import errorMessageFor from "./forms/error-messages";
-import { whichAnimationEvent } from "./which-transition-event";
+import { animatedElementRemoval } from "./dom-utils";
 
-const inputClass = "form__control"
+const inputClass = "form__control";
 const dirtyClass = "dirty";
 const helpMessage = {
   position: "afterend",
   tagName: "div",
   className: "help-block"
 };
-
-const animationEndEvent = whichAnimationEvent();
 
 function isNotDirty(element) {
   // Check that it is an input
@@ -102,21 +100,8 @@ function isHelpEl(el) {
 
 function removeHelpBlock(el) {
   if (isHelpEl(el)) {
-    animatedElementRemoval(el)
+    animatedElementRemoval(el);
   }
-}
-
-function animatedElementRemoval(el) {
-  if (animationEndEvent) {
-    el.classList.add("removing");
-    el.addEventListener(
-      animationEndEvent,
-      () => el.parentNode.removeChild(el)
-    );
-    return;
-  }
-
-  el.parentNode.removeChild(el);
 }
 
 window.addEventListener("focus", function(event) {

@@ -57,6 +57,7 @@ main {
     background-image: linear-gradient(to right,
                                       transparentize($white, 1),
                                       $white 90%);
+    bottom: 1px;
     content: "";
     display: block;
     position: absolute;
