@@ -31,7 +31,7 @@ defmodule Extra.SessionController do
   def delete(conn, _params) do
     conn
     |> Guardian.Plug.sign_out()
-    |> put_flash(:info, "Session deleted successfully.")
-    |> redirect(to: page_path(conn, :index))
+    |> put_flash(:info, "You are now signed out of Extra.")
+    |> redirect(to: session_path(conn, :new))
   end
 end
