@@ -1,4 +1,5 @@
 @import "../pages/new-social-channel";
+@import "keyframes/flash-messages";
 
 h1 {
   color: $gray-dark;
@@ -78,10 +79,6 @@ main {
 
     .select {
       width: 100%;
-
-      &::before {
-        height: $label-line-height + $input-padding-top + $input-padding-bottom;
-      }
     }
   }
 
@@ -155,6 +152,59 @@ main {
     .icon {
       height: 100%;
       width: 100%;
+    }
+  }
+}
+
+.flash {
+  &_container {
+    bottom: 0;
+    position: absolute;
+    right: 1.25rem;
+    animation: flash-insert 1s linear;
+  }
+
+  &_message {
+    background-color: rgba($black, 0.8);
+    border-radius: $base-border-radius;
+    box-shadow: 0 1px 3px 0 rgba($black, 0.27);
+    clear: right;
+    color: $base-background-color;
+    font-size: 0.875rem;
+    font-weight: bold;
+    float: right;
+    margin-bottom: 1.25rem;
+    padding: 0.5625rem 1.25rem 0.625rem 2.25rem;
+    position: relative;
+
+    &.removing {
+      animation: flash-remove 0.25s ease-in-out;
+    }
+
+    &__error,
+    &__info {
+      &::before {
+        border-radius: $base-border-radius;
+        content: "";
+        display: block;
+        height: 0.5rem;
+        left: 0.875rem;
+        top: 1rem;
+        width: 0.5rem;
+        position: absolute;
+      }
+    }
+
+    &__info {
+      &::before {
+        background: $success-color;
+      }
+    }
+
+    &__error {
+      &::before {
+        background: $error-color;
+      }
     }
   }
 }
