@@ -7,8 +7,6 @@ defmodule Extra.DashboardController do
 
   def index(conn, _params) do
     conn
-    |> put_flash(:info, "This is some info")
-    |> put_flash(:error, "This is a really, really long error message. Stupidly long, really.")
     |> render("index.html")
   end
 end

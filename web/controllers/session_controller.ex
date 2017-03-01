@@ -18,7 +18,7 @@ defmodule Extra.SessionController do
       {:ok, user} ->
         conn
         |> Guardian.Plug.sign_in(user)
-        |> put_flash(:info, "Welcome back")
+        |> put_flash(:info, "Welcome back!")
         |> redirect(to: dashboard_path(conn, :index))
       {:error, reason, conn} ->
         changeset = User.changeset(%User{}, %{email: email})
