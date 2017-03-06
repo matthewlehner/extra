@@ -46,6 +46,7 @@ defmodule Extra.Mixfile do
      {:ueberauth_facebook, "~> 0.6"},
      {:ueberauth_identity, "~> 0.2.0"},
      {:ecto_enum, "~> 0.3.0"},
+     {:calendar, "~> 0.17.2"},
 
      {:ex_machina, "~> 1.0", only: :test},
      {:mix_test_watch, "~> 0.2", only: :dev},
