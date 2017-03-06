@@ -49,7 +49,7 @@ defmodule Extra.Mixfile do
 
      {:ex_machina, "~> 1.0", only: :test},
      {:mix_test_watch, "~> 0.2", only: :dev},
-     {:dialyxir, "~> 0.4.0", only: [:dev]},
+     {:dialyxir, "~> 0.4", only: [:dev]},
      {:credo, "~> 0.4", only: [:dev, :test]}]
   end
 
