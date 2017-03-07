@@ -38,17 +38,21 @@ let common = {
       exclude: /node_modules/,
       loader: "babel-loader",
       options: {
-        presets: ["es2016", ["es2015", {"modules": false}]]
+        presets: [["env", {
+          "browsers": ["last 2 versions", "safari >= 7"],
+          "modules": false
+        }]]
       }
     }, {
       test: /.*\.svg$/,
       exclude: /node_modules/,
-      loader: extractSVG.extract({
-        loader: [{
+      use: extractSVG.extract({
+        use: [{
           loader: "svg-sprite-loader",
           options: {
             name: "[name]-icon",
-            esModule: true
+            extract: true,
+            esModule: false
           }
         }, {
           loader: "svgo-loader",
@@ -62,9 +66,9 @@ let common = {
     }, {
       test: /\.scss$/,
       exclude: /node_modules/,
-      loader: extractCSS.extract({
-        fallbackLoader: "style-loader",
-        loader: [{
+      use: extractCSS.extract({
+        fallback: "style-loader",
+        use: [{
           loader: "css-loader",
           options: {
             sourceMap: true,
