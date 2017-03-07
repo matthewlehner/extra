@@ -9,6 +9,82 @@
   <%= link "Delete account", to: "#", class: "button button_small" %>
 </header>
 
-<%# Stats section goes here, later %>
+<section class="channel-stats">
+  <h2>Stats</h2>
+  <p>Here are some stats about the channel.</p>
+</section>
 
-</ul>
+<section class="channel-schedule">
+  <h2>Schedule</h2>
+
+  <p>
+    <span class="toggle-switch">
+      <input type="checkbox" name="checkbox" id="toggler" class="input" checked>
+      <label for="toggler" class="label"></label>
+    </span>
+    <strong>Schedule autopilot.</strong> Great for beginners and those with
+    massive collections.
+  </p>
+
+  <div class="tab-container">
+    <nav role="tablist" class="tablist">
+      <a href="#" class="tab" role="tab" id="monday-tab" aria-controls="monday"
+         aria-selected="true" data-title="Monday">Monday</a>
+      <a href="#" class="tab" role="tab" id="tuesday-tab"
+         aria-controls="tuesday" data-title="Tuesday">Tuesday</a>
+      <a href="#" class="tab" role="tab" id="wednesday-tab"
+         aria-controls="wednesday" data-title="Wednesday">Wednesday</a>
+      <a href="#" class="tab" role="tab" id="thursday-tab"
+         aria-controls="thursday" data-title="Thursday">Thursday</a>
+      <a href="#" class="tab" role="tab" id="friday-tab"
+         aria-controls="friday" data-title="Friday">Friday</a>
+      <a href="#" class="tab" role="tab" id="saturday-tab"
+         aria-controls="saturday" data-title="Saturday">Saturday</a>
+      <a href="#" class="tab" role="tab" id="sunday-tab" aria-controls="sunday"
+         data-title="Sunday">Sunday</a>
+
+      <%= tab_link("Monday") %>
+    </nav>
+
+    <div id="monday" class="tabpanel" role="tabpanel" aria-labelledby="monday-tab" aria-hidden="false">
+      <table>
+        <thead>
+          <tr>
+            <th>Time Slot</th>
+            <th>Recurrence</th>
+            <th>Collection</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>03:30</td>
+            <td><select><option selected>Only Mondays</option></select></td>
+            <td><select><option selected>My first collection</option></select></td>
+          </tr>
+          <tr>
+            <td>04:30</td>
+            <td><select><option selected>Everyday</option></select></td>
+            <td><select><option selected>My first collection</option></select></td>
+          </tr>
+          <tr>
+            <td>05:30</td>
+            <td><select><option selected>Everyday</option></select></td>
+            <td><select><option selected>My first collection</option></select></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="tuesday" class="tabpanel" role="tabpanel" aria-labelledby="tuesday-tab" aria-hidden="true">
+    </div>
+    <div id="wednesday" class="tabpanel" role="tabpanel" aria-labelledby="wednesday-tab" aria-hidden="true">
+    </div>
+    <div id="thursday" class="tabpanel" role="tabpanel" aria-labelledby="thursday-tab" aria-hidden="true">
+    </div>
+    <div id="friday" class="tabpanel" role="tabpanel" aria-labelledby="friday-tab" aria-hidden="true">
+    </div>
+    <div id="saturday" class="tabpanel" role="tabpanel" aria-labelledby="saturday-tab" aria-hidden="true">
+    </div>
+    <div id="sunday" class="tabpanel" role="tabpanel" aria-labelledby="sunday-tab" aria-hidden="true">
+    </div>
+  </div>
+</section>

@@ -9,7 +9,9 @@ defmodule Extra.SocialChannelController do
 
   def show(%{assigns: %{current_user: user}} =  conn, %{"id" => id}) do
     social_channel = Repo.get_by!(SocialChannel, id: id, user_id: user.id)
-    render(conn, "show.html", social_channel: social_channel)
+    schedule = Extra.PostingSchedule.for_channel
+
+    render(conn, "show.html", social_channel: social_channel, schedule: schedule)
   end
 
   # def update(conn, %{"id" => id, "social_channel" => social_channel_params}) do
