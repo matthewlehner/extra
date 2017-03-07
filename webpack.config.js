@@ -9,7 +9,10 @@ let extractSVG = new ExtractSVGPlugin("images/[name].svg");
 
 let common = {
   entry: {
-    "app": ["./web/static/css/app.scss", "./web/static/js/app.js"],
+    "app": [
+      "./web/static/css/app.scss",
+      "./web/static/js/app.js"
+    ],
     "public": [
       "./web/static/css/public.scss",
       "./web/static/js/public/index.js"
@@ -33,58 +36,63 @@ let common = {
   },
 
   module: {
-    rules: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: "babel-loader",
-      options: {
-        presets: [["env", {
-          "browsers": ["last 2 versions", "safari >= 7"],
-          "modules": false
-        }]]
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+        options: {
+          presets: [
+            "react",
+            ["env", {
+              "browsers": ["last 2 versions", "safari >= 7"],
+              "modules": false
+            }]
+          ]
+        }
+      }, {
+        test: /.*\.svg$/,
+        exclude: /node_modules/,
+        use: extractSVG.extract({
+          use: [{
+            loader: "svg-sprite-loader",
+            options: {
+              name: "[name]-icon",
+              extract: true,
+              esModule: false
+            }
+          }, {
+            loader: "svgo-loader",
+            options: {
+              plugins: [
+                {removeTitle: true}
+              ]
+            }
+          }]
+        })
+      }, {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: extractCSS.extract({
+          fallback: "style-loader",
+          use: [{
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+              importLoaders: 1
+            }
+          }, {
+            loader:  "postcss-loader"
+          }, {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true,
+              includePaths: [__dirname + "/web/static/css"]
+            }
+          }]
+        })
       }
-    }, {
-      test: /.*\.svg$/,
-      exclude: /node_modules/,
-      use: extractSVG.extract({
-        use: [{
-          loader: "svg-sprite-loader",
-          options: {
-            name: "[name]-icon",
-            extract: true,
-            esModule: false
-          }
-        }, {
-          loader: "svgo-loader",
-          options: {
-            plugins: [
-              {removeTitle: true}
-            ]
-          }
-        }]
-      })
-    }, {
-      test: /\.scss$/,
-      exclude: /node_modules/,
-      use: extractCSS.extract({
-        fallback: "style-loader",
-        use: [{
-          loader: "css-loader",
-          options: {
-            sourceMap: true,
-            importLoaders: 1
-          }
-        }, {
-          loader:  "postcss-loader"
-        }, {
-          loader: "sass-loader",
-          options: {
-            sourceMap: true,
-            includePaths: [__dirname + "/web/static/css"]
-          }
-        }]
-      })
-    }]
+    ]
   },
 
   plugins: [
@@ -121,6 +129,17 @@ switch (process.env.npm_lifecycle_event) {
     break;
   default:
     config = merge(common, {
+      module: {
+        rules: [
+          {
+            test: /\.js$/,
+            enforce: "pre",
+            use: [{
+              loader: "eslint-loader"
+            }]
+          },
+        ]
+      },
       devtool: "source-map"
     });
 }
