@@ -1,4 +1,8 @@
 defmodule Extra.Factory do
+  @moduledoc """
+  Factories for creating test data and associations.
+  """
+
   use ExMachina.Ecto, repo: Extra.Repo
 
   def user_factory do
@@ -35,7 +39,8 @@ defmodule Extra.Factory do
   def social_channel_factory do
     %Extra.SocialChannel{
       name: sequence(:name, &"Social Media Account ##{&1}"),
-      provider: "Twitter"
+      provider: "Twitter",
+      image: "https://an.image.url/picture.jpg"
     }
   end
 

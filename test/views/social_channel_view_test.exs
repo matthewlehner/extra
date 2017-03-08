@@ -24,4 +24,15 @@ defmodule Extra.SocialChannelViewTest do
       assert tab_el =~ "aria-selected=\"true\""
     end
   end
+
+  test "channel_json" do
+    channel = insert(:social_channel)
+    rendered_channel = SocialChannelView.channel_json(channel)
+
+    assert rendered_channel == %{
+      name: channel.name,
+      image: channel.image,
+      provider: channel.provider
+    }
+  end
 end

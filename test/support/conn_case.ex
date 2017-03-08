@@ -27,6 +27,9 @@ defmodule Extra.ConnCase do
 
       import Extra.Router.Helpers
 
+      # Imports ExMachina factories
+      import Extra.Factory
+
       # The default endpoint for testing
       @endpoint Extra.Endpoint
     end
