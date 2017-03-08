@@ -47,6 +47,7 @@
       "error",
       "stroustrup",
       { "allowSingleLine": true }
-    ]
+    ],
+    "comma-dangle": ["error", "never"]
   }
 }
