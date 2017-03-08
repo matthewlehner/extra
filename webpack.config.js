@@ -51,6 +51,7 @@ const common = {
               browsers: ["last 2 versions", "safari >= 7"],
               modules: false
             }],
+            "transform-object-rest-spread",
             "react"
           ]
         }
