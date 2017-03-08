@@ -5,10 +5,11 @@ defmodule Extra.PostContentTest do
 
   @valid_attrs params_for :post_content
 
+  require Logger
   describe "PostContent.changeset" do
     test "changeset with valid attributes" do
       collection = insert(:post_collection, user: build(:user))
-      attrs = %{@valid_attrs | post_collection_id: collection.id}
+      attrs = Map.put_new(@valid_attrs, :post_collection_id, collection.id)
 
       changeset = PostContent.changeset(%PostContent{}, attrs)
       assert changeset.valid?

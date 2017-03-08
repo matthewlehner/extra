@@ -48,7 +48,7 @@ defmodule Extra.Mixfile do
      {:ecto_enum, "~> 0.3.0"},
      {:calendar, "~> 0.17.2"},
 
-     {:ex_machina, "~> 1.0", only: :test},
+     {:ex_machina, "~> 2.0", only: :test},
      {:mix_test_watch, "~> 0.2", only: :dev},
      {:dialyxir, "~> 0.4", only: [:dev]},
      {:credo, "~> 0.4", only: [:dev, :test]}]
