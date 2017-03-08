@@ -43,11 +43,11 @@ let common = {
         loader: "babel-loader",
         options: {
           presets: [
-            "react",
             ["env", {
               "browsers": ["last 2 versions", "safari >= 7"],
               "modules": false
-            }]
+            }],
+            "react"
           ]
         }
       }, {
