@@ -1,23 +1,26 @@
+const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const ExtractSVGPlugin = require("svg-sprite-loader/lib/extract-svg-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 
-let extractCSS = new ExtractTextPlugin("css/[name].css");
-let extractSVG = new ExtractSVGPlugin("images/[name].svg");
+const autoprefixer = require("autoprefixer");
 
-let common = {
+const extractCSS = new ExtractTextPlugin("css/[name].css");
+const extractSVG = new ExtractSVGPlugin("images/[name].svg");
+
+const common = {
   entry: {
-    "app": [
+    app: [
       "./web/static/css/app.scss",
       "./web/static/js/app.js"
     ],
-    "public": [
+    public: [
       "./web/static/css/public.scss",
       "./web/static/js/public/index.js"
     ],
-    "marketing": [
+    marketing: [
       "./web/static/css/marketing.scss",
       "./web/static/js/marketing.js"
     ]
@@ -31,21 +34,22 @@ let common = {
   resolve: {
     modules: [
       "node_modules",
-      __dirname + "/web/static/js"
-    ]
+      path.join(__dirname, "/web/static/js")
+    ],
+    extensions: [".js", ".jsx"]
   },
 
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: "babel-loader",
         options: {
           presets: [
             ["env", {
-              "browsers": ["last 2 versions", "safari >= 7"],
-              "modules": false
+              browsers: ["last 2 versions", "safari >= 7"],
+              modules: false
             }],
             "react"
           ]
@@ -65,7 +69,7 @@ let common = {
             loader: "svgo-loader",
             options: {
               plugins: [
-                {removeTitle: true}
+                { removeTitle: true }
               ]
             }
           }]
@@ -82,12 +86,12 @@ let common = {
               importLoaders: 1
             }
           }, {
-            loader:  "postcss-loader"
+            loader: "postcss-loader"
           }, {
             loader: "sass-loader",
             options: {
               sourceMap: true,
-              includePaths: [__dirname + "/web/static/css"]
+              includePaths: [path.join(__dirname, "/web/static/css")]
             }
           }]
         })
@@ -98,7 +102,7 @@ let common = {
   plugins: [
     new webpack.LoaderOptionsPlugin({
       options: {
-        context: __dirname + "/web/static/js",
+        context: path.join(__dirname, "/web/static/js"),
         postcss: [
           // require("postcss-smart-import")({
           //   from: "./web/static/css/",
@@ -106,7 +110,7 @@ let common = {
           // }),
           // require("postcss-url")(),
           // require("postcss-cssnext"),
-          require("autoprefixer")()
+          autoprefixer()
           // require("postcss-browser-reporter")(),
           // require("postcss-reporter")()
         ]
@@ -137,7 +141,7 @@ switch (process.env.npm_lifecycle_event) {
             use: [{
               loader: "eslint-loader"
             }]
-          },
+          }
         ]
       },
       devtool: "source-map"
