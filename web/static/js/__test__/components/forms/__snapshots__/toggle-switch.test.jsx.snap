@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToggleSwitch component renders checked state correctly 1`] = `
+<span
+  className="toggle-switch"
+>
+  <input
+    checked={true}
+    className="input"
+    id="toggler"
+    name="checkbox"
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <label
+    className="label"
+    htmlFor="toggler"
+  />
+</span>
+`;
+
+exports[`ToggleSwitch component renders unchecked state correctly 1`] = `
+<span
+  className="toggle-switch"
+>
+  <input
+    checked={false}
+    className="input"
+    id="toggler"
+    name="checkbox"
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <label
+    className="label"
+    htmlFor="toggler"
+  />
+</span>
+`;
