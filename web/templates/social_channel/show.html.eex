@@ -1,3 +1,4 @@
+<div id="react-root"></div>
 <header class="heading">
   <div class="heading__body">
     <figure class="heading__figure">

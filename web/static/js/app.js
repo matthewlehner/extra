@@ -14,13 +14,7 @@
 import "phoenix_html";
 import "app/icons";
 import "lib/notifications";
-
-// Import local files
+import "app/services/react-hooks";
+// import Turbolinks from "turbolinks";
 //
-// Local files can be imported directly using relative
-// paths "./socket" or full ones "web/static/js/socket".
-
-// import socket from "./socket"
-// import "app/services/react-hooks";
-import Turbolinks from "turbolinks";
-Turbolinks.start();
+// Turbolinks.start();

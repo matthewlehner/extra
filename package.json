@@ -4,7 +4,7 @@
   "scripts": {
     "deploy": "webpack -p",
     "watch": "webpack --watch-stdin --progress --color",
-    "lint": "eslint web/static/js --ext .js",
+    "lint": "eslint web/static/js --ext .js --ext .jsx",
     "test": "jest --config web/static/js/__test__/.jestrc"
   },
   "engine": "node >= 6.8.0",
