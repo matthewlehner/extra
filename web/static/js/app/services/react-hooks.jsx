@@ -1,9 +1,17 @@
 import React from "react";
 import { render } from "react-dom";
-import Channel from "../pages/channel";
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import ChannelPage from "../pages/channel";
+
+const App = () => (
+  <Router basename="/app">
+    <Route path="/channels/:id" component={ChannelPage} />
+  </Router>
+);
 
 const rootEl = document.getElementById("react-root");
 
-render(<Channel />, rootEl);
+render(<App />, rootEl);
 
 // render(<Modal/>, rootEl);

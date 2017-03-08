@@ -24,6 +24,7 @@
     </section>
 
     <main role="main">
+      <div id="react-root"></div>
       <%= render_flash(@conn) %>
       <%= render @view_module, @view_template, assigns %>
     </main>

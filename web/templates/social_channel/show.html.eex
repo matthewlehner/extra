@@ -1,4 +1,3 @@
-<div id="react-root"></div>
 <header class="heading">
   <div class="heading__body">
     <figure class="heading__figure">
@@ -89,3 +88,7 @@
     </div>
   </div>
 </section>
+
+<script>
+  var pageContext = <%= @social_channel |> channel_json |> Poison.encode! |> raw %>
+</script>
