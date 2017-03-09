@@ -5,12 +5,13 @@ import Tabpanel from "./tabpanel";
 
 export default class Tabs extends Component {
   render() {
-    const { tabContents } = this.props;
+    const { panels, activePanel } = this.props;
 
-    const { tabs, panels } = tabContents.reduce(
-      (accumulator, { label, content, selected = false }) => {
+    const { tabs, tabPanels } = panels.reduce(
+      (accumulator, { label, content }, index) => {
         const panelId = label.toLowerCase();
         const tabId = `${panelId}-tab`;
+        const selected = activePanel ? activePanel === label : index === 0;
 
         accumulator.tabs.push(
           <Tab
@@ -19,7 +20,7 @@ export default class Tabs extends Component {
           />
         );
 
-        accumulator.panels.push(
+        accumulator.tabPanels.push(
           <Tabpanel
             id={panelId} tabId={tabId} selected={selected} content={content}
             key={panelId}
@@ -27,24 +28,28 @@ export default class Tabs extends Component {
         );
         return accumulator;
       },
-      { tabs: [], panels: [] }
+      { tabs: [], tabPanels: [] }
     );
 
     return (
       <div className="tab-container">
         <nav role="tablist" className="tablist">{tabs}</nav>
-        {panels}
+        {tabPanels}
       </div>
     );
   }
 }
 
 Tabs.propTypes = {
-  tabContents: PropTypes.arrayOf(
+  panels: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
-      content: PropTypes.node.isRequired,
-      selected: PropTypes.bool
+      content: PropTypes.node.isRequired
     })
-  ).isRequired
+  ).isRequired,
+  activePanel: PropTypes.string
+};
+
+Tabs.defaultProps = {
+  activePanel: null
 };
