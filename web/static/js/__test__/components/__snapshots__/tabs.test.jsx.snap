@@ -10,7 +10,7 @@ exports[`Tabs can specify active panel 1`] = `
   >
     <a
       aria-controls="monday"
-      aria-selected={true}
+      aria-selected={false}
       className="tab"
       data-title="Monday"
       href="#monday"
@@ -21,7 +21,7 @@ exports[`Tabs can specify active panel 1`] = `
     </a>
     <a
       aria-controls="tuesday"
-      aria-selected={false}
+      aria-selected={true}
       className="tab"
       data-title="Tuesday"
       href="#tuesday"
@@ -32,7 +32,7 @@ exports[`Tabs can specify active panel 1`] = `
     </a>
   </nav>
   <div
-    aria-hidden={false}
+    aria-hidden={true}
     aria-labelledby="monday-tab"
     className="tabpanel"
     id="monday"
@@ -41,7 +41,7 @@ exports[`Tabs can specify active panel 1`] = `
     hi bud
   </div>
   <div
-    aria-hidden={true}
+    aria-hidden={false}
     aria-labelledby="tuesday-tab"
     className="tabpanel"
     id="tuesday"

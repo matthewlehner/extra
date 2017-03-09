@@ -14,18 +14,17 @@ const panels = [{
 describe("Tabs", () => {
   it("renders tabs", () => {
     const props = { panels };
-    const tree = renderer.create(
-      <Tabs {...props} />
-    );
+    const tree = renderer.create(<Tabs {...props} />);
 
     expect(tree).toMatchSnapshot();
   });
 
   it("can specify active panel", () => {
-    const props = { panels, activePanel: panels[1].label };
-    const tree = renderer.create(
-      <Tabs {...props} />
-    );
+    const props = {
+      activePanel: panels[1].label,
+      panels
+    };
+    const tree = renderer.create(<Tabs {...props} />);
 
     expect(tree).toMatchSnapshot();
   });
