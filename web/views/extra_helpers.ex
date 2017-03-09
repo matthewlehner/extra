@@ -10,10 +10,11 @@ defmodule Extra.ExtraHelpers do
   Generates svg tags for icon sprite usage.
   """
   def icon(%Plug.Conn{} = conn, name) do
-    template = get_template_name(conn)
+    template = conn
+               |> get_template_name()
                |> String.replace(".html", "")
     content_tag(:svg, class: "icon icon_" <> name) do
-      content_tag(:use, "", "xlink:href": "#{static_path(conn, "/images/#{template}.svg")}##{name}")
+      content_tag(:use, "", "xlink:href": "#{static_path(conn, "/images/#{template}.svg")}##{name}-icon")
     end
   end
 
