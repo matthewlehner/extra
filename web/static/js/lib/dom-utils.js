@@ -16,7 +16,7 @@ export function animatedElementRemoval(el) {
 }
 
 export function onDocumentReady(fn) {
-  if (document.readyState != "loading") {
+  if (document.readyState !== "loading") {
     fn();
   }
   else {

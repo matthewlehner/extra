@@ -12,15 +12,14 @@ function isFlashMessage(element) {
 function removeFlashMessages() {
   const flashEls = document.getElementsByClassName(flashMessageClass);
 
-  setTimeout(function() {
+  setTimeout(() => {
     [...flashEls].forEach(animatedElementRemoval);
   }, 10000);
 }
 
-window.addEventListener("click", function(event) {
+window.addEventListener("click", (event) => {
   // Checks if the target is a flash message
   if (event.target && isFlashMessage(event.target)) {
-
     // Checks if it's being removed
     if (!event.target.classList.contains("removing")) {
       animatedElementRemoval(event.target);

@@ -7,18 +7,15 @@ function getErrorType(validityState) {
   if (validityState.typeMismatch) { return TYPE_MISMATCH; }
   if (validityState.patternMismatch) { return TYPE_MISMATCH; }
   if (validityState.tooShort) { return TOO_SHORT; }
+  return null;
 }
 
-export default function messageFor(validityState, inputType) {
-  const errorType = getErrorType(validityState);
-
-  switch (inputType) {
-    case "email":
-      return emailErrorFor(errorType);
-    case "password":
-      return passwordErrorFor(errorType);
+function defaultErrorFor(errorType) {
+  switch (errorType) {
+    case VALUE_MISSING:
+      return "Please fill out this field.";
     default:
-      return defaultErrorFor(errorType);
+      return "There is a problem with this field.";
   }
 }
 
@@ -44,11 +41,15 @@ function passwordErrorFor(errorType) {
   }
 }
 
-function defaultErrorFor(errorType) {
-  switch (errorType) {
-    case VALUE_MISSING:
-      return "Please fill out this field.";
+export default function messageFor(validityState, inputType) {
+  const errorType = getErrorType(validityState);
+
+  switch (inputType) {
+    case "email":
+      return emailErrorFor(errorType);
+    case "password":
+      return passwordErrorFor(errorType);
     default:
-      return "There is a problem with this field.";
+      return defaultErrorFor(errorType);
   }
 }

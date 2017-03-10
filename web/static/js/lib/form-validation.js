@@ -22,36 +22,6 @@ function isNotDirty(element) {
   !element.parentNode.classList.contains(dirtyClass);
 }
 
-function onInput(e) {
-  const element = e.target;
-  element.removeEventListener(e.type, onInput);
-  element.addEventListener("blur", onActivateValidations);
-}
-
-function onActivateValidations(e) {
-  const element = e.target;
-  element.removeEventListener(e.type, activateValidations);
-  activateValidations(element);
-}
-
-function activateValidations(element) {
-  element.addEventListener("input", (e) => validateInput(e.target));
-  element.parentNode.classList.add(dirtyClass);
-  return validateInput(element);
-}
-
-function errorElString(el) {
-  const content = errorMessageFor(el.validity, el.type);
-  const {tagName, className} = helpMessage;
-
-  return `<${tagName} class="${className}"><span>${content}</span></${tagName}>`;
-}
-
-function renderErrorForInput(el) {
-  const errorMsg = errorElString(el);
-  el.insertAdjacentHTML(helpMessage.position, errorMsg);
-}
-
 function findHelpEl(el) {
   switch (helpMessage.position) {
     case "beforebegin":
@@ -59,24 +29,8 @@ function findHelpEl(el) {
     case "afterend":
       return el.nextElementSibling;
     default:
-      throw "You must define `helpMessage.position`";
+      throw new Error("You must define `helpMessage.position`");
   }
-}
-
-function validateInput(inputEl) {
-  const helpEl = findHelpEl(inputEl);
-  if (inputEl.checkValidity()) {
-    removeHelpBlock(helpEl);
-    return true;
-  }
-
-  if (isHelpEl(helpEl)) {
-    helpEl.children[0].innerText = errorMessageFor(inputEl.validity, inputEl.type);
-    return false;
-  }
-
-  renderErrorForInput(inputEl);
-  return false;
 }
 
 function isHelpEl(el) {
@@ -104,17 +58,64 @@ function removeHelpBlock(el) {
   }
 }
 
-window.addEventListener("focus", function(event) {
+function errorElString(el) {
+  const content = errorMessageFor(el.validity, el.type);
+  const { tagName, className } = helpMessage;
+
+  return `<${tagName} class="${className}"><span>${content}</span></${tagName}>`;
+}
+
+function renderErrorForInput(el) {
+  const errorMsg = errorElString(el);
+  el.insertAdjacentHTML(helpMessage.position, errorMsg);
+}
+
+function validateInput(inputEl) {
+  const helpEl = findHelpEl(inputEl);
+  if (inputEl.checkValidity()) {
+    removeHelpBlock(helpEl);
+    return true;
+  }
+
+  if (isHelpEl(helpEl)) {
+    helpEl.children[0].innerText = errorMessageFor(inputEl.validity, inputEl.type);
+    return false;
+  }
+
+  renderErrorForInput(inputEl);
+  return false;
+}
+
+function activateValidations(element) {
+  element.addEventListener("input", e => validateInput(e.target));
+  element.parentNode.classList.add(dirtyClass);
+  return validateInput(element);
+}
+
+function onActivateValidations(e) {
+  const element = e.target;
+  element.removeEventListener(e.type, activateValidations);
+  activateValidations(element);
+}
+
+function onInput(e) {
+  const element = e.target;
+  element.removeEventListener(e.type, onInput);
+  element.addEventListener("blur", onActivateValidations);
+}
+
+window.addEventListener("focus", (event) => {
   if (isNotDirty(event.target)) {
     event.target.addEventListener("input", onInput);
     return false;
   }
+  return event;
 }, true);
 
-window.addEventListener("submit", function(event) {
+window.addEventListener("submit", (event) => {
   if (event.target.tagName !== "FORM") { return; }
   const inputs = [...event.target.getElementsByClassName(inputClass)];
-  const inputsValid = inputs.map(activateValidations).every((value) => value);
+  const inputsValid = inputs.map(activateValidations).every(value => value);
 
   if (inputsValid) {
     return;
