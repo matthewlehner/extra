@@ -4,8 +4,26 @@ import Tab from "./tab";
 import Tabpanel from "./tabpanel";
 
 export default class Tabs extends Component {
+  static propTypes = {
+    panels: PropTypes.arrayOf(
+      PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        content: PropTypes.node.isRequired
+      })
+    ).isRequired
+  }
+
+  state = {
+    activePanel: null
+  }
+
+  selectPanel = (label) => {
+    this.setState(prevState => Object.assign(prevState, { activePanel: label }));
+  }
+
   render() {
-    const { panels, activePanel } = this.props;
+    const { panels } = this.props;
+    const { activePanel } = this.state;
 
     const { tabs, tabPanels } = panels.reduce(
       (accumulator, { label, content }, index) => {
@@ -16,7 +34,7 @@ export default class Tabs extends Component {
         accumulator.tabs.push(
           <Tab
             label={label} panelId={panelId} tabId={tabId} selected={selected}
-            key={tabId}
+            key={tabId} onSelect={() => this.selectPanel(label)}
           />
         );
 
@@ -46,10 +64,5 @@ Tabs.propTypes = {
       label: PropTypes.string.isRequired,
       content: PropTypes.node.isRequired
     })
-  ).isRequired,
-  activePanel: PropTypes.string
-};
-
-Tabs.defaultProps = {
-  activePanel: null
+  ).isRequired
 };

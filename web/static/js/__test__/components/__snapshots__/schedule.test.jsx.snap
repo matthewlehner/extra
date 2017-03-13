@@ -29,5 +29,58 @@ exports[`Schedule component renders correctly 1`] = `
     </strong>
      Great for beginners and those with massive collections.
   </p>
+  <div
+    className="tab-container"
+  >
+    <nav
+      className="tablist"
+      role="tablist"
+    >
+      <a
+        aria-controls="monday"
+        aria-selected={true}
+        className="tab"
+        data-title="Monday"
+        href="#monday"
+        id="monday-tab"
+        onClick={[Function]}
+        role="tab"
+      >
+        Monday
+      </a>
+      <a
+        aria-controls="tuesday"
+        aria-selected={false}
+        className="tab"
+        data-title="Tuesday"
+        href="#tuesday"
+        id="tuesday-tab"
+        onClick={[Function]}
+        role="tab"
+      >
+        Tuesday
+      </a>
+    </nav>
+    <div
+      aria-hidden={false}
+      aria-labelledby="monday-tab"
+      className="tabpanel"
+      id="monday"
+      role="tabpanel"
+    >
+      hi guys.
+    </div>
+    <div
+      aria-hidden={true}
+      aria-labelledby="tuesday-tab"
+      className="tabpanel"
+      id="tuesday"
+      role="tabpanel"
+    >
+      <div>
+        Here’s some content
+      </div>
+    </div>
+  </div>
 </section>
 `;

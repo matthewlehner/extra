@@ -15,6 +15,7 @@ exports[`Tabs can specify active panel 1`] = `
       data-title="Monday"
       href="#monday"
       id="monday-tab"
+      onClick={[Function]}
       role="tab"
     >
       Monday
@@ -26,6 +27,115 @@ exports[`Tabs can specify active panel 1`] = `
       data-title="Tuesday"
       href="#tuesday"
       id="tuesday-tab"
+      onClick={[Function]}
+      role="tab"
+    >
+      Tuesday
+    </a>
+  </nav>
+  <div
+    aria-hidden={true}
+    aria-labelledby="monday-tab"
+    className="tabpanel"
+    id="monday"
+    role="tabpanel"
+  >
+    hi bud
+  </div>
+  <div
+    aria-hidden={false}
+    aria-labelledby="tuesday-tab"
+    className="tabpanel"
+    id="tuesday"
+    role="tabpanel"
+  >
+    great day
+  </div>
+</div>
+`;
+
+exports[`Tabs interactions switches panes 1`] = `
+<div
+  className="tab-container"
+>
+  <nav
+    className="tablist"
+    role="tablist"
+  >
+    <a
+      aria-controls="monday"
+      aria-selected={true}
+      className="tab"
+      data-title="Monday"
+      href="#monday"
+      id="monday-tab"
+      onClick={[Function]}
+      role="tab"
+    >
+      Monday
+    </a>
+    <a
+      aria-controls="tuesday"
+      aria-selected={false}
+      className="tab"
+      data-title="Tuesday"
+      href="#tuesday"
+      id="tuesday-tab"
+      onClick={[Function]}
+      role="tab"
+    >
+      Tuesday
+    </a>
+  </nav>
+  <div
+    aria-hidden={false}
+    aria-labelledby="monday-tab"
+    className="tabpanel"
+    id="monday"
+    role="tabpanel"
+  >
+    hi bud
+  </div>
+  <div
+    aria-hidden={true}
+    aria-labelledby="tuesday-tab"
+    className="tabpanel"
+    id="tuesday"
+    role="tabpanel"
+  >
+    great day
+  </div>
+</div>
+`;
+
+exports[`Tabs interactions switches panes 2`] = `
+<div
+  className="tab-container"
+>
+  <nav
+    className="tablist"
+    role="tablist"
+  >
+    <a
+      aria-controls="monday"
+      aria-selected={false}
+      className="tab"
+      data-title="Monday"
+      href="#monday"
+      id="monday-tab"
+      onClick={[Function]}
+      role="tab"
+    >
+      Monday
+    </a>
+    <a
+      aria-controls="tuesday"
+      aria-selected={true}
+      className="tab"
+      data-title="Tuesday"
+      href="#tuesday"
+      id="tuesday-tab"
+      onClick={[Function]}
       role="tab"
     >
       Tuesday
@@ -67,6 +177,7 @@ exports[`Tabs renders tabs 1`] = `
       data-title="Monday"
       href="#monday"
       id="monday-tab"
+      onClick={[Function]}
       role="tab"
     >
       Monday
@@ -78,6 +189,7 @@ exports[`Tabs renders tabs 1`] = `
       data-title="Tuesday"
       href="#tuesday"
       id="tuesday-tab"
+      onClick={[Function]}
       role="tab"
     >
       Tuesday

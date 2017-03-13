@@ -28,4 +28,18 @@ describe("Tabs", () => {
 
     expect(tree).toMatchSnapshot();
   });
+
+  describe("interactions", () => {
+    it("switches panes", () => {
+      const props = { panels };
+      const component = renderer.create(<Tabs {...props} />);
+      let tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+
+      tree.children[0].children[1].props.onClick();
+
+      tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+  });
 });
