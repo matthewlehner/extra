@@ -44,16 +44,7 @@ const common = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
-        options: {
-          presets: [
-            ["env", {
-              browsers: ["last 2 versions", "safari >= 7"],
-              modules: false
-            }],
-            "react"
-          ]
-        }
+        loader: "babel-loader"
       }, {
         test: /.*\.svg$/,
         exclude: /node_modules/,
