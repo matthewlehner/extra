@@ -51,6 +51,7 @@ defmodule Extra.Router do
 
     get "/", DashboardController, :index
     resources "/channels", SocialChannelController, only: [:new, :show]
+    get "/channels/:id/*channel_params", SocialChannelController, :show
     resources "/collections", CollectionController, only: [:new, :create, :show]
     resources "/posts", PostController, only: [:new, :create]
   end

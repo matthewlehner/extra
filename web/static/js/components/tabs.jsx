@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from "react";
+import { withRouter } from "react-router-dom";
 
 import Tab from "./tab";
 import Tabpanel from "./tabpanel";
 
-export default class Tabs extends Component {
+class Tabs extends Component {
   static propTypes = {
     panels: PropTypes.arrayOf(
       PropTypes.shape({
@@ -58,11 +59,4 @@ export default class Tabs extends Component {
   }
 }
 
-Tabs.propTypes = {
-  panels: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      content: PropTypes.node.isRequired
-    })
-  ).isRequired
-};
+export default withRouter(Tabs);

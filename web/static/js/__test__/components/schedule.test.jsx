@@ -1,5 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import { MemoryRouter } from "react-router";
 
 import Schedule from "components/schedule";
 
@@ -9,7 +10,9 @@ describe("Schedule component", () => {
       toggleAutopilot: jest.fn()
     };
     const tree = renderer.create(
-      <Schedule {...props} />
+      <MemoryRouter>
+        <Schedule {...props} />
+      </MemoryRouter>
     );
 
     expect(tree).toMatchSnapshot();
