@@ -8,6 +8,7 @@ defmodule Extra.SocialChannel do
     has_one :authorization, Extra.Authorization
     belongs_to :user, Extra.User
     has_many :templates, Extra.PostTemplate
+    has_one :schedule, Extra.Schedule
 
     timestamps()
   end
