@@ -14,7 +14,7 @@ const panels = [{
 
 describe("Tabs", () => {
   it("renders tabs", () => {
-    const props = { panels };
+    const props = { panels, name: "schedule" };
     const tree = renderer.create(
       <MemoryRouter>
         <Tabs {...props} />
@@ -25,34 +25,16 @@ describe("Tabs", () => {
   });
 
   it("can specify active panel", () => {
-    const props = {
-      activePanel: panels[1].label,
-      panels
-    };
+    const props = { panels, name: "schedule" };
     const tree = renderer.create(
-      <MemoryRouter>
+      <MemoryRouter
+        initialEntries={["?schedule=tuesday"]}
+        initialIndex={0}
+      >
         <Tabs {...props} />
       </MemoryRouter>
     );
 
     expect(tree).toMatchSnapshot();
-  });
-
-  describe("interactions", () => {
-    it("switches panes", () => {
-      const props = { panels };
-      const component = renderer.create(
-        <MemoryRouter>
-          <Tabs {...props} />
-        </MemoryRouter>
-      );
-      let tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
-
-      tree.children[0].children[1].props.onClick();
-
-      tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
-    });
   });
 });

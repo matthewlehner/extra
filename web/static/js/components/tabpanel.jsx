@@ -1,9 +1,9 @@
 import React, { PropTypes } from "react";
 
-const Tabpanel = ({ id, tabId, selected, content }) => (
+const Tabpanel = ({ id, tabId, active, content }) => (
   <div
     className="tabpanel" role="tabpanel" id={id}
-    aria-labelledby={tabId} aria-hidden={!selected}
+    aria-labelledby={tabId} aria-hidden={!active}
   >
     {content}
   </div>
@@ -12,7 +12,7 @@ const Tabpanel = ({ id, tabId, selected, content }) => (
 Tabpanel.propTypes = {
   id: PropTypes.string.isRequired,
   tabId: PropTypes.string.isRequired,
-  selected: PropTypes.bool.isRequired,
+  active: PropTypes.bool.isRequired,
   content: PropTypes.node.isRequired
 };
 

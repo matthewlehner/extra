@@ -1,11 +1,16 @@
 import React, { Component, PropTypes } from "react";
 import { withRouter } from "react-router-dom";
+import { parse } from "query-string";
 
 import Tab from "./tab";
 import Tabpanel from "./tabpanel";
 
 class Tabs extends Component {
   static propTypes = {
+    name: PropTypes.string.isRequired,
+    location: PropTypes.shape({
+      search: PropTypes.string.isRequired
+    }).isRequired,
     panels: PropTypes.arrayOf(
       PropTypes.shape({
         label: PropTypes.string.isRequired,
@@ -14,35 +19,26 @@ class Tabs extends Component {
     ).isRequired
   }
 
-  state = {
-    activePanel: null
-  }
-
-  selectPanel = (label) => {
-    this.setState(prevState => Object.assign(prevState, { activePanel: label }));
-  }
-
   render() {
-    const { panels } = this.props;
-    const { activePanel } = this.state;
+    const { panels, location, name } = this.props;
 
     const { tabs, tabPanels } = panels.reduce(
       (accumulator, { label, content }, index) => {
         const panelId = label.toLowerCase();
         const tabId = `${panelId}-tab`;
-        const selected = activePanel ? activePanel === label : index === 0;
+        const activePanel = parse(location.search)[name];
+        const active = activePanel ? activePanel === panelId : index === 0;
 
         accumulator.tabs.push(
           <Tab
-            label={label} panelId={panelId} tabId={tabId} selected={selected}
-            key={tabId} onSelect={() => this.selectPanel(label)}
+            label={label} panelId={panelId} key={tabId} location={location}
+            active={active}
           />
         );
 
         accumulator.tabPanels.push(
           <Tabpanel
-            id={panelId} tabId={tabId} selected={selected} content={content}
-            key={panelId}
+            content={content} key={panelId} tabId={tabId} id={panelId} active={active}
           />
         );
         return accumulator;

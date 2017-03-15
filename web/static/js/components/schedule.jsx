@@ -23,7 +23,7 @@ const Schedule = props => (
       massive collections.
     </p>
 
-    <Tabs panels={panels} />
+    <Tabs name={"schedule"} panels={panels} />
   </section>
 );
 
