@@ -1,13 +1,29 @@
 import React, { PropTypes } from "react";
 import ToggleSwitch from "./forms/toggle-switch";
 import Tabs from "./tabs";
+import DailySchedule from "./daily-schedule";
 
 const panels = [{
   label: "Monday",
-  content: "hi guys."
+  content: <DailySchedule day={"Monday"} />
 }, {
   label: "Tuesday",
-  content: (<div>Here’s some content</div>)
+  content: <DailySchedule day={"Tuesday"} />
+}, {
+  label: "Wednesday",
+  content: <DailySchedule day={"Wednesday"} />
+}, {
+  label: "Thursday",
+  content: <DailySchedule day={"Thursday"} />
+}, {
+  label: "Friday",
+  content: <DailySchedule day={"Friday"} />
+}, {
+  label: "Saturday",
+  content: <DailySchedule day={"Saturday"} />
+}, {
+  label: "Sunday",
+  content: <DailySchedule day={"Sunday"} />
 }];
 
 const Schedule = props => (
