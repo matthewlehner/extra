@@ -56,6 +56,12 @@ defmodule Extra.Router do
     resources "/posts", PostController, only: [:new, :create]
   end
 
+  # GraphQL Endpoints
+  scope "/" do
+    forward "/api", Absinthe.Plug, schema: Extra.Schema
+    forward "/graphiql", Absinthe.Plug.GraphiQL, schema: Extra.Schema
+  end
+
   scope "/admin", Extra do
     pipe_through [:browser]
 

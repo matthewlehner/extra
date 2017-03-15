@@ -48,6 +48,10 @@ defmodule Extra.Mixfile do
      {:ecto_enum, "~> 0.3.0"},
      {:calendar, "~> 0.17.2"},
 
+     {:absinthe, "~> 1.3-beta"},
+     {:absinthe_plug, "~> 1.3-beta"},
+     {:poison, "~> 2.1"},
+
      {:ex_machina, "~> 2.0", only: :test},
      {:mix_test_watch, "~> 0.2", only: :dev},
      {:dialyxir, "~> 0.4", only: [:dev]},
