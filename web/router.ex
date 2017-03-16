@@ -58,13 +58,12 @@ defmodule Extra.Router do
 
   # GraphQL Endpoints
   scope "/" do
-    forward "/api", Absinthe.Plug, schema: Extra.Schema
+    forward "/graphql", Absinthe.Plug, schema: Extra.Schema
     forward "/graphiql", Absinthe.Plug.GraphiQL, schema: Extra.Schema
   end
 
   scope "/admin", Extra do
     pipe_through [:browser]
-
   end
 
   scope "/auth", Extra do

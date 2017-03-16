@@ -1,12 +1,24 @@
-import React, { Component } from "react";
+import React, { Component, PropTypes } from "react";
+import { gql, graphql } from "react-apollo";
 
 import Schedule from "components/schedule";
 
-export default class ChannelPage extends Component {
+class ChannelPage extends Component {
+  static propTypes = {
+    data: PropTypes.shape({
+      loading: PropTypes.bool.isRequired,
+      channel: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        provider: PropTypes.string.isRequired
+      }).isRequired
+    }).isRequired
+
+  }
+
   componentWillMount() {
-    const channel = window.pageContext;
     const schedule = { autoPilot: true };
-    this.setState(() => ({ channel, schedule }));
+    this.setState(() => ({ schedule }));
   }
 
   toggleAutopilot = () => this.setState(prevState => (
@@ -14,11 +26,16 @@ export default class ChannelPage extends Component {
   ));
 
   render() {
-    const { channel, schedule } = this.state;
+    const { data: { channel, loading } } = this.props;
+    const { schedule } = this.state;
     const scheduleProps = {
       toggleAutopilot: this.toggleAutopilot,
       ...schedule
     };
+
+    if (loading) {
+      return <div>Loading!</div>;
+    }
 
     return (
       <div>
@@ -45,3 +62,17 @@ export default class ChannelPage extends Component {
     );
   }
 }
+
+const CurrentChannelForLayout = gql`
+  query ChannelPage($id: ID!) {
+    channel(id: $id) {
+      name,
+      image,
+      provider
+    }
+  }
+`;
+
+export default graphql(CurrentChannelForLayout, {
+  options: ({ match }) => ({ variables: { id: match.params.id } })
+})(ChannelPage);
