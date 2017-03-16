@@ -6,7 +6,7 @@ defmodule Extra.Schedule do
 
   schema "schedules" do
     field :autopilot, :boolean, default: true
-    belongs_to :social_channel, Extra.SocialChannel
+    belongs_to :channel, Extra.SocialChannel, foreign_key: :social_channel_id
 
     timestamps()
   end

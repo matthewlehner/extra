@@ -10,6 +10,7 @@ defmodule Extra.Schema.Types do
     field :name, :string
     field :provider, :string
     field :image, :string
+    field :schedule, :schedule, resolve: assoc(:schedule)
   end
 
   object(:collection) do
@@ -22,5 +23,11 @@ defmodule Extra.Schema.Types do
     field :id, :id
     field :body, :string
     field :collection, :collection
+  end
+
+  object(:schedule) do
+    field :id, :id
+    field :autopilot, :boolean
+    field :channel, :channel, resolve: assoc(:channel)
   end
 end

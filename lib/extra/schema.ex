@@ -4,6 +4,7 @@ defmodule Extra.Schema do
   """
   use Absinthe.Schema
   alias Extra.Schema.{ChannelResolver, CollectionResolver}
+  alias Extra.Schema.Resolvers.Schedule
 
   import_types Extra.Schema.Types
 
@@ -24,6 +25,11 @@ defmodule Extra.Schema do
     field :collection, type: :collection do
       arg :id, non_null(:id)
       resolve &CollectionResolver.find/2
+    end
+
+    field :schedule, type: :schedule do
+      arg :channel_id, non_null(:id)
+      resolve &Schedule.find_by/3
     end
   end
 end
