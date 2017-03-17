@@ -32,7 +32,7 @@ const Schedule = props => (
 
     <p>
       <ToggleSwitch
-        checked={props.autoPilot}
+        checked={props.autopilot}
         onChange={props.toggleAutopilot}
       />
       <strong>Schedule autopilot.</strong> Great for beginners and those with

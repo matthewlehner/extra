@@ -32,4 +32,17 @@ defmodule Extra.Schema do
       resolve &Schedule.find_by/3
     end
   end
+
+  input_object :update_schedule_params do
+    field :autopilot, non_null(:boolean)
+  end
+
+  mutation do
+    field :update_schedule, type: :schedule do
+      arg :channel_id, non_null(:id)
+      arg :schedule, :update_schedule_params
+
+      resolve &Schedule.update/2
+    end
+  end
 end

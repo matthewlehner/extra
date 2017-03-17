@@ -15,8 +15,6 @@ defmodule Extra.Schedule do
   Builds a changeset based on the `struct` and `params`.
   """
   def changeset(struct, params \\ %{}) do
-    struct
-    |> cast(params, [:autopilot])
-    |> validate_required([:autopilot])
+    cast(struct, params, [:autopilot])
   end
 end

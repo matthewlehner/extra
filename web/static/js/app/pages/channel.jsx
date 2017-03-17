@@ -8,17 +8,16 @@ class ChannelPage extends Component {
     data: PropTypes.shape({
       loading: PropTypes.bool.isRequired,
       channel: PropTypes.shape({
+        id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired,
         provider: PropTypes.string.isRequired
-      }).isRequired
-    }).isRequired
-
-  }
-
-  componentWillMount() {
-    const schedule = { autoPilot: true };
-    this.setState(() => ({ schedule }));
+      }),
+      schedule: PropTypes.shape({
+        autopilot: PropTypes.bool.isRequired
+      })
+    }).isRequired,
+    updateSchedule: PropTypes.func.isRequired
   }
 
   toggleAutopilot = () => this.setState(prevState => (
@@ -26,12 +25,11 @@ class ChannelPage extends Component {
   ));
 
   render() {
-    const { data: { channel, loading } } = this.props;
-    const { schedule } = this.state;
-    const scheduleProps = {
-      toggleAutopilot: this.toggleAutopilot,
-      ...schedule
-    };
+    const { updateSchedule, data: { schedule, channel, loading } } = this.props;
+    const toggleAutopilot = () => (
+      updateSchedule({ variables: { channelId: channel.id, autopilot: !schedule.autopilot } })
+    );
+    const scheduleProps = { toggleAutopilot, ...schedule };
 
     if (loading) {
       return <div>Loading!</div>;
@@ -66,13 +64,29 @@ class ChannelPage extends Component {
 const CurrentChannelForLayout = gql`
   query ChannelPage($id: ID!) {
     channel(id: $id) {
+      id,
       name,
       image,
       provider
+    }
+    schedule(channelId: $id) {
+      id,
+      autopilot
+    }
+  }
+`;
+
+const updateSchedule = gql`
+  mutation UpdateSchedule($channelId: ID!, $autopilot: Boolean) {
+    updateSchedule(
+      channelId: $channelId, schedule: { autopilot: $autopilot }
+    ) {
+      id,
+      autopilot
     }
   }
 `;
 
 export default graphql(CurrentChannelForLayout, {
   options: ({ match }) => ({ variables: { id: match.params.id } })
-})(ChannelPage);
+})(graphql(updateSchedule, { name: "updateSchedule" })(ChannelPage));
