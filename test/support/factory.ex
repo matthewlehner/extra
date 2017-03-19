@@ -44,17 +44,33 @@ defmodule Extra.Factory do
     }
   end
 
-  def post_template_factory do
-    %Extra.PostTemplate{}
-  end
-
   def with_channels(user) do
     insert_pair(:social_channel, user: user)
     user
   end
 
+  def post_template_factory do
+    %Extra.PostTemplate{}
+  end
+
   def with_template_for(post_content, social_channel) do
     insert(:post_template, post_content: post_content, social_channel: social_channel)
     post_content
+  end
+
+  def schedule_factory do
+    %Extra.Schedule {
+      autopilot: true,
+      channel: build(:social_channel)
+    }
+  end
+
+  def timeslot_factory do
+    %Extra.Timeslot {
+      time: ~T[09:30:00],
+      recurrence: Extra.RecurrenceEnum.__enum_map__[:everyday],
+      schedule: build(:schedule),
+      collection: build(:post_collection)
+    }
   end
 end

@@ -1,0 +1,25 @@
+defmodule Extra.Timeslot do
+  @moduledoc """
+  Timeslot schema. Used for adding timeslots to a schedule, and associating
+  them with collections.
+  """
+  use Extra.Web, :model
+
+  schema "timeslots" do
+    field :time, Ecto.Time
+    field :recurrence, Extra.RecurrenceEnum
+    belongs_to :schedule, Extra.Schedule
+    belongs_to :collection, Extra.PostCollection
+
+    timestamps()
+  end
+
+  @doc """
+  Builds a changeset based on the `struct` and `params`.
+  """
+  def changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, [:time, :recurrence])
+    |> validate_required([:time, :recurrence])
+  end
+end

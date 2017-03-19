@@ -45,7 +45,7 @@ defmodule Extra.Mixfile do
      {:oauth, github: "tim/erlang-oauth"},
      {:ueberauth_facebook, "~> 0.6"},
      {:ueberauth_identity, "~> 0.2.0"},
-     {:ecto_enum, "~> 0.3.0"},
+     {:ecto_enum, "~> 1.0.0"},
      {:calendar, "~> 0.17.2"},
 
      {:absinthe, "~> 1.3-beta"},
