@@ -7,6 +7,8 @@ defenum ProviderEnum, shopify: 0
 # everyday is 0 (and default column value)
 # weekdays are 9
 # weekends are 10
+#
+# These values should be kept in sync with the GraphQL recurrence enum.
 defenum Extra.RecurrenceEnum, everyday: 0, monday: 1, tuesday: 2, wednesday: 3,
                               thursday: 4, friday: 5, saturday: 6, sunday: 7,
                               weekdays: 9, weekends: 10
