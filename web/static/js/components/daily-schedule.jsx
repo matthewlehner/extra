@@ -1,36 +1,43 @@
 import React, { PropTypes } from "react";
+import { dayTranslations } from "lib/schedule-helpers";
 
-const DailySchedule = ({ day }) => (
-  <table>
-    <thead>
-      <tr>
-        <th>Time Slot</th>
-        <th>Recurrence</th>
-        <th>Collection</th>
+const DailySchedule = ({ day, timeslots }) => {
+  const times = timeslots.map(
+    ({ id, time, recurrence, collection: { name: collectionName } }) => (
+      <tr key={`${day}-${id}`}>
+        <td>{time.slice(0, 5)}</td>
+        <td>{dayTranslations[recurrence]}</td>
+        <td>{collectionName}</td>
       </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>03:30</td>
-        <td><select><option selected>Only {day}s</option></select></td>
-        <td><select><option selected>My first collection</option></select></td>
-      </tr>
-      <tr>
-        <td>04:30</td>
-        <td><select><option selected>Everyday</option></select></td>
-        <td><select><option selected>My first collection</option></select></td>
-      </tr>
-      <tr>
-        <td>05:30</td>
-        <td><select><option selected>Everyday</option></select></td>
-        <td><select><option selected>My first collection</option></select></td>
-      </tr>
-    </tbody>
-  </table>
-);
+    )
+  );
+
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Time Slot</th>
+          <th>Recurrence</th>
+          <th>Collection</th>
+        </tr>
+      </thead>
+      <tbody>
+        {times}
+      </tbody>
+    </table>
+  );
+};
 
 DailySchedule.propTypes = {
-  day: PropTypes.string.isRequired
+  day: PropTypes.string.isRequired,
+  timeslots: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    time: PropTypes.string.isRequired,
+    recurrence: PropTypes.string.isRequired,
+    collection: PropTypes.shape({
+      name: PropTypes.string.isRequired
+    })
+  })).isRequired
 };
 
 export default DailySchedule;

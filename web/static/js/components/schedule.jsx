@@ -3,53 +3,42 @@ import ToggleSwitch from "./forms/toggle-switch";
 import Tabs from "./tabs";
 import DailySchedule from "./daily-schedule";
 
-const panels = [{
-  label: "Monday",
-  content: <DailySchedule day={"Monday"} />
-}, {
-  label: "Tuesday",
-  content: <DailySchedule day={"Tuesday"} />
-}, {
-  label: "Wednesday",
-  content: <DailySchedule day={"Wednesday"} />
-}, {
-  label: "Thursday",
-  content: <DailySchedule day={"Thursday"} />
-}, {
-  label: "Friday",
-  content: <DailySchedule day={"Friday"} />
-}, {
-  label: "Saturday",
-  content: <DailySchedule day={"Saturday"} />
-}, {
-  label: "Sunday",
-  content: <DailySchedule day={"Sunday"} />
-}];
+import { timeslotsFor, daysOfTheWeek } from "../lib/schedule-helpers";
 
-const Schedule = props => (
+function panels(timeslots) {
+  return daysOfTheWeek.map(day => ({
+    label: day,
+    content: <DailySchedule day={day} timeslots={timeslotsFor(day, timeslots)} />
+  }));
+}
+
+const Schedule = ({ autopilot, toggleAutopilot, timeslots }) => (
   <section className="channel-schedule">
     <h2>Schedule</h2>
 
     <p>
       <ToggleSwitch
-        checked={props.autopilot}
-        onChange={props.toggleAutopilot}
+        checked={autopilot}
+        onChange={toggleAutopilot}
       />
       <strong>Schedule autopilot.</strong> Great for beginners and those with
       massive collections.
     </p>
 
-    <Tabs name={"schedule"} panels={panels} />
+    <Tabs name={"schedule"} panels={panels(timeslots)} />
   </section>
 );
 
 Schedule.propTypes = {
-  autoPilot: PropTypes.bool,
-  toggleAutopilot: PropTypes.func.isRequired
-};
-
-Schedule.defaultProps = {
-  autoPilot: true
+  autopilot: PropTypes.bool.isRequired,
+  toggleAutopilot: PropTypes.func.isRequired,
+  timeslots: PropTypes.arrayOf(PropTypes.shape({
+    recurrence: PropTypes.string.isRequired,
+    time: PropTypes.string.isRequired,
+    collection: PropTypes.shape({
+      name: PropTypes.string.isRequired
+    }).isRequired
+  })).isRequired
 };
 
 export default Schedule;

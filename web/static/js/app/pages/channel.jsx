@@ -7,6 +7,9 @@ class ChannelPage extends Component {
   static propTypes = {
     data: PropTypes.shape({
       loading: PropTypes.bool.isRequired,
+      error: PropTypes.shape({
+        message: PropTypes.string.isRequired
+      }),
       channel: PropTypes.shape({
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
@@ -25,7 +28,7 @@ class ChannelPage extends Component {
   ));
 
   render() {
-    const { updateSchedule, data: { schedule, channel, loading } } = this.props;
+    const { updateSchedule, data: { error, schedule, channel, loading } } = this.props;
     const toggleAutopilot = () => (
       updateSchedule({ variables: { channelId: channel.id, autopilot: !schedule.autopilot } })
     );
@@ -33,6 +36,10 @@ class ChannelPage extends Component {
 
     if (loading) {
       return <div>Loading!</div>;
+    }
+
+    if (error && error.message) {
+      return <div>{error.message}</div>;
     }
 
     return (
@@ -71,7 +78,15 @@ const CurrentChannelForLayout = gql`
     }
     schedule(channelId: $id) {
       id,
-      autopilot
+      autopilot,
+      timeslots {
+        id,
+        time,
+        recurrence,
+        collection {
+          name
+        }
+      }
     }
   }
 `;

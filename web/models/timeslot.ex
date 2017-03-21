@@ -6,7 +6,7 @@ defmodule Extra.Timeslot do
   use Extra.Web, :model
 
   schema "timeslots" do
-    field :time, Ecto.Time
+    field :time, :time
     field :recurrence, Extra.RecurrenceEnum
     belongs_to :schedule, Extra.Schedule
     belongs_to :collection, Extra.PostCollection

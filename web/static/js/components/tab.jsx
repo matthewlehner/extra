@@ -1,10 +1,7 @@
-// @flow
-
 import React, { PropTypes } from "react";
 import { Link } from "react-router-dom";
 import { parse, stringify } from "query-string";
 
-// :: type label: string, panelId: string, match: string
 const Tab = ({ label, panelId, location, active }) => {
   const searchParams = Object.assign(
     {},
