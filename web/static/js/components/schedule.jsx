@@ -26,6 +26,7 @@ const Schedule = ({ autopilot, toggleAutopilot, timeslots }) => (
     </p>
 
     <Tabs name={"schedule"} panels={panels(timeslots)} />
+    { autopilot ? "Add new time slot" : null }
   </section>
 );
 

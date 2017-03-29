@@ -13,18 +13,21 @@ const DailySchedule = ({ day, timeslots }) => {
   );
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Time Slot</th>
-          <th>Recurrence</th>
-          <th>Collection</th>
-        </tr>
-      </thead>
-      <tbody>
-        {times}
-      </tbody>
-    </table>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Time Slot</th>
+            <th>Recurrence</th>
+            <th>Collection</th>
+          </tr>
+        </thead>
+        <tbody>
+          {times}
+        </tbody>
+      </table>
+      Add new time slot
+    </div>
   );
 };
 
