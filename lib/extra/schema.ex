@@ -3,7 +3,8 @@ defmodule Extra.Schema do
   GraphQL schema for Extra
   """
   use Absinthe.Schema
-  alias Extra.Schema.{ChannelResolver, CollectionResolver}
+  alias Extra.Schema.ChannelResolver
+  alias Extra.Schema.CollectionResolver
   alias Extra.Schema.Resolvers.Schedule
 
   import_types Extra.Schema.Types
@@ -37,12 +38,26 @@ defmodule Extra.Schema do
     field :autopilot, non_null(:boolean)
   end
 
+  input_object :add_timeslot_params do
+    field :time, non_null(:time)
+    field :recurrence, non_null(:recurrence)
+    field :collection_id, non_null(:id)
+    field :schedule_id, non_null(:id)
+  end
+
   mutation do
     field :update_schedule, type: :schedule do
       arg :channel_id, non_null(:id)
       arg :schedule, :update_schedule_params
 
       resolve &Schedule.update/2
+    end
+
+    field :add_timeslot, type: :timeslot do
+      arg :schedule_id, non_null(:id)
+      arg :collection_id, non_null(:id)
+      arg :time, non_null(:time)
+      arg :recurrence, non_null(:recurrence)
     end
   end
 end
