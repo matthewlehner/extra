@@ -6,5 +6,9 @@
   "moduleDirectories": [
     "node_modules",
     "web/static/js"
-  ]
+  ],
+  "transform": {
+    "\\.(gql|graphql)$": "jest-transform-graphql",
+    "\\.(js|jsx)$": "babel-jest"
+  }
 }
