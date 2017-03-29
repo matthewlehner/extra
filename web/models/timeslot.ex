@@ -19,7 +19,7 @@ defmodule Extra.Timeslot do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:time, :recurrence])
-    |> validate_required([:time, :recurrence])
+    |> cast(params, [:time, :recurrence, :collection_id])
+    |> validate_required([:time, :recurrence, :collection_id])
   end
 end
