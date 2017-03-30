@@ -6,6 +6,7 @@ defmodule Extra.Schema do
   alias Extra.Schema.ChannelResolver
   alias Extra.Schema.CollectionResolver
   alias Extra.Schema.Resolvers.Schedule
+  alias Extra.Schema.Resolvers.Timeslot
 
   import_types Extra.Schema.Types
 
@@ -41,8 +42,6 @@ defmodule Extra.Schema do
   input_object :add_timeslot_params do
     field :time, non_null(:time)
     field :recurrence, non_null(:recurrence)
-    field :collection_id, non_null(:id)
-    field :schedule_id, non_null(:id)
   end
 
   mutation do
@@ -56,8 +55,9 @@ defmodule Extra.Schema do
     field :add_timeslot, type: :timeslot do
       arg :schedule_id, non_null(:id)
       arg :collection_id, non_null(:id)
-      arg :time, non_null(:time)
-      arg :recurrence, non_null(:recurrence)
+      arg :timeslot, :add_timeslot_params
+
+      resolve &Timeslot.create/2
     end
   end
 end

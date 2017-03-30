@@ -7,7 +7,7 @@ defmodule Extra.Schema.Types do
 
   scalar :time do
     description "Time in ISO 8601 format"
-    parse &Time.from_iso8601!(&1.value)
+    parse &Time.from_iso8601(&1.value)
     serialize &Time.to_string(&1)
   end
 
