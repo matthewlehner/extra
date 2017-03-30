@@ -21,6 +21,7 @@ defmodule Extra.SocialChannel do
     |> cast(params, [:name, :image, :provider, :user_id])
     |> validate_required([:name, :provider])
     |> cast_assoc(:authorization, required: true)
+    |> cast_assoc(:schedule, required: true)
     |> assoc_constraint(:user)
   end
 
@@ -28,6 +29,7 @@ defmodule Extra.SocialChannel do
     params = auth
              |> to_channel_params()
              |> Map.put(:user_id, user_id)
+             |> Map.put(:schedule, %{})
 
     changeset(%Extra.SocialChannel{}, params)
   end
