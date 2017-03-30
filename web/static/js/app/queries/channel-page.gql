@@ -1,0 +1,20 @@
+query ChannelPage($id: ID!) {
+  channel(id: $id) {
+    id,
+    name,
+    image,
+    provider
+  }
+  schedule(channelId: $id) {
+    id,
+    autopilot,
+    timeslots {
+      id,
+      time,
+      recurrence,
+      collection {
+        name
+      }
+    }
+  }
+}

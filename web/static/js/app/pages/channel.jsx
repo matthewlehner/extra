@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from "react";
-import { gql, graphql } from "react-apollo";
+import { graphql } from "react-apollo";
 
 import Schedule from "components/schedule";
+import currentChannelForLayoutQuery from "app/queries/channel-page.gql";
+import updateScheduleMutation from "app/queries/update-schedule.gql";
 
 class ChannelPage extends Component {
   static propTypes = {
@@ -68,40 +70,6 @@ class ChannelPage extends Component {
   }
 }
 
-const CurrentChannelForLayout = gql`
-  query ChannelPage($id: ID!) {
-    channel(id: $id) {
-      id,
-      name,
-      image,
-      provider
-    }
-    schedule(channelId: $id) {
-      id,
-      autopilot,
-      timeslots {
-        id,
-        time,
-        recurrence,
-        collection {
-          name
-        }
-      }
-    }
-  }
-`;
-
-const updateSchedule = gql`
-  mutation UpdateSchedule($channelId: ID!, $autopilot: Boolean) {
-    updateSchedule(
-      channelId: $channelId, schedule: { autopilot: $autopilot }
-    ) {
-      id,
-      autopilot
-    }
-  }
-`;
-
-export default graphql(CurrentChannelForLayout, {
+export default graphql(currentChannelForLayoutQuery, {
   options: ({ match }) => ({ variables: { id: match.params.id } })
-})(graphql(updateSchedule, { name: "updateSchedule" })(ChannelPage));
+})(graphql(updateScheduleMutation, { name: "updateSchedule" })(ChannelPage));
