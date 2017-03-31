@@ -1,4 +1,4 @@
-import { shouldAppearOnDay, timeslotsFor } from "lib/schedule-helpers";
+import { shouldAppearOnDay } from "lib/schedule-helpers";
 
 describe("shouldAppearOnDay", () => {
   it("is always true for \"EVERYDAY\"", () => {
