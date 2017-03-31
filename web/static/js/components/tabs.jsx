@@ -16,11 +16,14 @@ class Tabs extends Component {
         label: PropTypes.string.isRequired,
         content: PropTypes.node.isRequired
       })
-    ).isRequired
+    ).isRequired,
+    children: PropTypes.node
   }
 
+  static defaultProps = { children: null }
+
   render() {
-    const { panels, location, name } = this.props;
+    const { panels, location, name, children } = this.props;
 
     const { tabs, tabPanels } = panels.reduce(
       (accumulator, { label, content }, index) => {
@@ -50,6 +53,7 @@ class Tabs extends Component {
       <div className="tab-container">
         <nav role="tablist" className="tablist">{tabs}</nav>
         {tabPanels}
+        {children}
       </div>
     );
   }

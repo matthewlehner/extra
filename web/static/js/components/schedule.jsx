@@ -2,6 +2,7 @@ import React, { PropTypes } from "react";
 import ToggleSwitch from "./forms/toggle-switch";
 import Tabs from "./tabs";
 import DailySchedule from "./daily-schedule";
+import NewTimeslot from "./new-timeslot";
 
 import { timeslotsFor, daysOfTheWeek } from "../lib/schedule-helpers";
 
@@ -25,8 +26,9 @@ const Schedule = ({ autopilot, toggleAutopilot, timeslots }) => (
       massive collections.
     </p>
 
-    <Tabs name={"schedule"} panels={panels(timeslots)} />
-    { autopilot ? "Add new time slot" : null }
+    <Tabs name={"schedule"} panels={panels(timeslots)}>
+      <NewTimeslot />
+    </Tabs>
   </section>
 );
 

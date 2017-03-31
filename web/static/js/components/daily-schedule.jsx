@@ -1,38 +1,30 @@
 import React, { PropTypes } from "react";
 import { dayTranslations } from "lib/schedule-helpers";
 
-const DailySchedule = ({ day, timeslots }) => {
-  const times = timeslots.map(
-    ({ id, time, recurrence, collection: { name: collectionName } }) => (
-      <tr key={`${day}-${id}`}>
-        <td>{time.slice(0, 5)}</td>
-        <td>{dayTranslations[recurrence]}</td>
-        <td>{collectionName}</td>
+const DailySchedule = ({ timeslots }) => (
+  <table>
+    <thead>
+      <tr>
+        <th>Time Slot</th>
+        <th>Recurrence</th>
+        <th>Collection</th>
       </tr>
-    )
-  );
-
-  return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Time Slot</th>
-            <th>Recurrence</th>
-            <th>Collection</th>
+    </thead>
+    <tbody>
+      {timeslots.map(
+        ({ id, time, recurrence, collection: { name: collectionName } }) => (
+          <tr key={id}>
+            <td>{time.slice(0, 5)}</td>
+            <td>{dayTranslations[recurrence]}</td>
+            <td>{collectionName}</td>
           </tr>
-        </thead>
-        <tbody>
-          {times}
-        </tbody>
-      </table>
-      Add new time slot
-    </div>
-  );
-};
+        )
+      )}
+    </tbody>
+  </table>
+);
 
 DailySchedule.propTypes = {
-  day: PropTypes.string.isRequired,
   timeslots: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     time: PropTypes.string.isRequired,

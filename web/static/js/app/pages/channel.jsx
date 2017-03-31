@@ -25,10 +25,6 @@ class ChannelPage extends Component {
     updateSchedule: PropTypes.func.isRequired
   }
 
-  toggleAutopilot = () => this.setState(prevState => (
-    { schedule: { autoPilot: !prevState.schedule.autoPilot } }
-  ));
-
   render() {
     const { updateSchedule, data: { error, schedule, channel, loading } } = this.props;
     const toggleAutopilot = () => (

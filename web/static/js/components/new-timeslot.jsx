@@ -1,7 +1,27 @@
-import React from "react";
+import React, { Component } from "react";
 
-const NewTimeslot = () => (
-  <span>Add new time slot</span>
-);
+export default class NewTimeslot extends Component {
+  showForm = (event) => {
+    event.preventDefault();
+    this.setState(() => ({ showForm: true }));
+  }
 
-export default NewTimeslot;
+  render() {
+    if (this.state && this.state.showForm) {
+      return (
+        <form>
+          <input type="text" placeholder="08:00" />
+          <select>
+            <option value="MONDAYS">Only Mondays</option>
+          </select>
+          <select>
+            <option value="3">Collection Name</option>
+          </select>
+        </form>
+      );
+    }
+
+    return <button onClick={this.showForm}>Add new time slot</button>;
+  }
+}
+
