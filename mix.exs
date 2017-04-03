@@ -49,7 +49,7 @@ defmodule Extra.Mixfile do
      {:calendar, "~> 0.17.2"},
 
      {:absinthe, "~> 1.3-beta"},
-     {:absinthe_plug, "~> 1.3-beta"},
+     {:absinthe_plug, github: "absinthe-graphql/absinthe_plug", branch: "v1.3"},
      {:poison, "~> 2.1"},
 
      {:ex_machina, "~> 2.0", only: :test},
