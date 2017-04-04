@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select component renders a select element 1`] = `
+<div
+  className="select"
+>
+  <select
+    onChange={[Function]}
+    value="1"
+  >
+    <option
+      value="1"
+    >
+      Hi
+    </option>
+    <option
+      value="2"
+    >
+      Ho
+    </option>
+  </select>
+</div>
+`;

@@ -1,0 +1,11 @@
+query TimeslotFieldsInfo {
+  collections {
+    id
+    name
+  }
+  recurrenceType: __type(name: "Recurrence"){
+    enumValues {
+      name
+    }
+  }
+}
