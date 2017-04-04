@@ -60,6 +60,7 @@ main {
     bottom: 1px;
     content: "";
     display: block;
+    pointer-events: none;
     position: absolute;
     right: $padding-right;
     top: 1px;
