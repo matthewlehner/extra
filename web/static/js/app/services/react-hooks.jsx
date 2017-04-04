@@ -5,16 +5,7 @@ import { ApolloClient, ApolloProvider } from "react-apollo";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import ChannelPage from "../pages/channel";
 
-const client = new ApolloClient({
-  dataIdFromObject: (result) => {
-    // eslint-disable-next-line no-underscore-dangle
-    if (result.id && result.__typename) {
-      // eslint-disable-next-line no-underscore-dangle
-      return result.__typename + result.id;
-    }
-    return null;
-  }
-});
+const client = new ApolloClient();
 
 const App = () => (
   <Router basename="/app">
@@ -30,5 +21,3 @@ render(
   </ApolloProvider>,
   rootEl
 );
-
-// render(<Modal/>, rootEl);
