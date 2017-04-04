@@ -27,7 +27,7 @@ const common = {
   },
 
   output: {
-    path: "./priv/static",
+    path: path.join(__dirname, "/priv/static"),
     filename: "js/[name].js"
   },
 
