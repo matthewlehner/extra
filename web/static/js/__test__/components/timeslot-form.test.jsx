@@ -3,11 +3,19 @@ import renderer from "react-test-renderer";
 
 import TimeslotForm from "components/timeslot-form";
 
+const recurrenceValues = [{ name: "MONDAY" }, { name: "EVERYDAY" }];
+
 describe("TimeslotForm component", () => {
   it("renders a form", () => {
+    const onChange = jest.fn();
     const props = {
-      recurrenceValues: [{ name: "MONDAY" }, { name: "EVERYDAY" }],
-      collections: [{ id: "1", name: "Cool bud" }, { id: "25", name: "Misc." }],
+      time: { value: "01:30", onChange },
+      recurrence: { value: "", onChange, options: recurrenceValues },
+      collection: {
+        value: "",
+        options: [{ id: "1", name: "Cool bud" }, { id: "25", name: "Misc." }],
+        onChange
+      },
       onCancel: jest.fn(),
       onSubmit: jest.fn()
     };

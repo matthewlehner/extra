@@ -8,8 +8,10 @@ describe("Schedule component", () => {
   it("renders correctly", () => {
     const props = {
       toggleAutopilot: jest.fn(),
-      autopilot: true,
-      timeslots: []
+      schedule: {
+        autopilot: true,
+        timeslots: []
+      }
     };
     const tree = renderer.create(
       <MemoryRouter>

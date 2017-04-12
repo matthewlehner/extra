@@ -13,7 +13,7 @@ function panels(timeslots) {
   }));
 }
 
-const Schedule = ({ autopilot, toggleAutopilot, timeslots }) => (
+const Schedule = ({ schedule: { id, autopilot, timeslots }, toggleAutopilot }) => (
   <section className="channel-schedule">
     <h2>Schedule</h2>
 
@@ -27,21 +27,23 @@ const Schedule = ({ autopilot, toggleAutopilot, timeslots }) => (
     </p>
 
     <Tabs name={"schedule"} panels={panels(timeslots)}>
-      <NewTimeslot />
+      <NewTimeslot scheduleId={id} />
     </Tabs>
   </section>
 );
 
 Schedule.propTypes = {
-  autopilot: PropTypes.bool.isRequired,
-  toggleAutopilot: PropTypes.func.isRequired,
-  timeslots: PropTypes.arrayOf(PropTypes.shape({
-    recurrence: PropTypes.string.isRequired,
-    time: PropTypes.string.isRequired,
-    collection: PropTypes.shape({
-      name: PropTypes.string.isRequired
-    }).isRequired
-  })).isRequired
+  schedule: PropTypes.shape({
+    autopilot: PropTypes.bool.isRequired,
+    timeslots: PropTypes.arrayOf(PropTypes.shape({
+      recurrence: PropTypes.string.isRequired,
+      time: PropTypes.string.isRequired,
+      collection: PropTypes.shape({
+        name: PropTypes.string.isRequired
+      }).isRequired
+    })).isRequired
+  }).isRequired,
+  toggleAutopilot: PropTypes.func.isRequired
 };
 
 export default Schedule;

@@ -3,18 +3,19 @@ import React, { PropTypes } from "react";
 import Select from "components/forms/select";
 import { dayTranslations } from "lib/schedule-helpers";
 
-const TimeslotForm = ({ recurrenceValues, collections, selectRecurrence, selectCollection, onCancel, onSubmit, values }) => (
+const TimeslotForm = ({ time, recurrence, collection, onCancel, onSubmit }) => (
   <form onSubmit={onSubmit}>
-    <input type="text" placeholder="00:00" />
-    <Select onChange={selectRecurrence} value={values.recurrence}>
-      {recurrenceValues.map(({ name }) => (
-        <option key={name} value={name}>
-          {dayTranslations[name]}
-        </option>
+    <input
+      type="text" placeholder="00:00" value={time.value}
+      onChange={time.onChange}
+    />
+    <Select onChange={recurrence.onChange} value={recurrence.value}>
+      {recurrence.options.map(({ name }) => (
+        <option key={name} value={name}>{dayTranslations[name]}</option>
       ))}
     </Select>
-    <Select onChange={selectCollection} value={values.collectionId}>
-      {collections.map(({ id, name }) => (
+    <Select onChange={collection.onChange} value={collection.value}>
+      {collection.options.map(({ id, name }) => (
         <option key={id} value={id}>{name}</option>
       ))}
     </Select>
@@ -24,16 +25,21 @@ const TimeslotForm = ({ recurrenceValues, collections, selectRecurrence, selectC
   </form>
 );
 
+const selectPropType = PropTypes.shape({
+  options: PropTypes.array.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  onChange: PropTypes.func.isRequired
+});
+
+const inputPropType = PropTypes.shape({
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  onChange: PropTypes.func.isRequired
+});
+
 TimeslotForm.propTypes = {
-  recurrenceValues: PropTypes.arrayOf(
-    PropTypes.shape({ name: PropTypes.string.isRequired })
-  ).isRequired,
-  collections: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired
-    })
-  ).isRequired,
+  time: inputPropType.isRequired,
+  recurrence: selectPropType.isRequired,
+  collection: selectPropType.isRequired,
   onCancel: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired
 };

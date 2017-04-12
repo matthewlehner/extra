@@ -1,0 +1,24 @@
+mutation AddTimeslot(
+  $scheduleId: ID!,
+  $collectionId: ID!,
+  $time: Time!,
+  $recurrence: Recurrence!
+) {
+  addTimeslot(
+    scheduleId: $scheduleId,
+    collectionId: $collectionId,
+    timeslot: {
+      time: $time,
+      recurrence: $recurrence
+    }
+  ) {
+    id
+    recurrence
+    time
+
+    collection {
+      id
+      name
+    }
+  }
+}
