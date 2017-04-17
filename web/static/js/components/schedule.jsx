@@ -2,6 +2,8 @@
 
 import React from "react";
 import { timeslotsFor, daysOfTheWeek } from "lib/schedule-helpers";
+import type { ScheduleProps, CollectionProps, RecurrenceProps } from "app/pages/channel";
+
 import ToggleSwitch from "./forms/toggle-switch";
 import Tabs from "./tabs";
 import DailySchedule from "./daily-schedule";
@@ -16,12 +18,11 @@ export type Timeslot = {
 };
 
 type ScheduleArgs = {
-  schedule: {
-    id: string,
-    autopilot: boolean,
-    timeslots: Array<Timeslot>
-  },
-  toggleAutopilot: Function
+  toggleAutopilot: Function,
+  addTimeslot: Function,
+  schedule: ScheduleProps,
+  collections: Array<CollectionProps>,
+  recurrenceType: RecurrenceProps
 };
 
 function panels(timeslots: Array<Timeslot>) {
@@ -32,7 +33,13 @@ function panels(timeslots: Array<Timeslot>) {
 }
 
 const Schedule = (
-  { schedule: { id, autopilot, timeslots }, toggleAutopilot }: ScheduleArgs
+  {
+    toggleAutopilot,
+    addTimeslot,
+    schedule: { id, autopilot, timeslots },
+    collections,
+    recurrenceType
+  }: ScheduleArgs
 ) => (
   <section className="channel-schedule">
     <h2>Schedule</h2>
@@ -47,7 +54,12 @@ const Schedule = (
     </p>
 
     <Tabs name={"schedule"} panels={panels(timeslots)}>
-      <NewTimeslot scheduleId={id} />
+      <NewTimeslot
+        scheduleId={id}
+        addTimeslot={addTimeslot}
+        collections={collections}
+        recurrenceType={recurrenceType}
+      />
     </Tabs>
   </section>
 );

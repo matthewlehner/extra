@@ -6,16 +6,25 @@ query ChannelPage($id: ID!) {
     provider
   }
   schedule(channelId: $id) {
-    id,
-    autopilot,
+    id
+    autopilot
     timeslots {
-      id,
-      time,
+      id
+      time
       recurrence,
       collection {
         id
         name
       }
+    }
+  }
+  collections {
+    id
+    name
+  }
+  recurrenceType: __type(name: "Recurrence"){
+    enumValues {
+      name
     }
   }
 }

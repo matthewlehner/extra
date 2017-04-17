@@ -1,10 +1,8 @@
 // @flow
 
 import React, { Component } from "react";
-import { graphql } from "react-apollo";
 
-import timeslotFieldInfo from "app/queries/timeslot-field-info-query.gql";
-import addTimeslotMutation from "app/queries/add-timeslot-mutation.gql";
+import type { CollectionProps, RecurrenceProps } from "app/pages/channel";
 
 import TimeslotForm from "./timeslot-form";
 
@@ -14,16 +12,12 @@ const timeslotDefaults = {
   collectionId: ""
 };
 
-class NewTimeslot extends Component {
+export default class NewTimeslot extends Component {
   props: {
     addTimeslot: Function,
     scheduleId: string,
-    data: {
-      collections: Array<any>,
-      recurrenceType: {
-        enumValues: Array<string>
-      }
-    }
+    collections: Array<CollectionProps>,
+    recurrenceType: RecurrenceProps
   };
 
   state = {
@@ -31,7 +25,7 @@ class NewTimeslot extends Component {
     timeslot: timeslotDefaults
   };
 
-  onSubmit = (event) => {
+  onSubmit = (event: Event) => {
     this.hideForm(event);
     this.props.addTimeslot({
       variables: {
@@ -41,18 +35,18 @@ class NewTimeslot extends Component {
     });
   }
 
-  setTimeslotState = (key, value) => {
+  setTimeslotState = (key:string, value:string) => {
     this.setState(({ timeslot }) => ({
       timeslot: { ...timeslot, [key]: value }
     }));
   }
 
-  hideForm = (event) => {
+  hideForm = (event: Event) => {
     event.preventDefault();
     this.setState(() => ({ showForm: false, timeslot: timeslotDefaults }));
   }
 
-  showForm = (event) => {
+  showForm = (event: Event) => {
     event.preventDefault();
     this.setState(() => ({ showForm: true }));
   }
@@ -62,7 +56,7 @@ class NewTimeslot extends Component {
       const {
         recurrenceType: { enumValues: recurrenceValues },
         collections
-      } = this.props.data;
+      } = this.props;
 
       const { timeslot } = this.state;
 
@@ -95,28 +89,3 @@ class NewTimeslot extends Component {
     return <button onClick={this.showForm}>Add new time slot</button>;
   }
 }
-
-export default graphql(timeslotFieldInfo)(
-  graphql(
-    addTimeslotMutation,
-    {
-      name: "addTimeslot",
-      options: {
-        updateQueries: {
-          ChannelPage: (previousData, { mutationResult }) => {
-            const newTimeslot = mutationResult.data.addTimeslot;
-            return {
-              ...previousData,
-              schedule: {
-                ...previousData.schedule,
-                timeslots: [...previousData.schedule.timeslots, newTimeslot]
-              }
-            };
-          }
-        }
-      }
-    }
-  )(
-    NewTimeslot
-  )
-);

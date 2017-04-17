@@ -1,36 +1,62 @@
 // @flow
 
-import React, { PropTypes } from "react";
-import { graphql } from "react-apollo";
+import React from "react";
+import { graphql, compose } from "react-apollo";
 
 import Schedule from "components/schedule";
 import currentChannelForLayoutQuery from "app/queries/channel-page.gql";
 import updateScheduleMutation from "app/queries/update-schedule.gql";
-import type { Timeslot } from "components/schedule";
+import addTimeslotMutation from "app/queries/add-timeslot-mutation.gql";
+
+export type CollectionProps = {
+  id: string,
+  name: string
+};
+
+export type RecurrenceProps = {
+  enumValues: Array<string>
+};
+
+type TimeslotProps = {
+  recurrence: string,
+  time: string,
+  collection: {
+    name: string
+  }
+};
+
+export type ScheduleProps = {
+  id: string,
+  timeslots: Array<TimeslotProps>,
+  autopilot: boolean
+};
 
 type ChannelPageProps = {
   updateSchedule: Function,
+  addTimeslot: Function,
   data: {
     loading: boolean,
     error?: {
       message: string
     },
-    schedule: {
-      id: string,
-      timeslots: Array<Timeslot>,
-      autopilot: boolean
-    },
+    schedule: ScheduleProps,
     channel: {
       id: string,
       image: string,
       name: string,
       provider: string
-    }
+    },
+    collections: Array<CollectionProps>,
+    recurrenceType: RecurrenceProps
   }
 };
 
 function ChannelPage(props:ChannelPageProps) {
-  const { updateSchedule, data: { error, schedule, channel, loading } } = props;
+  const {
+    updateSchedule, addTimeslot, data: {
+      loading, error, schedule, channel, collections, recurrenceType
+    }
+  } = props;
 
   if (loading) {
     return <div>Loading!</div>;
@@ -43,7 +69,9 @@ function ChannelPage(props:ChannelPageProps) {
   const toggleAutopilot = () => (
     updateSchedule({ variables: { channelId: channel.id, autopilot: !schedule.autopilot } })
   );
-  const scheduleProps = { toggleAutopilot, schedule };
+  const scheduleProps = {
+    toggleAutopilot, addTimeslot, schedule, collections, recurrenceType
+  };
 
   return (
     <div>
@@ -70,25 +98,26 @@ function ChannelPage(props:ChannelPageProps) {
   );
 }
 
-ChannelPage.propTypes = {
-  data: PropTypes.shape({
-    loading: PropTypes.bool.isRequired,
-    error: PropTypes.shape({
-      message: PropTypes.string.isRequired
-    }),
-    channel: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-      provider: PropTypes.string.isRequired
-    }),
-    schedule: PropTypes.shape({
-      autopilot: PropTypes.bool.isRequired
-    })
-  }).isRequired,
-  updateSchedule: PropTypes.func.isRequired
-};
-
-export default graphql(currentChannelForLayoutQuery, {
-  options: ({ match }) => ({ variables: { id: match.params.id } })
-})(graphql(updateScheduleMutation, { name: "updateSchedule" })(ChannelPage));
+export default compose(
+  graphql(currentChannelForLayoutQuery, {
+    options: ({ match }) => ({ variables: { id: match.params.id } })
+  }),
+  graphql(updateScheduleMutation, { name: "updateSchedule" }),
+  graphql(addTimeslotMutation, {
+    name: "addTimeslot",
+    options: {
+      updateQueries: {
+        ChannelPage: (previousData, { mutationResult }) => {
+          const newTimeslot = mutationResult.data.addTimeslot;
+          return {
+            ...previousData,
+            schedule: {
+              ...previousData.schedule,
+              timeslots: [...previousData.schedule.timeslots, newTimeslot]
+            }
+          };
+        }
+      }
+    }
+  })
+)(ChannelPage);
