@@ -40,7 +40,7 @@ defmodule Extra.Mixfile do
      {:cowboy, "~> 1.0"},
      {:guardian, "~> 0.14.0"},
      {:comeonin, "~> 3.0"},
-     {:ueberauth_shopify, github: "matthewlehner/ueberauth_shopify", tag: "fix-compiler-warnings"},
+     {:ueberauth_shopify, "~> 0.1.2"},
      {:ueberauth_twitter, "~> 0.2"},
      {:oauth, github: "tim/erlang-oauth"},
      {:ueberauth_facebook, "~> 0.6"},
@@ -49,7 +49,7 @@ defmodule Extra.Mixfile do
      {:calendar, "~> 0.17.2"},
 
      {:absinthe, "~> 1.3-beta"},
-     {:absinthe_plug, github: "absinthe-graphql/absinthe_plug", branch: "v1.3"},
+     {:absinthe_plug, "~> 1.3.0-rc.1"},
      {:poison, "~> 2.1"},
 
      {:ex_machina, "~> 2.0", only: :test},
