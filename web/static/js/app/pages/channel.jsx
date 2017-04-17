@@ -7,16 +7,16 @@ import updateScheduleMutation from "app/queries/update-schedule.gql";
 
 function ChannelPage(props) {
   const { updateSchedule, data: { error, schedule, channel, loading } } = props;
-  console.log(props);
+
   if (loading) {
     return <div>Loading!</div>;
   }
 
-  if (!channel) return <div>Channel is missing</div>;
-
   if (error && error.message) {
     return <div>{error.message}</div>;
   }
+
+  if (!channel) return <div>Channel is missing</div>;
 
   const toggleAutopilot = () => (
     updateSchedule({ variables: { channelId: channel.id, autopilot: !schedule.autopilot } })
