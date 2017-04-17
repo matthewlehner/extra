@@ -1,31 +1,29 @@
-import React, { Component, PropTypes } from "react";
+// @flow
+
+import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { parse } from "query-string";
+import type { Children } from "react";
+import type { Location } from "react-router-dom";
 
 import Tab from "./tab";
 import Tabpanel from "./tabpanel";
 
-class Tabs extends Component {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    location: PropTypes.shape({
-      search: PropTypes.string.isRequired
-    }).isRequired,
-    panels: PropTypes.arrayOf(
-      PropTypes.shape({
-        label: PropTypes.string.isRequired,
-        content: PropTypes.node.isRequired
-      })
-    ).isRequired,
-    children: PropTypes.node
-  }
 
-  static defaultProps = { children: null }
+import type DailySchedule from "./daily-schedule";
+
+class Tabs extends Component {
+  props: {
+    name: string,
+    location: Location,
+    panels: Array<{ label: string, content: React.Element<DailySchedule> }>,
+    children: Children
+  };
 
   render() {
     const { panels, location, name, children } = this.props;
 
-    const { tabs, tabPanels } = panels.reduce(
+    const { tabs, tabPanels }: { tabs:Array<Tab>, tabPanels:Array<Tabpanel> } = panels.reduce(
       (accumulator, { label, content }, index) => {
         const panelId = label.toLowerCase();
         const tabId = `${panelId}-tab`;
@@ -40,9 +38,9 @@ class Tabs extends Component {
         );
 
         accumulator.tabPanels.push(
-          <Tabpanel
-            content={content} key={panelId} tabId={tabId} id={panelId} active={active}
-          />
+          <Tabpanel key={panelId} tabId={tabId} id={panelId} active={active}>
+            {content}
+          </Tabpanel>
         );
         return accumulator;
       },

@@ -1,6 +1,15 @@
-import React, { PropTypes } from "react";
+// @flow
 
-const Select = ({ value, onChange, children }) => (
+import React from "react";
+import type { Children } from "react";
+
+type SelectProps = {
+  value?: string | number,
+  onChange: Function,
+  children?: Children
+};
+
+const Select = ({ value, onChange, children } :SelectProps) => (
   <div className="select">
     <select value={value} onChange={onChange}>
       {children}
@@ -8,14 +17,9 @@ const Select = ({ value, onChange, children }) => (
   </div>
 );
 
-Select.propTypes = {
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  onChange: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired
-};
-
 Select.defaultProps = {
-  value: ""
+  value: "",
+  children: null
 };
 
 export default Select;

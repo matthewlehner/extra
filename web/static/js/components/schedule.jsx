@@ -1,19 +1,39 @@
-import React, { PropTypes } from "react";
+// @flow
+
+import React from "react";
+import { timeslotsFor, daysOfTheWeek } from "lib/schedule-helpers";
 import ToggleSwitch from "./forms/toggle-switch";
 import Tabs from "./tabs";
 import DailySchedule from "./daily-schedule";
 import NewTimeslot from "./new-timeslot";
 
-import { timeslotsFor, daysOfTheWeek } from "../lib/schedule-helpers";
+export type Timeslot = {
+  recurrence: string,
+  time: string,
+  collection: {
+    name: string
+  }
+};
 
-function panels(timeslots) {
+type ScheduleArgs = {
+  schedule: {
+    id: string,
+    autopilot: boolean,
+    timeslots: Array<Timeslot>
+  },
+  toggleAutopilot: Function
+};
+
+function panels(timeslots: Array<Timeslot>) {
   return daysOfTheWeek.map(day => ({
     label: day,
     content: <DailySchedule day={day} timeslots={timeslotsFor(day, timeslots)} />
   }));
 }
 
-const Schedule = ({ schedule: { id, autopilot, timeslots }, toggleAutopilot }) => (
+const Schedule = (
+  { schedule: { id, autopilot, timeslots }, toggleAutopilot }: ScheduleArgs
+) => (
   <section className="channel-schedule">
     <h2>Schedule</h2>
 
@@ -31,19 +51,5 @@ const Schedule = ({ schedule: { id, autopilot, timeslots }, toggleAutopilot }) =
     </Tabs>
   </section>
 );
-
-Schedule.propTypes = {
-  schedule: PropTypes.shape({
-    autopilot: PropTypes.bool.isRequired,
-    timeslots: PropTypes.arrayOf(PropTypes.shape({
-      recurrence: PropTypes.string.isRequired,
-      time: PropTypes.string.isRequired,
-      collection: PropTypes.shape({
-        name: PropTypes.string.isRequired
-      }).isRequired
-    })).isRequired
-  }).isRequired,
-  toggleAutopilot: PropTypes.func.isRequired
-};
 
 export default Schedule;

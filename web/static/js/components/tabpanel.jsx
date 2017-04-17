@@ -1,19 +1,26 @@
-import React, { PropTypes } from "react";
+// @flow
 
-const Tabpanel = ({ id, tabId, active, content }) => (
+import React from "react";
+import type { Children } from "react";
+
+type TabpanelProps = {
+  id: string,
+  tabId: string,
+  active: bool,
+  children?: Children
+};
+
+const Tabpanel = ({ id, tabId, active, children } :TabpanelProps) => (
   <div
     className="tabpanel" role="tabpanel" id={id}
     aria-labelledby={tabId} aria-hidden={!active}
   >
-    {content}
+    {children}
   </div>
 );
 
-Tabpanel.propTypes = {
-  id: PropTypes.string.isRequired,
-  tabId: PropTypes.string.isRequired,
-  active: PropTypes.bool.isRequired,
-  content: PropTypes.node.isRequired
+Tabpanel.defaultProps = {
+  children: null
 };
 
 export default Tabpanel;

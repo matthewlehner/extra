@@ -1,7 +1,20 @@
-import React, { PropTypes } from "react";
+// @flow
+
+import React from "react";
 import { dayTranslations } from "lib/schedule-helpers";
 
-const DailySchedule = ({ timeslots }) => (
+type DailyScheduleProps = {
+  timeslots: Array<{
+    id: string,
+    time: string,
+    recurrence: string,
+    collection: {
+      name: string
+    }
+  }>
+};
+
+const DailySchedule = ({ timeslots } :DailyScheduleProps) => (
   <table>
     <thead>
       <tr>
@@ -23,16 +36,5 @@ const DailySchedule = ({ timeslots }) => (
     </tbody>
   </table>
 );
-
-DailySchedule.propTypes = {
-  timeslots: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    time: PropTypes.string.isRequired,
-    recurrence: PropTypes.string.isRequired,
-    collection: PropTypes.shape({
-      name: PropTypes.string.isRequired
-    })
-  })).isRequired
-};
 
 export default DailySchedule;

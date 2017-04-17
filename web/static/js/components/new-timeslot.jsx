@@ -1,10 +1,12 @@
-import React, { Component, PropTypes } from "react";
+// @flow
+
+import React, { Component } from "react";
 import { graphql } from "react-apollo";
 
 import timeslotFieldInfo from "app/queries/timeslot-field-info-query.gql";
 import addTimeslotMutation from "app/queries/add-timeslot-mutation.gql";
 
-import TimeslotForm from "components/timeslot-form";
+import TimeslotForm from "./timeslot-form";
 
 const timeslotDefaults = {
   time: "",
@@ -13,23 +15,21 @@ const timeslotDefaults = {
 };
 
 class NewTimeslot extends Component {
-  static propTypes = {
-    addTimeslot: PropTypes.func.isRequired,
-    scheduleId: PropTypes.string.isRequired,
-    data: PropTypes.shape({
-      collections: PropTypes.array,
-      recurrenceType: PropTypes.object
-    }).isRequired
-  }
+  props: {
+    addTimeslot: Function,
+    scheduleId: string,
+    data: {
+      collections: Array<any>,
+      recurrenceType: {
+        enumValues: Array<string>
+      }
+    }
+  };
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      showForm: false,
-      timeslot: timeslotDefaults
-    };
-  }
+  state = {
+    showForm: false,
+    timeslot: timeslotDefaults
+  };
 
   onSubmit = (event) => {
     this.hideForm(event);

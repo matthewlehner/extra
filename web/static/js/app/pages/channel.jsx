@@ -1,11 +1,35 @@
+// @flow
+
 import React, { PropTypes } from "react";
 import { graphql } from "react-apollo";
 
 import Schedule from "components/schedule";
 import currentChannelForLayoutQuery from "app/queries/channel-page.gql";
 import updateScheduleMutation from "app/queries/update-schedule.gql";
+import type { Timeslot } from "components/schedule";
 
-function ChannelPage(props) {
+type ChannelPageProps = {
+  updateSchedule: Function,
+  data: {
+    loading: boolean,
+    error?: {
+      message: string
+    },
+    schedule: {
+      id: string,
+      timeslots: Array<Timeslot>,
+      autopilot: boolean
+    },
+    channel: {
+      id: string,
+      image: string,
+      name: string,
+      provider: string
+    }
+  }
+};
+
+function ChannelPage(props:ChannelPageProps) {
   const { updateSchedule, data: { error, schedule, channel, loading } } = props;
 
   if (loading) {
@@ -15,8 +39,6 @@ function ChannelPage(props) {
   if (error && error.message) {
     return <div>{error.message}</div>;
   }
-
-  if (!channel) return <div>Channel is missing</div>;
 
   const toggleAutopilot = () => (
     updateSchedule({ variables: { channelId: channel.id, autopilot: !schedule.autopilot } })

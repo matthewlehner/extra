@@ -1,15 +1,26 @@
-import React, { PropTypes } from "react";
+// @flow
+
+import React from "react";
 import { Link } from "react-router-dom";
 import { parse, stringify } from "query-string";
 
-const Tab = ({ label, panelId, location, active }) => {
+import type { Location, LocationShape } from "react-router-dom";
+
+type TabProps = {
+  label: string,
+  panelId: string,
+  location: Location,
+  active: boolean
+};
+
+const Tab = ({ label, panelId, location, active }:TabProps) => {
   const searchParams = Object.assign(
     {},
     parse(location.search),
     { schedule: panelId }
   );
-  const search = stringify(searchParams);
-  const to = Object.assign({}, location, { search });
+  const search:string = stringify(searchParams);
+  const to:LocationShape = Object.assign({}, location, { search });
 
   return (
     <Link
@@ -24,15 +35,6 @@ const Tab = ({ label, panelId, location, active }) => {
       {label}
     </Link>
   );
-};
-
-Tab.propTypes = {
-  label: PropTypes.string.isRequired,
-  panelId: PropTypes.string.isRequired,
-  location: PropTypes.shape({
-    search: PropTypes.string.isRequired
-  }).isRequired,
-  active: PropTypes.bool.isRequired
 };
 
 export default Tab;

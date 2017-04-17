@@ -1,6 +1,13 @@
-import React, { PropTypes } from "react";
+// @flow
 
-const ToggleSwitch = ({ checked, onChange }) => (
+import React from "react";
+
+type ToggleSwitchProps = {
+  checked: boolean,
+  onChange: Function
+};
+
+const ToggleSwitch = ({ checked, onChange } :ToggleSwitchProps) => (
   <span className="toggle-switch">
     <input
       type="checkbox"
@@ -13,10 +20,5 @@ const ToggleSwitch = ({ checked, onChange }) => (
     <label htmlFor="toggler" className="label" />
   </span>
 );
-
-ToggleSwitch.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  checked: PropTypes.bool.isRequired
-};
 
 export default ToggleSwitch;
