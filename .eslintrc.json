@@ -1,5 +1,6 @@
 {
   "extends": "airbnb",
+  "plugins": ["flowtype"],
   "parser": "babel-eslint",
   "settings": {
     "import/resolver": "webpack"
@@ -49,6 +50,22 @@
       "stroustrup",
       { "allowSingleLine": true }
     ],
-    "comma-dangle": ["error", "never"]
+    "comma-dangle": ["error", "never"],
+    "flowtype/define-flow-type": "warn",
+    "flowtype/require-valid-file-annotation": "warn",
+    "flowtype/use-flow-type": "warn",
+    "react/no-unused-prop-types": "off",
+    "react/sort-comp": ["error", {
+      "order": [
+        "type-annotations",
+        "static-methods",
+        "lifecycle",
+        "/^on.+$/",
+        "/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/",
+        "everything-else",
+        "/^render.+$/",
+        "render"
+      ]
+    }]
   }
 }
