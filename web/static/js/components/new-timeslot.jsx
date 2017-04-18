@@ -51,40 +51,40 @@ export default class NewTimeslot extends Component {
   }
 
   render() {
-    if (this.state.showForm) {
-      const {
-        recurrenceType: { enumValues: recurrenceValues },
-        collections
-      } = this.props;
-
-      const { timeslot } = this.state;
-
-      const formProps = {
-        time: {
-          value: timeslot.time,
-          onChange: event => (this.setTimeslotState("time", event.target.value))
-        },
-        recurrence: {
-          options: recurrenceValues,
-          value: timeslot.recurrence,
-          onChange: event => (
-            this.setTimeslotState("recurrence", event.target.value)
-          )
-        },
-        collection: {
-          options: collections,
-          value: timeslot.collectionId,
-          onChange: event => (
-            this.setTimeslotState("collectionId", event.target.value)
-          )
-        },
-        onCancel: this.hideForm,
-        onSubmit: this.onSubmit
-      };
-
-      return <TimeslotForm {...formProps} />;
+    if (this.state.showForm === false) {
+      return <button onClick={this.showForm}>Add new time slot</button>;
     }
 
-    return <button onClick={this.showForm}>Add new time slot</button>;
+    const {
+      recurrenceType: { enumValues: recurrenceValues },
+      collections
+    } = this.props;
+
+    const { timeslot } = this.state;
+
+    const formProps = {
+      time: {
+        value: timeslot.time,
+        onChange: event => (this.setTimeslotState("time", event.currentTarget.value))
+      },
+      recurrence: {
+        options: recurrenceValues,
+        value: timeslot.recurrence,
+        onChange: event => (
+          this.setTimeslotState("recurrence", event.currentTarget.value)
+        )
+      },
+      collection: {
+        options: collections,
+        value: timeslot.collectionId,
+        onChange: event => (
+          this.setTimeslotState("collectionId", event.currentTarget.value)
+        )
+      },
+      onCancel: this.hideForm,
+      onSubmit: this.onSubmit
+    };
+
+    return <TimeslotForm {...formProps} />;
   }
 }

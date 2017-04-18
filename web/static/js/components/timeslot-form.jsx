@@ -25,7 +25,7 @@ type TimeslotFormProps = {
 };
 
 const TimeslotForm = (
-  { time, recurrence, collection, onCancel, onSubmit } :TimeslotFormProps
+  { time, recurrence, collection, onCancel, onSubmit }: TimeslotFormProps
 ) => (
   <form onSubmit={onSubmit}>
     <input
