@@ -1,0 +1,11 @@
+query Sidebar {
+  channels {
+    id
+    provider
+    name
+  }
+  collections {
+    id
+    name
+  }
+}

@@ -4,6 +4,7 @@ import { ApolloClient, ApolloProvider } from "react-apollo";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AsyncChannelPage } from "../../components/async-component";
+import Sidebar from "../pages/sidebar";
 
 const client = new ApolloClient();
 

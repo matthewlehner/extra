@@ -3,7 +3,6 @@
 import React, { Component } from "react";
 
 import type { CollectionProps, RecurrenceProps } from "app/pages/channel";
-
 import TimeslotForm from "./timeslot-form";
 
 const timeslotDefaults = {
