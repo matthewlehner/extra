@@ -28,7 +28,9 @@ const common = {
 
   output: {
     path: path.join(__dirname, "/priv/static"),
-    filename: "js/[name].js"
+    publicPath: "/",
+    filename: "js/[name].js",
+    chunkFilename: "js/[name]-[chunkhash].js"
   },
 
   resolve: {
@@ -95,6 +97,10 @@ const common = {
   },
 
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "vendor",
+      minChunks: ({ resource }) => /node_modules/.test(resource)
+    }),
     new webpack.LoaderOptionsPlugin({
       options: {
         context: path.join(__dirname, "/web/static/js"),
