@@ -3,13 +3,18 @@ import { render } from "react-dom";
 import { ApolloClient, ApolloProvider } from "react-apollo";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import ChannelPage from "../pages/channel";
+import { AsyncChannelPage } from "../../components/async-component";
 
 const client = new ApolloClient();
 
 const App = () => (
   <Router basename="/app">
-    <Route path="/channels/:id" component={ChannelPage} />
+    <div style={{ display: "flex" }}>
+      <Sidebar />
+      <main role="main">
+        <Route path="/channels/:id" component={AsyncChannelPage} />
+      </main>
+    </div>
   </Router>
 );
 
