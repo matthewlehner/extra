@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import PostList from "./post-list";
 
 type ShowCollectionProps = {
   data: {
@@ -11,7 +12,11 @@ type ShowCollectionProps = {
     },
     collection:? {
       id: string,
-      name: string
+      name: string,
+      posts: Array<{
+        id: string,
+        body: string
+      }>
     }
   }
 };
@@ -31,12 +36,7 @@ export default function ShowCollection(
         </Link>
       </header>
 
-      <section className="posts-collection">
-        <header>
-          <h2>Posts</h2>
-        </header>
-        <ul className="posts-list" />
-      </section>
+      <PostList posts={collection.posts} />
     </div>
   );
 }

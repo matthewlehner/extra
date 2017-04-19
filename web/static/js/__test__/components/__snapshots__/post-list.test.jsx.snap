@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostList component renders a list of posts 1`] = `
+<section
+  className="posts-collection"
+>
+  <header>
+    <h2>
+      Posts
+    </h2>
+  </header>
+  <ul
+    className="posts-list"
+  >
+    <li
+      className="post-preview"
+    >
+      <p>
+        hey buddy.
+      </p>
+    </li>
+  </ul>
+</section>
+`;

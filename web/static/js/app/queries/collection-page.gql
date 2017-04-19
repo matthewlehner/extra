@@ -2,5 +2,10 @@ query CollectionPage($id: ID!) {
   collection(id: $id) {
     id
     name
+
+    posts {
+      id
+      body
+    }
   }
 }
