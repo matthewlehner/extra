@@ -5,10 +5,13 @@ import { render } from "react-dom";
 import { ApolloClient, ApolloProvider, createNetworkInterface } from "react-apollo";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { AsyncChannelPage } from "../../components/async-component";
+import {
+  AsyncChannelPage,
+  AsyncCollectionPage
+} from "../../components/async-component";
 import Sidebar from "../pages/sidebar";
 
-const csrfMetaEl = document.querySelector("meta[name='csrf-token'");
+const csrfMetaEl:?HTMLElement = document.querySelector("meta[name='csrf-token'");
 let csrfToken:string;
 
 if (csrfMetaEl && csrfMetaEl instanceof HTMLMetaElement) {
@@ -37,6 +40,7 @@ const App = () => (
         <Sidebar />
         <main role="main">
           <Route path="/channels/:id" component={AsyncChannelPage} />
+          <Route path="/collections/:id" component={AsyncCollectionPage} />
         </main>
       </div>
     </Router>

@@ -1,0 +1,6 @@
+query CollectionPage($id: ID!) {
+  collection(id: $id) {
+    id
+    name
+  }
+}

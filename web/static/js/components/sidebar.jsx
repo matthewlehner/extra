@@ -39,10 +39,10 @@ export default function Sidebar(
                 ? null
                 : collections.map(({ id, name }) => (
                   <li key={`collection-${id}`}>
-                    <Link to={`/collections/${id}`}>
+                    <NavLink to={`/collections/${id}`}>
                       <Icon name="collection" />
                       {name}
-                    </Link>
+                    </NavLink>
                   </li>
                 ))
             }

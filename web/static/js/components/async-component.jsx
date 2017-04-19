@@ -28,3 +28,7 @@ function asyncComponent(getComponent) {
 export const AsyncChannelPage = asyncComponent(() =>
   import("../app/pages/channel").then(module => module.default)
 );
+
+export const AsyncCollectionPage = asyncComponent(() =>
+  import("../app/pages/collection").then(module => module.default)
+);
