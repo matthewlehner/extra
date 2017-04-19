@@ -2,13 +2,20 @@ defmodule Extra.Schema.Resolvers.Schedule do
   @moduledoc """
   Resolver for the Schedule object
   """
+  import Ecto.Query
   alias Extra.Repo
   alias Extra.Schedule
+  alias Extra.SocialChannel
 
-  def find_by(_parent, %{channel_id: channel_id}, _info) do
-    case Repo.get_by(Schedule, social_channel_id: channel_id) do
+  def find_by(_parent, %{channel_id: channel_id}, %{context: %{current_user: %{id: user_id}}}) do
+    schedule =
+      Schedule
+      |> join(:inner, [s], c in SocialChannel, c.id == s.id and c.user_id == ^user_id)
+      |> Repo.get_by(social_channel_id: channel_id)
+
+    case schedule do
       nil      -> {:error, "There is no schedule for channel id #{channel_id}"}
-      schedule -> {:ok, schedule}
+      %Schedule{} -> {:ok, schedule}
     end
   end
 
