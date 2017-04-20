@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal component renders properly 1`] = `
+<div
+  className="modal__overlay"
+  onClick={[Function]}
+>
+  <div
+    className="modal__container"
+  >
+    <header
+      className="modal__header"
+    >
+      <a
+        className="modal__dismiss"
+        href="a%20string"
+        onClick={[Function]}
+      >
+        ×
+      </a>
+    </header>
+    <div
+      className="modal__body"
+    />
+  </div>
+</div>
+`;
+
+exports[`Modal component renders with children 1`] = `
+<div
+  className="modal__overlay"
+  onClick={[Function]}
+>
+  <div
+    className="modal__container"
+  >
+    <header
+      className="modal__header"
+    >
+      <a
+        className="modal__dismiss"
+        href="a%20string"
+        onClick={[Function]}
+      >
+        ×
+      </a>
+    </header>
+    <div
+      className="modal__body"
+    >
+      I’m a child element!
+    </div>
+  </div>
+</div>
+`;
