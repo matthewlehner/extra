@@ -5,10 +5,9 @@ import { render } from "react-dom";
 import { ApolloClient, ApolloProvider, createNetworkInterface } from "react-apollo";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import {
-  AsyncChannelPage,
-  AsyncCollectionPage
-} from "../../components/async-component";
+import { AsyncChannelPage, AsyncCollectionPage } from "components/async-component";
+import NewPostContent from "components/new-post-content";
+
 import Sidebar from "../pages/sidebar";
 
 const csrfMetaEl:?HTMLElement = document.querySelector("meta[name='csrf-token'");
@@ -41,6 +40,7 @@ const App = () => (
         <main role="main">
           <Route path="/channels/:id" component={AsyncChannelPage} />
           <Route path="/collections/:id" component={AsyncCollectionPage} />
+          <Route path="/collections/:id/new" component={NewPostContent} />
         </main>
       </div>
     </Router>

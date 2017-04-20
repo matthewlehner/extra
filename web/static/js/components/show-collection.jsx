@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import type { Location } from "react-router-dom";
 import PostList from "./post-list";
 
 type ShowCollectionProps = {
@@ -18,11 +19,12 @@ type ShowCollectionProps = {
         body: string
       }>
     }
-  }
+  },
+  location: Location
 };
 
 export default function ShowCollection(
-  { data: { loading, error, collection } }: ShowCollectionProps
+  { location, data: { loading, error, collection } }: ShowCollectionProps
 ) {
   if (error) { return <div>{error.message}</div>; }
   if (loading || !collection) { return <div>Loading</div>; }
@@ -31,7 +33,7 @@ export default function ShowCollection(
     <div>
       <header className="heading">
         <h1 className="heading__body">{collection.name}</h1>
-        <Link className="button button_small" to="/">
+        <Link className="button button_small" to={`${location.pathname}/new`}>
           Create new post
         </Link>
       </header>
