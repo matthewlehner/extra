@@ -1,4 +1,4 @@
-// flow-typed signature: b407aa26acec2dcf39c0f433c5737422
+// flow-typed signature: cf3f662859c396e0f631e32e0ee70a11
 // flow-typed version: <<STUB>>/jest-transform-graphql_v^1.0.0/flow_v0.44.1
 
 /**
@@ -8,8 +8,8 @@
  *
  * Fill this stub out by replacing all the `any` types.
  *
- * Once filled out, we encourage you to share your work with the 
- * community by sending a pull request to: 
+ * Once filled out, we encourage you to share your work with the
+ * community by sending a pull request to:
  * https://github.com/flowtype/flow-typed
  */
 

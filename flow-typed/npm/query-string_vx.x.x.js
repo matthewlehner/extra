@@ -1,4 +1,4 @@
-// flow-typed signature: 92d462c647fa808e207d10f3f913f8d8
+// flow-typed signature: 566034aa15a8f0a6c8e1e92fbc597ba2
 // flow-typed version: <<STUB>>/query-string_v^4.3.2/flow_v0.44.1
 
 /**
@@ -8,8 +8,8 @@
  *
  * Fill this stub out by replacing all the `any` types.
  *
- * Once filled out, we encourage you to share your work with the 
- * community by sending a pull request to: 
+ * Once filled out, we encourage you to share your work with the
+ * community by sending a pull request to:
  * https://github.com/flowtype/flow-typed
  */
 

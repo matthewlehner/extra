@@ -1,4 +1,4 @@
-// flow-typed signature: 941dfe2d652c47265de2d4990b6e86b8
+// flow-typed signature: 7c357246a93d9b91cd09e69a25183061
 // flow-typed version: <<STUB>>/stylelint_v^7.5.0/flow_v0.44.1
 
 /**
@@ -8,8 +8,8 @@
  *
  * Fill this stub out by replacing all the `any` types.
  *
- * Once filled out, we encourage you to share your work with the 
- * community by sending a pull request to: 
+ * Once filled out, we encourage you to share your work with the
+ * community by sending a pull request to:
  * https://github.com/flowtype/flow-typed
  */
 

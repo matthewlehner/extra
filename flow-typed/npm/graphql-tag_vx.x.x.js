@@ -1,4 +1,4 @@
-// flow-typed signature: fd02eb3f221d9eb13b620fffee7a69c0
+// flow-typed signature: fc25568e8974d28bc81e64ed05ab7f6d
 // flow-typed version: <<STUB>>/graphql-tag_v^2.0.0/flow_v0.44.1
 
 /**
@@ -8,8 +8,8 @@
  *
  * Fill this stub out by replacing all the `any` types.
  *
- * Once filled out, we encourage you to share your work with the 
- * community by sending a pull request to: 
+ * Once filled out, we encourage you to share your work with the
+ * community by sending a pull request to:
  * https://github.com/flowtype/flow-typed
  */
 

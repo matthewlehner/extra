@@ -1,4 +1,4 @@
-// flow-typed signature: 52c7e899c1af8d49f841b883b45e2ca4
+// flow-typed signature: 38e368e13cf6c525cf811d365c1200a0
 // flow-typed version: <<STUB>>/react-apollo_v^1.0.0-rc.2/flow_v0.44.1
 
 /**
@@ -8,8 +8,8 @@
  *
  * Fill this stub out by replacing all the `any` types.
  *
- * Once filled out, we encourage you to share your work with the 
- * community by sending a pull request to: 
+ * Once filled out, we encourage you to share your work with the
+ * community by sending a pull request to:
  * https://github.com/flowtype/flow-typed
  */
 

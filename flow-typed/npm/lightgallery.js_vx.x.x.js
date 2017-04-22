@@ -1,4 +1,4 @@
-// flow-typed signature: 5dea81bb1e9c2fe1d54e57c726607dbe
+// flow-typed signature: f2660378d93464b3acb08feb8e276504
 // flow-typed version: <<STUB>>/lightgallery.js_v^1.0.1/flow_v0.44.1
 
 /**
@@ -8,8 +8,8 @@
  *
  * Fill this stub out by replacing all the `any` types.
  *
- * Once filled out, we encourage you to share your work with the 
- * community by sending a pull request to: 
+ * Once filled out, we encourage you to share your work with the
+ * community by sending a pull request to:
  * https://github.com/flowtype/flow-typed
  */
 

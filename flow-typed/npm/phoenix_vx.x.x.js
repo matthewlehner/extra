@@ -1,4 +1,4 @@
-// flow-typed signature: 239f0ead08487e9668bf8017e89b1936
+// flow-typed signature: 506b931a66b3642bb8af07348c88cf6e
 // flow-typed version: <<STUB>>/phoenix_vfile:deps/phoenix/flow_v0.44.1
 
 /**
@@ -8,8 +8,8 @@
  *
  * Fill this stub out by replacing all the `any` types.
  *
- * Once filled out, we encourage you to share your work with the 
- * community by sending a pull request to: 
+ * Once filled out, we encourage you to share your work with the
+ * community by sending a pull request to:
  * https://github.com/flowtype/flow-typed
  */
 

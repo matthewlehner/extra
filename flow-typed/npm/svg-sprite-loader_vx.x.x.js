@@ -1,4 +1,4 @@
-// flow-typed signature: cf1348ec0ba808a054de6b0b22c58121
+// flow-typed signature: 63eeb7031a21aa040c3fbfbbf0086ffd
 // flow-typed version: <<STUB>>/svg-sprite-loader_v^0.3.0/flow_v0.44.1
 
 /**
@@ -8,8 +8,8 @@
  *
  * Fill this stub out by replacing all the `any` types.
  *
- * Once filled out, we encourage you to share your work with the 
- * community by sending a pull request to: 
+ * Once filled out, we encourage you to share your work with the
+ * community by sending a pull request to:
  * https://github.com/flowtype/flow-typed
  */
 

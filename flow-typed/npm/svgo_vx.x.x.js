@@ -1,4 +1,4 @@
-// flow-typed signature: 2a2cc4528dc613e44ed8a67037ceb831
+// flow-typed signature: c00db89bbe703391c7fc6e439c26c4e9
 // flow-typed version: <<STUB>>/svgo_v^0.7.1/flow_v0.44.1
 
 /**
@@ -8,8 +8,8 @@
  *
  * Fill this stub out by replacing all the `any` types.
  *
- * Once filled out, we encourage you to share your work with the 
- * community by sending a pull request to: 
+ * Once filled out, we encourage you to share your work with the
+ * community by sending a pull request to:
  * https://github.com/flowtype/flow-typed
  */
 

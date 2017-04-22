@@ -1,4 +1,4 @@
-// flow-typed signature: 651803208c7805ca3d2b52e08454b495
+// flow-typed signature: 9b08abae2712b46ce0ab62109819b0de
 // flow-typed version: <<STUB>>/svgo-loader_v^1.1.2/flow_v0.44.1
 
 /**
@@ -8,8 +8,8 @@
  *
  * Fill this stub out by replacing all the `any` types.
  *
- * Once filled out, we encourage you to share your work with the 
- * community by sending a pull request to: 
+ * Once filled out, we encourage you to share your work with the
+ * community by sending a pull request to:
  * https://github.com/flowtype/flow-typed
  */
 
