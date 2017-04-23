@@ -62,3 +62,18 @@ export default function postContentForm(
     }
   };
 }
+
+export function updateInput(
+  field: string, value:string, form:PostContentFormData
+): PostContentFormData {
+  return {
+    ...form,
+    inputs: {
+      ...form.inputs,
+      [field]: {
+        ...form.inputs[field],
+        value
+      }
+    }
+  };
+}

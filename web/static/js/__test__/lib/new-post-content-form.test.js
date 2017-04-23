@@ -1,6 +1,7 @@
 // @flow
 
 import postContentForm, {
+  updateInput,
   collectionSelectOptions,
   channelMultiSelectOptions
 } from "lib/new-post-content-form";
@@ -60,5 +61,15 @@ describe("channelMultiSelectOptions", () => {
     expect(
       channelMultiSelectOptions(channels)
     ).toEqual(expected);
+  });
+});
+
+describe("updateInput", () => {
+  it("updates input values", () => {
+    const expectedValue = "some new content";
+    const originalForm = postContentForm(collections, channels);
+    const newForm = updateInput("content", expectedValue, originalForm);
+
+    expect(newForm).toHaveProperty("inputs.content.value", expectedValue);
   });
 });
