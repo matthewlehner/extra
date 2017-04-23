@@ -43,6 +43,7 @@ defmodule Extra.Router do
 
   scope "/app", Extra do
     pipe_through [:browser, :browser_session, :require_login]
+    get "/*app_params", AppController, :index
 
     # These can be removed at some point, or moved to an ADMIN route with static
     # markup, rather than pulling from current_user associations.
