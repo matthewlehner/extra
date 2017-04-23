@@ -31,7 +31,7 @@ exports[`NewPostContent component renders properly 1`] = `
         >
           <label
             className="form__control-label"
-            htmlFor="post_content_post_collection_id"
+            htmlFor="Collection"
           >
             Collection
           </label>
@@ -57,7 +57,7 @@ exports[`NewPostContent component renders properly 1`] = `
         >
           <label
             className="form__control-label"
-            htmlFor="post_content_body"
+            htmlFor="Content"
           >
             Content
           </label>
@@ -65,7 +65,6 @@ exports[`NewPostContent component renders properly 1`] = `
             className="form__control"
             id="post_content_body"
             name="post_content[body]"
-            required="required"
           />
         </div>
         <div
@@ -74,20 +73,18 @@ exports[`NewPostContent component renders properly 1`] = `
           <span
             className="form__control-label"
           >
-            Channel
+            Channels
           </span>
           <div
             className="form__collection-wrapper"
           >
             <label
-              htmlFor="post_content_templates_0_active"
+              htmlFor="matthewpearse-10"
             >
               <input
                 className="form__control"
-                id="post_content_templates_0_active"
-                name="post_content[templates][0][active]"
+                id="matthewpearse-10"
                 type="checkbox"
-                value="true"
               />
               <span
                 className="form__indicator form__indicator_checkbox"

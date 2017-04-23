@@ -33,11 +33,13 @@ const TimeslotForm = (
       onChange={time.onChange}
     />
     <Select onChange={recurrence.onChange} value={recurrence.value}>
+      <option>—</option>
       {recurrence.options.map(({ name }) => (
         <option key={name} value={name}>{dayTranslations[name]}</option>
       ))}
     </Select>
-    <Select onChange={collection.onChange} value={collection.value}>
+    <Select onChange={collection.onChange} value={collection.value} required>
+      <option>—</option>
       {collection.options.map(({ id, name }) => (
         <option key={id} value={id}>{name}</option>
       ))}

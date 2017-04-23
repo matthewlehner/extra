@@ -14,9 +14,14 @@ exports[`TimeslotForm component renders a form 1`] = `
     className="select"
   >
     <select
+      checkValidity={[Function]}
       onChange={[Function]}
+      required={false}
       value=""
     >
+      <option>
+        —
+      </option>
       <option
         value="MONDAY"
       >
@@ -33,9 +38,14 @@ exports[`TimeslotForm component renders a form 1`] = `
     className="select"
   >
     <select
+      checkValidity={[Function]}
       onChange={[Function]}
+      required={true}
       value=""
     >
+      <option>
+        —
+      </option>
       <option
         value="1"
       >

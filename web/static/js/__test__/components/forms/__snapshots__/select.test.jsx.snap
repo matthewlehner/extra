@@ -5,7 +5,9 @@ exports[`Select component renders a select element 1`] = `
   className="select"
 >
   <select
+    checkValidity={[Function]}
     onChange={[Function]}
+    required={false}
     value="1"
   >
     <option

@@ -3,15 +3,18 @@
 import React from "react";
 import type { Children } from "react";
 
-type SelectProps = {
+type InputElementAttributes = {
   value?: string | number,
-  onChange: Function,
+}
+
+type SelectProps = InputElementAttributes & {
+  onChange: (Event) => void,
   children?: Children
 };
 
-const Select = ({ value, onChange, children } :SelectProps) => (
+const Select = ({ children, ...props } :SelectProps) => (
   <div className="select">
-    <select value={value} onChange={onChange}>
+    <select {...props}>
       {children}
     </select>
   </div>
@@ -19,7 +22,9 @@ const Select = ({ value, onChange, children } :SelectProps) => (
 
 Select.defaultProps = {
   value: "",
-  children: null
+  children: null,
+  required: false,
+  checkValidity: () => {}
 };
 
 export default Select;

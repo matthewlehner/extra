@@ -6,11 +6,11 @@ import { ApolloClient, ApolloProvider, createNetworkInterface } from "react-apol
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AsyncChannelPage, AsyncCollectionPage } from "components/async-component";
-import NewPostContent from "components/new-post-content";
+import NewPostContent from "app/pages/new-post-content";
 
 import Sidebar from "../pages/sidebar";
 
-const csrfMetaEl:?HTMLElement = document.querySelector("meta[name='csrf-token'");
+const csrfMetaEl:?HTMLElement = document.querySelector("meta[name='csrf-token']");
 let csrfToken:string;
 
 if (csrfMetaEl && csrfMetaEl instanceof HTMLMetaElement) {

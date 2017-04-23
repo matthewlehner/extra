@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select component renders correctly 1`] = `
+<div
+  className="select"
+>
+  <select
+    className="form__control"
+    id="post_content_post_collection_id"
+    name="post_content[post_collection_id]"
+    required="required"
+  >
+    <option
+      value="1"
+    >
+      Inspirational Posts
+    </option>
+  </select>
+</div>
+`;
