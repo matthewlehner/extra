@@ -5,11 +5,13 @@ exports[`CheckboxCollection component renders correctly 1`] = `
   className="form__collection-wrapper"
 >
   <label
-    htmlFor="matthewpearse-0"
+    htmlFor="channels-0"
   >
     <input
+      checked={false}
       className="form__control"
-      id="matthewpearse-0"
+      id="channels-0"
+      onChange={[Function]}
       type="checkbox"
     />
     <span

@@ -3,5 +3,7 @@
 exports[`Textarea component renders properly 1`] = `
 <textarea
   className="form__control"
+  onChange={[Function]}
+  value="content"
 />
 `;

@@ -34,7 +34,7 @@ export type PostContentFormData = {
     channels: {
       label: string,
       options: Array<{ value: string, label: string, provider: string }>,
-      value: Array<string> | null
+      value: {} | null
     }
   }
 };
@@ -57,14 +57,14 @@ export default function postContentForm(
       channels: {
         label: "Channels",
         options: channelMultiSelectOptions(channels),
-        value: []
+        value: {}
       }
     }
   };
 }
 
 export function updateInput(
-  field: string, value:string, form:PostContentFormData
+  field: string, value:string | {}, form:PostContentFormData
 ): PostContentFormData {
   return {
     ...form,

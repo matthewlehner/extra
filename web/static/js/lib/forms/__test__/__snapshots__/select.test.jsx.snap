@@ -8,6 +8,7 @@ exports[`Select component renders correctly 1`] = `
     className="form__control"
     id="post_content_post_collection_id"
     name="post_content[post_collection_id]"
+    onChange={[Function]}
     required="required"
   >
     <option

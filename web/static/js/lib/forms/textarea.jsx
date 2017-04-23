@@ -1,9 +1,20 @@
 // @flow
 
 import React from "react";
+import { handleChange } from "./utils";
 
-const Textarea = props => (
-  <textarea {...props} />
+const Textarea = (
+  { onChange, fieldName, value, ...props }: {
+    onChange: (string, string) => void,
+    fieldName: string,
+    value: string
+  }
+) => (
+  <textarea
+    {...props}
+    value={value}
+    onChange={event => handleChange(event, fieldName, onChange)}
+  />
 );
 
 Textarea.defaultProps = {

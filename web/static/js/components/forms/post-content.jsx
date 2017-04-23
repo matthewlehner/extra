@@ -2,56 +2,82 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import postContentFormData from "lib/new-post-content-form";
+import postContentFormData, {
+  updateInput
+} from "lib/new-post-content-form";
 import type { PostContentFormData } from "lib/new-post-content-form";
 
 import {
+  Form,
   Field,
   Select,
   Textarea,
   CheckboxCollection
 } from "lib/forms";
 
+type Props = {
+  cancelPath: string,
+  collections: Array<PostCollection>,
+  channels: Array<Channel>
+};
+
 class PostContentForm extends Component {
-  props: {
-    cancelPath: string,
-    collections: Array<{
-      id: string,
-      name: string
-    }>,
-    channels: Array<{
-      id: string,
-      name: string,
-      provider: string
-    }>
-  };
+  props: Props;
 
   state: {
     form: PostContentFormData
   }
 
-  componentWillMount() {
-    this.setState((nextState, { collections, channels }) => ({
-      form: postContentFormData(collections, channels)
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      form: postContentFormData(props.collections, props.channels)
+    };
+  }
+
+  onChangeInput = (field: string, value: string | {}) => {
+    this.setState(({ form }) => ({
+      form: updateInput(field, value, form)
     }));
   }
 
   render() {
     const { cancelPath } = this.props;
-    const { form: { inputs: { collection, content, channels } } } = this.state;
+    const {
+      form: {
+        inputs: { collection, content, channels }
+      }
+    } = this.state;
 
     return (
-      <form>
+      <Form>
         <Field label={collection.label}>
-          <Select options={collection.options} />
+          <Select
+            fieldName="collection"
+            options={collection.options}
+            value={collection.value}
+            onChange={this.onChangeInput}
+          />
         </Field>
         <Field label={content.label}>
-          <Textarea id="post_content_body" name="post_content[body]" />
+          <Textarea
+            fieldName="content"
+            id="post_content_body"
+            name="post_content[body]"
+            value={content.value}
+            onChange={this.onChangeInput}
+          />
         </Field>
 
         <div className="form__control-group">
           <span className="form__control-label">{channels.label}</span>
-          <CheckboxCollection options={channels.options} />
+          <CheckboxCollection
+            fieldName="channels"
+            onChange={this.onChangeInput}
+            value={channels.value}
+            options={channels.options}
+          />
         </div>
 
         <div className="form__actions">
@@ -62,7 +88,7 @@ class PostContentForm extends Component {
             Create Post
           </button>
         </div>
-      </form>
+      </Form>
     );
   }
 }

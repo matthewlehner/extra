@@ -1,9 +1,14 @@
 // @flow
 
 import React from "react";
+import { handleChange } from "./utils";
 
 const Select = (
-  { options }: { options: Array<{ value: string, label: string}> }
+  { fieldName, options, onChange }: {
+    fieldName: string,
+    options: Array<{ value: string, label: string}>,
+    onChange: (field: string, value: string) => void
+  }
 ) => (
   <div className="select">
     <select
@@ -11,6 +16,7 @@ const Select = (
       id="post_content_post_collection_id"
       name="post_content[post_collection_id]"
       required="required"
+      onChange={event => handleChange(event, fieldName, onChange)}
     >
       {
         options.map(
