@@ -154,6 +154,10 @@ main {
       width: 100%;
     }
   }
+
+  &_textarea {
+    resize: none;
+  }
 }
 
 .flash {

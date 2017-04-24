@@ -13,7 +13,7 @@ class Textarea extends Component {
   textarea: HTMLInputElement
 
   static defaultProps = {
-    className: "form__control"
+    className: "form__control form_textarea"
   }
 
   onTextareaChange = (event: SyntheticEvent) => {
@@ -43,6 +43,7 @@ class Textarea extends Component {
         id={fieldName}
         name={fieldName}
         value={value}
+        rows="3"
         onChange={this.onTextareaChange}
       />
     );

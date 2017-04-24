@@ -2,10 +2,11 @@
 
 exports[`Textarea component renders properly 1`] = `
 <textarea
-  className="form__control"
+  className="form__control form_textarea"
   id="a-textarea"
   name="a-textarea"
   onChange={[Function]}
+  rows="3"
   value="content"
 />
 `;
