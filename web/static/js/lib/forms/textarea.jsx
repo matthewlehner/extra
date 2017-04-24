@@ -1,24 +1,52 @@
 // @flow
 
-import React from "react";
+import React, { Component } from "react";
 import { handleChange } from "./utils";
 
-const Textarea = (
-  { onChange, fieldName, value, ...props }: {
+class Textarea extends Component {
+  props: {
     onChange: (string, string) => void,
     fieldName: string,
     value: string
   }
-) => (
-  <textarea
-    {...props}
-    value={value}
-    onChange={event => handleChange(event, fieldName, onChange)}
-  />
-);
 
-Textarea.defaultProps = {
-  className: "form__control"
-};
+  textarea: HTMLInputElement
+
+  static defaultProps = {
+    className: "form__control"
+  }
+
+  onTextareaChange = (event: SyntheticEvent) => {
+    const { fieldName, onChange } = this.props;
+    handleChange(event, fieldName, onChange);
+    this.adjustTextarea(event.target);
+  }
+
+  adjustTextarea(target:EventTarget = this.textarea) {
+    if (target instanceof HTMLTextAreaElement) {
+      // eslint-disable-next-line no-param-reassign
+      target.style.height = "";
+      if (target.scrollHeight > target.clientHeight) {
+        // eslint-disable-next-line no-param-reassign
+        target.style.height = `${target.scrollHeight}px`;
+      }
+    }
+  }
+
+  render() {
+    const { fieldName, value, onChange, ...props } = this.props;
+
+    return (
+      <textarea
+        {...props}
+        ref={(input) => { this.textarea = input; }}
+        id={fieldName}
+        name={fieldName}
+        value={value}
+        onChange={this.onTextareaChange}
+      />
+    );
+  }
+}
 
 export default Textarea;

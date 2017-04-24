@@ -64,8 +64,8 @@ exports[`NewPostContent component renders properly 1`] = `
           </label>
           <textarea
             className="form__control"
-            id="post_content_body"
-            name="post_content[body]"
+            id="content"
+            name="content"
             onChange={[Function]}
             value=""
           />
