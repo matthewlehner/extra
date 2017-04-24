@@ -30,7 +30,7 @@ const NewPostContent = (
   const postContentFormProps = { cancelPath, channels, collections };
 
   return (
-    <Modal title="Create new post" onClose={onCancel} cancelPath={cancelPath}>
+    <Modal title="Create new post" onDismiss={onCancel} cancelPath={cancelPath}>
       {
         loading || error
           ? "Loading"

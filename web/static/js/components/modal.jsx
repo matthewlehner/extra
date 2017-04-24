@@ -1,9 +1,11 @@
+// @flow
+
 import React from "react";
 import { Link } from "react-router-dom";
 
-type ModalProps = {
+type Props = {
   title?: string,
-  children: React$Element,
+  children?: React.Children,
   cancelPath: string,
   onDismiss(func: () => void): void
 };
@@ -14,7 +16,7 @@ function handleClick(event:MouseEvent, action:Function) {
   action();
 }
 
-const Modal = ({ children, onDismiss, cancelPath, title }: ModalProps) => (
+const Modal = ({ children, onDismiss, cancelPath, title }: Props) => (
   /*  eslint-disable jsx-a11y/no-static-element-interactions */
   <div className="modal__overlay" onClick={event => handleClick(event, onDismiss)}>
     <div className="modal__container">
@@ -34,7 +36,8 @@ const Modal = ({ children, onDismiss, cancelPath, title }: ModalProps) => (
 );
 
 Modal.defaultProps = {
-  title: null
+  title: null,
+  children: null
 };
 
 export default Modal;
