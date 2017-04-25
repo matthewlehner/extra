@@ -18,7 +18,12 @@ import {
 type Props = {
   cancelPath: string,
   collections: Array<PostCollection>,
-  channels: Array<Channel>
+  channels: Array<Channel>,
+  addPostContent: ({
+    variables: {
+      body: string, collectionId: string, channelIds: Array<string>
+    }
+  }) => void
 };
 
 class PostContentForm extends Component {
