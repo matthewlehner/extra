@@ -11,7 +11,10 @@ export default compose(
       updateQueries: {
         CollectionPage: (previousData, { mutationResult }) => ({
           ...previousData,
-          posts: [...previousData.posts, mutationResult.data.addPostContent]
+          collection: {
+            ...previousData.collection,
+            posts: [...previousData.collection.posts, mutationResult.data.addPost]
+          }
         })
       }
     }

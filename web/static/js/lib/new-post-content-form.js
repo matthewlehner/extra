@@ -25,16 +25,16 @@ export type PostContentFormData = {
     collection: {
       label: string,
       options: Array<{ value: string, label: string }>,
-      value: null | string
+      value: null
     },
     content: {
       label: string,
-      value: null | string
+      value: string
     },
     channels: {
       label: string,
       options: Array<{ value: string, label: string, provider: string }>,
-      value: {} | null
+      value: {}
     }
   }
 };

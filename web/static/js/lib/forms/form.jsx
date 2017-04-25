@@ -5,6 +5,7 @@ import type { Children } from "react";
 
 export default class Form extends Component {
   props: {
+    onSubmit: Function,
     children: Children
   }
 
@@ -12,11 +13,16 @@ export default class Form extends Component {
     children: null
   };
 
+  handleSubmit = (event: SyntheticEvent): void => {
+    event.preventDefault();
+    this.props.onSubmit();
+  }
+
   render() {
     const { children, ...props } = this.props;
 
     return (
-      <form {...props}>
+      <form {...props} onSubmit={this.handleSubmit}>
         {children}
       </form>
     );

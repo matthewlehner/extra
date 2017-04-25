@@ -47,6 +47,21 @@ class PostContentForm extends Component {
     }));
   }
 
+  addPostContent = () => {
+    const { inputs } = this.state.form;
+    const variables : {
+      body: string,
+      collectionId: string,
+      channelIds: Array<string>
+    } = {
+      body: inputs.content.value,
+      collectionId: inputs.collection.value || this.props.collections[0].id,
+      channelIds: Object.keys(inputs.channels.value).filter(id => inputs.channels.value[id])
+    };
+
+    this.props.addPostContent({ variables });
+  }
+
   render() {
     const { cancelPath } = this.props;
     const {
@@ -56,7 +71,7 @@ class PostContentForm extends Component {
     } = this.state;
 
     return (
-      <Form>
+      <Form onSubmit={this.addPostContent}>
         <Field label={collection.label}>
           <Select
             fieldName="collection"
