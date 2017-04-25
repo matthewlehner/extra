@@ -1,0 +1,13 @@
+mutation AddPostContent(
+  $body: String!,
+  $collectionId: ID!,
+  $channelIds: [ID]!
+) {
+  addPost(
+    body: $body, collectionId: $collectionId, channelIds: $channelIds
+  ) {
+    body
+    collection { id name }
+    channels { id name }
+  }
+}
