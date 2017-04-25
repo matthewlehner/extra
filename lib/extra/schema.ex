@@ -7,6 +7,7 @@ defmodule Extra.Schema do
   alias Extra.Schema.CollectionResolver
   alias Extra.Schema.Resolvers.Schedule
   alias Extra.Schema.Resolvers.Timeslot
+  alias Extra.Schema.Resolvers.PostContent
 
   import_types Extra.Schema.Types
 
@@ -58,6 +59,14 @@ defmodule Extra.Schema do
       arg :timeslot, :add_timeslot_params
 
       resolve &Timeslot.create/2
+    end
+
+    field :add_post, type: :post_content do
+      arg :body, non_null(:string)
+      arg :collection_id, non_null(:id)
+      arg :channel_ids, list_of(:id)
+
+      resolve &PostContent.create/2
     end
   end
 end

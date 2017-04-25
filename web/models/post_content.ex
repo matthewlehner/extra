@@ -5,6 +5,7 @@ defmodule Extra.PostContent do
     field :body, :string
     belongs_to :collection, Extra.PostCollection, foreign_key: :post_collection_id
     has_many :templates, Extra.PostTemplate
+    has_many :channels, through: [:templates, :social_channel]
 
     timestamps()
   end

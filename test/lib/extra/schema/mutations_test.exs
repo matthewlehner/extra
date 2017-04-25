@@ -69,4 +69,56 @@ defmodule Extra.Schema.MutationsTest do
       assert ~T[09:00:00.000000] == timeslot.time
     end
   end
+
+  @add_post_content_mutation """
+  mutation AddPostContent(
+    $body: String!, $collectionId: ID!, $channelIds: [ID]!
+  ) {
+    addPost(
+      body: $body, collectionId: $collectionId, channelIds: $channelIds
+    ) {
+      body
+      collection { id name }
+      channels { id name }
+    }
+  }
+  """
+  describe "add_post_content mutation" do
+    test "it creates a new timeslot" do
+      user = insert :user
+      collection = insert :post_collection, user: user
+      channels = insert_pair(:social_channel, user: user)
+      channel_ids = Enum.map(channels, &(&1.id))
+      [channel1 | [channel2]] = channels
+
+      body = "something else!"
+
+      variables = %{
+        "body" => body,
+        "collectionId" => collection.id,
+        "channelIds" => channel_ids
+      }
+
+      context = %{current_user: user}
+
+      assert {:ok, response} =
+        @add_post_content_mutation
+        |> Absinthe.run(Schema, variables: variables, context: context)
+
+      assert response == %{data: %{"addPost" => %{
+        "body" => body,
+        "channels" => [
+          %{"id" => to_string(channel1.id), "name" => channel1.name},
+          %{"id" => to_string(channel2.id), "name" => channel2.name},
+        ],
+        "collection" => %{
+          "id" => to_string(collection.id),
+          "name" => collection.name
+        }
+      }}}
+
+      require Logger
+      Logger.warn inspect(response)
+    end
+  end
 end

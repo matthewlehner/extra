@@ -5,7 +5,6 @@ defmodule Extra.PostContentTest do
 
   @valid_attrs params_for :post_content
 
-  require Logger
   describe "PostContent.changeset" do
     test "changeset with valid attributes" do
       collection = insert(:post_collection, user: build(:user))

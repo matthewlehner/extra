@@ -34,13 +34,14 @@ defmodule Extra.Schema.Types do
   object(:collection) do
     field :id, :id
     field :name, :string
-    field :posts, list_of(:post), resolve: assoc(:posts)
+    field :posts, list_of(:post_content), resolve: assoc(:posts)
   end
 
-  object(:post) do
+  object(:post_content) do
     field :id, :id
     field :body, :string
-    field :collection, :collection
+    field :collection, :collection, resolve: assoc(:collection)
+    field :channels, list_of(:channel), resolve: assoc(:channels)
   end
 
   object(:schedule) do
