@@ -23,8 +23,7 @@ const Select = ({ children, ...props } :SelectProps) => (
 Select.defaultProps = {
   value: "",
   children: null,
-  required: false,
-  checkValidity: () => {}
+  required: false
 };
 
 export default Select;

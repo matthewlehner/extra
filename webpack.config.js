@@ -73,13 +73,39 @@ const common = {
         })
       }, {
         test: /\.scss$/,
-        exclude: /node_modules/,
+        exclude: [
+          /node_modules/,
+          path.resolve(__dirname, "web/static/js")
+        ],
         use: extractCSS.extract({
           fallback: "style-loader",
           use: [{
             loader: "css-loader",
             options: {
               sourceMap: true,
+              importLoaders: 1
+            }
+          }, {
+            loader: "postcss-loader"
+          }, {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true,
+              includePaths: [path.join(__dirname, "/web/static/css")]
+            }
+          }]
+        })
+      }, {
+        test: /\.scss$/,
+        include: path.resolve(__dirname, "web/static/js"),
+        use: extractCSS.extract({
+          fallback: "style-loader",
+          use: [{
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+              modules: true,
+              camelCase: true,
               importLoaders: 1
             }
           }, {

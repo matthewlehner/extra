@@ -1,0 +1,10 @@
+@import "../../../css/modules/colors";
+@import "../../../css/modules/variables";
+
+.link-button {
+  background: none;
+  border: none;
+  color: $action-color;
+  cursor: pointer;
+  font: 0.875rem $base-font-family;
+}

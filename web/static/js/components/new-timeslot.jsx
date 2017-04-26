@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 
 import type { CollectionProps, RecurrenceProps } from "app/pages/channel";
+import LinkButton from "components/ui/link-button";
 import TimeslotForm from "./timeslot-form";
 
 const timeslotDefaults = {
@@ -52,7 +53,7 @@ export default class NewTimeslot extends Component {
 
   render() {
     if (this.state.showForm === false) {
-      return <button onClick={this.showForm}>Add new time slot</button>;
+      return <LinkButton onClick={this.showForm}>Add new time slot</LinkButton>;
     }
 
     const {

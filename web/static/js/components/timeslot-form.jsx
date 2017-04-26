@@ -2,6 +2,7 @@
 
 import React from "react";
 
+import LinkButton from "components/ui/link-button";
 import Select from "components/forms/select";
 import { dayTranslations } from "lib/schedule-helpers";
 
@@ -45,8 +46,8 @@ const TimeslotForm = (
       ))}
     </Select>
 
-    <button onClick={onSubmit}>Add Timeslot</button>
-    <button onClick={onCancel}>Cancel</button>
+    <LinkButton onClick={onSubmit}>Add Timeslot</LinkButton>
+    <LinkButton onClick={onCancel}>Cancel</LinkButton>
   </form>
 );
 
