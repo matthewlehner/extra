@@ -51,6 +51,9 @@ exports[`Tabs can specify active panel 1`] = `
   >
     great day
   </div>
+  <div
+    className="tab-footer"
+  />
 </div>
 `;
 
@@ -105,5 +108,8 @@ exports[`Tabs renders tabs 1`] = `
   >
     great day
   </div>
+  <div
+    className="tab-footer"
+  />
 </div>
 `;

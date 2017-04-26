@@ -13,8 +13,8 @@ const extractSVG = new ExtractSVGPlugin("images/[name].svg");
 const common = {
   entry: {
     app: [
-      "./web/static/css/app.scss",
-      "./web/static/js/app.js"
+      "./web/static/js/app.js",
+      "./web/static/css/app.scss"
     ],
     public: [
       "./web/static/css/public.scss",

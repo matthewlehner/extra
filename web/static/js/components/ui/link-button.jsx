@@ -3,10 +3,19 @@
 import React from "react";
 import { linkButton } from "./link-button.scss";
 
-type Props = {};
+type Props = {
+  className?: string
+};
 
-const LinkButton = (props:Props) => (
-  <button {...props} className={linkButton} />
+const LinkButton = ({ className, ...props }:Props) => (
+  <button
+    {...props}
+    className={className ? `${linkButton} ${className}` : linkButton}
+  />
 );
+
+LinkButton.defaultProps = {
+  className: ""
+};
 
 export default LinkButton;

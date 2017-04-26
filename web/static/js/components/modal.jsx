@@ -1,6 +1,7 @@
 // @flow
 
 import React from "react";
+import LinkButton from "components/ui/link-button";
 
 type Props = {
   title?: string,
@@ -23,9 +24,12 @@ const Modal = ({ children, onDismiss, title }: Props) => {
     >
       <div className="modal__container">
         <header className="modal__header">
-          <button className="modal__dismiss" onClick={handleClick}>
+          <LinkButton
+            className="modal__dismiss"
+            onClick={handleClick}
+          >
             &times;
-          </button>
+          </LinkButton>
           { title ? <h2>{ title }</h2> : null }
         </header>
         <div className="modal__body">

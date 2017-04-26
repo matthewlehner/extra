@@ -289,11 +289,16 @@ exports[`Schedule component renders correctly 1`] = `
         <tbody />
       </table>
     </div>
-    <button
-      onClick={[Function]}
+    <div
+      className="tab-footer"
     >
-      Add new time slot
-    </button>
+      <button
+        className="linkButton"
+        onClick={[Function]}
+      >
+        Add new time slot
+      </button>
+    </div>
   </div>
 </section>
 `;

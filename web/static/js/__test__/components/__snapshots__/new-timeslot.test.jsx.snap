@@ -2,6 +2,7 @@
 
 exports[`NewTimeslot component renders the component 1`] = `
 <button
+  className="linkButton"
   onClick={[Function]}
 >
   Add new time slot

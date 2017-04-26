@@ -7,6 +7,9 @@
     "node_modules",
     "web/static/js"
   ],
+  "moduleNameMapper": {
+    "\\.(css|scss)$": "identity-obj-proxy"
+  },
   "transform": {
     "\\.(gql|graphql)$": "jest-transform-graphql",
     "\\.(js|jsx)$": "babel-jest"

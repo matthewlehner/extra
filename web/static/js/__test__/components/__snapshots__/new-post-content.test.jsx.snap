@@ -12,10 +12,16 @@ exports[`NewPostContent component renders properly 1`] = `
       className="modal__header"
     >
       <button
-        className="modal__dismiss"
+        className="linkButton modal__dismiss"
         onClick={[Function]}
       >
-        ×
+        <svg
+          className="icon"
+        >
+          <use
+            xlinkHref="/images/app.svg#close-icon"
+          />
+        </svg>
       </button>
       <h2>
         Create new post

@@ -40,7 +40,18 @@
   }
 
   &__dismiss {
+    color: $gray-light;
+    font-size: 1.5rem;
     left: 1.375rem;
+    line-height: 1;
     position: absolute;
+    top: 0.75rem;
+    transition: color $base-duration $base-timing;
+
+    &:active,
+    &:hover {
+      color: $action-color;
+      outline: none;
+    }
   }
 }

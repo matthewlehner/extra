@@ -12,10 +12,16 @@ exports[`Modal component renders properly 1`] = `
       className="modal__header"
     >
       <button
-        className="modal__dismiss"
+        className="linkButton modal__dismiss"
         onClick={[Function]}
       >
-        ×
+        <svg
+          className="icon"
+        >
+          <use
+            xlinkHref="/images/app.svg#close-icon"
+          />
+        </svg>
       </button>
     </header>
     <div
@@ -37,10 +43,16 @@ exports[`Modal component renders with children 1`] = `
       className="modal__header"
     >
       <button
-        className="modal__dismiss"
+        className="linkButton modal__dismiss"
         onClick={[Function]}
       >
-        ×
+        <svg
+          className="icon"
+        >
+          <use
+            xlinkHref="/images/app.svg#close-icon"
+          />
+        </svg>
       </button>
     </header>
     <div

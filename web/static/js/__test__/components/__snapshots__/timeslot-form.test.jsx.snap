@@ -14,7 +14,6 @@ exports[`TimeslotForm component renders a form 1`] = `
     className="select"
   >
     <select
-      checkValidity={[Function]}
       onChange={[Function]}
       required={false}
       value=""
@@ -38,7 +37,6 @@ exports[`TimeslotForm component renders a form 1`] = `
     className="select"
   >
     <select
-      checkValidity={[Function]}
       onChange={[Function]}
       required={true}
       value=""
@@ -59,11 +57,13 @@ exports[`TimeslotForm component renders a form 1`] = `
     </select>
   </div>
   <button
+    className="linkButton"
     onClick={[Function]}
   >
     Add Timeslot
   </button>
   <button
+    className="linkButton"
     onClick={[Function]}
   >
     Cancel
