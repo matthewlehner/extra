@@ -20,7 +20,8 @@ type Props = {
 
 const PostContentForm = ({
   formData: {
-    inputs: { collection, content, channels }
+    inputs: { collection, content, channels },
+    isSaving
   },
   onChangeInput,
   onCancel,
@@ -57,10 +58,14 @@ const PostContentForm = ({
     </div>
 
     <div className="form__actions">
-      <button className="button button_cancel" onClick={onCancel}>
+      <button
+        className="button button_cancel"
+        onClick={onCancel}
+        disabled={isSaving}
+      >
         Cancel
       </button>
-      <button className="button" type="submit">
+      <button className="button" type="submit" disabled={isSaving}>
         Create Post
       </button>
     </div>

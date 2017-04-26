@@ -114,12 +114,14 @@ exports[`NewPostContent component renders properly 1`] = `
         >
           <button
             className="button button_cancel"
+            disabled={false}
             onClick={[Function]}
           >
             Cancel
           </button>
           <button
             className="button"
+            disabled={false}
             type="submit"
           >
             Create Post

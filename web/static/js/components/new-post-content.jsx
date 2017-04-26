@@ -67,7 +67,7 @@ export default class NewPostContent extends Component {
   }
 
   addPostContent = (): Promise<*> => {
-    const { inputs } = this.state.formData;
+    const { inputs, isSaving } = this.state.formData;
     const variables : {
       body: string,
       collectionId: string,
@@ -78,7 +78,19 @@ export default class NewPostContent extends Component {
       channelIds: Object.keys(inputs.channels.value).filter(id => inputs.channels.value[id])
     };
 
-    return this.props.addPostContent({ variables });
+    if (isSaving) { return Promise.resolve(); }
+
+    this.setState(({ formData }) => ({
+      formData: {
+        ...formData,
+        isSaving: true
+      }
+    }));
+
+    return this.props.addPostContent({ variables })
+      .then(() => {
+        this.onCancel();
+      });
   }
 
   render() {
