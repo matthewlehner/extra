@@ -1,7 +1,12 @@
 // @flow
 
-import React from "react";
+import React, { Component } from "react";
 import type { Match, RouterHistory } from "react-router-dom";
+
+import postContentFormData, {
+  updateInput
+} from "lib/new-post-content-form";
+import type { PostContentFormData } from "lib/new-post-content-form";
 
 import Modal from "./modal";
 import PostContentForm from "./forms/post-content";
@@ -21,33 +26,77 @@ type Props = {
     variables: {
       body: string, collectionId: string, channelIds: Array<string>
     }
-  }) => void
+  }) => Promise<*>
 };
 
-const NewPostContent = (
-  {
-    history,
-    addPostContent,
-    match: { params },
-    data: { loading, error, channels, collections }
-  }: Props
-) => {
-  const cancelPath = `/collections/${params.id}`;
-  const onCancel = () => history.push(cancelPath);
+export default class NewPostContent extends Component {
+  props: Props
 
-  const postContentFormProps = {
-    cancelPath, channels, collections, addPostContent
-  };
+  state: {
+    formData: PostContentFormData
+  }
 
-  return (
-    <Modal title="Create new post" onDismiss={onCancel} cancelPath={cancelPath}>
-      {
-        loading || error
+  constructor(props:Props) {
+    super(props);
+
+    const { channels, collections } = props.data;
+
+    this.state = { formData: postContentFormData(collections, channels) };
+  }
+
+  componentWillReceiveProps(nextProps:Props) {
+    const { channels, collections } = nextProps.data;
+
+    if (this.props.data.collections !== collections &&
+        this.props.data.channels !== channels) {
+      this.setState(() => ({
+        formData: postContentFormData(collections, channels)
+      }));
+    }
+  }
+
+  onChangeInput = (field: string, value: string | {}): void => {
+    this.setState(({ formData }) => ({
+      formData: updateInput(field, value, formData)
+    }));
+  }
+
+  onCancel = ():void => {
+    const { history, match: { params } } = this.props;
+    history.push(`/collections/${params.id}`);
+  }
+
+  addPostContent = (): Promise<*> => {
+    const { inputs } = this.state.formData;
+    const variables : {
+      body: string,
+      collectionId: string,
+      channelIds: Array<string>
+    } = {
+      body: inputs.content.value,
+      collectionId: this.props.match.params.id,
+      channelIds: Object.keys(inputs.channels.value).filter(id => inputs.channels.value[id])
+    };
+
+    return this.props.addPostContent({ variables });
+  }
+
+  render() {
+    const { data: { loading, error } } = this.props;
+
+    return (
+      <Modal title="Create new post" onDismiss={this.onCancel}>
+        {
+          loading || error
           ? "Loading"
-          : <PostContentForm {...postContentFormProps} />
-      }
-    </Modal>
-  );
-};
-
-export default NewPostContent;
+          : <PostContentForm
+            onChangeInput={this.onChangeInput}
+            addPostContent={this.addPostContent}
+            formData={this.state.formData}
+            onCancel={this.onCancel}
+          />
+        }
+      </Modal>
+    );
+  }
+}

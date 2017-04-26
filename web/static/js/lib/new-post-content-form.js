@@ -36,12 +36,13 @@ export type PostContentFormData = {
       options: Array<{ value: string, label: string, provider: string }>,
       value: {}
     }
-  }
+  },
+  isSaving: boolean
 };
 
 export default function postContentForm(
-  collections:Array<PostCollection>,
-  channels:Array<Channel>
+  collections:Array<PostCollection> = [],
+  channels:Array<Channel> = []
 ): PostContentFormData {
   return {
     inputs: {
@@ -59,7 +60,8 @@ export default function postContentForm(
         options: channelMultiSelectOptions(channels),
         value: {}
       }
-    }
+    },
+    isSaving: false
   };
 }
 

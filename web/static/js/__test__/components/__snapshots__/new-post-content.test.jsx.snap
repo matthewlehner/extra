@@ -11,13 +11,12 @@ exports[`NewPostContent component renders properly 1`] = `
     <header
       className="modal__header"
     >
-      <a
+      <button
         className="modal__dismiss"
-        href="/collections/1"
         onClick={[Function]}
       >
         ×
-      </a>
+      </button>
       <h2>
         Create new post
       </h2>
@@ -25,7 +24,9 @@ exports[`NewPostContent component renders properly 1`] = `
     <div
       className="modal__body"
     >
-      <form>
+      <form
+        onSubmit={[Function]}
+      >
         <div
           className="form__control-group"
         >
@@ -67,6 +68,7 @@ exports[`NewPostContent component renders properly 1`] = `
             id="content"
             name="content"
             onChange={[Function]}
+            required={true}
             rows="3"
             value=""
           />
@@ -110,13 +112,12 @@ exports[`NewPostContent component renders properly 1`] = `
         <div
           className="form__actions"
         >
-          <a
+          <button
             className="button button_cancel"
-            href="/collections/1"
             onClick={[Function]}
           >
             Cancel
-          </a>
+          </button>
           <button
             className="button"
             type="submit"

@@ -5,7 +5,7 @@ import type { Children } from "react";
 
 export default class Form extends Component {
   props: {
-    onSubmit: Function,
+    onSubmit: () => void,
     children: Children
   }
 

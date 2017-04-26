@@ -11,13 +11,12 @@ exports[`Modal component renders properly 1`] = `
     <header
       className="modal__header"
     >
-      <a
+      <button
         className="modal__dismiss"
-        href="a%20string"
         onClick={[Function]}
       >
         ×
-      </a>
+      </button>
     </header>
     <div
       className="modal__body"
@@ -37,13 +36,12 @@ exports[`Modal component renders with children 1`] = `
     <header
       className="modal__header"
     >
-      <a
+      <button
         className="modal__dismiss"
-        href="a%20string"
         onClick={[Function]}
       >
         ×
-      </a>
+      </button>
     </header>
     <div
       className="modal__body"
