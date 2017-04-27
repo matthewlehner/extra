@@ -125,6 +125,7 @@ const common = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
+      chunks: ["app"],
       minChunks: ({ resource }) => /node_modules/.test(resource)
     }),
     new webpack.LoaderOptionsPlugin({
