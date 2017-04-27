@@ -7,3 +7,4 @@ import "../../icons/performance.svg";
 import "../../icons/account.svg";
 import "../../icons/logout.svg";
 import "../../icons/checkmark.svg";
+import "../../icons/close.svg";

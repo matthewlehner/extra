@@ -4,11 +4,8 @@ table {
   width: 100%;
 }
 
-tbody {
-  tr {
-    border-top: 1px solid lighten($gray-light, 10.5%);
-
-  }
+tr {
+  border-bottom: 1px solid lighten($gray-light, 10.5%);
 }
 
 th {
@@ -22,10 +19,4 @@ th {
 td {
   padding-bottom: 1rem;
   padding-top: 1rem;
-}
-
-tr:last-child {
-  & td {
-    padding-bottom: 0;
-  }
 }

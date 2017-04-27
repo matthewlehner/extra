@@ -51,7 +51,9 @@ class Tabs extends Component {
       <div className="tab-container">
         <nav role="tablist" className="tablist">{tabs}</nav>
         {tabPanels}
-        {children}
+        <div className="tab-footer">
+          {children}
+        </div>
       </div>
     );
   }

@@ -2,6 +2,7 @@
 
 import React from "react";
 import LinkButton from "components/ui/link-button";
+import Icon from "components/icon";
 
 type Props = {
   title?: string,
@@ -28,7 +29,7 @@ const Modal = ({ children, onDismiss, title }: Props) => {
             className="modal__dismiss"
             onClick={handleClick}
           >
-            &times;
+            <Icon name="close" width="0.75rem" height="0.75rem" />
           </LinkButton>
           { title ? <h2>{ title }</h2> : null }
         </header>

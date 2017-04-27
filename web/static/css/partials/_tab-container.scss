@@ -19,6 +19,7 @@
 
   .tab {
     @extend %tab-style;
+
     z-index: 10;
 
     &[aria-selected="true"] {
@@ -27,7 +28,11 @@
   }
 
   .tabpanel {
-    padding: 3rem 2rem 2rem;
+    margin: 3rem 2rem 1.5rem;
+  }
+
+  .tab-footer {
+    margin: 0 2rem 2rem;
   }
 
   [aria-hidden="true"] {
