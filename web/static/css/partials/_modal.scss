@@ -1,9 +1,14 @@
 .modal {
+  &-open {
+    overflow: hidden;
+  }
+
   &__overlay {
     background-color: transparentize($black, 0.46);
     bottom: 0;
     left: 0;
-    position: absolute;
+    overflow-y: scroll;
+    position: fixed;
     right: 0;
     top: 0;
   }
@@ -14,9 +19,8 @@
     background-color: $white;
     border-radius: $base-border-radius - 1;
     box-shadow: 0 1px 2px 0 $gray;
-    margin: 8rem auto auto;
+    margin: 8rem auto;
     max-width: 37.5rem;
-    overflow-y: scroll;
     width: 100%;
   }
 
