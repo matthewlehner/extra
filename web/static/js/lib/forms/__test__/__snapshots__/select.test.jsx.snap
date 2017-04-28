@@ -1,15 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Select component displays placeholder 1`] = `
+<div
+  className="select"
+>
+  <select
+    className="form__control"
+    id="post_content[post_collection_id]"
+    name="post_content[post_collection_id]"
+    onChange={[Function]}
+    value={null}
+  >
+    <option>
+      Select something
+    </option>
+    <option
+      value="1"
+    >
+      Inspirational Posts
+    </option>
+  </select>
+</div>
+`;
+
+exports[`Select component hides placeholder when value is present 1`] = `
+<div
+  className="select"
+>
+  <select
+    className="form__control"
+    id="post_content[post_collection_id]"
+    name="post_content[post_collection_id]"
+    onChange={[Function]}
+    value="1"
+  >
+    <option
+      value="1"
+    >
+      Inspirational Posts
+    </option>
+  </select>
+</div>
+`;
+
 exports[`Select component renders correctly 1`] = `
 <div
   className="select"
 >
   <select
     className="form__control"
-    id="post_content_post_collection_id"
+    id="post_content[post_collection_id]"
     name="post_content[post_collection_id]"
     onChange={[Function]}
-    required="required"
+    value={null}
   >
     <option
       value="1"

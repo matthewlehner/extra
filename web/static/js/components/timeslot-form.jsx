@@ -3,7 +3,7 @@
 import React from "react";
 
 import LinkButton from "components/ui/link-button";
-import Select from "components/forms/select";
+import { Select } from "lib/forms";
 import { dayTranslations } from "lib/schedule-helpers";
 
 type InputPropsType = {
@@ -17,7 +17,7 @@ type SelectPropsType = {
   onChange: Function
 };
 
-type TimeslotFormProps = {
+type Props = {
   time: InputPropsType,
   recurrence: SelectPropsType,
   collection: SelectPropsType,
@@ -25,26 +25,39 @@ type TimeslotFormProps = {
   onSubmit: Function
 };
 
+const recurrenceOptions = ({ name }) => ({
+  value: name,
+  label: dayTranslations[name]
+});
+
+const collectionOptions = ({ id, name }) => ({ value: id, label: name });
+
 const TimeslotForm = (
-  { time, recurrence, collection, onCancel, onSubmit }: TimeslotFormProps
+  { time, recurrence, collection, onCancel, onSubmit }: Props
 ) => (
   <form onSubmit={onSubmit}>
     <input
+      name="time"
       type="text" placeholder="00:00" value={time.value}
       onChange={time.onChange}
+      required
     />
-    <Select onChange={recurrence.onChange} value={recurrence.value}>
-      <option>—</option>
-      {recurrence.options.map(({ name }) => (
-        <option key={name} value={name}>{dayTranslations[name]}</option>
-      ))}
-    </Select>
-    <Select onChange={collection.onChange} value={collection.value} required>
-      <option>—</option>
-      {collection.options.map(({ id, name }) => (
-        <option key={id} value={id}>{name}</option>
-      ))}
-    </Select>
+    <Select
+      name="recurrence"
+      onChange={recurrence.onChange}
+      value={recurrence.value}
+      options={recurrence.options.map(recurrenceOptions)}
+      placeholder="—"
+      required
+    />
+    <Select
+      name="collection"
+      onChange={collection.onChange}
+      value={collection.value}
+      options={collection.options.map(collectionOptions)}
+      required
+      placeholder="—"
+    />
 
     <LinkButton onClick={onSubmit}>Add Timeslot</LinkButton>
     <LinkButton onClick={onCancel}>Cancel</LinkButton>

@@ -6,7 +6,7 @@ import { handleChange } from "./utils";
 class Textarea extends Component {
   props: {
     onChange: (string, string) => void,
-    fieldName: string,
+    name: string,
     value: string
   }
 
@@ -17,8 +17,8 @@ class Textarea extends Component {
   }
 
   onTextareaChange = (event: SyntheticEvent) => {
-    const { fieldName, onChange } = this.props;
-    handleChange(event, fieldName, onChange);
+    const { name, onChange } = this.props;
+    handleChange(event, name, onChange);
     this.adjustTextarea(event.target);
   }
 
@@ -34,14 +34,14 @@ class Textarea extends Component {
   }
 
   render() {
-    const { fieldName, value, onChange, ...props } = this.props;
+    const { name, value, onChange, ...props } = this.props;
 
     return (
       <textarea
         {...props}
         ref={(input) => { this.textarea = input; }}
-        id={fieldName}
-        name={fieldName}
+        id={name}
+        name={name}
         value={value}
         rows="3"
         onChange={this.onTextareaChange}

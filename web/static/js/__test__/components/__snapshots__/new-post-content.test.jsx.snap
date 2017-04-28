@@ -47,10 +47,11 @@ exports[`NewPostContent component renders properly 1`] = `
           >
             <select
               className="form__control"
-              id="post_content_post_collection_id"
-              name="post_content[post_collection_id]"
+              id="collection"
+              name="collection"
               onChange={[Function]}
-              required="required"
+              required={true}
+              value={null}
             >
               <option
                 value="1"

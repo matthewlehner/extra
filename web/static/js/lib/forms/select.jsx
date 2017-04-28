@@ -3,21 +3,28 @@
 import React from "react";
 import { handleChange } from "./utils";
 
+type Props = {
+  placeholder?: string,
+  value?: string,
+  name: string,
+  options: Array<{ value: string, label: string}>,
+  onChange: (field: string, value: string) => void
+};
+
 const Select = (
-  { fieldName, options, onChange }: {
-    fieldName: string,
-    options: Array<{ value: string, label: string}>,
-    onChange: (field: string, value: string) => void
-  }
+  { name, options, onChange, placeholder, ...props }: Props
 ) => (
   <div className="select">
     <select
       className="form__control"
-      id="post_content_post_collection_id"
-      name="post_content[post_collection_id]"
-      required="required"
-      onChange={event => handleChange(event, fieldName, onChange)}
+      onChange={event => handleChange(event, name, onChange)}
+      name={name}
+      id={name}
+      {...props}
     >
+      { placeholder && !props.value
+          ? <option key="placeholder">{placeholder}</option>
+          : null }
       {
         options.map(
           ({ value, label }) => (
@@ -28,5 +35,10 @@ const Select = (
     </select>
   </div>
 );
+
+Select.defaultProps = {
+  placeholder: null,
+  value: null
+};
 
 export default Select;

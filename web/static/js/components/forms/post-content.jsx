@@ -30,27 +30,26 @@ const PostContentForm = ({
   <Form onSubmit={addPostContent}>
     <Field label={collection.label}>
       <Select
-        fieldName="collection"
+        name="collection"
         options={collection.options}
         value={collection.value}
         onChange={onChangeInput}
+        required
       />
     </Field>
     <Field label={content.label}>
       <Textarea
-        fieldName="content"
-        id="post_content_body"
-        name="post_content[body]"
-        required
+        name="content"
         value={content.value}
         onChange={onChangeInput}
+        required
       />
     </Field>
 
     <div className="form__control-group">
       <span className="form__control-label">{channels.label}</span>
       <CheckboxCollection
-        fieldName="channels"
+        name="channels"
         onChange={onChangeInput}
         value={channels.value}
         options={channels.options}
