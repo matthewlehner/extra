@@ -116,7 +116,7 @@ exports[`Sidebar component renders correctly 1`] = `
         </li>
         <li>
           <a
-            href="/"
+            href="/account"
             onClick={[Function]}
           >
             <svg
@@ -237,7 +237,7 @@ exports[`Sidebar component renders loading state 1`] = `
         </li>
         <li>
           <a
-            href="/"
+            href="/account"
             onClick={[Function]}
           >
             <svg
