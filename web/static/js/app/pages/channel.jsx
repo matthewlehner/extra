@@ -31,7 +31,7 @@ export type ScheduleProps = {
   autopilot: boolean
 };
 
-type ChannelPageProps = {
+type Props = {
   updateSchedule: Function,
   addTimeslot: Function,
   data: {
@@ -51,7 +51,7 @@ type ChannelPageProps = {
   }
 };
 
-function ChannelPage(props:ChannelPageProps) {
+function ChannelPage(props:Props) {
   const {
     updateSchedule, addTimeslot, data: {
       loading, error, schedule, channel, collections, recurrenceType

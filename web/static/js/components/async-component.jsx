@@ -2,7 +2,7 @@
 
 import React from "react";
 
-function asyncComponent(getComponent) {
+export default function asyncComponent(getComponent: any) {
   return class AsyncComponent extends React.Component {
     static Component = null;
     state = { Component: AsyncComponent.Component };
