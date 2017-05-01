@@ -89,7 +89,7 @@ export default function Sidebar(
               </Link>
             </li>
             <li>
-              <Link to="/">
+              <Link to="/account">
                 <Icon name="account" />
                 Account
               </Link>

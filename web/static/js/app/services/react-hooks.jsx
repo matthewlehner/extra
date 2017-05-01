@@ -6,6 +6,7 @@ import { ApolloClient, ApolloProvider, createNetworkInterface } from "react-apol
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AsyncChannelPage, AsyncCollectionPage } from "components/async-component";
+import Account from "app/pages/account";
 import NewPostContent from "app/pages/new-post-content";
 
 import Sidebar from "../pages/sidebar";
@@ -41,6 +42,8 @@ const App = () => (
           <Route path="/channels/:id" component={AsyncChannelPage} />
           <Route path="/collections/:id" component={AsyncCollectionPage} />
           <Route path="/collections/:id/new" component={NewPostContent} />
+
+          <Route path="/account" component={Account} />
         </main>
       </div>
     </Router>
