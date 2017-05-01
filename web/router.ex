@@ -30,6 +30,7 @@ defmodule Extra.Router do
     get "/", PublicPageController, :index
     get "/alpha-list/thanks", PublicPageController, :alpha_thanks
     get "/alpha-list/confirmed", PublicPageController, :alpha_confirmed
+    get "/seven-tactics", PublicPageController, :seven_tactics
   end
 
   scope "/", Extra do

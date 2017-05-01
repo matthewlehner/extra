@@ -1,0 +1,18 @@
+<form action="https://www.getdrip.com/forms/24661784/submissions" method="post" data-drip-embedded-form="24661784">
+  <section class="hero-text">
+    <h1 data-drip-attribute="headline">💎  Download a free PDF of key takeaways from "The Very Best Branded Twitter Accounts. Part I: The Tactics." </h1>
+    <p data-drip-attribute="description">We&#39;ve consolidated the dos and do nots of our mega post on the best tactics for Twitter. The PDF is printable, and is perfect for sharing with your team. You can download it totally free below.&nbsp;</p>
+  </section>
+  <section class="landing-section">
+    <div class="beta-signup">
+      <div class=" beta-signup_form-fields">
+        <label class="beta-signup_label" for="fields[email]">Email Address</label>
+        <input type="email" name="fields[email]" value="" />
+        <input type="submit" name="submit" value="Send me the PDF!" class="button beta-signup_button" data-drip-attribute="sign-up-button" />
+      </div>
+      <p class="p__muted">We will never spam you. Unsubscribe at any time.</p>
+    </div>
+  </section>
+</form>
+
+<%= render "founder-info.html", conn: @conn %>

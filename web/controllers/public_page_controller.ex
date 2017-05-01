@@ -14,4 +14,8 @@ defmodule Extra.PublicPageController do
   def alpha_confirmed(conn, _params) do
     render conn, "alpha_confirmed.html"
   end
+
+  def seven_tactics(conn, _params) do
+    render conn, "seven-tactics.html"
+  end
 end
