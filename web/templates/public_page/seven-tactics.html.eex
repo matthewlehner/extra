@@ -12,7 +12,7 @@
         <input type="email" name="fields[email]" value="" placeholder="Email Address" />
         <input type="submit" name="submit" value="Send me the PDF!" class="button beta-signup_button" data-drip-attribute="sign-up-button" />
       </div>
-      <p class="p__muted">We will never spam you. Unsubscribe at any time.</p>
+      <p class="p__muted">We will never spam you.</p>
     </div>
   </section>
 </form>
