@@ -34,4 +34,13 @@ defmodule Extra.TimeslotTest do
       assert timeslot.recurrence == params.recurrence
     end
   end
+
+  describe "to_datetime" do
+    test "returns a datetime" do
+      timeslot = :timeslot
+                 |> insert()
+      require Logger
+      Logger.warn inspect(timeslot.recurrence)
+    end
+  end
 end
