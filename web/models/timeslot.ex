@@ -22,4 +22,9 @@ defmodule Extra.Timeslot do
     |> cast(params, [:time, :recurrence, :collection_id])
     |> validate_required([:time, :recurrence, :collection_id])
   end
+
+  @spec to_datetime(%Extra.Timeslot{}) :: DateTime.t()
+  def to_datetime(timeslot) do
+    timeslot.recurrence
+  end
 end

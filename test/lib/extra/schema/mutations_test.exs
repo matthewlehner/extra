@@ -116,9 +116,6 @@ defmodule Extra.Schema.MutationsTest do
           "name" => collection.name
         }
       }}}
-
-      require Logger
-      Logger.warn inspect(response)
     end
   end
 end
