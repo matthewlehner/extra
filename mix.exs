@@ -46,7 +46,7 @@ defmodule Extra.Mixfile do
      {:ueberauth_facebook, "~> 0.6"},
      {:ueberauth_identity, "~> 0.2.0"},
      {:ecto_enum, "~> 1.0.0"},
-     {:calendar, "~> 0.17.2"},
+     {:timex, "~> 3.0"},
 
      {:absinthe, "~> 1.3-beta"},
      {:absinthe_plug, "~> 1.3.0-rc.1"},
