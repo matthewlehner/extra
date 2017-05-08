@@ -50,6 +50,7 @@ defmodule Extra.Mixfile do
 
      {:absinthe, "~> 1.3-beta"},
      {:absinthe_plug, "~> 1.3.0-rc.1"},
+     {:absinthe_ecto, "~> 0.1.0"},
      {:poison, "~> 2.1"},
 
      {:ex_machina, "~> 2.0", only: :test},
