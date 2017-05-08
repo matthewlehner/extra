@@ -49,6 +49,6 @@ defmodule Extra.Timeslot do
   end
 
   defp insert_posts(posts) do
-    Extra.Repo.insert_all(Extra.Post, posts, on_conflict: :nothing)
+    Extra.Repo.insert_all(Extra.QueuedPost, posts, on_conflict: :nothing)
   end
 end

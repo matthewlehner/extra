@@ -1,7 +1,7 @@
-defmodule Extra.Post do
+defmodule Extra.QueuedPost do
   use Extra.Web, :model
 
-  schema "posts" do
+  schema "queued_posts" do
     field :scheduled_for, :utc_datetime
     belongs_to :channel, Extra.SocialChannel
     belongs_to :collection, Extra.Collection
@@ -10,7 +10,7 @@ defmodule Extra.Post do
     timestamps()
   end
 
-  def upcoming(query \\ Post) do
+  def upcoming(query \\ Extra.Post) do
     from p in query,
     where: p.scheduled_for > ^DateTime.utc_now()
   end
