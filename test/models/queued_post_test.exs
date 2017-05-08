@@ -1,7 +1,7 @@
-defmodule Extra.PostTest do
+defmodule Extra.QueuedPostTest do
   use Extra.ModelCase
 
-  alias Extra.Post
+  alias Extra.QueuedPost
 
   @valid_attrs %{scheduled_for:
     Timex.to_datetime(%{
@@ -12,13 +12,13 @@ defmodule Extra.PostTest do
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do
-    changeset = Post.changeset(%Post{}, @valid_attrs)
+    changeset = QueuedPost.changeset(%QueuedPost{}, @valid_attrs)
     assert changeset.errors == []
     assert changeset.valid?
   end
 
   test "changeset with invalid attributes" do
-    changeset = Post.changeset(%Post{}, @invalid_attrs)
+    changeset = QueuedPost.changeset(%QueuedPost{}, @invalid_attrs)
     refute changeset.valid?
   end
 end

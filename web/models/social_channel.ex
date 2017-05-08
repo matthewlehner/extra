@@ -1,4 +1,8 @@
 defmodule Extra.SocialChannel do
+  @moduledoc """
+  Publishing channels for Extra.
+  """
+
   use Extra.Web, :model
 
   schema "social_channels" do
