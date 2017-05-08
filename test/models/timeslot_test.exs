@@ -35,12 +35,13 @@ defmodule Extra.TimeslotTest do
     end
   end
 
-  describe "to_datetime" do
-    test "returns a datetime" do
+  describe "build_post_queue" do
+    test "inserts a bunch of stuff into the database" do
       timeslot = :timeslot
                  |> insert()
-      require Logger
-      Logger.warn inspect(timeslot.recurrence)
+
+      assert {7, nil} == Timeslot.build_post_queue(timeslot)
+      assert {0, nil} == Timeslot.build_post_queue(timeslot)
     end
   end
 end
