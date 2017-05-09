@@ -3,7 +3,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-import PostList from "components/post-list";
+import CollectionPosts from "components/collection-posts";
 
 describe("PostList component", () => {
   it("renders a list of posts", () => {
@@ -14,7 +14,7 @@ describe("PostList component", () => {
       }]
     };
 
-    const tree = renderer.create(<PostList {...props} />);
+    const tree = renderer.create(<CollectionPosts {...props} />);
 
     expect(tree).toMatchSnapshot();
   });
