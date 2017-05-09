@@ -2,14 +2,14 @@
 
 import React from "react";
 
-type PostListProps = {
+type Props = {
   posts: Array<{
     id: string,
     body: string
   }>
 };
 
-const PostList = ({ posts }: PostListProps) => (
+const CollectionPosts = ({ posts }: Props) => (
   <section className="posts-collection">
     <header>
       <h2>Posts</h2>
@@ -24,4 +24,4 @@ const PostList = ({ posts }: PostListProps) => (
   </section>
 );
 
-export default PostList;
+export default CollectionPosts;

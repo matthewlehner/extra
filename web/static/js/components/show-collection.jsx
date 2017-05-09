@@ -3,7 +3,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import type { Location } from "react-router-dom";
-import PostList from "./post-list";
+import CollectionPosts from "./collection-posts";
 
 type ShowCollectionProps = {
   data: {
@@ -38,7 +38,7 @@ export default function ShowCollection(
         </Link>
       </header>
 
-      <PostList posts={collection.posts} />
+      <CollectionPosts posts={collection.posts} />
     </div>
   );
 }
