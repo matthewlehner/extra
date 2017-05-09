@@ -5,8 +5,6 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 
-const autoprefixer = require("autoprefixer");
-
 const extractCSS = new ExtractTextPlugin("css/[name].css");
 const extractSVG = new ExtractSVGPlugin("images/[name].svg");
 
@@ -86,7 +84,10 @@ const common = {
               importLoaders: 1
             }
           }, {
-            loader: "postcss-loader"
+            loader: "postcss-loader",
+            options: {
+              sourceMap: true
+            }
           }, {
             loader: "sass-loader",
             options: {
@@ -109,7 +110,10 @@ const common = {
               importLoaders: 1
             }
           }, {
-            loader: "postcss-loader"
+            loader: "postcss-loader",
+            options: {
+              sourceMap: true
+            }
           }, {
             loader: "sass-loader",
             options: {
@@ -128,22 +132,6 @@ const common = {
       chunks: ["app"],
       minChunks: ({ resource }) => /node_modules/.test(resource)
     }),
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        context: path.join(__dirname, "/web/static/js"),
-        postcss: [
-          // require("postcss-smart-import")({
-          //   from: "./web/static/css/",
-          //   plugins: [ require("stylelint")() ]
-          // }),
-          // require("postcss-url")(),
-          // require("postcss-cssnext"),
-          autoprefixer()
-          // require("postcss-browser-reporter")(),
-          // require("postcss-reporter")()
-        ]
-      }
-    }),
     new CopyWebpackPlugin([{
       from: { glob: "**/*", dot: false },
       context: "./web/static/assets"
@@ -157,7 +145,9 @@ let config;
 
 switch (process.env.npm_lifecycle_event) {
   case "deploy":
-    config = merge(common, {});
+    config = merge(common, {
+      devtool: "nosources-source-map"
+    });
     break;
   default:
     config = merge(common, {
@@ -172,7 +162,7 @@ switch (process.env.npm_lifecycle_event) {
           }
         ]
       },
-      devtool: "source-map"
+      devtool: "cheap-eval-source-map"
     });
 }
 
