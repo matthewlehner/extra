@@ -8,6 +8,7 @@ defmodule Extra.Schema do
   alias Extra.Schema.Resolvers.Schedule
   alias Extra.Schema.Resolvers.Timeslot
   alias Extra.Schema.Resolvers.PostContent
+  alias Extra.Schema.Resolvers.QueuedPostResolver
 
   import_types Extra.Schema.Types
 
@@ -33,6 +34,11 @@ defmodule Extra.Schema do
     field :schedule, type: :schedule do
       arg :channel_id, non_null(:id)
       resolve &Schedule.find_by/3
+    end
+
+    field :queued_posts, list_of(:queued_post) do
+      arg :channel_id, non_null(:id)
+      resolve &QueuedPostResolver.for_channel/3
     end
   end
 
