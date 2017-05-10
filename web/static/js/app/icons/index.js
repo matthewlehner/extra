@@ -3,6 +3,7 @@ import addNew from "./add-new.svg";
 import checkmark from "./checkmark.svg";
 import close from "./close.svg";
 import collection from "./collection.svg";
+import logo from "../../../assets/images/extra-logo.svg";
 import logout from "./logout.svg";
 import performance from "./performance.svg";
 import twitter from "./twitter.svg";
@@ -15,6 +16,7 @@ export default {
   close,
   collection,
   performance,
+  logo,
   logout,
   twitter,
   twitterBadge

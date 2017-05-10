@@ -29,7 +29,7 @@ export default function Sidebar(
 
   return (
     <section className="sidebar">
-      <Icon className="extra-logo" name="extra-logo" />
+      <Icon className="extra-logo" name="logo" />
       <nav className="site-nav">
         <section>
           <h3>Collections</h3>

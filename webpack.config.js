@@ -1,6 +1,5 @@
 const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const SpritePlugin = require("svg-sprite-loader/lib/plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
@@ -52,12 +51,7 @@ const common = {
         test: /.*\.svg$/,
         exclude: /node_modules/,
         use: [{
-          loader: "svg-sprite-loader",
-          options: {
-            name: "[name]-icon",
-            extract: true,
-            spriteFilename: "images/[chunkname].svg"
-          }
+          loader: "svg-sprite-loader"
         }, {
           loader: "svgo-loader",
           options: {
@@ -133,8 +127,7 @@ const common = {
       from: { glob: "**/*", dot: false },
       context: "./web/static/assets"
     }]),
-    extractCSS,
-    new SpritePlugin()
+    extractCSS
   ]
 };
 
