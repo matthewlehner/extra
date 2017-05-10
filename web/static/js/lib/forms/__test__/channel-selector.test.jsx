@@ -3,16 +3,16 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-import CheckboxCollection from "../checkbox-collection";
+import ChannelSelector from "../channel-selector";
 
-describe("CheckboxCollection component", () => {
+describe("ChannelSelector component", () => {
   const options = [{ value: "0", label: "matthewpearse", provider: "twitter" }];
   const name = "channels";
   const value = {};
 
   it("renders correctly", () => {
     const tree = renderer.create(
-      <CheckboxCollection
+      <ChannelSelector
         name={name}
         value={value}
         options={options}

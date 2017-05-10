@@ -19,7 +19,7 @@ type Props = {
     error?: {
       message: string
     },
-    channels: Array<{ id: string, provider: string, name: string }>,
+    channels: Array<Extra$Channel>,
     collection: {
       id: string,
       name: string
