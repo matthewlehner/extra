@@ -6,6 +6,13 @@ query CollectionPage($id: ID!) {
     posts {
       id
       body
+
+      channels {
+        id
+        name
+        provider
+        image
+      }
     }
   }
 }
