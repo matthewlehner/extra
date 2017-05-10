@@ -6,12 +6,13 @@ import type { PostContentFormData } from "lib/new-post-content-form";
 import {
   Form,
   Field,
-  Select,
   Textarea,
-  CheckboxCollection
+  ChannelSelector,
+  Styles as FormStyles
 } from "lib/forms";
 
 type Props = {
+  collection: Extra$PostCollection,
   onCancel: () => void,
   onChangeInput: (string, string) => void,
   formData: PostContentFormData,
@@ -19,8 +20,9 @@ type Props = {
 };
 
 const PostContentForm = ({
+  collection,
   formData: {
-    inputs: { collection, content, channels },
+    inputs: { content, channels },
     isSaving
   },
   onChangeInput,
@@ -28,15 +30,10 @@ const PostContentForm = ({
   addPostContent
 }: Props) => (
   <Form onSubmit={addPostContent}>
-    <Field label={collection.label}>
-      <Select
-        name="collection"
-        options={collection.options}
-        value={collection.value}
-        onChange={onChangeInput}
-        required
-      />
-    </Field>
+    <dl className="form__control-group">
+      <dt className={FormStyles.label}>Collection</dt>
+      <dd className={FormStyles.inputContainer}>{collection.name}</dd>
+    </dl>
     <Field label={content.label}>
       <Textarea
         name="content"
@@ -47,8 +44,8 @@ const PostContentForm = ({
     </Field>
 
     <div className="form__control-group">
-      <span className="form__control-label">{channels.label}</span>
-      <CheckboxCollection
+      <span className={FormStyles.label}>{channels.label}</span>
+      <ChannelSelector
         name="channels"
         onChange={onChangeInput}
         value={channels.value}

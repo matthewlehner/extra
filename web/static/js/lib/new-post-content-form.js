@@ -1,6 +1,6 @@
 // @flow
 
-export function collectionSelectOptions(collections: Array<PostCollection>) {
+export function collectionSelectOptions(collections: Array<Extra$PostCollection>) {
   return collections.reduce(
     (options, { id, name }) => [
       ...options,
@@ -10,7 +10,7 @@ export function collectionSelectOptions(collections: Array<PostCollection>) {
   );
 }
 
-export function channelMultiSelectOptions(channels: Array<Channel>) {
+export function channelMultiSelectOptions(channels: Array<Extra$Channel>) {
   return channels.reduce(
     (options, { id, name, provider }) => [
       ...options,
@@ -22,11 +22,6 @@ export function channelMultiSelectOptions(channels: Array<Channel>) {
 
 export type PostContentFormData = {
   inputs: {
-    collection: {
-      label: string,
-      options: Array<{ value: string, label: string }>,
-      value: null
-    },
     content: {
       label: string,
       value: string
@@ -41,16 +36,10 @@ export type PostContentFormData = {
 };
 
 export default function postContentForm(
-  collections:Array<PostCollection> = [],
-  channels:Array<Channel> = []
+  channels:Array<Extra$Channel> = []
 ): PostContentFormData {
   return {
     inputs: {
-      collection: {
-        label: "Collection",
-        options: collectionSelectOptions(collections),
-        value: null
-      },
       content: {
         label: "Content",
         value: ""

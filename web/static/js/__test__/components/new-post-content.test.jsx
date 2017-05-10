@@ -8,8 +8,7 @@ const props = {
   data: {
     loading: false,
     error: false,
-    channels: [{ id: "10", name: "matthewpearse" }],
-    collections: [{ id: "1", name: "Inspirational Posts" }]
+    channels: [{ id: "10", name: "matthewpearse" }]
   }
 };
 
