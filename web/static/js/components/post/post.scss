@@ -1,5 +1,5 @@
-@import "../../css/modules/colors";
-@import "../../css/modules/variables";
+@import "../../../css/modules/_colors.scss";
+@import "../../../css/modules/_variables.scss";
 
 .post {
   border: $base-border;
@@ -18,4 +18,9 @@
   time {
     color: $gray;
   }
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
 }
