@@ -1,13 +1,15 @@
-import Form from "lib/forms/form";
-import Field from "lib/forms/field";
-import Select from "lib/forms/select";
-import Textarea from "lib/forms/textarea";
-import CheckboxCollection from "lib/forms/checkbox-collection";
+import Form from "./form";
+import Field from "./field";
+import Select from "./select";
+import Textarea from "./textarea";
+import ChannelSelector from "./channel-selector";
+import Styles from "./form.scss";
 
 export {
   Form,
   Field,
   Select,
   Textarea,
-  CheckboxCollection
+  ChannelSelector,
+  Styles
 };

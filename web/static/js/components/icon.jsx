@@ -1,11 +1,16 @@
 // @flow
 
 import React from "react";
+import Icons from "app/icons";
 
-export default function Icon({ className, name }:{ className?: string, name:string }) {
-  return <svg className={className}><use xlinkHref={`/images/app.svg#${name}-icon`} /></svg>;
-}
+const Icon = ({ className, name }: { className?: string, name: string }) => (
+  <svg className={className}>
+    <use xlinkHref={Icons[name]} />
+  </svg>
+);
 
 Icon.defaultProps = {
   className: "icon"
 };
+
+export default Icon;

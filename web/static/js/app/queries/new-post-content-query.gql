@@ -1,0 +1,11 @@
+query NewPostContentForm($collectionId: ID!) {
+  collection(id: $collectionId) {
+    id
+    name
+  }
+  channels {
+    id
+    provider
+    name
+  }
+}
