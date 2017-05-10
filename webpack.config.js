@@ -1,12 +1,11 @@
 const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const ExtractSVGPlugin = require("svg-sprite-loader/lib/extract-svg-plugin");
+const SpritePlugin = require("svg-sprite-loader/lib/plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 
 const extractCSS = new ExtractTextPlugin("css/[name].css");
-const extractSVG = new ExtractSVGPlugin("images/[name].svg");
 
 const common = {
   entry: {
@@ -52,23 +51,21 @@ const common = {
       }, {
         test: /.*\.svg$/,
         exclude: /node_modules/,
-        use: extractSVG.extract({
-          use: [{
-            loader: "svg-sprite-loader",
-            options: {
-              name: "[name]-icon",
-              extract: true,
-              esModule: false
-            }
-          }, {
-            loader: "svgo-loader",
-            options: {
-              plugins: [
-                { removeTitle: true }
-              ]
-            }
-          }]
-        })
+        use: [{
+          loader: "svg-sprite-loader",
+          options: {
+            name: "[name]-icon",
+            extract: true,
+            spriteFilename: "images/[chunkname].svg"
+          }
+        }, {
+          loader: "svgo-loader",
+          options: {
+            plugins: [
+              { removeTitle: true }
+            ]
+          }
+        }]
       }, {
         test: /\.scss$/,
         exclude: [
@@ -137,7 +134,7 @@ const common = {
       context: "./web/static/assets"
     }]),
     extractCSS,
-    extractSVG
+    new SpritePlugin()
   ]
 };
 
