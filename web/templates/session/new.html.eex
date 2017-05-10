@@ -3,7 +3,7 @@
   <%= form_for @changeset, session_url(@conn, :create), [novalidate: true], fn f -> %>
     <%= render_flash(@conn) %>
 
-    <%= input f, :email, placeholder: "Email" %>
+    <%= input f, :email, placeholder: "Email", autofocus: true %>
     <%= input f, :password, placeholder: "Password" %>
 
     <div class="form__actions">
