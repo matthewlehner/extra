@@ -19,7 +19,7 @@ exports[`NewPostContent component renders properly 1`] = `
           className="icon"
         >
           <use
-            xlinkHref="/images/app.svg#close-icon"
+            xlinkHref="#id"
           />
         </svg>
       </button>
@@ -33,39 +33,25 @@ exports[`NewPostContent component renders properly 1`] = `
       <form
         onSubmit={[Function]}
       >
-        <div
+        <dl
           className="form__control-group"
         >
-          <label
-            className="form__control-label"
-            htmlFor="Collection"
+          <dt
+            className="label"
           >
             Collection
-          </label>
-          <div
-            className="select"
+          </dt>
+          <dd
+            className="inputContainer"
           >
-            <select
-              className="form__control"
-              id="collection"
-              name="collection"
-              onChange={[Function]}
-              required={true}
-              value={null}
-            >
-              <option
-                value="1"
-              >
-                Inspirational Posts
-              </option>
-            </select>
-          </div>
-        </div>
+            howdy!
+          </dd>
+        </dl>
         <div
           className="form__control-group"
         >
           <label
-            className="form__control-label"
+            className="label"
             htmlFor="Content"
           >
             Content
@@ -84,7 +70,7 @@ exports[`NewPostContent component renders properly 1`] = `
           className="form__control-group"
         >
           <span
-            className="form__control-label"
+            className="label"
           >
             Channels
           </span>
@@ -93,6 +79,11 @@ exports[`NewPostContent component renders properly 1`] = `
           >
             <label
               htmlFor="channels-10"
+              style={
+                Object {
+                  "position": "relative",
+                }
+              }
             >
               <input
                 checked={false}
@@ -108,10 +99,17 @@ exports[`NewPostContent component renders properly 1`] = `
                   className="icon icon_checkmark"
                 >
                   <use
-                    xlinkHref="/images/app.svg#checkmark-icon"
+                    xlinkHref="#id"
                   />
                 </svg>
               </span>
+              <svg
+                className="logo"
+              >
+                <use
+                  xlinkHref="#id"
+                />
+              </svg>
               matthewpearse
             </label>
           </div>

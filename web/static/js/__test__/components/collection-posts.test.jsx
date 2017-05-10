@@ -10,7 +10,8 @@ describe("PostList component", () => {
     const props = {
       posts: [{
         id: "1",
-        body: "hey buddy."
+        body: "hey buddy.",
+        channels: []
       }]
     };
 

@@ -10,14 +10,17 @@ exports[`PostList component renders a list of posts 1`] = `
     </h2>
   </header>
   <ul
-    className="posts-list"
+    className="list"
   >
     <li
-      className="post-preview"
+      className="post"
     >
       <p>
         hey buddy.
       </p>
+      <footer
+        className="footer"
+      />
     </li>
   </ul>
 </section>

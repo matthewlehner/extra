@@ -16,7 +16,8 @@ type ShowCollectionProps = {
       name: string,
       posts: Array<{
         id: string,
-        body: string
+        body: string,
+        channels: Array<Extra$Channel>
       }>
     }
   },

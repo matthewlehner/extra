@@ -10,7 +10,7 @@ exports[`Sidebar component renders correctly 1`] = `
     className="extra-logo"
   >
     <use
-      xlinkHref="/images/app.svg#extra-logo-icon"
+      xlinkHref="#id"
     />
   </svg>
   <nav
@@ -32,7 +32,7 @@ exports[`Sidebar component renders correctly 1`] = `
               className="icon"
             >
               <use
-                xlinkHref="/images/app.svg#collection-icon"
+                xlinkHref="#id"
               />
             </svg>
             something
@@ -47,7 +47,7 @@ exports[`Sidebar component renders correctly 1`] = `
               className="icon"
             >
               <use
-                xlinkHref="/images/app.svg#add-new-icon"
+                xlinkHref="#id"
               />
             </svg>
             Add new
@@ -71,7 +71,7 @@ exports[`Sidebar component renders correctly 1`] = `
               className="icon"
             >
               <use
-                xlinkHref="/images/app.svg#twitter-badge-icon"
+                xlinkHref="#id"
               />
             </svg>
             something else
@@ -86,7 +86,7 @@ exports[`Sidebar component renders correctly 1`] = `
               className="icon"
             >
               <use
-                xlinkHref="/images/app.svg#add-new-icon"
+                xlinkHref="#id"
               />
             </svg>
             Add new
@@ -108,7 +108,7 @@ exports[`Sidebar component renders correctly 1`] = `
               className="icon"
             >
               <use
-                xlinkHref="/images/app.svg#performance-icon"
+                xlinkHref="#id"
               />
             </svg>
             Performance
@@ -123,7 +123,7 @@ exports[`Sidebar component renders correctly 1`] = `
               className="icon"
             >
               <use
-                xlinkHref="/images/app.svg#account-icon"
+                xlinkHref="#id"
               />
             </svg>
             Account
@@ -138,7 +138,7 @@ exports[`Sidebar component renders correctly 1`] = `
               className="icon"
             >
               <use
-                xlinkHref="/images/app.svg#logout-icon"
+                xlinkHref="#id"
               />
             </svg>
             Logout
@@ -165,7 +165,7 @@ exports[`Sidebar component renders loading state 1`] = `
     className="extra-logo"
   >
     <use
-      xlinkHref="/images/app.svg#extra-logo-icon"
+      xlinkHref="#id"
     />
   </svg>
   <nav
@@ -185,7 +185,7 @@ exports[`Sidebar component renders loading state 1`] = `
               className="icon"
             >
               <use
-                xlinkHref="/images/app.svg#add-new-icon"
+                xlinkHref="#id"
               />
             </svg>
             Add new
@@ -207,7 +207,7 @@ exports[`Sidebar component renders loading state 1`] = `
               className="icon"
             >
               <use
-                xlinkHref="/images/app.svg#add-new-icon"
+                xlinkHref="#id"
               />
             </svg>
             Add new
@@ -229,7 +229,7 @@ exports[`Sidebar component renders loading state 1`] = `
               className="icon"
             >
               <use
-                xlinkHref="/images/app.svg#performance-icon"
+                xlinkHref="#id"
               />
             </svg>
             Performance
@@ -244,7 +244,7 @@ exports[`Sidebar component renders loading state 1`] = `
               className="icon"
             >
               <use
-                xlinkHref="/images/app.svg#account-icon"
+                xlinkHref="#id"
               />
             </svg>
             Account
@@ -259,7 +259,7 @@ exports[`Sidebar component renders loading state 1`] = `
               className="icon"
             >
               <use
-                xlinkHref="/images/app.svg#logout-icon"
+                xlinkHref="#id"
               />
             </svg>
             Logout

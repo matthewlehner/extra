@@ -8,7 +8,8 @@ import PostChannelsFooter from "./post/channels-footer";
 type Props = {
   posts: Array<{
     id: string,
-    body: string
+    body: string,
+    channels: Array<Extra$Channel>
   }>
 };
 

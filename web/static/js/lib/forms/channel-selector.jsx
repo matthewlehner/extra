@@ -21,7 +21,7 @@ const ChannelSelector = (
     <div className="form__collection-wrapper">
       {
         options.map(({ value, label, provider }) => (
-          <label key={value} htmlFor={`${name}-${value}`} style={{position: "relative"}}>
+          <label key={value} htmlFor={`${name}-${value}`} style={{ position: "relative" }}>
             <input
               className="form__control"
               type="checkbox"
