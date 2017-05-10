@@ -1,10 +1,16 @@
-declare type PostCollection = {
+declare type Extra$PostCollection = {
   id: string,
   name: string
 };
 
-declare type Channel = {
+declare type Extra$Channel = {
   id: string,
   provider: string,
-  name: string
+  name: string,
+  image?: string
 }
+
+declare type Extra$QueuedPost = {
+  id: string,
+  scheduledFor: Date
+};

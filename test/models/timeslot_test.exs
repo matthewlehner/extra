@@ -34,4 +34,14 @@ defmodule Extra.TimeslotTest do
       assert timeslot.recurrence == params.recurrence
     end
   end
+
+  describe "build_post_queue" do
+    test "inserts a bunch of stuff into the database" do
+      timeslot = :timeslot
+                 |> insert()
+
+      assert {7, nil} == Timeslot.build_post_queue(timeslot)
+      assert {0, nil} == Timeslot.build_post_queue(timeslot)
+    end
+  end
 end

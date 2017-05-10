@@ -5,7 +5,7 @@ exports[`Field component renders correctly 1`] = `
   className="form__control-group"
 >
   <label
-    className="form__control-label"
+    className="label"
     htmlFor="Channel"
   >
     Channel

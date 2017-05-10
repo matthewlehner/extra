@@ -4,6 +4,7 @@ import React from "react";
 import { graphql, compose } from "react-apollo";
 
 import Schedule from "components/schedule";
+import QueuedPosts from "components/queued-posts";
 import currentChannelForLayoutQuery from "app/queries/channel-page.gql";
 import updateScheduleMutation from "app/queries/update-schedule.gql";
 import addTimeslotMutation from "app/queries/add-timeslot-mutation.gql";
@@ -94,6 +95,8 @@ function ChannelPage(props:Props) {
       </section>
 
       <Schedule {...scheduleProps} />
+
+      <QueuedPosts channelId={channel.id} />
     </div>
   );
 }

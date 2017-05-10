@@ -2,7 +2,7 @@
 
 exports[`Label component renders correctly 1`] = `
 <label
-  className="form__control-label"
+  className="label"
   htmlFor="something"
 >
   label

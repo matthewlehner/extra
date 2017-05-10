@@ -19,8 +19,11 @@ type Props = {
     error?: {
       message: string
     },
-    channels: Array<{ id: string, provider: string, name: string }>,
-    collections: Array<{ id: string, name: string }>
+    channels: Array<Extra$Channel>,
+    collection: {
+      id: string,
+      name: string
+    }
   },
   addPostContent: ({
     variables: {
@@ -39,18 +42,17 @@ export default class NewPostContent extends Component {
   constructor(props:Props) {
     super(props);
 
-    const { channels, collections } = props.data;
+    const { channels } = props.data;
 
-    this.state = { formData: postContentFormData(collections, channels) };
+    this.state = { formData: postContentFormData(channels) };
   }
 
   componentWillReceiveProps(nextProps:Props) {
-    const { channels, collections } = nextProps.data;
+    const { channels } = nextProps.data;
 
-    if (this.props.data.collections !== collections &&
-        this.props.data.channels !== channels) {
+    if (this.props.data.channels !== channels) {
       this.setState(() => ({
-        formData: postContentFormData(collections, channels)
+        formData: postContentFormData(channels)
       }));
     }
   }
@@ -94,7 +96,7 @@ export default class NewPostContent extends Component {
   }
 
   render() {
-    const { data: { loading, error } } = this.props;
+    const { data: { loading, error, collection } } = this.props;
 
     return (
       <Modal title="Create new post" onDismiss={this.onCancel}>
@@ -102,6 +104,7 @@ export default class NewPostContent extends Component {
           loading || error
           ? "Loading"
           : <PostContentForm
+            collection={collection}
             onChangeInput={this.onChangeInput}
             addPostContent={this.addPostContent}
             formData={this.state.formData}

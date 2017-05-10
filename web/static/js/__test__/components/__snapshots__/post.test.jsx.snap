@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Post component renders correctly 1`] = `
+<li
+  className="post"
+>
+  I am the child.
+</li>
+`;

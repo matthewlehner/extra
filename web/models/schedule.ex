@@ -18,4 +18,10 @@ defmodule Extra.Schedule do
   def changeset(struct, params \\ %{}) do
     cast(struct, params, [:autopilot])
   end
+
+  def build_queue(schedule) do
+    timeslots = schedule
+    |> Repo.preload(:timeslots)
+    |> Map.fetch!(:timeslots)
+  end
 end

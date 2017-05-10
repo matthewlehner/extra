@@ -1,14 +1,10 @@
 const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const ExtractSVGPlugin = require("svg-sprite-loader/lib/extract-svg-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 
-const autoprefixer = require("autoprefixer");
-
 const extractCSS = new ExtractTextPlugin("css/[name].css");
-const extractSVG = new ExtractSVGPlugin("images/[name].svg");
 
 const common = {
   entry: {
@@ -54,23 +50,16 @@ const common = {
       }, {
         test: /.*\.svg$/,
         exclude: /node_modules/,
-        use: extractSVG.extract({
-          use: [{
-            loader: "svg-sprite-loader",
-            options: {
-              name: "[name]-icon",
-              extract: true,
-              esModule: false
-            }
-          }, {
-            loader: "svgo-loader",
-            options: {
-              plugins: [
-                { removeTitle: true }
-              ]
-            }
-          }]
-        })
+        use: [{
+          loader: "svg-sprite-loader"
+        }, {
+          loader: "svgo-loader",
+          options: {
+            plugins: [
+              { removeTitle: true }
+            ]
+          }
+        }]
       }, {
         test: /\.scss$/,
         exclude: [
@@ -86,7 +75,10 @@ const common = {
               importLoaders: 1
             }
           }, {
-            loader: "postcss-loader"
+            loader: "postcss-loader",
+            options: {
+              sourceMap: true
+            }
           }, {
             loader: "sass-loader",
             options: {
@@ -109,7 +101,10 @@ const common = {
               importLoaders: 1
             }
           }, {
-            loader: "postcss-loader"
+            loader: "postcss-loader",
+            options: {
+              sourceMap: true
+            }
           }, {
             loader: "sass-loader",
             options: {
@@ -128,28 +123,11 @@ const common = {
       chunks: ["app"],
       minChunks: ({ resource }) => /node_modules/.test(resource)
     }),
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        context: path.join(__dirname, "/web/static/js"),
-        postcss: [
-          // require("postcss-smart-import")({
-          //   from: "./web/static/css/",
-          //   plugins: [ require("stylelint")() ]
-          // }),
-          // require("postcss-url")(),
-          // require("postcss-cssnext"),
-          autoprefixer()
-          // require("postcss-browser-reporter")(),
-          // require("postcss-reporter")()
-        ]
-      }
-    }),
     new CopyWebpackPlugin([{
       from: { glob: "**/*", dot: false },
       context: "./web/static/assets"
     }]),
-    extractCSS,
-    extractSVG
+    extractCSS
   ]
 };
 
@@ -157,7 +135,9 @@ let config;
 
 switch (process.env.npm_lifecycle_event) {
   case "deploy":
-    config = merge(common, {});
+    config = merge(common, {
+      devtool: "nosources-source-map"
+    });
     break;
   default:
     config = merge(common, {
@@ -172,7 +152,7 @@ switch (process.env.npm_lifecycle_event) {
           }
         ]
       },
-      devtool: "source-map"
+      devtool: "cheap-eval-source-map"
     });
 }
 

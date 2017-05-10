@@ -1,0 +1,10 @@
+query QueuedPostsForChannel($channelId: ID!){
+  queuedPosts(channelId:$channelId){
+    id
+    scheduledFor
+    postContent {
+      id
+      body
+    }
+  }
+}

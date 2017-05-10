@@ -2,12 +2,9 @@
 
 import React from "react";
 import Icon from "../../components/icon";
+import ChannelLogo from "../../components/channel-logo";
 
-// function handleChange(event, fieldName, callback) {
-//   event.preventDefault();
-// }
-
-const CheckboxCollection = (
+const ChannelSelector = (
   { options, name, onChange, value: checkboxValues }: {
     options: Array<{ value: string, label: string, provider: string }>,
     name: string,
@@ -23,8 +20,8 @@ const CheckboxCollection = (
   return (
     <div className="form__collection-wrapper">
       {
-        options.map(({ value, label }) => (
-          <label key={value} htmlFor={`${name}-${value}`}>
+        options.map(({ value, label, provider }) => (
+          <label key={value} htmlFor={`${name}-${value}`} style={{ position: "relative" }}>
             <input
               className="form__control"
               type="checkbox"
@@ -35,6 +32,7 @@ const CheckboxCollection = (
             <span className="form__indicator form__indicator_checkbox">
               <Icon className="icon icon_checkmark" name="checkmark" />
             </span>
+            <ChannelLogo provider={provider} />
             {label}
           </label>
         ))
@@ -43,4 +41,4 @@ const CheckboxCollection = (
   );
 };
 
-export default CheckboxCollection;
+export default ChannelSelector;

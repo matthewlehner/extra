@@ -1,11 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CheckboxCollection component renders correctly 1`] = `
+exports[`ChannelSelector component renders correctly 1`] = `
 <div
   className="form__collection-wrapper"
 >
   <label
     htmlFor="channels-0"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
   >
     <input
       checked={false}
@@ -21,10 +26,17 @@ exports[`CheckboxCollection component renders correctly 1`] = `
         className="icon icon_checkmark"
       >
         <use
-          xlinkHref="/images/app.svg#checkmark-icon"
+          xlinkHref="#id"
         />
       </svg>
     </span>
+    <svg
+      className="logo"
+    >
+      <use
+        xlinkHref="#id"
+      />
+    </svg>
     matthewpearse
   </label>
 </div>

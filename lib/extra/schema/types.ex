@@ -5,6 +5,11 @@ defmodule Extra.Schema.Types do
   use Absinthe.Schema.Notation
   use Absinthe.Ecto, repo: Extra.Repo
 
+  scalar :datetime, description: "ISOz time" do
+    parse &DateTime.from_iso8601(&1.value)
+    serialize &DateTime.to_iso8601(&1)
+  end
+
   scalar :time do
     description "Time in ISO 8601 format"
     parse &Time.from_iso8601(&1.value)
@@ -57,5 +62,13 @@ defmodule Extra.Schema.Types do
     field :recurrence, :recurrence
     field :schedule, :schedule, resolve: assoc(:schedule)
     field :collection, :collection, resolve: assoc(:collection)
+  end
+
+  object(:queued_post) do
+    field :id, :id
+    field :scheduled_for, :datetime
+    field :channel, :channel, resolve: assoc(:channel)
+    field :collection, :collection, resolve: assoc(:collection)
+    field :post_content, :post_content, resolve: assoc(:post_content)
   end
 end

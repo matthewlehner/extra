@@ -29,7 +29,7 @@ export default function Sidebar(
 
   return (
     <section className="sidebar">
-      <Icon className="extra-logo" name="extra-logo" />
+      <Icon className="extra-logo" name="logo" />
       <nav className="site-nav">
         <section>
           <h3>Collections</h3>
@@ -48,7 +48,7 @@ export default function Sidebar(
             }
             <li>
               <Link to="/">
-                <Icon name="add-new" />
+                <Icon name="addNew" />
                 Add new
               </Link>
             </li>
@@ -64,7 +64,7 @@ export default function Sidebar(
                 : channels.map(({ id, name, provider }) => (
                   <li key={`channel-${id}`}>
                     <NavLink to={`/channels/${id}`}>
-                      <Icon name={`${provider}-badge`} />
+                      <Icon name={`${provider}Badge`} />
                       {name}
                     </NavLink>
                   </li>
@@ -72,7 +72,7 @@ export default function Sidebar(
             }
             <li>
               <Link to="/">
-                <Icon name="add-new" />
+                <Icon name="addNew" />
                 Add new
               </Link>
             </li>

@@ -5,7 +5,7 @@ defmodule EasyInput do
   @label_defaults [class: "form__control-label"]
   @wrapper_defaults [class: "form__control-group"]
 
-  @input_options [:placeholder, :using, :collection]
+  @input_options [:placeholder, :using, :collection, :autofocus]
   @label_options [:label]
 
   def association(form, field, opts \\ []) do

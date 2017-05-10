@@ -1,4 +1,8 @@
 defmodule Extra.SocialChannel do
+  @moduledoc """
+  Publishing channels for Extra.
+  """
+
   use Extra.Web, :model
 
   schema "social_channels" do
@@ -9,6 +13,8 @@ defmodule Extra.SocialChannel do
     belongs_to :user, Extra.User
     has_many :templates, Extra.PostTemplate
     has_one :schedule, Extra.Schedule
+
+    has_many :queued_posts, Extra.QueuedPost
 
     timestamps()
   end
