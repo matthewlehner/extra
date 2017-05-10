@@ -7,7 +7,7 @@ import Styles from "./channel-logo.scss";
 
 const ChannelLogo = ({ provider }: { provider: string }) => (
   <svg className={Styles.logo}>
-    <use xlinkHref={Icons[provider]} />
+    <use xlinkHref={`#${Icons[provider].id}`} />
   </svg>
 );
 
