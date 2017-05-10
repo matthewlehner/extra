@@ -1,6 +1,7 @@
 // @flow
 
 import React from "react";
+import PostList from "./post/list";
 
 type Props = {
   posts: Array<{
@@ -14,13 +15,13 @@ const CollectionPosts = ({ posts }: Props) => (
     <header>
       <h2>Posts</h2>
     </header>
-    <ul className="posts-list">
+    <PostList>
       { posts.map(({ id, body }) => (
         <li key={id} className="post-preview">
           <p>{body}</p>
         </li>
       ))}
-    </ul>
+    </PostList>
   </section>
 );
 
