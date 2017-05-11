@@ -12,6 +12,7 @@ defmodule Extra.Schema.Resolvers.QueuedPostResolver do
       QueuedPost
       |> QueuedPost.for_user(user)
       |> where([p], p.channel_id == ^channel_id)
+      |> order_by([p], asc: p.scheduled_for)
       |> Repo.all()
 
     case queued_posts do
