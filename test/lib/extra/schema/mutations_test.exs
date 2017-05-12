@@ -12,15 +12,18 @@ defmodule Extra.Schema.MutationsTest do
 
   describe "update_schedule mutation" do
     test "it updates a schedule" do
-      schedule = insert(:schedule)
+      user = insert(:user)
+      channel = insert(:social_channel, user: user)
+      schedule = insert(:schedule, channel: channel)
 
+      context = %{current_user: user}
       mutation_variables = %{
         "channelId" => schedule.social_channel_id,
         "autopilot" => false
       }
 
       assert {:ok, response} = @update_schedule_mutation
-                               |> Absinthe.run(Schema, variables: mutation_variables)
+                               |> Absinthe.run(Schema, variables: mutation_variables, context: context)
 
       assert response == %{data: %{"updateSchedule" => %{
         "autopilot" => false,
@@ -29,13 +32,17 @@ defmodule Extra.Schema.MutationsTest do
     end
   end
 
+  # TODO - figure out a way to load these from the gql files.
   @add_timeslot_mutation """
   mutation AddTimeslot(
     $scheduleId: ID!, $collectionId: ID!, $recurrence: Recurrence!, $time: Time!
   ) {
     addTimeslot(
-      scheduleId: $scheduleId, collectionId: $collectionId, timeslot: {
-        recurrence: $recurrence, time: $time
+      timeslot: {
+       scheduleId: $scheduleId
+       collectionId: $collectionId
+       recurrence: $recurrence
+       time: $time
       }
     ) {
       id, time, recurrence
@@ -45,16 +52,23 @@ defmodule Extra.Schema.MutationsTest do
 
   describe "add_timeslot mutation" do
     test "it creates a new timeslot" do
-      schedule = insert(:schedule)
-      collection = insert(:post_collection)
+      user = insert(:user)
+      channel = insert(:social_channel, user: user)
+      schedule = insert(:schedule, channel: channel)
+      collection = insert(:post_collection, user: user)
 
       mutation_variables = %{"scheduleId" => schedule.id,
                              "collectionId" => collection.id,
                              "recurrence" => "MONDAY",
                              "time" => "09:00:00"}
 
-      assert {:ok, response} = @add_timeslot_mutation
-                               |> Absinthe.run(Schema, variables: mutation_variables)
+      context = %{current_user: user}
+      assert {:ok, response} = Absinthe.run(
+                                 @add_timeslot_mutation,
+                                 Schema,
+                                 variables: mutation_variables,
+                                 context: context
+                               )
 
       %{data: %{"addTimeslot" => %{"id" => timeslot_id}}} = response
       timeslot = Repo.get(Extra.Timeslot, timeslot_id)

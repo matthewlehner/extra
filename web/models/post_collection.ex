@@ -9,6 +9,12 @@ defmodule Extra.PostCollection do
     timestamps()
   end
 
+  def for_user(%Extra.User{} = user), do: for_user(__MODULE__, user)
+  def for_user(query, user) do
+    from c in query,
+      where: [user_id: ^user.id]
+  end
+
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """

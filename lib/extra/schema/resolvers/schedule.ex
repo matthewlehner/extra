@@ -7,10 +7,10 @@ defmodule Extra.Schema.Resolvers.Schedule do
   alias Extra.Schedule
   alias Extra.SocialChannel
 
-  def find_by(_parent, %{channel_id: channel_id}, %{context: %{current_user: %{id: user_id}}}) do
+  def find_by(_parent, %{channel_id: channel_id}, %{context: %{current_user: user}}) do
     schedule =
       Schedule
-      |> join(:inner, [s], c in SocialChannel, c.id == s.id and c.user_id == ^user_id)
+      |> Schedule.for_user(user)
       |> Repo.get_by(social_channel_id: channel_id)
 
     case schedule do
@@ -19,8 +19,9 @@ defmodule Extra.Schema.Resolvers.Schedule do
     end
   end
 
-  def update(%{channel_id: channel_id, schedule: schedule_params}, _info) do
+  def update(%{channel_id: channel_id, schedule: schedule_params}, %{context: %{current_user: user}}) do
     Schedule
+    |> Schedule.for_user(user)
     |> Repo.get_by!(social_channel_id: channel_id)
     |> Schedule.changeset(schedule_params)
     |> Repo.update

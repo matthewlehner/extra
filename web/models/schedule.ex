@@ -12,15 +12,24 @@ defmodule Extra.Schedule do
     timestamps()
   end
 
+  def for_user(%Extra.User{} = user), do: for_user(__MODULE__, user)
+
+  def for_user(query, user) do
+    from p in query,
+      join: c in assoc(p, :channel),
+      where: c.user_id == ^user.id
+  end
+
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
   def changeset(struct, params \\ %{}) do
-    cast(struct, params, [:autopilot])
+    struct
+    |> cast(params, [:autopilot])
   end
 
   def build_queue(schedule) do
-    timeslots = schedule
+    schedule
     |> Repo.preload(:timeslots)
     |> Map.fetch!(:timeslots)
   end

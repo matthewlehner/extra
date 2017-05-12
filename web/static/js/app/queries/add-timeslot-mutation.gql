@@ -1,15 +1,15 @@
 mutation AddTimeslot(
-  $scheduleId: ID!,
-  $collectionId: ID!,
-  $time: Time!,
+  $scheduleId: ID!
+  $collectionId: ID!
+  $time: Time!
   $recurrence: Recurrence!
 ) {
   addTimeslot(
-    scheduleId: $scheduleId,
-    collectionId: $collectionId,
     timeslot: {
-      time: $time,
+      time: $time
       recurrence: $recurrence
+      scheduleId: $scheduleId
+      collectionId: $collectionId
     }
   ) {
     id

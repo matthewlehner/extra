@@ -19,8 +19,43 @@ defmodule Extra.Timeslot do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:time, :recurrence, :collection_id])
-    |> validate_required([:time, :recurrence, :collection_id])
+    |> cast(params, [:time, :recurrence, :collection_id, :schedule_id])
+    |> validate_required([:time, :recurrence, :collection_id, :schedule_id])
+    |> foreign_key_constraint(:schedule_id)
+    |> foreign_key_constraint(:collection_id)
+  end
+
+  def changeset_for_user(struct, params, user) do
+    struct
+    |> changeset(params)
+    |> validate_collection_user(user)
+    |> validate_schedule_user(user)
+  end
+
+  def validate_schedule_user(changeset, user) do
+    validate_change changeset, :schedule_id, fn _, schedule_id ->
+      schedule = user
+                 |> Extra.Schedule.for_user()
+                 |> Extra.Repo.get(schedule_id)
+
+      case schedule do
+        %Extra.Schedule{} -> []
+        nil               -> [schedule_id: "not found"]
+      end
+    end
+  end
+
+  def validate_collection_user(changeset, user) do
+    validate_change changeset, :collection_id, fn _, collection_id ->
+      collection = user
+                   |> Extra.PostCollection.for_user()
+                   |> Extra.Repo.get(collection_id)
+
+      case collection do
+        %Extra.PostCollection{} -> []
+        nil                     -> [collection_id: "not found"]
+      end
+    end
   end
 
   @spec build_post_queue(%Extra.Timeslot{}) :: DateTime.t()

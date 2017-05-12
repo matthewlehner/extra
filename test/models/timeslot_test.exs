@@ -9,29 +9,52 @@ defmodule Extra.TimeslotTest do
     assert {:time, "can't be blank"} in errors
     assert {:recurrence, "can't be blank"} in errors
     assert {:collection_id, "can't be blank"} in errors
+    assert {:schedule_id, "can't be blank"} in errors
   end
 
-  describe "changeset" do
+  describe "changeset_for_user" do
     test "creates insertable changeset" do
-      schedule = insert(:schedule)
-      collection = insert(:post_collection)
+      user = insert(:user)
+      channel = insert(:social_channel, user: user)
+      schedule = insert(:schedule, channel: channel)
+      collection = insert(:post_collection, user: user)
 
       params = %{
         time: ~T[09:00:00],
         recurrence: :everyday,
-        collection_id: collection.id
+        collection_id: collection.id,
+        schedule_id: schedule.id
       }
 
-      assert {:ok, timeslot} = Schedule
-                               |> Repo.get(schedule.id)
-                               |> build_assoc(:timeslots)
-                               |> Timeslot.changeset(params)
+      assert {:ok, timeslot} = %Timeslot{}
+                               |> Timeslot.changeset_for_user(params, user)
                                |> Repo.insert
 
       assert timeslot.collection_id == collection.id
       assert timeslot.schedule_id == schedule.id
       assert timeslot.time == params.time
       assert timeslot.recurrence == params.recurrence
+    end
+
+    test "validates user owns related entities" do
+      user = insert(:user)
+      schedule = insert(:schedule)
+      collection = insert(:post_collection)
+
+      params = %{
+        time: ~T[09:00:00],
+        recurrence: :everyday,
+        collection_id: collection.id,
+        schedule_id: schedule.id
+      }
+
+      assert {:error, changeset} = %Timeslot{}
+                               |> Timeslot.changeset_for_user(params, user)
+                               |> Repo.insert
+
+      errors = errors_on(changeset)
+      assert {:schedule_id, "not found"} in errors
+      assert {:collection_id, "not found"} in errors
     end
   end
 

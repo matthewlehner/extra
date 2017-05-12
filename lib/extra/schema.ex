@@ -49,6 +49,8 @@ defmodule Extra.Schema do
   input_object :add_timeslot_params do
     field :time, non_null(:time)
     field :recurrence, non_null(:recurrence)
+    field :schedule_id, non_null(:id)
+    field :collection_id, non_null(:id)
   end
 
   mutation do
@@ -60,8 +62,6 @@ defmodule Extra.Schema do
     end
 
     field :add_timeslot, type: :timeslot do
-      arg :schedule_id, non_null(:id)
-      arg :collection_id, non_null(:id)
       arg :timeslot, :add_timeslot_params
 
       resolve &Timeslot.create/2
