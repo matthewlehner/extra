@@ -3,7 +3,7 @@
 import React from "react";
 
 import LinkButton from "components/ui/link-button";
-import { Select } from "lib/forms";
+import { Select, Input } from "lib/forms";
 import { dayTranslations } from "lib/schedule-helpers";
 
 type InputPropsType = {
@@ -32,13 +32,19 @@ const recurrenceOptions = ({ name }) => ({
 
 const collectionOptions = ({ id, name }) => ({ value: id, label: name });
 
-const TimeslotForm = (
-  { time, recurrence, collection, onCancel, onSubmit }: Props
-) => (
+const TimeslotForm = ({
+  time,
+  recurrence,
+  collection,
+  onCancel,
+  onSubmit
+}: Props) => (
   <form onSubmit={onSubmit}>
-    <input
+    <Input
       name="time"
-      type="text" placeholder="00:00" value={time.value}
+      type="text"
+      placeholder="00:00"
+      value={time.value}
       onChange={time.onChange}
       required
     />
@@ -51,7 +57,7 @@ const TimeslotForm = (
       required
     />
     <Select
-      name="collection"
+      name="collectionId"
       onChange={collection.onChange}
       value={collection.value}
       options={collection.options.map(collectionOptions)}

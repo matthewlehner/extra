@@ -5,4 +5,3 @@ export function handleChange(
 ) {
   callback(field, event.currentTarget.value);
 }
-

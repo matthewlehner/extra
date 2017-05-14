@@ -52,11 +52,11 @@ type Props = {
   }
 };
 
-function ChannelPage(props:Props) {
+function ChannelPage(props: Props) {
   const {
-    updateSchedule, addTimeslot, data: {
-      loading, error, schedule, channel, collections, recurrenceType
-    }
+    updateSchedule,
+    addTimeslot,
+    data: { loading, error, schedule, channel, collections, recurrenceType }
   } = props;
 
   if (loading) {
@@ -67,11 +67,16 @@ function ChannelPage(props:Props) {
     return <div>{error.message}</div>;
   }
 
-  const toggleAutopilot = () => (
-    updateSchedule({ variables: { channelId: channel.id, autopilot: !schedule.autopilot } })
-  );
+  const toggleAutopilot = () =>
+    updateSchedule({
+      variables: { channelId: channel.id, autopilot: !schedule.autopilot }
+    });
   const scheduleProps = {
-    toggleAutopilot, addTimeslot, schedule, collections, recurrenceType
+    toggleAutopilot,
+    addTimeslot,
+    schedule,
+    collections,
+    recurrenceType
   };
 
   return (
@@ -120,7 +125,8 @@ export default compose(
             }
           };
         }
-      }
+      },
+      refetchQueries: ["QueuedPostsForChannel"]
     }
   })
 )(ChannelPage);

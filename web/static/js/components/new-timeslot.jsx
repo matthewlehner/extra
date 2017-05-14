@@ -33,23 +33,23 @@ export default class NewTimeslot extends Component {
         ...this.state.timeslot
       }
     });
-  }
+  };
 
-  setTimeslotState = (key:string, value:string) => {
+  setTimeslotState = (key: string, value: string) => {
     this.setState(({ timeslot }) => ({
       timeslot: { ...timeslot, [key]: value }
     }));
-  }
+  };
 
   hideForm = (event: Event) => {
     event.preventDefault();
     this.setState(() => ({ showForm: false, timeslot: timeslotDefaults }));
-  }
+  };
 
   showForm = (event: Event) => {
     event.preventDefault();
     this.setState(() => ({ showForm: true }));
-  }
+  };
 
   render() {
     if (this.state.showForm === false) {
@@ -66,21 +66,17 @@ export default class NewTimeslot extends Component {
     const formProps = {
       time: {
         value: timeslot.time,
-        onChange: event => (this.setTimeslotState("time", event.currentTarget.value))
+        onChange: this.setTimeslotState
       },
       recurrence: {
         options: recurrenceValues,
         value: timeslot.recurrence,
-        onChange: event => (
-          this.setTimeslotState("recurrence", event.currentTarget.value)
-        )
+        onChange: this.setTimeslotState
       },
       collection: {
         options: collections,
         value: timeslot.collectionId,
-        onChange: event => (
-          this.setTimeslotState("collectionId", event.currentTarget.value)
-        )
+        onChange: this.setTimeslotState
       },
       onCancel: this.hideForm,
       onSubmit: this.onSubmit
