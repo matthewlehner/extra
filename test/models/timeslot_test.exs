@@ -2,7 +2,6 @@ defmodule Extra.TimeslotTest do
   use Extra.ModelCase, asyc: true
 
   alias Extra.Timeslot
-  alias Extra.Schedule
 
   test "changeset with invalid attributes" do
     errors = errors_on(%Timeslot{})
@@ -14,10 +13,9 @@ defmodule Extra.TimeslotTest do
 
   describe "changeset_for_user" do
     test "creates insertable changeset" do
-      user = insert(:user)
-      channel = insert(:social_channel, user: user)
-      schedule = insert(:schedule, channel: channel)
-      collection = insert(:post_collection, user: user)
+      %{
+        user: user, schedule: schedule, collection: collection
+      } = insert_channel_resources()
 
       params = %{
         time: ~T[09:00:00],

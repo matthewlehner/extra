@@ -4,11 +4,12 @@ defmodule Extra.Timeslot do
   them with collections.
   """
   use Extra.Web, :model
+  alias Extra.Schedule
 
   schema "timeslots" do
     field :time, :time
     field :recurrence, Extra.RecurrenceEnum
-    belongs_to :schedule, Extra.Schedule
+    belongs_to :schedule, Schedule
     belongs_to :collection, Extra.PostCollection
 
     timestamps()
@@ -35,11 +36,11 @@ defmodule Extra.Timeslot do
   def validate_schedule_user(changeset, user) do
     validate_change changeset, :schedule_id, fn _, schedule_id ->
       schedule = user
-                 |> Extra.Schedule.for_user()
+                 |> Schedule.for_user()
                  |> Extra.Repo.get(schedule_id)
 
       case schedule do
-        %Extra.Schedule{} -> []
+        %Schedule{} -> []
         nil               -> [schedule_id: "not found"]
       end
     end

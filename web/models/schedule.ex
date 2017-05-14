@@ -30,7 +30,7 @@ defmodule Extra.Schedule do
 
   def build_queue(schedule) do
     schedule
-    |> Repo.preload(:timeslots)
+    |> Extra.Repo.preload(:timeslots)
     |> Map.fetch!(:timeslots)
   end
 end

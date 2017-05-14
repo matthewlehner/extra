@@ -73,4 +73,18 @@ defmodule Extra.Factory do
       collection: build(:post_collection)
     }
   end
+
+  def insert_channel_resources do
+    user = insert(:user)
+    channel = insert(:social_channel, user: user)
+    schedule = insert(:schedule, channel: channel)
+    collection = insert(:post_collection, user: user)
+
+    %{
+      user: user,
+      channel: channel,
+      schedule: schedule,
+      collection: collection
+    }
+  end
 end
