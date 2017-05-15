@@ -54,8 +54,8 @@ defmodule Extra.QueuedPostTest do
       |> Repo.update_all([])
 
       new_count = QueuedPost.with_empty_content()
-                     |> select([p], count(p.id))
-                     |> Repo.one
+                  |> select([p], count(p.id))
+                  |> Repo.one
 
       assert count - 1 == new_count
     end
