@@ -42,7 +42,6 @@ defmodule Extra.Mixfile do
      {:comeonin, "~> 3.0"},
      {:ueberauth_shopify, "~> 0.1.2"},
      {:ueberauth_twitter, github: "ueberauth/ueberauth_twitter"},
-     # {:oauth, github: "tim/erlang-oauth"},
      {:ueberauth_facebook, "~> 0.6"},
      {:ueberauth_identity, "~> 0.2.0"},
      {:ecto_enum, "~> 1.0.0"},
