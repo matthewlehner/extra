@@ -35,4 +35,27 @@ defmodule Extra.QueuedPost do
     |> cast(params, [:scheduled_for])
     |> validate_required([:scheduled_for])
   end
+
+  @spec for_timeslot(%Extra.Timeslot{}) :: list(%{})
+  def for_timeslot(timeslot) do
+    now = DateTime.utc_now
+
+    timeslot
+    |> Map.fetch!(:recurrence)
+    |> Extra.Recurrence.days_of_week_for()
+    |> Enum.map(fn(day) ->
+      date = Extra.DateHelpers.next_day(day)
+      {:ok, datetime} = NaiveDateTime.new(date, timeslot.time)
+      DateTime.from_naive!(datetime, "Etc/UTC")
+    end)
+    |> Enum.sort_by(&DateTime.to_unix/1)
+    |> Enum.map(fn(datetime) ->
+      %{
+        scheduled_for: datetime,
+        timeslot_id: timeslot.id,
+        inserted_at: now,
+        updated_at: now
+      }
+    end)
+  end
 end

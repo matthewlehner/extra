@@ -62,24 +62,8 @@ defmodule Extra.Timeslot do
 
   @spec build_post_queue(%Extra.Timeslot{}) :: DateTime.t()
   def build_post_queue(timeslot) do
-    now = DateTime.utc_now
-
     timeslot
-    |> Map.fetch!(:recurrence)
-    |> Extra.Recurrence.days_of_week_for()
-    |> Enum.map(&(Extra.DateHelpers.next_day(&1)))
-    |> Enum.map(fn(date) ->
-      {:ok, datetime} = NaiveDateTime.new(date, timeslot.time)
-      DateTime.from_naive!(datetime, "Etc/UTC")
-    end)
-    |> Enum.map(fn(datetime) ->
-      %{
-        scheduled_for: datetime,
-        timeslot_id: timeslot.id,
-        inserted_at: now,
-        updated_at: now
-      }
-    end)
+    |> Extra.QueuedPost.for_timeslot()
     |> insert_posts
   end
 

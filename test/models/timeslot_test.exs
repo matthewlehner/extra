@@ -58,8 +58,7 @@ defmodule Extra.TimeslotTest do
 
   describe "build_post_queue" do
     test "inserts a bunch of stuff into the database" do
-      timeslot = :timeslot
-                 |> insert()
+      timeslot = insert(:timeslot)
 
       assert {7, nil} == Timeslot.build_post_queue(timeslot)
       assert {0, nil} == Timeslot.build_post_queue(timeslot)
