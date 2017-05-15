@@ -1,12 +1,17 @@
 defmodule Extra.QueuedPost do
+  @moduledoc """
+  Schema for queued posts. Persistence for BG jobs. Kinda dumb, but necessary,
+  for now.
+  """
   use Extra.Web, :model
-  alias Extra.SocialChannel
 
   schema "queued_posts" do
     field :scheduled_for, :utc_datetime
-    belongs_to :channel, SocialChannel, foreign_key: :channel_id
-    belongs_to :collection, Extra.Collection
-    belongs_to :post_content, Extra.PostContent
+    belongs_to :timeslot, Extra.Timeslot
+    has_one :channel, through: [:timeslot, :channel]
+    has_one :collection, through: [:timeslot, :collection]
+    belongs_to :post_template, Extra.PostTemplate
+    has_one :post_content, through: [:post_template, :post_content]
 
     timestamps()
   end

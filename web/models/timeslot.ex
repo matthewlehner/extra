@@ -10,6 +10,7 @@ defmodule Extra.Timeslot do
     field :time, :time
     field :recurrence, Extra.RecurrenceEnum
     belongs_to :schedule, Schedule
+    has_one :channel, through: [:schedule, :channel]
     belongs_to :collection, Extra.PostCollection
 
     timestamps()
@@ -61,7 +62,6 @@ defmodule Extra.Timeslot do
 
   @spec build_post_queue(%Extra.Timeslot{}) :: DateTime.t()
   def build_post_queue(timeslot) do
-    timeslot = Extra.Repo.preload(timeslot, :schedule)
     now = DateTime.utc_now
 
     timeslot
@@ -75,8 +75,7 @@ defmodule Extra.Timeslot do
     |> Enum.map(fn(datetime) ->
       %{
         scheduled_for: datetime,
-        channel_id: timeslot.schedule.social_channel_id,
-        collection_id: timeslot.collection_id,
+        timeslot_id: timeslot.id,
         inserted_at: now,
         updated_at: now
       }
