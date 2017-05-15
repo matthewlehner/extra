@@ -74,6 +74,13 @@ defmodule Extra.Factory do
     }
   end
 
+  def queued_post_factory do
+    %Extra.QueuedPost {
+      scheduled_for: Timex.shift(DateTime.utc_now(), hours: 1),
+      timeslot: build(:timeslot)
+    }
+  end
+
   def insert_channel_resources do
     user = insert(:user)
     channel = insert(:social_channel, user: user)

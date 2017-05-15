@@ -16,15 +16,14 @@ defmodule Extra.QueuedPost do
     timestamps()
   end
 
-  def upcoming(query \\ Extra.Post) do
-    from p in query,
-    where: p.scheduled_for > ^DateTime.utc_now()
-  end
-
   def for_user(query, user) do
     from p in query,
       join: c in assoc(p, :channel),
       where: c.user_id == ^user.id
+  end
+
+  def with_empty_content(query \\ Extra.QueuedPost) do
+    from p in query, where: is_nil(p.post_template_id)
   end
 
   @doc """
