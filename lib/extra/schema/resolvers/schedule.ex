@@ -2,10 +2,8 @@ defmodule Extra.Schema.Resolvers.Schedule do
   @moduledoc """
   Resolver for the Schedule object
   """
-  import Ecto.Query
   alias Extra.Repo
   alias Extra.Schedule
-  alias Extra.SocialChannel
 
   def find_by(_parent, %{channel_id: channel_id}, %{context: %{current_user: user}}) do
     schedule =

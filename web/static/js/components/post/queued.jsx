@@ -5,12 +5,16 @@ import React from "react";
 import Post from "./index";
 import Style from "./post.scss";
 
-const QueuedPost = ({ scheduledFor }:{ scheduledFor: Date }) => {
+type Props = { scheduledFor: Date, postContent: Extra$PostContent };
+
+const QueuedPost = ({ scheduledFor, postContent }: Props) => {
   const postTime = new Date(scheduledFor).toString();
 
   return (
     <Post>
-      Empty queue slot
+      { postContent
+          ? postContent.body
+          : "Empty queue slot" }
       <footer className={Style.footer}>
         Scheduled For: <time dateTime={scheduledFor}>{postTime}</time>
       </footer>

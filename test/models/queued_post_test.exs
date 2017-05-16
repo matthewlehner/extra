@@ -8,7 +8,8 @@ defmodule Extra.QueuedPostTest do
   @valid_attrs %{scheduled_for:
     Timex.to_datetime(%{
       day: 17, hour: 14, min: 0, month: 4, sec: 0, year: 2010
-    })
+    }),
+    post_template_id: 1
   }
 
   @invalid_attrs %{}

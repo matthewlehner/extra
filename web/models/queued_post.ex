@@ -31,8 +31,8 @@ defmodule Extra.QueuedPost do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:scheduled_for])
-    |> validate_required([:scheduled_for])
+    |> cast(params, [:scheduled_for, :post_template_id])
+    |> validate_required([:scheduled_for, :post_template_id])
   end
 
   @spec for_timeslot(%Extra.Timeslot{}) :: list(%{})
