@@ -9,6 +9,20 @@ defmodule Extra.PostPicker do
   alias Extra.PostTemplate
   alias Extra.PostCollection
 
+  @type t :: %__MODULE__{
+    post_templates: %{},
+    queue_slots: []
+  }
+
+  # Channel
+  # ↳ Templates
+  #   ↳ Content
+  # ↳ Timeslot
+  # ↳ QueuedPosts
+  # ↳ Collection
+
+  defstruct [:post_templates, :collection, :queue_slots, :selected_templates]
+
   def fill_empty_queue_slots do
     fetch_queued_posts()
     |> group_by_collection()
@@ -55,6 +69,10 @@ defmodule Extra.PostPicker do
 
   @spec assign_posts_to_queue_slots([{{:weight, [any]}, [%QueuedPost{}]}]) :: []
   def assign_posts_to_queue_slots(posting_data) do
+    # Should check to make sure this doesn't have the same template as the
+    # timeslot next to it.
+    # It will need to know it's position in the list of queued and published
+    # posts, as well as knowing what templates are assigned to those posts.
     Enum.reduce(posting_data, [], &prepare_changesets/2)
   end
 
@@ -84,5 +102,3 @@ defmodule Extra.PostPicker do
       ]
   end
 end
-
-# defstruct [:post_templates, :collection, :queue_slots, :selected_templates]
