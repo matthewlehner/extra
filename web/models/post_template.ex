@@ -8,6 +8,7 @@ defmodule Extra.PostTemplate do
     field :active, :boolean, default: false
     belongs_to :social_channel, Extra.SocialChannel
     belongs_to :post_content, Extra.PostContent
+    has_one :collection, through: [:post_content, :collection]
 
     timestamps()
   end
@@ -21,5 +22,10 @@ defmodule Extra.PostTemplate do
     |> validate_required([:social_channel_id])
     |> assoc_constraint(:social_channel)
     |> assoc_constraint(:post_content)
+  end
+
+  @spec weight_for(template :: %__MODULE__{}) :: pos_integer
+  def weight_for(_template) do
+    100
   end
 end

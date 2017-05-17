@@ -5,6 +5,7 @@ defmodule Extra.PostCollection do
     field :name, :string
     belongs_to :user, Extra.User
     has_many :posts, Extra.PostContent
+    has_many :templates, through: [:posts, :templates]
 
     timestamps()
   end
