@@ -1,4 +1,4 @@
-defmodule Extra.Queue do
+defmodule Extra.QueueBuilder do
   @moduledoc """
   Functions for managing scheduling and posting for channels.
   """
