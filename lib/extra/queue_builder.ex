@@ -7,11 +7,22 @@ defmodule Extra.QueueBuilder do
   alias Extra.Timeslot
   alias Extra.QueuedPost
   alias Extra.PostPicker
+  alias Extra.Scheduler
 
   require Logger
 
   def enqueue_posts do
     Logger.info "Enqueuing posts."
+    Timeslot
+    |> Repo.stream
+    |> Stream.each(
+      &Scheduler.add_job(
+        Timeslot.to_cron_expression(&1),
+        task: fn ->
+          Logger.info(fn -> "Running task for timeslot #{&1.id}" end)
+        end
+      )
+    )
   end
 
   def build_from_timeslots do
@@ -19,7 +30,6 @@ defmodule Extra.QueueBuilder do
 
     posts = Timeslot
             |> Repo.all
-            |> Timeslot.build_from_timeslots
             |> Enum.flat_map(&QueuedPost.for_timeslot/1)
 
     Repo.insert_all(QueuedPost, posts, on_conflict: :nothing)
