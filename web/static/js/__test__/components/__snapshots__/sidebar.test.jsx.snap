@@ -79,7 +79,7 @@ exports[`Sidebar component renders correctly 1`] = `
         </li>
         <li>
           <a
-            href="/"
+            href="/new-channel"
             onClick={[Function]}
           >
             <svg
@@ -200,7 +200,7 @@ exports[`Sidebar component renders loading state 1`] = `
       <ul>
         <li>
           <a
-            href="/"
+            href="/new-channel"
             onClick={[Function]}
           >
             <svg

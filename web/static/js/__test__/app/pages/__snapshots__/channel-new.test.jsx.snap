@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChannelNewPage component renders correctly 1`] = `
+<div>
+  <header
+    className="heading"
+  >
+    <h1>
+      Add a new channel
+    </h1>
+  </header>
+  <section>
+    <h2>
+      Type
+    </h2>
+  </section>
+  <section
+    className="new-social-channel__section"
+  >
+    <h3
+      className="social-logo social-logo_twitter"
+    >
+      <svg
+        className="icon"
+      >
+        <use
+          xlinkHref="#id"
+        />
+      </svg>
+      <span>
+        Twitter
+      </span>
+    </h3>
+    <ul
+      className="new-social-channel__ul"
+    >
+      <li
+        className="new-social-channel__li"
+      >
+        <a
+          className="button button_small button_twitter"
+          href="/auth/twitter"
+        >
+          Add an account
+        </a>
+      </li>
+    </ul>
+  </section>
+</div>
+`;

@@ -4,7 +4,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import Icon from "./icon";
 
-type SidebarProps = {
+type Props = {
   data: {
     loading: boolean,
     error?: {
@@ -22,10 +22,12 @@ type SidebarProps = {
   }
 };
 
-export default function Sidebar(
-  { data: { loading, error, channels, collections } }: SidebarProps
-) {
-  if (error) { return <div>{error.message}</div>; }
+export default function Sidebar({
+  data: { loading, error, channels, collections }
+}: Props) {
+  if (error) {
+    return <div>{error.message}</div>;
+  }
 
   return (
     <section className="sidebar">
@@ -34,18 +36,16 @@ export default function Sidebar(
         <section>
           <h3>Collections</h3>
           <ul>
-            {
-              loading
-                ? null
-                : collections.map(({ id, name }) => (
+            {loading
+              ? null
+              : collections.map(({ id, name }) => (
                   <li key={`collection-${id}`}>
                     <NavLink to={`/collections/${id}`}>
                       <Icon name="collection" />
                       {name}
                     </NavLink>
                   </li>
-                ))
-            }
+                ))}
             <li>
               <Link to="/">
                 <Icon name="addNew" />
@@ -58,20 +58,18 @@ export default function Sidebar(
         <section>
           <h3>Channels</h3>
           <ul>
-            {
-              loading
-                ? null
-                : channels.map(({ id, name, provider }) => (
+            {loading
+              ? null
+              : channels.map(({ id, name, provider }) => (
                   <li key={`channel-${id}`}>
                     <NavLink to={`/channels/${id}`}>
                       <Icon name={`${provider}Badge`} />
                       {name}
                     </NavLink>
                   </li>
-                ))
-            }
+                ))}
             <li>
-              <Link to="/">
+              <Link to="/new-channel">
                 <Icon name="addNew" />
                 Add new
               </Link>
