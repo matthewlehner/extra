@@ -40,8 +40,10 @@ exports[`Sidebar component renders correctly 1`] = `
         </li>
         <li>
           <a
-            href="/"
+            className={undefined}
+            href="/new-collection"
             onClick={[Function]}
+            style={undefined}
           >
             <svg
               className="icon"
@@ -79,8 +81,10 @@ exports[`Sidebar component renders correctly 1`] = `
         </li>
         <li>
           <a
+            className={undefined}
             href="/new-channel"
             onClick={[Function]}
+            style={undefined}
           >
             <svg
               className="icon"
@@ -116,8 +120,10 @@ exports[`Sidebar component renders correctly 1`] = `
         </li>
         <li>
           <a
+            className={undefined}
             href="/account"
             onClick={[Function]}
+            style={undefined}
           >
             <svg
               className="icon"
@@ -178,8 +184,10 @@ exports[`Sidebar component renders loading state 1`] = `
       <ul>
         <li>
           <a
-            href="/"
+            className={undefined}
+            href="/new-collection"
             onClick={[Function]}
+            style={undefined}
           >
             <svg
               className="icon"
@@ -200,8 +208,10 @@ exports[`Sidebar component renders loading state 1`] = `
       <ul>
         <li>
           <a
+            className={undefined}
             href="/new-channel"
             onClick={[Function]}
+            style={undefined}
           >
             <svg
               className="icon"
@@ -237,8 +247,10 @@ exports[`Sidebar component renders loading state 1`] = `
         </li>
         <li>
           <a
+            className={undefined}
             href="/account"
             onClick={[Function]}
+            style={undefined}
           >
             <svg
               className="icon"

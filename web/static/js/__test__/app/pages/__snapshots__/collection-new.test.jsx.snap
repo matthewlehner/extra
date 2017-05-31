@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CollectionNewPage component renders correctly 1`] = `
+<div>
+  <header
+    className="heading"
+  >
+    <h1>
+      Create a new collection
+    </h1>
+  </header>
+</div>
+`;

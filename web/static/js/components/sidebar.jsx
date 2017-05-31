@@ -47,10 +47,10 @@ export default function Sidebar({
                   </li>
                 ))}
             <li>
-              <Link to="/">
+              <NavLink to="/new-collection">
                 <Icon name="addNew" />
                 Add new
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </section>
@@ -69,10 +69,10 @@ export default function Sidebar({
                   </li>
                 ))}
             <li>
-              <Link to="/new-channel">
+              <NavLink to="/new-channel">
                 <Icon name="addNew" />
                 Add new
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </section>
@@ -87,10 +87,10 @@ export default function Sidebar({
               </Link>
             </li>
             <li>
-              <Link to="/account">
+              <NavLink to="/account">
                 <Icon name="account" />
                 Account
-              </Link>
+              </NavLink>
             </li>
             <li>
               <Link to="/">
