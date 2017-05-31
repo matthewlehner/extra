@@ -26,4 +26,9 @@ defmodule Extra.Recurrence do
   def days_of_week_for(:everyday), do: [1, 2, 3, 4, 5, 6, 7]
   def days_of_week_for(:weekdays), do: [1, 2, 3, 4, 5]
   def days_of_week_for(:weekends), do: [6, 7]
+
+  def cron_weekday(:everyday), do: [:*]
+  def cron_weekday(:weekends), do: [{:-, 6, 7}]
+  def cron_weekday(:weekdays), do: [{:-, 1, 5}]
+  def cron_weekday(day), do: days_of_week_for(day)
 end

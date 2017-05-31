@@ -70,4 +70,13 @@ defmodule Extra.Timeslot do
   defp insert_posts(posts) do
     Extra.Repo.insert_all(Extra.QueuedPost, posts, on_conflict: :nothing)
   end
+
+  @spec to_cron_expression(%__MODULE__{}) :: Crontab.CronExpression.t
+  def to_cron_expression(timeslot) do
+    %Crontab.CronExpression{
+      hour: [timeslot.time.hour],
+      minute: [timeslot.time.minute],
+      weekday: Extra.Recurrence.cron_weekday(timeslot.recurrence)
+    }
+  end
 end
