@@ -2,45 +2,20 @@
 
 import React from "react";
 import { render } from "react-dom";
-import {
-  ApolloClient,
-  ApolloProvider,
-  createNetworkInterface
-} from "react-apollo";
-
+import { ApolloProvider } from "react-apollo";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import client from "../apollo-client";
+
 import {
   AsyncChannelPage,
   AsyncCollectionPage
-} from "components/async-component";
-import Account from "app/pages/account";
-import NewPostContent from "app/pages/new-post-content";
-import ChannelNewPage from "app/pages/channel-new";
+} from "../../components/async-component";
+import Account from "../pages/account";
+import NewPostContent from "../pages/new-post-content";
+import ChannelNewPage from "../pages/channel-new";
 
 import Sidebar from "../pages/sidebar";
-
-const csrfMetaEl: ?HTMLElement = document.querySelector(
-  "meta[name='csrf-token']"
-);
-let csrfToken: string;
-
-if (csrfMetaEl && csrfMetaEl instanceof HTMLMetaElement) {
-  csrfToken = csrfMetaEl.content;
-} else {
-  csrfToken = "";
-}
-
-const networkInterface = createNetworkInterface({
-  uri: "/graphql",
-  opts: {
-    credentials: "same-origin",
-    headers: {
-      "x-csrf-token": csrfToken
-    }
-  }
-});
-
-const client = new ApolloClient({ networkInterface });
 
 const App = () => (
   <ApolloProvider client={client}>
