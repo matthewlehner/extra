@@ -4,10 +4,11 @@ defmodule Extra.QueuedPost do
   for now.
   """
   use Extra.Web, :model
+  alias Extra.Timeslot
 
   schema "queued_posts" do
     field :scheduled_for, :utc_datetime
-    belongs_to :timeslot, Extra.Timeslot
+    belongs_to :timeslot, Timeslot
     has_one :channel, through: [:timeslot, :channel]
     has_one :collection, through: [:timeslot, :collection]
     belongs_to :post_template, Extra.PostTemplate
@@ -35,26 +36,25 @@ defmodule Extra.QueuedPost do
     |> validate_required([:scheduled_for, :post_template_id])
   end
 
-  @spec for_timeslot(%Extra.Timeslot{}) :: list(%{})
+  @spec for_timeslot(%Timeslot{}) :: list(%{})
   def for_timeslot(timeslot) do
     now = DateTime.utc_now
+    next_week = Timex.shift(now, weeks: 1)
 
     timeslot
-    |> Map.fetch!(:recurrence)
-    |> Extra.Recurrence.days_of_week_for()
-    |> Enum.map(fn(day) ->
-      date = Extra.DateHelpers.next_day(day)
-      {:ok, datetime} = NaiveDateTime.new(date, timeslot.time)
-      DateTime.from_naive!(datetime, "Etc/UTC")
+    |> Timeslot.to_cron_expression()
+    |> Crontab.Scheduler.get_next_run_dates()
+    |> Stream.take_while(fn(datetime) ->
+      Timex.compare(next_week, datetime) > 0
     end)
-    |> Enum.sort_by(&DateTime.to_unix/1)
-    |> Enum.map(fn(datetime) ->
+    |> Stream.map(fn(datetime) ->
       %{
-        scheduled_for: datetime,
+        scheduled_for: DateTime.from_naive!(datetime, "Etc/UTC"),
         timeslot_id: timeslot.id,
         inserted_at: now,
         updated_at: now
       }
     end)
+    |> Enum.to_list()
   end
 end
