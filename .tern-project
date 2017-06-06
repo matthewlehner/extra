@@ -1,0 +1,11 @@
+{
+  "libs": [],
+  "plugins": {
+    "webpack": {
+      "configPath": "./webpack.config.js"
+    },
+    "node": {},
+    "modules": {},
+    "es_modules": {}
+  }
+}
