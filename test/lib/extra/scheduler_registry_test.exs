@@ -2,30 +2,37 @@ defmodule Extra.SchedulerRegistryTest do
   use Extra.ModelCase, async: true
 
   alias Extra.SchedulerRegistry
-  alias Extra.TimeslotScheduler
+  alias Extra.TimeslotJob
 
   setup context do
     {:ok, registry} = Extra.SchedulerRegistry.start_link(context.test)
     {:ok, registry: registry}
   end
 
-  test "spawns scheduler", %{registry: registry} do
+  test ".add_job", %{registry: registry} do
     timeslot = insert(:timeslot)
 
-    assert SchedulerRegistry.lookup(registry, timeslot.id) == :error
+    assert SchedulerRegistry.find_job(registry, timeslot) == :error
 
-    SchedulerRegistry.create(registry, timeslot)
-    assert {:ok, scheduler} = SchedulerRegistry.lookup(registry, timeslot.id)
-    assert timeslot == TimeslotScheduler.timeslot(scheduler)
+    SchedulerRegistry.add_job(registry, timeslot)
+    assert {:ok, scheduler} = SchedulerRegistry.find_job(registry, timeslot)
+    assert timeslot == TimeslotJob.timeslot(scheduler)
   end
 
-  test "removes schedulers on exit", %{registry: registry} do
+  test ".remove_job", %{registry: registry} do
     timeslot = insert(:timeslot)
-    SchedulerRegistry.create(registry, timeslot)
-    {:ok, scheduler} = SchedulerRegistry.lookup(registry, timeslot.id)
-
-    Agent.stop(scheduler)
-
-    assert SchedulerRegistry.lookup(registry, timeslot.id) == :error
+    SchedulerRegistry.add_job(registry, timeslot)
+    SchedulerRegistry.remove_job(registry, timeslot)
+    assert SchedulerRegistry.find_job(registry, timeslot) == :error
   end
+
+  # test "removes schedulers on exit", %{registry: registry} do
+  #   timeslot = insert(:timeslot)
+  #   SchedulerRegistry.add_job(registry, timeslot)
+  #   {:ok, scheduler} = SchedulerRegistry.find_job(registry, timeslot.id)
+  #
+  #   Agent.stop(scheduler)
+  #
+  #   assert SchedulerRegistry.find_job(registry, timeslot) == :error
+  # end
 end
