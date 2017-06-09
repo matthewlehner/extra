@@ -54,7 +54,7 @@ defmodule Extra.SchedulerRegistry do
       {:noreply, {schedulers, refs}}
     else
       {:ok, pid} = TimeslotJob.start_link(timeslot)
-      TimeslotJob.schedule_post(pid, self())
+      TimeslotJob.schedule_post(pid)
       ref = Process.monitor(pid)
       refs = Map.put(refs, ref, timeslot.id)
       schedulers = Map.put(schedulers, timeslot.id, pid)

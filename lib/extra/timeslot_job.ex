@@ -36,14 +36,17 @@ defmodule Extra.TimeslotJob do
     occurrence
   end
 
-  def schedule_post(job, scheduler) do
+  def schedule_post(job) do
     job
     |> next_occurrence!()
     |> Timex.diff(DateTime.utc_now(), :milliseconds)
-    |> publish_after(scheduler)
+    |> publish_after(job)
   end
 
-  def publish_after(duration, scheduler) do
-    Process.send_after(scheduler, {:publish_post, self()}, duration)
+  require Logger
+  def publish_after(duration, job) do
+    Logger.info fn -> "publishing in #{duration} milliseconds" end
+
+    Process.send_after(Extra.SchedulerRegistry, {:publish_post, job}, duration)
   end
 end
