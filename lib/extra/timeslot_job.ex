@@ -45,7 +45,10 @@ defmodule Extra.TimeslotJob do
 
   require Logger
   def publish_after(duration, job) do
-    Logger.info fn -> "publishing in #{duration} milliseconds" end
+    Logger.info fn ->
+      timeslot = TimeslotJob.timeslot(job)
+      "publishing timeslot #{timeslot.id} in #{duration} milliseconds"
+    end
 
     Process.send_after(Extra.SchedulerRegistry, {:publish_post, job}, duration)
   end

@@ -75,6 +75,7 @@ defmodule Extra.SchedulerRegistry do
   def handle_info({:publish_post, job}, state) do
     timeslot = TimeslotJob.timeslot(job)
     Logger.info(fn -> "Publishing a post for timeslot #{timeslot.id}" end)
+    TimeslotJob.schedule_post(job)
 
     {:noreply, state}
   end
