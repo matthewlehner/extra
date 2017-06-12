@@ -23,14 +23,13 @@ defmodule Extra.TimeslotJobTest do
   end
 
   test "schedule_post", %{job: job} do
-    timer = TimeslotJob.schedule_post(job, self())
+    timer = TimeslotJob.schedule_post(job)
     assert is_reference(timer)
   end
 
-  test ".publish_after" do
-    ref = self()
-    TimeslotJob.publish_after(10, ref)
+  test ".publish_after", %{job: job}  do
+    TimeslotJob.publish_after(10, job, self())
 
-    assert_receive {:publish_post, ^ref}
+    assert_receive {:publish_post, ^job}
   end
 end

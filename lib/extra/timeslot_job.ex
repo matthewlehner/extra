@@ -3,6 +3,8 @@ defmodule Extra.TimeslotJob do
   Sets up post scheduling for individual timeslots
   """
 
+  require Logger
+
   @doc """
   Starts a new timeslot schedule
   """
@@ -43,13 +45,12 @@ defmodule Extra.TimeslotJob do
     |> publish_after(job)
   end
 
-  require Logger
-  def publish_after(duration, job) do
+  def publish_after(duration, job, pid \\ Extra.SchedulerRegistry) do
     Logger.info fn ->
-      timeslot = TimeslotJob.timeslot(job)
+      timeslot = Extra.TimeslotJob.timeslot(job)
       "publishing timeslot #{timeslot.id} in #{duration} milliseconds"
     end
 
-    Process.send_after(Extra.SchedulerRegistry, {:publish_post, job}, duration)
+    Process.send_after(pid, {:publish_post, job}, duration)
   end
 end

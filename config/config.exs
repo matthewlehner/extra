@@ -54,7 +54,6 @@ config :ueberauth, Ueberauth.Strategy.Facebook.OAuth,
 config :extra, Extra.Scheduler,
   jobs: [
     {"@reboot", {Extra.QueueBuilder, :enqueue_posts, []}},
-    {"@hourly", {Extra.QueueBuilder, :enqueue_posts, []}},
     {"@hourly", {Extra.QueueBuilder, :build_from_timeslots, []}}
   ]
 # Import environment specific config. This must remain at the bottom
