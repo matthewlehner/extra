@@ -128,18 +128,31 @@ exports[`Schedule component renders correctly 1`] = `
       id="monday"
       role="tabpanel"
     >
-      <table>
+      <table
+        className="daily-schedule"
+      >
         <thead>
-          <tr>
-            <th>
+          <tr
+            className="timeslot"
+          >
+            <th
+              className="timeslot_time"
+            >
               Time Slot
             </th>
-            <th>
+            <th
+              className="timeslot_recurrence"
+            >
               Recurrence
             </th>
-            <th>
+            <th
+              className="timeslot_collection"
+            >
               Collection
             </th>
+            <th
+              className="timeslot_actions"
+            />
           </tr>
         </thead>
         <tbody />
@@ -152,18 +165,31 @@ exports[`Schedule component renders correctly 1`] = `
       id="tuesday"
       role="tabpanel"
     >
-      <table>
+      <table
+        className="daily-schedule"
+      >
         <thead>
-          <tr>
-            <th>
+          <tr
+            className="timeslot"
+          >
+            <th
+              className="timeslot_time"
+            >
               Time Slot
             </th>
-            <th>
+            <th
+              className="timeslot_recurrence"
+            >
               Recurrence
             </th>
-            <th>
+            <th
+              className="timeslot_collection"
+            >
               Collection
             </th>
+            <th
+              className="timeslot_actions"
+            />
           </tr>
         </thead>
         <tbody />
@@ -176,18 +202,31 @@ exports[`Schedule component renders correctly 1`] = `
       id="wednesday"
       role="tabpanel"
     >
-      <table>
+      <table
+        className="daily-schedule"
+      >
         <thead>
-          <tr>
-            <th>
+          <tr
+            className="timeslot"
+          >
+            <th
+              className="timeslot_time"
+            >
               Time Slot
             </th>
-            <th>
+            <th
+              className="timeslot_recurrence"
+            >
               Recurrence
             </th>
-            <th>
+            <th
+              className="timeslot_collection"
+            >
               Collection
             </th>
+            <th
+              className="timeslot_actions"
+            />
           </tr>
         </thead>
         <tbody />
@@ -200,18 +239,31 @@ exports[`Schedule component renders correctly 1`] = `
       id="thursday"
       role="tabpanel"
     >
-      <table>
+      <table
+        className="daily-schedule"
+      >
         <thead>
-          <tr>
-            <th>
+          <tr
+            className="timeslot"
+          >
+            <th
+              className="timeslot_time"
+            >
               Time Slot
             </th>
-            <th>
+            <th
+              className="timeslot_recurrence"
+            >
               Recurrence
             </th>
-            <th>
+            <th
+              className="timeslot_collection"
+            >
               Collection
             </th>
+            <th
+              className="timeslot_actions"
+            />
           </tr>
         </thead>
         <tbody />
@@ -224,18 +276,31 @@ exports[`Schedule component renders correctly 1`] = `
       id="friday"
       role="tabpanel"
     >
-      <table>
+      <table
+        className="daily-schedule"
+      >
         <thead>
-          <tr>
-            <th>
+          <tr
+            className="timeslot"
+          >
+            <th
+              className="timeslot_time"
+            >
               Time Slot
             </th>
-            <th>
+            <th
+              className="timeslot_recurrence"
+            >
               Recurrence
             </th>
-            <th>
+            <th
+              className="timeslot_collection"
+            >
               Collection
             </th>
+            <th
+              className="timeslot_actions"
+            />
           </tr>
         </thead>
         <tbody />
@@ -248,18 +313,31 @@ exports[`Schedule component renders correctly 1`] = `
       id="saturday"
       role="tabpanel"
     >
-      <table>
+      <table
+        className="daily-schedule"
+      >
         <thead>
-          <tr>
-            <th>
+          <tr
+            className="timeslot"
+          >
+            <th
+              className="timeslot_time"
+            >
               Time Slot
             </th>
-            <th>
+            <th
+              className="timeslot_recurrence"
+            >
               Recurrence
             </th>
-            <th>
+            <th
+              className="timeslot_collection"
+            >
               Collection
             </th>
+            <th
+              className="timeslot_actions"
+            />
           </tr>
         </thead>
         <tbody />
@@ -272,18 +350,31 @@ exports[`Schedule component renders correctly 1`] = `
       id="sunday"
       role="tabpanel"
     >
-      <table>
+      <table
+        className="daily-schedule"
+      >
         <thead>
-          <tr>
-            <th>
+          <tr
+            className="timeslot"
+          >
+            <th
+              className="timeslot_time"
+            >
               Time Slot
             </th>
-            <th>
+            <th
+              className="timeslot_recurrence"
+            >
               Recurrence
             </th>
-            <th>
+            <th
+              className="timeslot_collection"
+            >
               Collection
             </th>
+            <th
+              className="timeslot_actions"
+            />
           </tr>
         </thead>
         <tbody />
