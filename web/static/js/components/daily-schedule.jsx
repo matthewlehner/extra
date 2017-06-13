@@ -2,6 +2,8 @@
 
 import React from "react";
 import { dayTranslations } from "lib/schedule-helpers";
+import Icon from "../components/icon";
+import LinkButton from "../components/ui/link-button";
 
 type DailyScheduleProps = {
   timeslots: Array<{
@@ -14,27 +16,33 @@ type DailyScheduleProps = {
   }>
 };
 
-const DailySchedule = ({ timeslots } :DailyScheduleProps) => (
-  <table>
+const DailySchedule = ({ timeslots }: DailyScheduleProps) =>
+  <table className="daily-schedule">
     <thead>
-      <tr>
-        <th>Time Slot</th>
-        <th>Recurrence</th>
-        <th>Collection</th>
+      <tr className="timeslot">
+        <th className="timeslot_time">Time Slot</th>
+        <th className="timeslot_recurrence">Recurrence</th>
+        <th className="timeslot_collection">Collection</th>
+        <th className="timeslot_actions" />
       </tr>
     </thead>
     <tbody>
       {timeslots.map(
-        ({ id, time, recurrence, collection: { name: collectionName } }) => (
-          <tr key={id}>
-            <td>{time.slice(0, 5)}</td>
-            <td>{dayTranslations[recurrence]}</td>
-            <td>{collectionName}</td>
+        ({ id, time, recurrence, collection: { name: collectionName } }) =>
+          <tr className="timeslot" key={id}>
+            <td className="timeslot_time">{time.slice(0, 5)}</td>
+            <td className="timeslot_recurrence">
+              {dayTranslations[recurrence]}
+            </td>
+            <td className="timeslot_collection">{collectionName}</td>
+            <td className="timeslot_actions">
+              <LinkButton className="timeslot__remove-action">
+                <Icon name="remove" />
+              </LinkButton>
+            </td>
           </tr>
-        )
       )}
     </tbody>
-  </table>
-);
+  </table>;
 
 export default DailySchedule;

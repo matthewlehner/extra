@@ -18,17 +18,18 @@ const Input = ({
   placeholder,
   value,
   required,
-  onChange
-}: Props) => (
+  onChange,
+  ...rest
+}: Props) =>
   <input
+    {...rest}
     name={name}
     type={type}
     onChange={e => handleChange(e, name, onChange)}
     value={value}
     placeholder={placeholder}
     required={required}
-  />
-);
+  />;
 
 Input.defaultProps = {
   type: "text",

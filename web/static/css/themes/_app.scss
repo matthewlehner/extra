@@ -212,3 +212,75 @@ main {
     }
   }
 }
+
+.timeslot {
+  &__remove-action {
+    display: block;
+    fill: $gray-light;
+    height: 1.625rem;
+    margin-left: -0.3125rem;
+    transition: fill $base-duration $base-timing;
+    width: 1.625rem;
+
+    &:hover {
+      fill: $action-color;
+    }
+
+    .icon {
+      max-height: 100%;
+      max-width: 100%;
+    }
+  }
+
+  &_time {
+    width: 6.25rem;
+    padding-right: 1rem;
+  }
+
+  &_collection,
+  &_recurrence {
+    flex: 1;
+    // width: 12.875rem;
+    padding-right: 1rem;
+  }
+
+  &_actions {
+    width: 1rem;
+  }
+
+  &_controls {
+    display: flex;
+    margin-bottom: 0.75rem;
+
+
+    .timeslot_collection {
+      margin-right: 1rem;
+    }
+
+    .select {
+      width: 100%;
+    }
+  }
+
+  &_form {
+    .form_actions {
+      button {
+        margin-right: 1rem;
+      }
+    }
+  }
+}
+
+.daily-schedule {
+  td {
+    padding-left: 0;
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+
+  .timeslot {
+    display: flex;
+  }
+}

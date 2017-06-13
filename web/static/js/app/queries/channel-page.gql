@@ -1,8 +1,8 @@
 query ChannelPage($id: ID!) {
   channel(id: $id) {
-    id,
-    name,
-    image,
+    id
+    name
+    image
     provider
   }
   schedule(channelId: $id) {

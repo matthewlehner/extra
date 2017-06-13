@@ -38,36 +38,45 @@ const TimeslotForm = ({
   collection,
   onCancel,
   onSubmit
-}: Props) => (
-  <form onSubmit={onSubmit}>
-    <Input
-      name="time"
-      type="text"
-      placeholder="00:00"
-      value={time.value}
-      onChange={time.onChange}
-      required
-    />
-    <Select
-      name="recurrence"
-      onChange={recurrence.onChange}
-      value={recurrence.value}
-      options={recurrence.options.map(recurrenceOptions)}
-      placeholder="—"
-      required
-    />
-    <Select
-      name="collectionId"
-      onChange={collection.onChange}
-      value={collection.value}
-      options={collection.options.map(collectionOptions)}
-      required
-      placeholder="—"
-    />
+}: Props) =>
+  <form onSubmit={onSubmit} className="timeslot_form">
+    <div className="timeslot_controls">
+      <div className="timeslot_time">
+        <Input
+          name="time"
+          type="text"
+          placeholder="00:00"
+          value={time.value}
+          onChange={time.onChange}
+          required
+        />
+      </div>
+      <div className="timeslot_recurrence">
+        <Select
+          name="recurrence"
+          onChange={recurrence.onChange}
+          value={recurrence.value}
+          options={recurrence.options.map(recurrenceOptions)}
+          placeholder="—"
+          required
+        />
+      </div>
+      <div className="timeslot_collection">
+        <Select
+          name="collectionId"
+          onChange={collection.onChange}
+          value={collection.value}
+          options={collection.options.map(collectionOptions)}
+          required
+          placeholder="—"
+        />
+      </div>
+    </div>
 
-    <LinkButton onClick={onSubmit}>Add Timeslot</LinkButton>
-    <LinkButton onClick={onCancel}>Cancel</LinkButton>
-  </form>
-);
+    <div className="form_actions">
+      <LinkButton onClick={onSubmit}>Add Timeslot</LinkButton>
+      <LinkButton onClick={onCancel}>Cancel</LinkButton>
+    </div>
+  </form>;
 
 export default TimeslotForm;

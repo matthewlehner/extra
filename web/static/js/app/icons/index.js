@@ -6,6 +6,7 @@ import collection from "./collection.svg";
 import logo from "../../../assets/images/extra-logo.svg";
 import logout from "./logout.svg";
 import performance from "./performance.svg";
+import remove from "./remove.svg";
 import twitter from "./twitter.svg";
 import twitterBadge from "./twitter-badge.svg";
 
@@ -18,6 +19,7 @@ export default {
   performance,
   logo,
   logout,
+  remove,
   twitter,
   twitterBadge
 };
