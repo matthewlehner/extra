@@ -12,10 +12,16 @@ defmodule Extra.QueueBuilder do
   require Logger
 
   def enqueue_posts do
-    Logger.info "Enqueuing posts."
-    Timeslot
-    |> Repo.stream
-    |> Stream.each(&SchedulerRegistry.add_job(Extra.SchedulerRegistry, &1))
+    Repo.transaction fn ->
+      Logger.info "Enqueuing posts."
+
+      Extra.Timeslot
+      |> Extra.Repo.stream
+      |> Stream.each(fn(timeslot) ->
+        SchedulerRegistry.add_job(Extra.SchedulerRegistry, timeslot)
+      end)
+      |> Stream.run
+    end
   end
 
   def build_from_timeslots do
