@@ -136,7 +136,10 @@ let config;
 switch (process.env.npm_lifecycle_event) {
   case "deploy":
     config = merge(common, {
-      devtool: "nosources-source-map"
+      devtool: "nosources-source-map",
+      plugins: [
+        new webpack.optimize.ModuleConcatenationPlugin()
+      ]
     });
     break;
   default:
