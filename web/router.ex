@@ -21,7 +21,7 @@ defmodule Extra.Router do
   end
 
   pipeline :require_login do
-    plug Guardian.Plug.EnsureAuthenticated
+    plug Guardian.Plug.EnsureAuthenticated, handler: Extra.GuardianErrorHandler
     plug Extra.LoadSidebarEntities, repo: Extra.Repo
   end
 
