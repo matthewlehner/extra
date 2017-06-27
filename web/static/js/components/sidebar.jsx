@@ -3,6 +3,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import Icon from "./icon";
+import LogoutLink from "./logout-link";
 
 type Props = {
   data: {
@@ -38,14 +39,14 @@ export default function Sidebar({
           <ul>
             {loading
               ? null
-              : collections.map(({ id, name }) => (
+              : collections.map(({ id, name }) =>
                   <li key={`collection-${id}`}>
                     <NavLink to={`/collections/${id}`}>
                       <Icon name="collection" />
                       {name}
                     </NavLink>
                   </li>
-                ))}
+                )}
             <li>
               <NavLink to="/new-collection">
                 <Icon name="addNew" />
@@ -60,14 +61,14 @@ export default function Sidebar({
           <ul>
             {loading
               ? null
-              : channels.map(({ id, name, provider }) => (
+              : channels.map(({ id, name, provider }) =>
                   <li key={`channel-${id}`}>
                     <NavLink to={`/channels/${id}`}>
                       <Icon name={`${provider}Badge`} />
                       {name}
                     </NavLink>
                   </li>
-                ))}
+                )}
             <li>
               <NavLink to="/new-channel">
                 <Icon name="addNew" />
@@ -93,10 +94,10 @@ export default function Sidebar({
               </NavLink>
             </li>
             <li>
-              <Link to="/">
+              <LogoutLink>
                 <Icon name="logout" />
                 Logout
-              </Link>
+              </LogoutLink>
             </li>
           </ul>
         </section>

@@ -136,19 +136,39 @@ exports[`Sidebar component renders correctly 1`] = `
           </a>
         </li>
         <li>
-          <a
-            href="/"
-            onClick={[Function]}
+          <form
+            action="/logout"
+            method="post"
+            onSubmit={[Function]}
           >
-            <svg
-              className="icon"
+            <input
+              name="_method"
+              type="hidden"
+              value="delete"
+            />
+            <input
+              name="_csrf_token"
+              type="hidden"
+            />
+            <button
+              className="linkButton"
+              style={
+                Object {
+                  "color": "rgba(255, 255, 255, 0.8)",
+                  "fill": "rgba(255, 255, 255, 0.8)",
+                }
+              }
             >
-              <use
-                xlinkHref="#id"
-              />
-            </svg>
-            Logout
-          </a>
+              <svg
+                className="icon"
+              >
+                <use
+                  xlinkHref="#id"
+                />
+              </svg>
+              Logout
+            </button>
+          </form>
         </li>
       </ul>
     </section>
@@ -263,19 +283,39 @@ exports[`Sidebar component renders loading state 1`] = `
           </a>
         </li>
         <li>
-          <a
-            href="/"
-            onClick={[Function]}
+          <form
+            action="/logout"
+            method="post"
+            onSubmit={[Function]}
           >
-            <svg
-              className="icon"
+            <input
+              name="_method"
+              type="hidden"
+              value="delete"
+            />
+            <input
+              name="_csrf_token"
+              type="hidden"
+            />
+            <button
+              className="linkButton"
+              style={
+                Object {
+                  "color": "rgba(255, 255, 255, 0.8)",
+                  "fill": "rgba(255, 255, 255, 0.8)",
+                }
+              }
             >
-              <use
-                xlinkHref="#id"
-              />
-            </svg>
-            Logout
-          </a>
+              <svg
+                className="icon"
+              >
+                <use
+                  xlinkHref="#id"
+                />
+              </svg>
+              Logout
+            </button>
+          </form>
         </li>
       </ul>
     </section>
