@@ -17,6 +17,17 @@ defmodule Extra.Timeslot do
   end
 
   @doc """
+  Scopes timeslots to user.
+  """
+  @spec for_user(Ecto.Query.t, %Extra.User{}) :: Ecto.Query.t
+  def for_user(query, user) do
+    from t in query,
+      join: c in assoc(t, :collection),
+      where: c.user_id == ^user.id
+  end
+
+
+  @doc """
   Builds a changeset based on the `struct` and `params`.
   """
   def changeset(struct, params \\ %{}) do
@@ -62,6 +73,7 @@ defmodule Extra.Timeslot do
 
   @spec build_post_queue(%Extra.Timeslot{}) :: DateTime.t()
   def build_post_queue(timeslot) do
+    Extra.SchedulerRegistry.add_job(Extra.SchedulerRegistry, timeslot)
     timeslot
     |> Extra.QueuedPost.for_timeslot()
     |> insert_posts

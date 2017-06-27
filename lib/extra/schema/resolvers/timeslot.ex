@@ -16,4 +16,10 @@ defmodule Extra.Schema.Resolvers.Timeslot do
 
     response
   end
+
+  def delete(timeslot_id, %{context: %{current_user: user}}) do
+    Timeslot
+    |> Timeslot.for_user(user)
+    |> Repo.get(timeslot_id)
+  end
 end
