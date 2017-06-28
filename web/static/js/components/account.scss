@@ -8,6 +8,7 @@
     grid-column: 1/2;
     width: auto;
     min-width: auto;
+    text-transform: capitalize;
   }
 
   .select,
@@ -15,4 +16,8 @@
   input {
     grid-column: 2/3;
   }
+}
+
+.formActions {
+  grid-column: 2/3;
 }
