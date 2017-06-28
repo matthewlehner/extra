@@ -4,17 +4,23 @@ import React from "react";
 import type { Children } from "react";
 import Label from "./label";
 
-const Field = (
-  { label, children }: { label: string, children?: Children }
-) => (
-  <div className="form__control-group">
-    <Label content={label} htmlFor={label} />
+type Props = {
+  label: string,
+  children: Children,
+  className?: string
+};
+
+const Field = ({ label, children, className }: Props) =>
+  <div className={className}>
+    <Label htmlFor={label}>
+      {label}
+    </Label>
     {children}
-  </div>
-);
+  </div>;
 
 Field.defaultProps = {
-  children: null
+  children: null,
+  className: "form__control-group"
 };
 
 export default Field;

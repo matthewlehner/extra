@@ -1,0 +1,18 @@
+.form {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 17rem 1fr;
+  margin: 1rem auto;
+
+  label {
+    grid-column: 1/2;
+    width: auto;
+    min-width: auto;
+  }
+
+  .select,
+  button,
+  input {
+    grid-column: 2/3;
+  }
+}

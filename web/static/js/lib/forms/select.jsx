@@ -7,13 +7,11 @@ type Props = {
   placeholder?: string,
   value?: string,
   name: string,
-  options: Array<{ value: string, label: string}>,
+  options: Array<{ value: string, label: string }>,
   onChange: (field: string, value: string) => void
 };
 
-const Select = (
-  { name, options, onChange, placeholder, ...props }: Props
-) => (
+const Select = ({ name, options, onChange, placeholder, ...props }: Props) =>
   <div className="select">
     <select
       className="form__control"
@@ -22,23 +20,23 @@ const Select = (
       id={name}
       {...props}
     >
-      { placeholder && !props.value
-          ? <option key="placeholder">{placeholder}</option>
-          : null }
-      {
-        options.map(
-          ({ value, label }) => (
-            <option value={value} key={value}>{label}</option>
-          )
-        )
-      }
+      {placeholder && !props.value
+        ? <option key="placeholder">
+            {placeholder}
+          </option>
+        : null}
+      {options.map(({ value, label }) =>
+        <option value={value} key={value}>
+          {label}
+        </option>
+      )}
     </select>
-  </div>
-);
+  </div>;
 
 Select.defaultProps = {
   placeholder: null,
-  value: null
+  value: "",
+  onChange: () => {}
 };
 
 export default Select;
