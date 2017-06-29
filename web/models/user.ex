@@ -9,6 +9,7 @@ defmodule Extra.User do
     field :full_name, :string
     field :nickname, :string
     field :email, :string
+    field :timezone, :string
     field :password, :string, virtual: true
     field :password_hash, :string
 
