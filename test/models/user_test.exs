@@ -2,6 +2,7 @@ defmodule Extra.UserTest do
   use Extra.ModelCase, async: true
 
   alias Extra.User
+  import Comeonin.Bcrypt, only: [hashpwsalt: 1, checkpw: 2]
 
   @valid_attrs params_for(:user)
 
@@ -44,6 +45,23 @@ defmodule Extra.UserTest do
     test "registration_with short password" do
       errors = errors_on(User.registration_changeset(%User{}, %{password: "hi"}))
       assert {:password, "should be at least 8 character(s)"} in errors
+    end
+  end
+
+  describe ".update_password/2" do
+    test "it updates the password" do
+      pass = "password"
+      user = insert(:user, password: pass, password_hash: hashpwsalt(pass))
+
+      assert {:ok, next_user} =
+        User.update_password(user, %{current: pass, new: "hello there"})
+      assert checkpw("hello there", next_user.password_hash)
+    end
+
+    test "doesn't update when password is wrong" do
+      user = insert(:user, password_hash: hashpwsalt("a password"))
+      assert {:error, "The password provided is incorrect"} =
+        User.update_password(user, %{current: "something", new: "hello there"})
     end
   end
 end
