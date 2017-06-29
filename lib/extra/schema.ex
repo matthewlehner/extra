@@ -54,7 +54,7 @@ defmodule Extra.Schema do
     field :collection_id, non_null(:id)
   end
 
-  input_object :update_password do
+  input_object :password_params do
     field :current, non_null(:string)
     field :new, non_null(:string)
   end
@@ -81,8 +81,8 @@ defmodule Extra.Schema do
       resolve &PostContent.create/2
     end
 
-    field :user, :user do
-      arg :password, :update_password
+    field :update_password, :user do
+      arg :password, :password_params
 
       resolve &UserResolver.update_password/2
     end
