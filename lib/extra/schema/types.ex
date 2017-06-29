@@ -71,4 +71,10 @@ defmodule Extra.Schema.Types do
     field :collection, :collection, resolve: assoc(:collection)
     field :post_content, :post_content, resolve: assoc(:post_content)
   end
+
+  object(:user) do
+    field :id, :id
+    field :email, :string
+    field :timezone, :string
+  end
 end

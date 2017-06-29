@@ -9,6 +9,7 @@ defmodule Extra.Schema do
   alias Extra.Schema.Resolvers.Timeslot
   alias Extra.Schema.Resolvers.PostContent
   alias Extra.Schema.Resolvers.QueuedPostResolver
+  alias Extra.Schema.Resolvers.UserResolver
 
   import_types Extra.Schema.Types
 
@@ -53,6 +54,11 @@ defmodule Extra.Schema do
     field :collection_id, non_null(:id)
   end
 
+  input_object :update_password do
+    field :current, non_null(:string)
+    field :new, non_null(:string)
+  end
+
   mutation do
     field :update_schedule, type: :schedule do
       arg :channel_id, non_null(:id)
@@ -73,6 +79,12 @@ defmodule Extra.Schema do
       arg :channel_ids, list_of(:id)
 
       resolve &PostContent.create/2
+    end
+
+    field :user, :user do
+      arg :password, :update_password
+
+      resolve &UserResolver.update_password/2
     end
   end
 end

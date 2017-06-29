@@ -132,4 +132,29 @@ defmodule Extra.Schema.MutationsTest do
       }}}
     end
   end
+
+  @update_user_password_mutation """
+  mutation UpdatePassword($current: String!, $new: String) {
+    user(password: { current: $current, new: $new }) {
+      email
+    }
+  }
+  """
+  describe "UpdatePassword" do
+    test "updates user's password" do
+      user = insert :user, password_hash: Comeonin.Bcrypt.hashpwsalt("password")
+      variables = %{
+        "current" => "password",
+        "new" => "new password!",
+      }
+
+      context = %{current_user: user}
+
+      assert {:ok, response} =
+        @update_user_password_mutation
+        |> Absinthe.run(Schema, variables: variables, context: context)
+
+      assert %{data: %{"user" => %{"email" => user.email }}} == response
+    end
+  end
 end

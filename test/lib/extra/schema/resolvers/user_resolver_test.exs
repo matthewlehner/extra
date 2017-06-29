@@ -13,7 +13,7 @@ defmodule Extra.Schema.Resolvers.UserResolverTest do
 
   describe ".update_password/2" do
     test "it updates the password", %{user: user} do
-      params = %{current: user.password, new: "new password"}
+      params = %{password: %{current: user.password, new: "new password"}}
       context = %{context: %{current_user: user}}
       assert {:ok, %User{}} = UserResolver.update_password(params, context)
     end

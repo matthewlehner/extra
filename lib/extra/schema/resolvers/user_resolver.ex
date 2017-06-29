@@ -5,9 +5,8 @@ defmodule Extra.Schema.Resolvers.UserResolver do
 
   alias Extra.User
 
-  def update_password(%{current: current, new: new},
+  def update_password(%{password: %{current: current, new: new}},
                       %{context: %{current_user: user}}) do
-
     User.update_password(user, %{current: current, new: new})
   end
 end
