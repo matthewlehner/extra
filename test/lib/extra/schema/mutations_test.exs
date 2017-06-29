@@ -134,8 +134,8 @@ defmodule Extra.Schema.MutationsTest do
   end
 
   @update_user_password_mutation """
-  mutation UpdatePassword($current: String!, $new: String) {
-    user(password: { current: $current, new: $new }) {
+  mutation UpdatePassword($current: String!, $new: String!) {
+    updatePassword(password: { current: $current, new: $new }) {
       email
     }
   }
@@ -150,11 +150,11 @@ defmodule Extra.Schema.MutationsTest do
 
       context = %{current_user: user}
 
-      assert {:ok, response} =
+      assert {:ok, %{data: response}} =
         @update_user_password_mutation
         |> Absinthe.run(Schema, variables: variables, context: context)
 
-      assert %{data: %{"user" => %{"email" => user.email }}} == response
+      assert %{"updatePassword" => %{"email" => user.email}} == response
     end
   end
 end
