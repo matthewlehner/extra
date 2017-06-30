@@ -12,6 +12,8 @@
 
 .footer {
   color: $gray-light;
+  display: flex;
+  flex-direction: row;
   font-size: 0.75rem;
   margin-top: 1.5rem;
 
@@ -23,4 +25,30 @@
 .list {
   list-style-type: none;
   padding: 0;
+}
+
+.actions {
+  a {
+    font-weight: 600;
+  }
+}
+
+.postChannels {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.channelBadge {
+  position: relative;
+}
+
+.providerImg {
+  border-radius: 50%;
+  display: block;
+  height: 1.875rem;
+  width: 1.875rem;
 }

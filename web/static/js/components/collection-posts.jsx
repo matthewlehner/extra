@@ -13,20 +13,21 @@ type Props = {
   }>
 };
 
-const CollectionPosts = ({ posts }: Props) => (
+const CollectionPosts = ({ posts }: Props) =>
   <section className="posts-collection">
     <header>
       <h2>Posts</h2>
     </header>
     <PostList>
-      { posts.map(({ id, body, channels }) => (
+      {posts.map(({ id, body, channels }) =>
         <Post key={id}>
-          <p>{body}</p>
-          <PostChannelsFooter channels={channels} />
+          <p>
+            {body}
+          </p>
+          <PostChannelsFooter channels={channels} id={id} />
         </Post>
-      ))}
+      )}
     </PostList>
-  </section>
-);
+  </section>;
 
 export default CollectionPosts;
