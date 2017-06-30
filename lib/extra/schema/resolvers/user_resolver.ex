@@ -6,7 +6,7 @@ defmodule Extra.Schema.Resolvers.UserResolver do
   import Ecto.Changeset, only: [traverse_errors: 2]
   import Extra.ErrorHelpers, only: [translate_error: 1]
 
-  def update(params, %{context: %{current_user: user}}) do
+  def update(%{input: params}, %{context: %{current_user: user}}) do
     case User.update(user, params) do
       {:ok, next_user}    -> {:ok, next_user}
       {:error, changeset} ->
@@ -15,8 +15,8 @@ defmodule Extra.Schema.Resolvers.UserResolver do
     end
   end
 
-  def update_password(%{password: %{current: current, new: new}},
+  def update_password(%{input: params},
                       %{context: %{current_user: user}}) do
-    User.update_password(user, %{current: current, new: new})
+    User.update_password(user, params)
   end
 end
