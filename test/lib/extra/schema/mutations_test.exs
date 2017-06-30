@@ -134,8 +134,8 @@ defmodule Extra.Schema.MutationsTest do
   end
 
   @update_user_password_mutation """
-  mutation UpdatePassword($current: String!, $new: String!) {
-    updatePassword(password: { current: $current, new: $new }) {
+  mutation UpdatePassword($input: PasswordParams!) {
+    updatePassword(input: $input) {
       id
       email
     }
@@ -145,8 +145,10 @@ defmodule Extra.Schema.MutationsTest do
     test "updates user's password" do
       user = insert :user, password_hash: Comeonin.Bcrypt.hashpwsalt("password")
       variables = %{
-        "current" => "password",
-        "new" => "new password!",
+        "input" => %{
+          "current" => "password",
+          "new" => "new password!"
+        }
       }
 
       context = %{current_user: user}
@@ -165,8 +167,8 @@ defmodule Extra.Schema.MutationsTest do
   end
 
   @update_user_preferences_mutation """
-  mutation UpdatePreferences($email: String, $timezone: String) {
-    updatePreferences(email: $email, timezone: $timezone) {
+  mutation UpdatePreferences($input: UserParams!) {
+    updatePreferences(input: $input) {
       id
       email
       timezone
@@ -178,8 +180,10 @@ defmodule Extra.Schema.MutationsTest do
     test "updates user's preferences" do
       user = insert :user
       variables = %{
-        "email" => "mynew@email.com",
-        "timezone" => "Canada/Pacific",
+        "input" => %{
+          "email" => "mynew@email.com",
+          "timezone" => "Canada/Pacific",
+        }
       }
 
       context = %{current_user: user}

@@ -59,6 +59,11 @@ defmodule Extra.Schema do
     field :new, non_null(:string)
   end
 
+  input_object :user_params do
+    field :email, :string
+    field :timezone, :string
+  end
+
   mutation do
     field :update_schedule, type: :schedule do
       arg :channel_id, non_null(:id)
@@ -82,14 +87,13 @@ defmodule Extra.Schema do
     end
 
     field :update_password, :user do
-      arg :password, :password_params
+      arg :input, non_null(:password_params)
 
       resolve &UserResolver.update_password/2
     end
 
     field :update_preferences, :user do
-      arg :email, :string
-      arg :timezone, :string
+      arg :input, non_null(:user_params)
 
       resolve &UserResolver.update/2
     end
