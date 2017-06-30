@@ -8,6 +8,8 @@ exports[`Sidebar component renders correctly 1`] = `
 >
   <svg
     className="extra-logo"
+    height={null}
+    width={null}
   >
     <use
       xlinkHref="#id"
@@ -30,6 +32,8 @@ exports[`Sidebar component renders correctly 1`] = `
           >
             <svg
               className="icon"
+              height={null}
+              width={null}
             >
               <use
                 xlinkHref="#id"
@@ -47,6 +51,8 @@ exports[`Sidebar component renders correctly 1`] = `
           >
             <svg
               className="icon"
+              height={null}
+              width={null}
             >
               <use
                 xlinkHref="#id"
@@ -71,6 +77,8 @@ exports[`Sidebar component renders correctly 1`] = `
           >
             <svg
               className="icon"
+              height={null}
+              width={null}
             >
               <use
                 xlinkHref="#id"
@@ -88,6 +96,8 @@ exports[`Sidebar component renders correctly 1`] = `
           >
             <svg
               className="icon"
+              height={null}
+              width={null}
             >
               <use
                 xlinkHref="#id"
@@ -110,6 +120,8 @@ exports[`Sidebar component renders correctly 1`] = `
           >
             <svg
               className="icon"
+              height={null}
+              width={null}
             >
               <use
                 xlinkHref="#id"
@@ -127,6 +139,8 @@ exports[`Sidebar component renders correctly 1`] = `
           >
             <svg
               className="icon"
+              height={null}
+              width={null}
             >
               <use
                 xlinkHref="#id"
@@ -161,6 +175,8 @@ exports[`Sidebar component renders correctly 1`] = `
             >
               <svg
                 className="icon"
+                height={null}
+                width={null}
               >
                 <use
                   xlinkHref="#id"
@@ -189,6 +205,8 @@ exports[`Sidebar component renders loading state 1`] = `
 >
   <svg
     className="extra-logo"
+    height={null}
+    width={null}
   >
     <use
       xlinkHref="#id"
@@ -211,6 +229,8 @@ exports[`Sidebar component renders loading state 1`] = `
           >
             <svg
               className="icon"
+              height={null}
+              width={null}
             >
               <use
                 xlinkHref="#id"
@@ -235,6 +255,8 @@ exports[`Sidebar component renders loading state 1`] = `
           >
             <svg
               className="icon"
+              height={null}
+              width={null}
             >
               <use
                 xlinkHref="#id"
@@ -257,6 +279,8 @@ exports[`Sidebar component renders loading state 1`] = `
           >
             <svg
               className="icon"
+              height={null}
+              width={null}
             >
               <use
                 xlinkHref="#id"
@@ -274,6 +298,8 @@ exports[`Sidebar component renders loading state 1`] = `
           >
             <svg
               className="icon"
+              height={null}
+              width={null}
             >
               <use
                 xlinkHref="#id"
@@ -308,6 +334,8 @@ exports[`Sidebar component renders loading state 1`] = `
             >
               <svg
                 className="icon"
+                height={null}
+                width={null}
               >
                 <use
                   xlinkHref="#id"

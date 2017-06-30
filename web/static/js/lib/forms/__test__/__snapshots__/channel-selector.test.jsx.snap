@@ -24,6 +24,8 @@ exports[`ChannelSelector component renders correctly 1`] = `
     >
       <svg
         className="icon icon_checkmark"
+        height={null}
+        width={null}
       >
         <use
           xlinkHref="#id"

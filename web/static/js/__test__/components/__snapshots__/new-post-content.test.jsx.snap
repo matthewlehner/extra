@@ -17,6 +17,8 @@ exports[`NewPostContent component renders properly 1`] = `
       >
         <svg
           className="icon"
+          height="0.75rem"
+          width="0.75rem"
         >
           <use
             xlinkHref="#id"
@@ -97,6 +99,8 @@ exports[`NewPostContent component renders properly 1`] = `
               >
                 <svg
                   className="icon icon_checkmark"
+                  height={null}
+                  width={null}
                 >
                   <use
                     xlinkHref="#id"

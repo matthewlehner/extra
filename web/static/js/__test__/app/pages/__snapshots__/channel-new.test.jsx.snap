@@ -22,6 +22,8 @@ exports[`ChannelNewPage component renders correctly 1`] = `
     >
       <svg
         className="icon"
+        height={null}
+        width={null}
       >
         <use
           xlinkHref="#id"

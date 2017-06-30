@@ -17,6 +17,8 @@ exports[`Modal component renders properly 1`] = `
       >
         <svg
           className="icon"
+          height="0.75rem"
+          width="0.75rem"
         >
           <use
             xlinkHref="#id"
@@ -48,6 +50,8 @@ exports[`Modal component renders with children 1`] = `
       >
         <svg
           className="icon"
+          height="0.75rem"
+          width="0.75rem"
         >
           <use
             xlinkHref="#id"

@@ -4,7 +4,5 @@ exports[`Label component renders correctly 1`] = `
 <label
   className="label"
   htmlFor="something"
->
-  label
-</label>
+/>
 `;

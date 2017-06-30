@@ -20,7 +20,45 @@ exports[`PostList component renders a list of posts 1`] = `
       </p>
       <footer
         className="footer"
-      />
+      >
+        <nav
+          className="actions"
+        >
+          <a
+            href="/post/1"
+            onClick={[Function]}
+          >
+            <svg
+              className="icon"
+              height="1.125rem"
+              width="1.125rem"
+            >
+              <use
+                xlinkHref="#id"
+              />
+            </svg>
+            Edit
+          </a>
+          <a
+            href="#"
+            onClick={[Function]}
+          >
+            <svg
+              className="icon"
+              height="1.125rem"
+              width="1.125rem"
+            >
+              <use
+                xlinkHref="#id"
+              />
+            </svg>
+            Archive
+          </a>
+        </nav>
+        <ul
+          className="postChannels"
+        />
+      </footer>
     </li>
   </ul>
 </section>

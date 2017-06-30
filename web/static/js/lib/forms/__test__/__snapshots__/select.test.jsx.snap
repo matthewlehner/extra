@@ -9,7 +9,7 @@ exports[`Select component displays placeholder 1`] = `
     id="post_content[post_collection_id]"
     name="post_content[post_collection_id]"
     onChange={[Function]}
-    value={null}
+    value=""
   >
     <option>
       Select something
@@ -52,7 +52,7 @@ exports[`Select component renders correctly 1`] = `
     id="post_content[post_collection_id]"
     name="post_content[post_collection_id]"
     onChange={[Function]}
-    value={null}
+    value=""
   >
     <option
       value="1"
