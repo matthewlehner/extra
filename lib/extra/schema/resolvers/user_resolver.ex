@@ -8,7 +8,7 @@ defmodule Extra.Schema.Resolvers.UserResolver do
 
   def update(params, %{context: %{current_user: user}}) do
     case User.update(user, params) do
-      {:ok, next_user} -> {:ok, next_user}
+      {:ok, next_user}    -> {:ok, next_user}
       {:error, changeset} ->
         errors = traverse_errors(changeset, &translate_error/1)
         {:error, errors}
