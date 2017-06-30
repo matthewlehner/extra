@@ -86,5 +86,12 @@ defmodule Extra.Schema do
 
       resolve &UserResolver.update_password/2
     end
+
+    field :update_preferences, :user do
+      arg :email, :string
+      arg :timezone, :string
+
+      resolve &UserResolver.update/2
+    end
   end
 end

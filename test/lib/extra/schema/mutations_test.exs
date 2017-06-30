@@ -136,6 +136,7 @@ defmodule Extra.Schema.MutationsTest do
   @update_user_password_mutation """
   mutation UpdatePassword($current: String!, $new: String!) {
     updatePassword(password: { current: $current, new: $new }) {
+      id
       email
     }
   }
@@ -154,7 +155,46 @@ defmodule Extra.Schema.MutationsTest do
         @update_user_password_mutation
         |> Absinthe.run(Schema, variables: variables, context: context)
 
-      assert %{"updatePassword" => %{"email" => user.email}} == response
+      assert response == %{
+        "updatePassword" => %{
+          "id" => to_string(user.id),
+          "email" => user.email
+        }
+      }
+    end
+  end
+
+  @update_user_preferences_mutation """
+  mutation UpdatePreferences($email: String, $timezone: String) {
+    updatePreferences(email: $email, timezone: $timezone) {
+      id
+      email
+      timezone
+    }
+  }
+  """
+
+  describe "UpdatePreferences" do
+    test "updates user's preferences" do
+      user = insert :user
+      variables = %{
+        "email" => "mynew@email.com",
+        "timezone" => "Canada/Pacific",
+      }
+
+      context = %{current_user: user}
+
+      assert {:ok, %{data: response}} =
+        @update_user_preferences_mutation
+        |> Absinthe.run(Schema, variables: variables, context: context)
+
+      assert response == %{
+        "updatePreferences" => %{
+          "id" => to_string(user.id),
+          "email" => "mynew@email.com",
+          "timezone" => "Canada/Pacific"
+        }
+      }
     end
   end
 end
