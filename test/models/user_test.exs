@@ -27,6 +27,10 @@ defmodule Extra.UserTest do
                                |> Repo.insert()
       assert {:email, "has already been taken"} in errors_on(user2)
     end
+
+    test "with invalid timezone" do
+      assert {:timezone, "is invalid"} in errors_on(%User{}, %{timezone: "hi"})
+    end
   end
 
   describe "registration_changeset" do
@@ -45,6 +49,19 @@ defmodule Extra.UserTest do
     test "registration_with short password" do
       errors = errors_on(User.registration_changeset(%User{}, %{password: "hi"}))
       assert {:password, "should be at least 8 character(s)"} in errors
+    end
+  end
+
+  describe ".update/2" do
+    test "it updates the user" do
+      params = %{email: "hi@extra.social", timezone: "Canada/Pacific"}
+
+      assert {:ok, user} = :user
+                           |> insert()
+                           |> User.update(params)
+
+      assert user.email == params[:email]
+      assert user.timezone == params[:timezone]
     end
   end
 

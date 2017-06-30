@@ -27,9 +27,10 @@ defmodule Extra.User do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, ~w(email))
+    |> cast(params, ~w(email timezone))
     |> validate_format(:email, ~r/.+@.+\..+/)
     |> unique_constraint(:email)
+    |> validate_inclusion(:timezone, Tzdata.zone_list)
   end
 
   def registration_changeset(struct, params \\ %{}) do
@@ -39,6 +40,12 @@ defmodule Extra.User do
     |> validate_required([:password, :email, :full_name])
     |> validate_length(:password, min: 8)
     |> put_pass_hash()
+  end
+
+  def update(user, params) do
+    user
+    |> changeset(params)
+    |> Extra.Repo.update()
   end
 
   def update_password(user, %{current: current, new: new}) do
