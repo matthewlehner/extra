@@ -14,7 +14,7 @@
 // import "phoenix_html";
 import "app/icons";
 import "lib/notifications";
-import "app/services/react-hooks";
+import "./app/extra";
 // import Turbolinks from "turbolinks";
 //
 // Turbolinks.start();
