@@ -12,5 +12,10 @@ declare type Extra$Channel = {
 
 declare type Extra$QueuedPost = {
   id: string,
-  scheduledFor: Date
+  scheduledFor: Date,
+  postContent: Extra$PostContent
+};
+
+declare type Extra$PostContent = {
+  body: string
 };

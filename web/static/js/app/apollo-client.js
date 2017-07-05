@@ -1,6 +1,5 @@
 // @flow
-import { ApolloClient,
-         createNetworkInterface } from "react-apollo";
+import ApolloClient, { createNetworkInterface } from "apollo-client";
 import getCsrfToken from "../lib/csrfToken";
 
 const networkInterface = createNetworkInterface({
