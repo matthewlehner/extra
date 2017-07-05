@@ -7,7 +7,9 @@ import Label from "../label";
 describe("Label component", () => {
   it("renders correctly", () => {
     const tree = renderer.create(
-      <Label htmlFor="something" content="label" />
+      <Label htmlFor="something" content="label">
+        The label.
+      </Label>
     );
 
     expect(tree).toMatchSnapshot();
