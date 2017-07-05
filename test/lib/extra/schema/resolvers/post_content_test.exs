@@ -1,7 +1,34 @@
 defmodule Extra.Schema.Resolvers.PostContentTest do
   use Extra.ModelCase, async: true
 
-  require Extra.Schema.Resolvers.PostContent, as: PostContentResolver
+  alias Extra.PostContent
+  alias Extra.Schema.Resolvers.PostContent, as: PostContentResolver
+
+  describe "get/2" do
+    test "gets post content by id" do
+      user = insert :user
+      collection = insert :post_collection, user: user
+      post = insert :post_content, collection: collection
+
+      params = %{id: post.id}
+      context = %{context: %{current_user: user}}
+
+      assert {:ok, %PostContent{id: id}} = PostContentResolver.get(params, context)
+      assert id == post.id
+    end
+
+    test "does not return posts that user doesn't own" do
+      user = insert :user
+      post = insert :post_content
+
+      params = %{id: post.id}
+      context = %{context: %{current_user: user}}
+
+      error = "A post with id #{post.id} could not be found"
+
+      assert {:error, error} == PostContentResolver.get(params, context)
+    end
+  end
 
   describe "create/2" do
     test "adds new post content" do
@@ -31,4 +58,3 @@ defmodule Extra.Schema.Resolvers.PostContentTest do
     end
   end
 end
-

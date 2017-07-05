@@ -11,6 +11,16 @@ defmodule Extra.PostContent do
   end
 
   @doc """
+
+  """
+  @spec for_user(Ecto.Queryable.t, %Extra.User{}) :: Ecto.Queryable.t
+  def for_user(query \\ __MODULE__, user) do
+    from p in query,
+      join: c in assoc(p, :collection),
+      where: c.user_id == ^user.id
+  end
+
+  @doc """
   Builds a changeset based on the `struct` and `params`.
   """
   def changeset(struct, params \\ %{}) do
@@ -25,9 +35,9 @@ defmodule Extra.PostContent do
   for the SocialChannel related to the post itself.
   """
   def build_potential_templates(post, channels) do
-    {:ok, templates } = post
-                        |> Extra.Repo.preload(:templates)
-                        |> Map.fetch(:templates)
+    {:ok, templates} = post
+                       |> Extra.Repo.preload(:templates)
+                       |> Map.fetch(:templates)
 
     channels
     |> filter_associated_channels(templates)

@@ -41,6 +41,11 @@ defmodule Extra.Schema do
       arg :channel_id, non_null(:id)
       resolve &QueuedPostResolver.for_channel/3
     end
+
+    field :post_content, type: :post_content do
+      arg :id, non_null(:id)
+      resolve &PostContent.get/2
+    end
   end
 
   input_object :update_schedule_params do
