@@ -7,7 +7,7 @@ type Props = {
   className?: string
 };
 
-const LinkButton = ({ className, ...props }:Props) => (
+const LinkButton = ({ className, ...props }: Props) => (
   <button
     {...props}
     className={className ? `${linkButton} ${className}` : linkButton}

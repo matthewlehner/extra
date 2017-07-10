@@ -22,7 +22,7 @@ class Textarea extends Component {
     this.adjustTextarea(event.target);
   }
 
-  adjustTextarea(target:EventTarget = this.textarea) {
+  adjustTextarea(target: EventTarget = this.textarea) {
     if (target instanceof HTMLTextAreaElement) {
       // eslint-disable-next-line no-param-reassign
       target.style.height = "";

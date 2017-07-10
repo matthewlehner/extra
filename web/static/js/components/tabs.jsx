@@ -9,7 +9,6 @@ import type { Location } from "react-router-dom";
 import Tab from "./tab";
 import Tabpanel from "./tabpanel";
 
-
 import type DailySchedule from "./daily-schedule";
 
 class Tabs extends Component {
@@ -23,7 +22,10 @@ class Tabs extends Component {
   render() {
     const { panels, location, name, children } = this.props;
 
-    const { tabs, tabPanels }: { tabs:Array<Tab>, tabPanels:Array<Tabpanel> } = panels.reduce(
+    const {
+      tabs,
+      tabPanels
+    }: { tabs: Array<Tab>, tabPanels: Array<Tabpanel> } = panels.reduce(
       (accumulator, { label, content }, index) => {
         const panelId = label.toLowerCase();
         const tabId = `${panelId}-tab`;
@@ -32,7 +34,10 @@ class Tabs extends Component {
 
         accumulator.tabs.push(
           <Tab
-            label={label} panelId={panelId} key={tabId} location={location}
+            label={label}
+            panelId={panelId}
+            key={tabId}
+            location={location}
             active={active}
           />
         );
@@ -49,7 +54,10 @@ class Tabs extends Component {
 
     return (
       <div className="tab-container">
-        <nav role="tablist" className="tablist">{tabs}</nav>
+        {/*  eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */}
+        <nav role="tablist" className="tablist">
+          {tabs}
+        </nav>
         {tabPanels}
         <div className="tab-footer">
           {children}

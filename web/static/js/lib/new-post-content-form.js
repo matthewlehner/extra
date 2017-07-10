@@ -36,7 +36,7 @@ export type PostContentFormData = {
 };
 
 export default function postContentForm(
-  channels:Array<Extra$Channel> = []
+  channels: Array<Extra$Channel> = []
 ): PostContentFormData {
   return {
     inputs: {
@@ -55,7 +55,7 @@ export default function postContentForm(
 }
 
 export function updateInput(
-  field: string, value:string | {}, form:PostContentFormData
+  field: string, value: string | {}, form: PostContentFormData
 ): PostContentFormData {
   return {
     ...form,

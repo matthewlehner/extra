@@ -10,6 +10,7 @@ import Account from "./pages/account";
 import NewPostContent from "./pages/new-post-content";
 import ChannelNewPage from "./pages/channel-new";
 import CollectionNewPage from "./pages/collection-new";
+import EditPostContent from "./pages/edit-post-content";
 
 import Sidebar from "./pages/sidebar";
 
@@ -23,6 +24,10 @@ const App = () =>
       <Route path="/new-collection" component={CollectionNewPage} />
       <Route path="/collections/:id" component={AsyncCollectionPage} />
       <Route path="/collections/:id/new" component={NewPostContent} />
+      <Route
+        path="/collections/:collectionId/edit-post/:postId"
+        component={EditPostContent}
+      />
 
       <Route path="/account" component={Account} />
     </main>

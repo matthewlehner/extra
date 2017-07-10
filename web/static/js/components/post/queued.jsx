@@ -12,9 +12,7 @@ const QueuedPost = ({ scheduledFor, postContent }: Props) => {
 
   return (
     <Post>
-      { postContent
-          ? postContent.body
-          : "Empty queue slot" }
+      {postContent ? postContent.body : "Empty queue slot"}
       <footer className={Style.footer}>
         Scheduled For: <time dateTime={scheduledFor}>{postTime}</time>
       </footer>

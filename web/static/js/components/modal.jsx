@@ -8,12 +8,12 @@ export default class Modal extends PureComponent {
   props: {
     title: string | null,
     children: React.Children,
-    onDismiss: () => void
-  }
+    onDismiss: (SyntheticEvent) => void
+  };
 
   static defaultProps = {
     children: null
-  }
+  };
 
   componentDidMount() {
     if (document && document.body instanceof HTMLElement) {
@@ -27,9 +27,9 @@ export default class Modal extends PureComponent {
     }
   }
 
-  handleClick = (event:MouseEvent): void => {
+  handleClick = (event: SyntheticEvent): void => {
     if (event.currentTarget === event.target) {
-      this.props.onDismiss();
+      this.props.onDismiss(event);
     }
   };
 
@@ -38,19 +38,18 @@ export default class Modal extends PureComponent {
 
     return (
       /*  eslint-disable jsx-a11y/no-static-element-interactions */
-      <div
-        className="modal__overlay"
-        onClick={this.handleClick}
-      >
+      /*  eslint-disable jsx-a11y/click-events-have-key-events */
+      <div className="modal__overlay" onClick={this.handleClick}>
         <div className="modal__container">
           <header className="modal__header">
-            <LinkButton
-              className="modal__dismiss"
-              onClick={this.handleClick}
-            >
+            <LinkButton className="modal__dismiss" onClick={this.handleClick}>
               <Icon name="close" width="0.75rem" height="0.75rem" />
             </LinkButton>
-            { title ? <h2>{ title }</h2> : null }
+            {title
+              ? <h2>
+                  {title}
+                </h2>
+              : null}
           </header>
           <div className="modal__body">
             {children}

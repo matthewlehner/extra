@@ -25,7 +25,7 @@ type Props = { id: string, channels: Array<Extra$Channel> };
 const PostChannelsFooter = ({ id, channels }: Props) =>
   <footer className={footer}>
     <nav className={actions}>
-      <Link to={`/post/${id}`}>
+      <Link to={`/collections/1/edit-post/${id}`}>
         <Icon name="edit" width={"1.125rem"} height={"1.125rem"} />
         Edit
       </Link>

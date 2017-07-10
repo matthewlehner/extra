@@ -8,10 +8,10 @@ import CollectionPosts from "./collection-posts";
 type ShowCollectionProps = {
   data: {
     loading: boolean,
-    error:? {
+    error: ? {
       message: string
     },
-    collection:? {
+    collection: ? {
       id: string,
       name: string,
       posts: Array<{

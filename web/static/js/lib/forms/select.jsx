@@ -15,7 +15,7 @@ const Select = ({ name, options, onChange, placeholder, ...props }: Props) =>
   <div className="select">
     <select
       className="form__control"
-      onChange={event => handleChange(event, name, onChange)}
+      onBlur={event => handleChange(event, name, onChange)}
       name={name}
       id={name}
       {...props}

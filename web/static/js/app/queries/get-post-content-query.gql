@@ -1,0 +1,16 @@
+query getPostContent($id: ID!) {
+  channels {
+    id
+    provider
+    name
+  }
+
+  postContent(id: $id) {
+    id
+    body
+
+    channels {
+      id
+    }
+  }
+}

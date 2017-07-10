@@ -13,7 +13,7 @@ type TabProps = {
   active: boolean
 };
 
-const Tab = ({ label, panelId, location, active }:TabProps) => {
+const Tab = ({ label, panelId, location, active }: TabProps) => {
   const searchParams = Object.assign(
     {},
     parse(location.search),

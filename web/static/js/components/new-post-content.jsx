@@ -39,7 +39,7 @@ export default class NewPostContent extends Component {
     formData: PostContentFormData
   }
 
-  constructor(props:Props) {
+  constructor(props: Props) {
     super(props);
 
     const { channels } = props.data;
@@ -47,7 +47,7 @@ export default class NewPostContent extends Component {
     this.state = { formData: postContentFormData(channels) };
   }
 
-  componentWillReceiveProps(nextProps:Props) {
+  componentWillReceiveProps(nextProps: Props) {
     const { channels } = nextProps.data;
 
     if (this.props.data.channels !== channels) {
@@ -63,7 +63,7 @@ export default class NewPostContent extends Component {
     }));
   }
 
-  onCancel = ():void => {
+  onCancel = (): void => {
     const { history, match: { params } } = this.props;
     history.push(`/collections/${params.id}`);
   }

@@ -7,7 +7,7 @@ type ToggleSwitchProps = {
   onChange: Function
 };
 
-const ToggleSwitch = ({ checked, onChange } :ToggleSwitchProps) => (
+const ToggleSwitch = ({ checked, onChange }: ToggleSwitchProps) => (
   <span className="toggle-switch">
     <input
       type="checkbox"
