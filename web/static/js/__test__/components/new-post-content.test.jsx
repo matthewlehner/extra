@@ -19,9 +19,7 @@ describe("NewPostContent component", () => {
       <MemoryRouter initialEntries={["/collections/1/new"]}>
         <Route
           path="/collections/:id/new"
-          render={routerProps => (
-            <NewPostContent {...routerProps} {...props} />
-          )}
+          render={routerProps => <NewPostContent {...routerProps} {...props} />}
         />
       </MemoryRouter>
     );

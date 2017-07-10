@@ -4,6 +4,7 @@ exports[`Modal component renders properly 1`] = `
 <div
   className="modal__overlay"
   onClick={[Function]}
+  role="dialog"
 >
   <div
     className="modal__container"
@@ -37,6 +38,7 @@ exports[`Modal component renders with children 1`] = `
 <div
   className="modal__overlay"
   onClick={[Function]}
+  role="dialog"
 >
   <div
     className="modal__container"

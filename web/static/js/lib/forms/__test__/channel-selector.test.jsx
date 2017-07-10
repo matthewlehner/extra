@@ -6,7 +6,7 @@ import renderer from "react-test-renderer";
 import ChannelSelector from "../channel-selector";
 
 describe("ChannelSelector component", () => {
-  const options = [{ value: "0", label: "matthewpearse", provider: "twitter" }];
+  const options = [{ id: "0", name: "matthewpearse", provider: "twitter" }];
   const name = "channels";
   const value = {};
 
@@ -23,4 +23,3 @@ describe("ChannelSelector component", () => {
     expect(tree).toMatchSnapshot();
   });
 });
-

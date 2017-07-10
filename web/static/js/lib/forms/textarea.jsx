@@ -1,5 +1,4 @@
 // @flow
-
 import React, { Component } from "react";
 import { handleChange } from "./utils";
 
@@ -8,19 +7,19 @@ class Textarea extends Component {
     onChange: (string, string) => void,
     name: string,
     value: string
-  }
+  };
 
-  textarea: HTMLInputElement
+  textarea: HTMLInputElement;
 
   static defaultProps = {
     className: "form__control form_textarea"
-  }
+  };
 
-  onTextareaChange = (event: SyntheticEvent) => {
+  onTextareaChange = (event: SyntheticInputEvent) => {
     const { name, onChange } = this.props;
     handleChange(event, name, onChange);
     this.adjustTextarea(event.target);
-  }
+  };
 
   adjustTextarea(target: EventTarget = this.textarea) {
     if (target instanceof HTMLTextAreaElement) {
@@ -39,7 +38,9 @@ class Textarea extends Component {
     return (
       <textarea
         {...props}
-        ref={(input) => { this.textarea = input; }}
+        ref={input => {
+          this.textarea = input;
+        }}
         id={name}
         name={name}
         value={value}

@@ -4,6 +4,7 @@ exports[`NewPostContent component renders properly 1`] = `
 <div
   className="modal__overlay"
   onClick={[Function]}
+  role="dialog"
 >
   <div
     className="modal__container"

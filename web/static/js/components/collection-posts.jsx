@@ -1,5 +1,4 @@
 // @flow
-
 import React from "react";
 import Post from "./post";
 import PostList from "./post/list";

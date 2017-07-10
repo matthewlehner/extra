@@ -1,5 +1,4 @@
 // @flow
-
 import postContentForm, {
   updateInput,
   channelMultiSelectOptions
@@ -29,11 +28,9 @@ describe("postContentForm", () => {
 
 describe("channelMultiSelectOptions", () => {
   it("returns an array of options", () => {
-    const expected = [{ value: "1", label: "trumpets", provider: "twitter" }];
+    const expected = [{ id: "1", name: "trumpets", provider: "twitter" }];
 
-    expect(
-      channelMultiSelectOptions(channels)
-    ).toEqual(expected);
+    expect(channelMultiSelectOptions(channels)).toEqual(expected);
   });
 });
 

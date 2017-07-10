@@ -25,7 +25,7 @@ exports[`PostList component renders a list of posts 1`] = `
           className="actions"
         >
           <a
-            href="/post/1"
+            href="/collections/1/edit-post/1"
             onClick={[Function]}
           >
             <svg

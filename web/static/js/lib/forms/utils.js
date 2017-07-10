@@ -1,8 +1,10 @@
 // @flow
 export function handleChange(
-  event: SyntheticEvent,
+  event: SyntheticInputEvent,
   field: string,
   callback: (field: string, value: string) => void
 ) {
-  callback(field, event.currentTarget.value);
+  if (typeof event.currentTarget.value === "string") {
+    callback(field, event.currentTarget.value);
+  }
 }

@@ -8,7 +8,7 @@ exports[`Select component displays placeholder 1`] = `
     className="form__control"
     id="post_content[post_collection_id]"
     name="post_content[post_collection_id]"
-    onChange={[Function]}
+    onBlur={[Function]}
     value=""
   >
     <option>
@@ -31,7 +31,7 @@ exports[`Select component hides placeholder when value is present 1`] = `
     className="form__control"
     id="post_content[post_collection_id]"
     name="post_content[post_collection_id]"
-    onChange={[Function]}
+    onBlur={[Function]}
     value="1"
   >
     <option
@@ -51,7 +51,7 @@ exports[`Select component renders correctly 1`] = `
     className="form__control"
     id="post_content[post_collection_id]"
     name="post_content[post_collection_id]"
-    onChange={[Function]}
+    onBlur={[Function]}
     value=""
   >
     <option

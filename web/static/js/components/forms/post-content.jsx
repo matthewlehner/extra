@@ -21,14 +21,11 @@ type Props = {
 
 const PostContentForm = ({
   collection,
-  formData: {
-    inputs: { content, channels },
-    isSaving
-  },
+  formData: { inputs: { content, channels }, isSaving },
   onChangeInput,
   onCancel,
   addPostContent
-}: Props) => (
+}: Props) =>
   <Form onSubmit={addPostContent}>
     <dl className="form__control-group">
       <dt className={FormStyles.label}>Collection</dt>
@@ -65,7 +62,6 @@ const PostContentForm = ({
         Create Post
       </button>
     </div>
-  </Form>
-);
+  </Form>;
 
 export default PostContentForm;

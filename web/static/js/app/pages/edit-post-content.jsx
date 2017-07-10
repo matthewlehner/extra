@@ -7,12 +7,12 @@ import getPostQuery from "../queries/get-post-content-query.gql";
 import EditPostModal from "../components/edit-post-modal";
 
 export type EditPostProps = {
-  data: EditPostQuery & QueryProps,
+  data: GetPostContentQuery & QueryProps,
   match: Match
 };
 
 const EditPostPage: OperationComponent<
-  EditPostQuery,
+  GetPostContentQuery,
   {},
   EditPostProps
 > = graphql(getPostQuery, {

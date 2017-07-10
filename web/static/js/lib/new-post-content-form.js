@@ -1,21 +1,16 @@
 // @flow
-
-export function collectionSelectOptions(collections: Array<Extra$PostCollection>) {
+export function collectionSelectOptions(
+  collections: Array<Extra$PostCollection>
+) {
   return collections.reduce(
-    (options, { id, name }) => [
-      ...options,
-      { value: id, label: name }
-    ],
+    (options, { id, name }) => [...options, { value: id, label: name }],
     [] // initial value
   );
 }
 
 export function channelMultiSelectOptions(channels: Array<Extra$Channel>) {
   return channels.reduce(
-    (options, { id, name, provider }) => [
-      ...options,
-      { value: id, label: name, provider }
-    ],
+    (options, { id, name, provider }) => [...options, { id, name, provider }],
     [] // initial value
   );
 }
@@ -28,7 +23,7 @@ export type PostContentFormData = {
     },
     channels: {
       label: string,
-      options: Array<{ value: string, label: string, provider: string }>,
+      options: Array<{ id: string, name: string, provider: string }>,
       value: {}
     }
   },
@@ -55,7 +50,9 @@ export default function postContentForm(
 }
 
 export function updateInput(
-  field: string, value: string | {}, form: PostContentFormData
+  field: string,
+  value: string | {},
+  form: PostContentFormData
 ): PostContentFormData {
   return {
     ...form,
