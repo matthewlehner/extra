@@ -1,5 +1,4 @@
 // @flow
-
 import React, { PureComponent } from "react";
 import LinkButton from "components/ui/link-button";
 import Icon from "components/icon";
@@ -8,7 +7,7 @@ export default class Modal extends PureComponent {
   props: {
     title: string | null,
     children: React.Children,
-    onDismiss: (SyntheticEvent) => void
+    onDismiss: SyntheticEvent => void
   };
 
   static defaultProps = {
@@ -37,9 +36,9 @@ export default class Modal extends PureComponent {
     const { children, title } = this.props;
 
     return (
-      /*  eslint-disable jsx-a11y/no-static-element-interactions */
       /*  eslint-disable jsx-a11y/click-events-have-key-events */
-      <div className="modal__overlay" onClick={this.handleClick}>
+      /*  eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+      <div className="modal__overlay" onClick={this.handleClick} role="dialog">
         <div className="modal__container">
           <header className="modal__header">
             <LinkButton className="modal__dismiss" onClick={this.handleClick}>
