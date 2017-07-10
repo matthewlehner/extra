@@ -1,0 +1,195 @@
+/* @flow */
+//  This file was automatically generated and should not be edited.
+
+export type Recurrence =
+  "EVERYDAY" |
+  "FRIDAY" |
+  "MONDAY" |
+  "THURSDAY" |
+  "TUESDAY" |
+  "WEDNESDAY" |
+  "WEEKDAYS" |
+  "WEEKENDS";
+
+
+export type AddPostContentMutationVariables = {|
+  body: string,
+  collectionId: string,
+  channelIds: Array< ?string >,
+|};
+
+export type AddPostContentMutation = {|
+  addPost: ? {|
+    id: ?string,
+    body: ?string,
+    collection: ? {|
+      id: ?string,
+      name: ?string,
+    |},
+    channels: ? Array< {|
+      id: ?string,
+      name: ?string,
+    |} >,
+  |},
+|};
+
+export type AddTimeslotMutationVariables = {|
+  scheduleId: string,
+  collectionId: string,
+  time: any,
+  recurrence: Recurrence,
+|};
+
+export type AddTimeslotMutation = {|
+  addTimeslot: ? {|
+    id: ?string,
+    recurrence: ?Recurrence,
+    time: ?any,
+    collection: ? {|
+      id: ?string,
+      name: ?string,
+    |},
+  |},
+|};
+
+export type ChannelPageQueryVariables = {|
+  id: string,
+|};
+
+export type ChannelPageQuery = {|
+  channel: ? {|
+    id: ?string,
+    name: ?string,
+    image: ?string,
+    provider: ?string,
+  |},
+  schedule: ? {|
+    id: ?string,
+    autopilot: ?boolean,
+    timeslots: ? Array< {|
+      id: ?string,
+      time: ?any,
+      recurrence: ?Recurrence,
+      collection: ? {|
+        id: ?string,
+        name: ?string,
+      |},
+    |} >,
+  |},
+  collections: ? Array< {|
+    id: ?string,
+    name: ?string,
+  |} >,
+  recurrenceType: ? {|
+    enumValues: ? Array< {|
+      name: string,
+    |} >,
+  |},
+|};
+
+export type CollectionPageQueryVariables = {|
+  id: string,
+|};
+
+export type CollectionPageQuery = {|
+  collection: ? {|
+    id: ?string,
+    name: ?string,
+    posts: ? Array< {|
+      id: ?string,
+      body: ?string,
+      channels: ? Array< {|
+        id: ?string,
+        name: ?string,
+        provider: ?string,
+        image: ?string,
+      |} >,
+    |} >,
+  |},
+|};
+
+export type GetPostContentQueryVariables = {|
+  id: string,
+|};
+
+export type GetPostContentQuery = {|
+  channels: ? Array< {|
+    id: ?string,
+    provider: ?string,
+    name: ?string,
+  |} >,
+  postContent: ? {|
+    id: ?string,
+    body: ?string,
+    channels: ? Array< {|
+      id: ?string,
+    |} >,
+  |},
+|};
+
+export type NewPostContentFormQueryVariables = {|
+  collectionId: string,
+|};
+
+export type NewPostContentFormQuery = {|
+  collection: ? {|
+    id: ?string,
+    name: ?string,
+  |},
+  channels: ? Array< {|
+    id: ?string,
+    provider: ?string,
+    name: ?string,
+  |} >,
+|};
+
+export type QueuedPostsForChannelQueryVariables = {|
+  channelId: string,
+|};
+
+export type QueuedPostsForChannelQuery = {|
+  queuedPosts: ? Array< {|
+    id: ?string,
+    scheduledFor: ?any,
+    postContent: ? {|
+      id: ?string,
+      body: ?string,
+    |},
+  |} >,
+|};
+
+export type SidebarQuery = {|
+  channels: ? Array< {|
+    id: ?string,
+    provider: ?string,
+    name: ?string,
+  |} >,
+  collections: ? Array< {|
+    id: ?string,
+    name: ?string,
+  |} >,
+|};
+
+export type TimeslotFieldsInfoQuery = {|
+  collections: ? Array< {|
+    id: ?string,
+    name: ?string,
+  |} >,
+  recurrenceType: ? {|
+    enumValues: ? Array< {|
+      name: string,
+    |} >,
+  |},
+|};
+
+export type UpdateScheduleMutationVariables = {|
+  channelId: string,
+  autopilot: ?boolean,
+|};
+
+export type UpdateScheduleMutation = {|
+  updateSchedule: ? {|
+    id: ?string,
+    autopilot: ?boolean,
+  |},
+|};

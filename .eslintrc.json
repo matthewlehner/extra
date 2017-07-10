@@ -1,71 +1,7 @@
 {
-  "extends": "airbnb",
-  "plugins": ["flowtype"],
-  "parser": "babel-eslint",
+  "extends": ["react-app", "plugin:jsx-a11y/recommended"],
+  "plugins": ["jsx-a11y", "flowtype"],
   "settings": {
     "import/resolver": "webpack"
-  },
-  "rules": {
-    "indent": [
-      "error", 2,
-      { "SwitchCase": 1 }
-    ],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
-    "quotes": [
-      "error",
-      "double"
-    ],
-    "semi": [
-      "error",
-      "always"
-    ],
-    "func-call-spacing": [
-      "error",
-      "never"
-    ],
-    "space-before-function-paren": [
-      "error",
-      "never"
-    ],
-    "space-before-blocks": [
-      "error",
-      "always"
-    ],
-    "keyword-spacing": [
-      "error",
-      {
-        "before": true,
-        "after": true
-      }
-    ],
-    "space-in-parens": [
-      "error",
-      "never"
-    ],
-    "brace-style": [
-      "error",
-      "stroustrup",
-      { "allowSingleLine": true }
-    ],
-    "comma-dangle": ["error", "never"],
-    "flowtype/define-flow-type": "warn",
-    "flowtype/require-valid-file-annotation": "warn",
-    "flowtype/use-flow-type": "warn",
-    "react/no-unused-prop-types": "off",
-    "react/sort-comp": ["error", {
-      "order": [
-        "type-annotations",
-        "static-methods",
-        "lifecycle",
-        "/^on.+$/",
-        "/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/",
-        "everything-else",
-        "/^render.+$/",
-        "render"
-      ]
-    }]
   }
 }

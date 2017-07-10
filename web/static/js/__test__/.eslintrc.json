@@ -1,4 +1,5 @@
 {
+  "extends": ["react-app", "plugin:jsx-a11y/recommended"],
   "plugins": [
     "jest"
   ],
