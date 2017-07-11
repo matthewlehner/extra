@@ -12,6 +12,12 @@ export type Recurrence =
   "WEEKENDS";
 
 
+export type UpdatePostContentPayload = {|
+  body: string,
+  channelIds: Array< ?string >,
+  id: string,
+|};
+
 export type AddPostContentMutationVariables = {|
   body: string,
   collectionId: string,
@@ -182,9 +188,26 @@ export type TimeslotFieldsInfoQuery = {|
   |},
 |};
 
+export type UpdatePostContentMutationVariables = {|
+  input: UpdatePostContentPayload,
+|};
+
+export type UpdatePostContentMutation = {|
+  updatePostContent: ? {|
+    id: ?string,
+    body: ?string,
+    channels: ? Array< {|
+      id: ?string,
+      name: ?string,
+      provider: ?string,
+      image: ?string,
+    |} >,
+  |},
+|};
+
 export type UpdateScheduleMutationVariables = {|
   channelId: string,
-  autopilot: ?boolean,
+  autopilot?: ?boolean,
 |};
 
 export type UpdateScheduleMutation = {|
