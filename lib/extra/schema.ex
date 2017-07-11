@@ -69,6 +69,12 @@ defmodule Extra.Schema do
     field :timezone, :string
   end
 
+  input_object :update_post_content_payload do
+    field :id, non_null(:id)
+    field :body, non_null(:string)
+    field :channel_ids, list_of(:id)
+  end
+
   mutation do
     field :update_schedule, type: :schedule do
       arg :channel_id, non_null(:id)
@@ -89,6 +95,12 @@ defmodule Extra.Schema do
       arg :channel_ids, list_of(:id)
 
       resolve &PostContent.create/2
+    end
+
+    field :update_post_content, type: :post_content do
+      arg :input, non_null(:update_post_content_payload)
+
+      resolve &PostContent.update/2
     end
 
     field :update_password, :user do

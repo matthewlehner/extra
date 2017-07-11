@@ -57,4 +57,32 @@ defmodule Extra.Schema.Resolvers.PostContentTest do
       assert {:error, "Not Authorized"} = PostContentResolver.create(%{}, %{})
     end
   end
+
+  describe "update/2" do
+    test "updates the post content" do
+      user = insert :user
+      collection = insert :post_collection, user: user
+      [channel1 | [channel2 | [channel3]]] = insert_list 3, :social_channel
+      post = :post_content
+             |> insert(collection: collection)
+             |> with_template_for(channel1)
+             |> with_template_for(channel2)
+
+      params = %{
+        input: %{
+          id: post.id,
+          body: "I'm a new body",
+          channel_ids: [channel1.id, channel3.id]
+        }
+      }
+      context = %{context: %{current_user: user}}
+
+      response = PostContentResolver.update(params, context)
+      assert {:ok, post_content} = response
+      post_content = Repo.preload(post_content, :channels)
+      assert post_content.id == post.id
+      assert post_content.body == "I'm a new body"
+      assert post_content.channels == [channel1, channel3]
+    end
+  end
 end
