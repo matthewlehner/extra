@@ -72,7 +72,7 @@ defmodule Extra.Schema do
   input_object :update_post_content_payload do
     field :id, non_null(:id)
     field :body, non_null(:string)
-    field :channel_ids, list_of(:id)
+    field :channel_ids, non_null(list_of(:id))
   end
 
   mutation do

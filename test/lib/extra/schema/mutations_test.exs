@@ -3,6 +3,8 @@ defmodule Extra.Schema.MutationsTest do
 
   alias Extra.Schema
 
+  @queries_dir "web/static/js/app/queries"
+
   @update_schedule_mutation """
     mutation UpdateSchedule($channelId: ID!, $autopilot: Boolean) {
       updateSchedule(channelId: $channelId, schedule: { autopilot: $autopilot })
@@ -197,6 +199,51 @@ defmodule Extra.Schema.MutationsTest do
           "id" => to_string(user.id),
           "email" => "mynew@email.com",
           "timezone" => "Canada/Pacific"
+        }
+      }
+    end
+  end
+
+  @update_post_content_mutation File.read!(
+    "#{@queries_dir}/update-post-content-mutation.gql"
+  )
+
+  describe "UpdatePostContent" do
+    test "updates a post and related templates" do
+      %{
+        user: user,
+        collection: collection,
+        channel: channel
+      } = insert_channel_resources()
+
+      post = insert :post_content, collection: collection
+
+      variables = %{
+        "input" => %{
+          "id" => post.id,
+          "body" => "hi bud",
+          "channelIds" => [channel.id]
+        }
+      }
+
+      context = %{current_user: user}
+
+      assert {:ok, %{data: response}} =
+        @update_post_content_mutation
+        |> Absinthe.run(Schema, variables: variables, context: context)
+
+      assert response == %{
+        "updatePostContent" => %{
+          "id" => to_string(post.id),
+          "body" => "hi bud",
+          "channels" => [
+            %{
+              "id" => to_string(channel.id),
+              "image" => channel.image,
+              "name" => channel.name,
+              "provider" => channel.provider
+            }
+          ]
         }
       }
     end

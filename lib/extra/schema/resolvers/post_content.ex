@@ -18,15 +18,6 @@ defmodule Extra.Schema.Resolvers.PostContent do
     end
   end
 
-  def update(%{input: content_params}, %{context: %{current_user: user}}) do
-    post = get_post_content_for_user(user, content_params.id)
-
-    case post do
-      %PostContent{} -> update_post(post, content_params)
-      nil            -> {:error, "A post with id #{content_params.id} could not be found"}
-    end
-  end
-
   def create(
     %{body: body, collection_id: collection_id, channel_ids: channel_ids},
     %{context: %{current_user: %{id: user_id}}}
@@ -43,6 +34,15 @@ defmodule Extra.Schema.Resolvers.PostContent do
   end
 
   def create(_, _), do: {:error, "Not Authorized"}
+
+  def update(%{input: content_params}, %{context: %{current_user: user}}) do
+    post = get_post_content_for_user(user, content_params.id)
+
+    case post do
+      %PostContent{} -> update_post(post, content_params)
+      nil            -> {:error, "A post with id #{content_params.id} could not be found"}
+    end
+  end
 
   defp get_post_content_for_user(user, id) do
     PostContent
@@ -78,7 +78,7 @@ defmodule Extra.Schema.Resolvers.PostContent do
       Enum.any?(post.templates, &(&1.social_channel_id == id))
     end)
     |> Enum.map(&(%{
-      social_channel_id: &1,
+      social_channel_id: String.to_integer(&1),
       post_content_id: post.id,
       inserted_at: now,
       updated_at: now

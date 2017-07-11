@@ -72,7 +72,7 @@ defmodule Extra.Schema.Resolvers.PostContentTest do
         input: %{
           id: post.id,
           body: "I'm a new body",
-          channel_ids: [channel1.id, channel3.id]
+          channel_ids: [to_string(channel1.id), to_string(channel3.id)]
         }
       }
       context = %{context: %{current_user: user}}

@@ -1,0 +1,12 @@
+mutation UpdatePostContent($input: UpdatePostContentPayload!) {
+  updatePostContent(input: $input) {
+    id
+    body
+    channels {
+      id
+      name
+      provider
+      image
+    }
+  }
+}
