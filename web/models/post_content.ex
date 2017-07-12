@@ -3,9 +3,11 @@ defmodule Extra.PostContent do
 
   schema "post_contents" do
     field :body, :string
+    field :archived_at, :utc_datetime
     belongs_to :collection, Extra.PostCollection, foreign_key: :post_collection_id
     has_many :templates, Extra.PostTemplate
     has_many :channels, through: [:templates, :social_channel]
+    has_many :queued_posts, through: [:templates, :queued_posts]
 
     timestamps()
   end
