@@ -81,6 +81,10 @@ defmodule Extra.Factory do
     }
   end
 
+  @spec insert_channel_resources() :: %{
+    user: %Extra.User{}, channel: %Extra.SocialChannel{},
+    schedule: %Extra.Schedule{}, collection: %Extra.PostCollection{}
+  }
   def insert_channel_resources do
     user = insert(:user)
     channel = insert(:social_channel, user: user)
