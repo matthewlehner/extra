@@ -1,5 +1,5 @@
 defmodule Extra.Schema.MutationsTest do
-  use Extra.ModelCase, asyc: true
+  use Extra.ModelCase, async: true
 
   alias Extra.Schema
 
@@ -135,14 +135,9 @@ defmodule Extra.Schema.MutationsTest do
     end
   end
 
-  @update_user_password_mutation """
-  mutation UpdatePassword($input: PasswordParams!) {
-    updatePassword(input: $input) {
-      id
-      email
-    }
-  }
-  """
+  @update_user_password_mutation File.read!(
+    "#{@queries_dir}/update-user-password-mutation.gql"
+  )
   describe "UpdatePassword" do
     test "updates user's password" do
       user = insert :user, password_hash: Comeonin.Bcrypt.hashpwsalt("password")
@@ -168,15 +163,9 @@ defmodule Extra.Schema.MutationsTest do
     end
   end
 
-  @update_user_preferences_mutation """
-  mutation UpdatePreferences($input: UserParams!) {
-    updatePreferences(input: $input) {
-      id
-      email
-      timezone
-    }
-  }
-  """
+  @update_user_preferences_mutation File.read!(
+    "#{@queries_dir}/update-user-preferences.gql"
+  )
 
   describe "UpdatePreferences" do
     test "updates user's preferences" do

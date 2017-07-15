@@ -1,0 +1,7 @@
+mutation updatePreferences($input: UserParams!) {
+  updatePreferences(input: $input) {
+    id
+    email
+    timezone
+  }
+}
