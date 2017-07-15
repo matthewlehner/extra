@@ -74,8 +74,17 @@ defmodule Extra.Router do
     forward "/graphql", Absinthe.Plug, schema: Extra.Schema
   end
 
+  pipeline :graphiql do
+    plug :fetch_session
+    plug :put_secure_browser_headers
+    plug Guardian.Plug.VerifySession
+    plug Guardian.Plug.LoadResource
+    plug Guardian.Plug.EnsureAuthenticated
+    plug Extra.Plugs.GraphqlContext
+  end
+
   scope "/admin" do
-    pipe_through [:browser]
+    pipe_through [:graphiql]
     forward "/graphiql", Absinthe.Plug.GraphiQL, schema: Extra.Schema
   end
 
