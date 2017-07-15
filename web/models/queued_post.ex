@@ -5,13 +5,14 @@ defmodule Extra.QueuedPost do
   """
   use Extra.Web, :model
   alias Extra.Timeslot
+  alias Extra.PostTemplate
 
   schema "queued_posts" do
     field :scheduled_for, :utc_datetime
     belongs_to :timeslot, Timeslot
     has_one :channel, through: [:timeslot, :channel]
     has_one :collection, through: [:timeslot, :collection]
-    belongs_to :post_template, Extra.PostTemplate
+    belongs_to :post_template, PostTemplate
     has_one :post_content, through: [:post_template, :post_content]
 
     timestamps()
@@ -23,7 +24,7 @@ defmodule Extra.QueuedPost do
       where: c.user_id == ^user.id
   end
 
-  def with_empty_content(query \\ Extra.QueuedPost) do
+  def with_empty_content(query \\ __MODULE__) do
     from p in query, where: is_nil(p.post_template_id)
   end
 

@@ -9,6 +9,7 @@ defmodule Extra.PostTemplate do
     belongs_to :social_channel, Extra.SocialChannel
     belongs_to :post_content, Extra.PostContent
     has_one :collection, through: [:post_content, :collection]
+    has_many :queued_posts, Extra.QueuedPost
 
     timestamps()
   end

@@ -55,4 +55,11 @@ defmodule Extra.PostContent do
   defp build_template(channel) do
     build_assoc(channel, :templates, %{social_channel: channel})
   end
+
+  @spec archive_changeset(%__MODULE__{}) :: {:ok, %__MODULE__{}} | {:error, Ecto.Changeset.t()}
+  def archive_changeset(content) do
+    content
+    |> cast(%{archived_at: DateTime.utc_now()}, [:archived_at])
+    |> validate_required([:archived_at])
+  end
 end

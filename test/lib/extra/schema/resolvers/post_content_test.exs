@@ -85,4 +85,50 @@ defmodule Extra.Schema.Resolvers.PostContentTest do
       assert post_content.channels == [channel1, channel3]
     end
   end
+
+  describe "archive/2" do
+    test "archives the post" do
+      %{
+        user: user,
+        collection: collection
+      } = insert_channel_resources()
+      content = insert :post_content, collection: collection
+
+      params = %{id: content.id}
+      context = %{context: %{current_user: user}}
+
+      assert {:ok, next_content} = PostContentResolver.archive(params, context)
+      assert %DateTime{} = next_content.archived_at
+    end
+
+    test "it clears the post from queued posts" do
+      %{
+        user: user,
+        channel: channel,
+        collection: collection
+      } = insert_channel_resources()
+      content = insert :post_content, collection: collection
+      template = insert :post_template, post_content: content,
+                                        social_channel: channel
+      queued_post = insert :queued_post, post_template: template
+
+      params = %{id: content.id}
+      context = %{context: %{current_user: user}}
+
+      assert {:ok, _} = PostContentResolver.archive(params, context)
+      assert %Extra.QueuedPost{post_template_id: nil} = Repo.get(Extra.QueuedPost, queued_post.id)
+    end
+
+    test "can't archive post that doesn't belong to user" do
+      user = insert :user
+      content = insert :post_content
+
+      params = %{id: content.id}
+      context = %{context: %{current_user: user}}
+
+      error_msg = "A post with id #{content.id} could not be found"
+
+      assert {:error, error_msg} == PostContentResolver.archive(params, context)
+    end
+  end
 end

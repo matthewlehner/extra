@@ -35,6 +35,17 @@ defmodule Extra.Schema.Resolvers.PostContent do
 
   def create(_, _), do: {:error, "Not Authorized"}
 
+  def archive(%{id: id}, %{context: %{current_user: user}}) do
+    result = user
+             |> get_post_content_for_user(id)
+             |> PostManager.archive()
+
+    case result do
+      {:ok, %{post_content: content}} -> {:ok, content}
+      _ -> {:error, "A post with id #{id} could not be found"}
+    end
+  end
+
   def update(%{input: content_params}, %{context: %{current_user: user}}) do
     post = get_post_content_for_user(user, content_params.id)
 
