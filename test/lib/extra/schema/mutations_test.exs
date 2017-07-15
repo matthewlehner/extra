@@ -5,12 +5,9 @@ defmodule Extra.Schema.MutationsTest do
 
   @queries_dir "web/static/js/app/queries"
 
-  @update_schedule_mutation """
-    mutation UpdateSchedule($channelId: ID!, $autopilot: Boolean) {
-      updateSchedule(channelId: $channelId, schedule: { autopilot: $autopilot })
-      { id, autopilot }
-    }
-  """
+  @update_schedule_mutation File.read!(
+    "#{@queries_dir}/update-schedule.gql"
+  )
 
   describe "update_schedule mutation" do
     test "it updates a schedule" do
@@ -34,23 +31,9 @@ defmodule Extra.Schema.MutationsTest do
     end
   end
 
-  # TODO - figure out a way to load these from the gql files.
-  @add_timeslot_mutation """
-  mutation AddTimeslot(
-    $scheduleId: ID!, $collectionId: ID!, $recurrence: Recurrence!, $time: Time!
-  ) {
-    addTimeslot(
-      timeslot: {
-       scheduleId: $scheduleId
-       collectionId: $collectionId
-       recurrence: $recurrence
-       time: $time
-      }
-    ) {
-      id, time, recurrence
-    }
-  }
-  """
+  @add_timeslot_mutation File.read!(
+    "#{@queries_dir}/add-timeslot-mutation.gql"
+  )
 
   describe "add_timeslot mutation" do
     test "it creates a new timeslot" do
@@ -65,19 +48,25 @@ defmodule Extra.Schema.MutationsTest do
                              "time" => "09:00:00"}
 
       context = %{current_user: user}
-      assert {:ok, response} = Absinthe.run(
+      assert {:ok, %{data: response}} = Absinthe.run(
                                  @add_timeslot_mutation,
                                  Schema,
                                  variables: mutation_variables,
                                  context: context
                                )
 
-      %{data: %{"addTimeslot" => %{"id" => timeslot_id}}} = response
+      %{"addTimeslot" => %{"id" => timeslot_id}} = response
       timeslot = Repo.get(Extra.Timeslot, timeslot_id)
 
-      assert response == %{data: %{"addTimeslot" => %{
-        "recurrence" => "MONDAY", "time" => "09:00:00", "id" => to_string(timeslot.id)
-      }}}
+      assert response == %{"addTimeslot" => %{
+        "recurrence" => "MONDAY",
+        "time" => "09:00:00",
+        "id" => to_string(timeslot.id),
+        "collection" => %{
+          "id" => to_string(collection.id),
+          "name" => collection.name
+        }
+      }}
 
       assert schedule.id == timeslot.schedule_id
       assert collection.id == timeslot.collection_id
@@ -86,19 +75,10 @@ defmodule Extra.Schema.MutationsTest do
     end
   end
 
-  @add_post_content_mutation """
-  mutation AddPostContent(
-    $body: String!, $collectionId: ID!, $channelIds: [ID]!
-  ) {
-    addPost(
-      body: $body, collectionId: $collectionId, channelIds: $channelIds
-    ) {
-      body
-      collection { id name }
-      channels { id name }
-    }
-  }
-  """
+  @add_post_content_mutation File.read!(
+    "#{@queries_dir}/add-post-content-mutation.gql"
+  )
+
   describe "add_post_content mutation" do
     test "it creates a new timeslot" do
       user = insert :user
@@ -117,11 +97,14 @@ defmodule Extra.Schema.MutationsTest do
 
       context = %{current_user: user}
 
-      assert {:ok, response} =
-        @add_post_content_mutation
-        |> Absinthe.run(Schema, variables: variables, context: context)
+      assert {:ok, %{data: response}} = Absinthe.run @add_post_content_mutation,
+                                                     Schema,
+                                                     variables: variables,
+                                                     context: context
 
-      assert response == %{data: %{"addPost" => %{
+      %{"addPost" => %{"id" => post_id}} = response
+      assert response == %{"addPost" => %{
+        "id" => post_id,
         "body" => body,
         "channels" => [
           %{"id" => to_string(channel1.id), "name" => channel1.name},
@@ -131,7 +114,7 @@ defmodule Extra.Schema.MutationsTest do
           "id" => to_string(collection.id),
           "name" => collection.name
         }
-      }}}
+      }}
     end
   end
 

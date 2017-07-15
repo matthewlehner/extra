@@ -1,14 +1,18 @@
 mutation AddPostContent(
-  $body: String!,
-  $collectionId: ID!,
+  $body: String!
+  $collectionId: ID!
   $channelIds: [ID]!
 ) {
-  addPost(
-    body: $body, collectionId: $collectionId, channelIds: $channelIds
-  ) {
+  addPost(body: $body, collectionId: $collectionId, channelIds: $channelIds) {
     id
     body
-    collection { id name }
-    channels { id name }
+    collection {
+      id
+      name
+    }
+    channels {
+      id
+      name
+    }
   }
 }
