@@ -18,6 +18,16 @@ export type UpdatePostContentPayload = {|
   id: string,
 |};
 
+export type PasswordParams = {|
+  current: string,
+  new: string,
+|};
+
+export type UserParams = {|
+  email?: ?string,
+  timezone?: ?string,
+|};
+
 export type AddPostContentMutationVariables = {|
   body: string,
   collectionId: string,
@@ -55,6 +65,16 @@ export type AddTimeslotMutation = {|
       id: ?string,
       name: ?string,
     |},
+  |},
+|};
+
+export type ArchivePostMutationVariables = {|
+  id: string,
+|};
+
+export type ArchivePostMutation = {|
+  archivePostContent: ? {|
+    id: ?string,
   |},
 |};
 
@@ -164,6 +184,16 @@ export type QueuedPostsForChannelQuery = {|
   |} >,
 |};
 
+export type RemoveTimeslotMutationVariables = {|
+  id: string,
+|};
+
+export type RemoveTimeslotMutation = {|
+  removeTimeslot: ? {|
+    id: ?string,
+  |},
+|};
+
 export type SidebarQuery = {|
   channels: ? Array< {|
     id: ?string,
@@ -214,5 +244,28 @@ export type UpdateScheduleMutation = {|
   updateSchedule: ? {|
     id: ?string,
     autopilot: ?boolean,
+  |},
+|};
+
+export type UpdatePasswordMutationVariables = {|
+  input: PasswordParams,
+|};
+
+export type UpdatePasswordMutation = {|
+  updatePassword: ? {|
+    id: ?string,
+    email: ?string,
+  |},
+|};
+
+export type UpdatePreferencesMutationVariables = {|
+  input: UserParams,
+|};
+
+export type UpdatePreferencesMutation = {|
+  updatePreferences: ? {|
+    id: ?string,
+    email: ?string,
+    timezone: ?string,
   |},
 |};
