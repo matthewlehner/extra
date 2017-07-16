@@ -89,6 +89,12 @@ defmodule Extra.Schema do
       resolve &Timeslot.create/2
     end
 
+    field :remove_timeslot, :timeslot do
+      arg :id, non_null(:id)
+
+      resolve &Timeslot.remove/2
+    end
+
     field :add_post, type: :post_content do
       arg :body, non_null(:string)
       arg :collection_id, non_null(:id)
@@ -101,6 +107,12 @@ defmodule Extra.Schema do
       arg :input, non_null(:update_post_content_payload)
 
       resolve &PostContent.update/2
+    end
+
+    field :archive_post_content, :post_content do
+      arg :id, non_null(:id)
+
+      resolve &PostContent.archive/2
     end
 
     field :update_password, :user do

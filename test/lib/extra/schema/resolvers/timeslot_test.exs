@@ -28,27 +28,25 @@ defmodule Extra.Schema.Resolvers.TimeslotTest do
     end
   end
 
-  describe "delete/2" do
+  describe "archive/2" do
     test "removes timeslot" do
       %{
         user: user, collection: collection
       } = insert_channel_resources()
-
       timeslot = insert(:timeslot, collection: collection)
 
-      assert {:ok, timeslot} = TimeslotResolver.delete(
-        timeslot.id,
-        %{context: %{current_user: user}}
-      )
+      variables = %{id: timeslot.id}
+      context = %{context: %{current_user: user}}
 
+      assert {:ok, timeslot} = TimeslotResolver.remove(variables, context)
       assert :error = Extra.SchedulerRegistry.find_job(Extra.SchedulerRegistry, timeslot)
     end
 
     test "returns error if no timeslot" do
       user = insert(:user)
 
-      assert {:error, "Timeslot 7 not found"} = TimeslotResolver.delete(
-        7,
+      assert {:error, "Timeslot 7 not found"} = TimeslotResolver.remove(
+        %{id: 7},
         %{context: %{current_user: user}}
       )
     end

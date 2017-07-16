@@ -21,8 +21,10 @@ defmodule Extra.Schema.MutationsTest do
         "autopilot" => false
       }
 
-      assert {:ok, response} = @update_schedule_mutation
-                               |> Absinthe.run(Schema, variables: mutation_variables, context: context)
+      assert {:ok, response} = Absinthe.run @update_schedule_mutation,
+                                            Schema,
+                                            variables: mutation_variables,
+                                            context: context
 
       assert response == %{data: %{"updateSchedule" => %{
         "autopilot" => false,
@@ -218,6 +220,62 @@ defmodule Extra.Schema.MutationsTest do
           ]
         }
       }
+    end
+  end
+
+  @archive_post_content_mutation File.read!(
+    "#{@queries_dir}/archive-post-content-mutation.gql"
+  )
+
+  describe "archivePost" do
+    test "archives a post" do
+      %{
+        user: user,
+        collection: collection
+      } = insert_channel_resources()
+      post = insert :post_content, collection: collection
+
+      variables = %{"id" => post.id}
+      context = %{current_user: user}
+
+      assert {:ok, %{data: response}} =
+        @archive_post_content_mutation
+        |> Absinthe.run(Schema, variables: variables, context: context)
+
+      assert response == %{
+        "archivePostContent" => %{
+          "id" => to_string(post.id),
+        }
+      }
+    end
+  end
+
+  @remove_timeslot_mutation File.read!(
+    "#{@queries_dir}/remove-timeslot-mutation.gql"
+  )
+
+  describe "removeTimeslot mutation" do
+    test "removes timeslot" do
+      %{
+        user: user, collection: collection
+      } = insert_channel_resources()
+      timeslot = insert(:timeslot, collection: collection)
+
+      variables = %{"id" => timeslot.id}
+      context = %{current_user: user}
+
+      assert {:ok, %{data: response}} =
+        Absinthe.run @remove_timeslot_mutation,
+                     Schema,
+                     variables: variables,
+                     context: context
+
+      assert response == %{
+        "removeTimeslot" => %{
+          "id" => to_string(timeslot.id),
+        }
+      }
+      refute Extra.Repo.get(Extra.Timeslot, timeslot.id)
     end
   end
 end

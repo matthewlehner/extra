@@ -17,13 +17,13 @@ defmodule Extra.Schema.Resolvers.Timeslot do
     response
   end
 
-  def delete(timeslot_id, %{context: %{current_user: user}}) do
+  def remove(%{id: id}, %{context: %{current_user: user}}) do
     timeslot = Timeslot
                |> Timeslot.for_user(user)
-               |> Repo.get(timeslot_id)
+               |> Repo.get(id)
 
     case timeslot do
-      nil      -> {:error, "Timeslot #{timeslot_id} not found"}
+      nil      -> {:error, "Timeslot #{id} not found"}
       timeslot -> delete_timeslot(timeslot)
     end
   end
@@ -31,7 +31,7 @@ defmodule Extra.Schema.Resolvers.Timeslot do
   defp delete_timeslot(timeslot) do
     timeslot
     |> Repo.delete!()
-    |> deregister_job
+    |> deregister_job()
     {:ok, timeslot}
   end
 

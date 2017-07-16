@@ -1,0 +1,5 @@
+mutation archivePost($id: ID!) {
+  archivePostContent(id: $id) {
+    id
+  }
+}

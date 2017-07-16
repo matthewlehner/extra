@@ -1,0 +1,5 @@
+mutation removeTimeslot($id: ID!) {
+  removeTimeslot(id: $id) {
+    id
+  }
+}
