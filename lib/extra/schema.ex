@@ -46,6 +46,10 @@ defmodule Extra.Schema do
       arg :id, non_null(:id)
       resolve &PostContent.get/2
     end
+
+    field :user_preferences, :user do
+      resolve &UserResolver.get/2
+    end
   end
 
   input_object :update_schedule_params do

@@ -11,6 +11,13 @@ defmodule Extra.Schema.Resolvers.UserResolverTest do
     {:ok, user: user}
   end
 
+  describe ".get/2" do
+    test "returns the user", %{user: user} do
+      context = %{context: %{current_user: user}}
+      assert {:ok, %User{}} = UserResolver.get(nil, context)
+    end
+  end
+
   describe ".update_password/2" do
     test "it updates the password", %{user: user} do
       params = %{input: %{current: user.password, new: "new password"}}

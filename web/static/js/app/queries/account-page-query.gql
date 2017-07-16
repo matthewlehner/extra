@@ -1,0 +1,7 @@
+query AccountPage {
+  userPreferences {
+    id
+    email
+    timezone
+  }
+}
