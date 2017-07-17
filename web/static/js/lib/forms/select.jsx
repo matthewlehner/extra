@@ -1,25 +1,16 @@
 // @flow
-
 import React from "react";
-import { handleChange } from "./utils";
 
 type Props = {
   placeholder?: string,
   value?: string,
   name: string,
-  options: Array<{ value: string, label: string }>,
-  onChange: (field: string, value: string) => void
+  options: Array<{ value: string, label: string }>
 };
 
-const Select = ({ name, options, onChange, placeholder, ...props }: Props) =>
+const Select = ({ name, options, placeholder, ...props }: Props) =>
   <div className="select">
-    <select
-      className="form__control"
-      onBlur={event => handleChange(event, name, onChange)}
-      name={name}
-      id={name}
-      {...props}
-    >
+    <select className="form__control" name={name} id={name} {...props}>
       {placeholder && !props.value
         ? <option key="placeholder">
             {placeholder}
@@ -35,8 +26,7 @@ const Select = ({ name, options, onChange, placeholder, ...props }: Props) =>
 
 Select.defaultProps = {
   placeholder: null,
-  value: "",
-  onChange: () => {}
+  value: ""
 };
 
 export default Select;

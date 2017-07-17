@@ -1,28 +1,14 @@
 // @flow
-
 import React from "react";
+import Loadable from "react-loadable";
 
-export default function asyncComponent(getComponent: any) {
-  return class AsyncComponent extends React.Component {
-    static Component = null;
-    state = { Component: AsyncComponent.Component };
+export const LoadingComponent = () => <div>Loading</div>;
 
-    componentWillMount() {
-      if (!this.state.Component) {
-        getComponent().then((Component) => {
-          AsyncComponent.Component = Component;
-          this.setState({ Component });
-        });
-      }
-    }
-    render() {
-      const { Component } = this.state;
-      if (Component) {
-        return <Component {...this.props} />;
-      }
-      return null;
-    }
-  };
+export default function asyncComponent(loadingComponent) {
+  return Loadable({
+    loader: loadingComponent,
+    loading: LoadingComponent
+  });
 }
 
 export const AsyncChannelPage = asyncComponent(() =>
