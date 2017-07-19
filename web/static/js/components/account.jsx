@@ -3,13 +3,15 @@ import React from "react";
 import { Form, Select, Label } from "lib/forms";
 import timezones from "../lib/timezones";
 import UserPreferencesForm from "../app/components/user-preferences-form";
+import UserPasswordForm from "../app/components/user-password-form";
 import { form, formActions } from "./account.scss";
 
 import type { AccountPageProps } from "../app/pages/account";
 
 const Account = ({
   data: { loading, error, userPreferences },
-  updatePreferences
+  updatePreferences,
+  updatePassword
 }: AccountPageProps) => {
   if (loading) {
     return <div>Loading</div>;
@@ -39,19 +41,7 @@ const Account = ({
 
       <section>
         <h2>Password</h2>
-        <Form className={form}>
-          <Label htmlFor="user[current_password]">Current password</Label>
-          <input id="user[current_password]" type="password" />
-
-          <Label htmlFor="user[current_password]">New password</Label>
-          <input id="user[current_password]" type="password" />
-
-          <div className={formActions}>
-            <button className="button" disabled>
-              Update
-            </button>
-          </div>
-        </Form>
+        <UserPasswordForm updatePassword={updatePassword} />
       </section>
     </div>
   );
