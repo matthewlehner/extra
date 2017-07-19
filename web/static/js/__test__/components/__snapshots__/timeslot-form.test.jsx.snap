@@ -30,7 +30,7 @@ exports[`TimeslotForm component renders a form 1`] = `
           className="form__control"
           id="recurrence"
           name="recurrence"
-          onBlur={[Function]}
+          onChange={[Function]}
           required={true}
           value=""
         >
@@ -60,7 +60,7 @@ exports[`TimeslotForm component renders a form 1`] = `
           className="form__control"
           id="collectionId"
           name="collectionId"
-          onBlur={[Function]}
+          onChange={[Function]}
           required={true}
           value=""
         >
