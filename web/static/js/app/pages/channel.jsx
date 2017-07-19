@@ -2,112 +2,28 @@
 
 import React from "react";
 import { graphql, compose } from "react-apollo";
+import type { OperationComponent, QueryProps } from "react-apollo";
+import Loadable from "react-loadable";
 
-import Schedule from "components/schedule";
-import QueuedPosts from "components/queued-posts";
-import currentChannelForLayoutQuery from "app/queries/channel-page.gql";
-import updateScheduleMutation from "app/queries/update-schedule.gql";
-import addTimeslotMutation from "app/queries/add-timeslot-mutation.gql";
+import ChannelPage from "../components/channel-page";
+import channelPageQuery from "../queries/channel-page.gql";
+import updateScheduleMutation from "../queries/update-schedule.gql";
+import addTimeslotMutation from "../queries/add-timeslot-mutation.gql";
+import removeTimeslotMutation from "../queries/remove-timeslot-mutation.gql";
 
-export type CollectionProps = {
-  id: string,
-  name: string
+export type ChannelPageProps = {
+  data: ChannelPageQuery & QueryProps,
+  updateSchedule: ({ variables: UpdateScheduleMutationVariables }) => void,
+  addTimeslot: ({ variables: AddTimeslotMutationVariables }) => void,
+  removeTimeslot: ({ id: string }) => void
 };
 
-export type RecurrenceProps = {
-  enumValues: Array<string>
-};
-
-type TimeslotProps = {
-  recurrence: string,
-  time: string,
-  collection: {
-    name: string
-  }
-};
-
-export type ScheduleProps = {
-  id: string,
-  timeslots: Array<TimeslotProps>,
-  autopilot: boolean
-};
-
-type Props = {
-  updateSchedule: Function,
-  addTimeslot: Function,
-  data: {
-    loading: boolean,
-    error?: {
-      message: string
-    },
-    schedule: ScheduleProps,
-    channel: {
-      id: string,
-      image: string,
-      name: string,
-      provider: string
-    },
-    collections: Array<CollectionProps>,
-    recurrenceType: RecurrenceProps
-  }
-};
-
-function ChannelPage(props: Props) {
-  const {
-    updateSchedule,
-    addTimeslot,
-    data: { loading, error, schedule, channel, collections, recurrenceType }
-  } = props;
-
-  if (loading) {
-    return <div>Loading!</div>;
-  }
-
-  if (error && error.message) {
-    return <div>{error.message}</div>;
-  }
-
-  const toggleAutopilot = () =>
-    updateSchedule({
-      variables: { channelId: channel.id, autopilot: !schedule.autopilot }
-    });
-  const scheduleProps = {
-    toggleAutopilot,
-    addTimeslot,
-    schedule,
-    collections,
-    recurrenceType
-  };
-
-  return (
-    <div>
-      <header className="heading">
-        <div className="heading__body">
-          <figure className="heading__figure">
-            <img src={channel.image} alt="Profile" />
-          </figure>
-          <h1>{channel.name}</h1>
-          <p>{channel.provider} account</p>
-        </div>
-        <div className="button button_small">
-          Delete account
-        </div>
-      </header>
-
-      <section className="channel-stats">
-        <h2>Stats</h2>
-        <p>Here are some stats about the channel.</p>
-      </section>
-
-      <Schedule {...scheduleProps} />
-
-      <QueuedPosts channelId={channel.id} />
-    </div>
-  );
-}
-
-export default compose(
-  graphql(currentChannelForLayoutQuery, {
+const ChannelPageComponent: OperationComponent<
+  ChannelPageQuery,
+  {},
+  ChannelPageProps
+> = compose(
+  graphql(channelPageQuery, {
     options: ({ match }) => ({ variables: { id: match.params.id } })
   }),
   graphql(updateScheduleMutation, { name: "updateSchedule" }),
@@ -128,5 +44,15 @@ export default compose(
       },
       refetchQueries: ["QueuedPostsForChannel"]
     }
+  }),
+  graphql(removeTimeslotMutation, {
+    props: ({ mutate }) => ({
+      removeTimeslot: id => mutate({ variables: { id } })
+    }),
+    options: ({ match: { params: { id } } }) => ({
+      refetchQueries: [{ query: channelPageQuery, variables: { id } }]
+    })
   })
 )(ChannelPage);
+
+export default ChannelPageComponent;

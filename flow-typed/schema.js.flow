@@ -29,7 +29,7 @@ export type UserParams = {|
 |};
 
 export type AccountPageQuery = {|
-  userPreferences: ? {|
+  userPreferences: {|
     id: string,
     email: string,
     timezone: ?string,
@@ -91,13 +91,13 @@ export type ChannelPageQueryVariables = {|
 |};
 
 export type ChannelPageQuery = {|
-  channel: ? {|
+  channel: {|
     id: string,
     name: string,
     image: string,
     provider: string,
   |},
-  schedule: ? {|
+  schedule: {|
     id: string,
     autopilot: boolean,
     timeslots:  Array< {|
@@ -110,7 +110,7 @@ export type ChannelPageQuery = {|
       |},
     |} >,
   |},
-  collections: ? Array< {|
+  collections:  Array< {|
     id: string,
     name: string,
   |} >,
@@ -126,7 +126,7 @@ export type CollectionPageQueryVariables = {|
 |};
 
 export type CollectionPageQuery = {|
-  collection: ? {|
+  collection: {|
     id: string,
     name: string,
     posts:  Array< {|
@@ -147,12 +147,12 @@ export type GetPostContentQueryVariables = {|
 |};
 
 export type GetPostContentQuery = {|
-  channels: ? Array< {|
+  channels:  Array< {|
     id: string,
     provider: string,
     name: string,
   |} >,
-  postContent: ? {|
+  postContent: {|
     id: string,
     body: string,
     channels:  Array< {|
@@ -166,11 +166,11 @@ export type NewPostContentFormQueryVariables = {|
 |};
 
 export type NewPostContentFormQuery = {|
-  collection: ? {|
+  collection: {|
     id: string,
     name: string,
   |},
-  channels: ? Array< {|
+  channels:  Array< {|
     id: string,
     provider: string,
     name: string,
@@ -182,7 +182,7 @@ export type QueuedPostsForChannelQueryVariables = {|
 |};
 
 export type QueuedPostsForChannelQuery = {|
-  queuedPosts: ? Array< {|
+  queuedPosts:  Array< {|
     id: string,
     scheduledFor: any,
     postContent: {|
@@ -203,19 +203,19 @@ export type RemoveTimeslotMutation = {|
 |};
 
 export type SidebarQuery = {|
-  channels: ? Array< {|
+  channels:  Array< {|
     id: string,
     provider: string,
     name: string,
   |} >,
-  collections: ? Array< {|
+  collections:  Array< {|
     id: string,
     name: string,
   |} >,
 |};
 
 export type TimeslotFieldsInfoQuery = {|
-  collections: ? Array< {|
+  collections:  Array< {|
     id: string,
     name: string,
   |} >,

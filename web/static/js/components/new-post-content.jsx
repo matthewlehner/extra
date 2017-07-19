@@ -44,11 +44,7 @@ export default class NewPostContent extends Component {
 
   addPostContent = (): Promise<*> => {
     const { inputs, isSaving } = this.state.formData;
-    const variables: {
-      body: string,
-      collectionId: string,
-      channelIds: Array<string>
-    } = {
+    const variables: AddPostContentMutationVariables = {
       body: inputs.content.value,
       collectionId: this.props.match.params.id,
       channelIds: Object.keys(inputs.channels.value).filter(

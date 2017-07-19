@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 
-import type { CollectionProps, RecurrenceProps } from "app/pages/channel";
+import type { CollectionProps } from "app/pages/channel";
 import LinkButton from "components/ui/link-button";
 import TimeslotForm from "./timeslot-form";
 
@@ -17,7 +17,7 @@ export default class NewTimeslot extends Component {
     addTimeslot: Function,
     scheduleId: string,
     collections: Array<CollectionProps>,
-    recurrenceType: RecurrenceProps
+    recurrenceType: Recurrence
   };
 
   state = {

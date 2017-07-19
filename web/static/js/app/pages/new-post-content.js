@@ -10,7 +10,8 @@ import NewPostContent from "components/new-post-content";
 export type NewPostContentProps = {
   data: NewPostContentFormQuery & QueryProps,
   match: Match,
-  history: RouterHistory
+  history: RouterHistory,
+  addPostContent: ({ variables: AddPostContentMutationVariables }) => Promise<*>
 };
 
 const NewPostContentPage: OperationComponent<

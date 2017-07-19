@@ -13,10 +13,11 @@ type DailyScheduleProps = {
     collection: {
       name: string
     }
-  }>
+  }>,
+  handleRemove: string => void
 };
 
-const DailySchedule = ({ timeslots }: DailyScheduleProps) =>
+const DailySchedule = ({ timeslots, handleRemove }: DailyScheduleProps) =>
   <table className="daily-schedule">
     <thead>
       <tr className="timeslot">
@@ -36,7 +37,10 @@ const DailySchedule = ({ timeslots }: DailyScheduleProps) =>
             </td>
             <td className="timeslot_collection">{collectionName}</td>
             <td className="timeslot_actions">
-              <LinkButton className="timeslot__remove-action">
+              <LinkButton
+                className="timeslot__remove-action"
+                onClick={() => handleRemove(id)}
+              >
                 <Icon name="remove" />
               </LinkButton>
             </td>

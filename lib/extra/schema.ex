@@ -14,40 +14,40 @@ defmodule Extra.Schema do
   import_types Extra.Schema.Types
 
   query do
-    field :channels, list_of(:channel) do
+    field :channels, non_null(list_of(:channel)) do
       resolve &ChannelResolver.all/2
     end
 
-    field :channel, type: :channel do
+    field :channel, non_null(:channel) do
       arg :id, non_null(:id)
       resolve &ChannelResolver.find/2
     end
 
-    field :collections, list_of(:collection) do
+    field :collections, non_null(list_of(:collection)) do
       resolve &CollectionResolver.all/2
     end
 
-    field :collection, type: :collection do
+    field :collection, non_null(:collection) do
       arg :id, non_null(:id)
       resolve &CollectionResolver.find/2
     end
 
-    field :schedule, type: :schedule do
+    field :schedule, non_null(:schedule) do
       arg :channel_id, non_null(:id)
       resolve &Schedule.find_by/3
     end
 
-    field :queued_posts, list_of(:queued_post) do
+    field :queued_posts, non_null(list_of(:queued_post)) do
       arg :channel_id, non_null(:id)
       resolve &QueuedPostResolver.for_channel/3
     end
 
-    field :post_content, type: :post_content do
+    field :post_content, non_null(:post_content) do
       arg :id, non_null(:id)
       resolve &PostContent.get/2
     end
 
-    field :user_preferences, :user do
+    field :user_preferences, non_null(:user) do
       resolve &UserResolver.get/2
     end
   end
