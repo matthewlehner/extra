@@ -30,8 +30,8 @@ export type UserParams = {|
 
 export type AccountPageQuery = {|
   userPreferences: ? {|
-    id: ?string,
-    email: ?string,
+    id: string,
+    email: string,
     timezone: ?string,
   |},
 |};
@@ -44,15 +44,15 @@ export type AddPostContentMutationVariables = {|
 
 export type AddPostContentMutation = {|
   addPost: ? {|
-    id: ?string,
-    body: ?string,
+    id: string,
+    body: string,
     collection: ? {|
-      id: ?string,
-      name: ?string,
+      id: string,
+      name: string,
     |},
-    channels: ? Array< {|
-      id: ?string,
-      name: ?string,
+    channels:  Array< {|
+      id: string,
+      name: string,
     |} >,
   |},
 |};
@@ -66,12 +66,12 @@ export type AddTimeslotMutationVariables = {|
 
 export type AddTimeslotMutation = {|
   addTimeslot: ? {|
-    id: ?string,
-    recurrence: ?Recurrence,
-    time: ?any,
-    collection: ? {|
-      id: ?string,
-      name: ?string,
+    id: string,
+    recurrence: Recurrence,
+    time: any,
+    collection: {|
+      id: string,
+      name: string,
     |},
   |},
 |};
@@ -82,7 +82,7 @@ export type ArchivePostMutationVariables = {|
 
 export type ArchivePostMutation = {|
   archivePostContent: ? {|
-    id: ?string,
+    id: string,
   |},
 |};
 
@@ -92,27 +92,27 @@ export type ChannelPageQueryVariables = {|
 
 export type ChannelPageQuery = {|
   channel: ? {|
-    id: ?string,
-    name: ?string,
-    image: ?string,
-    provider: ?string,
+    id: string,
+    name: string,
+    image: string,
+    provider: string,
   |},
   schedule: ? {|
-    id: ?string,
-    autopilot: ?boolean,
-    timeslots: ? Array< {|
-      id: ?string,
-      time: ?any,
-      recurrence: ?Recurrence,
-      collection: ? {|
-        id: ?string,
-        name: ?string,
+    id: string,
+    autopilot: boolean,
+    timeslots:  Array< {|
+      id: string,
+      time: any,
+      recurrence: Recurrence,
+      collection: {|
+        id: string,
+        name: string,
       |},
     |} >,
   |},
   collections: ? Array< {|
-    id: ?string,
-    name: ?string,
+    id: string,
+    name: string,
   |} >,
   recurrenceType: ? {|
     enumValues: ? Array< {|
@@ -127,16 +127,16 @@ export type CollectionPageQueryVariables = {|
 
 export type CollectionPageQuery = {|
   collection: ? {|
-    id: ?string,
-    name: ?string,
-    posts: ? Array< {|
-      id: ?string,
-      body: ?string,
-      channels: ? Array< {|
-        id: ?string,
-        name: ?string,
-        provider: ?string,
-        image: ?string,
+    id: string,
+    name: string,
+    posts:  Array< {|
+      id: string,
+      body: string,
+      channels:  Array< {|
+        id: string,
+        name: string,
+        provider: string,
+        image: string,
       |} >,
     |} >,
   |},
@@ -148,15 +148,15 @@ export type GetPostContentQueryVariables = {|
 
 export type GetPostContentQuery = {|
   channels: ? Array< {|
-    id: ?string,
-    provider: ?string,
-    name: ?string,
+    id: string,
+    provider: string,
+    name: string,
   |} >,
   postContent: ? {|
-    id: ?string,
-    body: ?string,
-    channels: ? Array< {|
-      id: ?string,
+    id: string,
+    body: string,
+    channels:  Array< {|
+      id: string,
     |} >,
   |},
 |};
@@ -167,13 +167,13 @@ export type NewPostContentFormQueryVariables = {|
 
 export type NewPostContentFormQuery = {|
   collection: ? {|
-    id: ?string,
-    name: ?string,
+    id: string,
+    name: string,
   |},
   channels: ? Array< {|
-    id: ?string,
-    provider: ?string,
-    name: ?string,
+    id: string,
+    provider: string,
+    name: string,
   |} >,
 |};
 
@@ -183,11 +183,11 @@ export type QueuedPostsForChannelQueryVariables = {|
 
 export type QueuedPostsForChannelQuery = {|
   queuedPosts: ? Array< {|
-    id: ?string,
-    scheduledFor: ?any,
-    postContent: ? {|
-      id: ?string,
-      body: ?string,
+    id: string,
+    scheduledFor: any,
+    postContent: {|
+      id: string,
+      body: string,
     |},
   |} >,
 |};
@@ -198,26 +198,26 @@ export type RemoveTimeslotMutationVariables = {|
 
 export type RemoveTimeslotMutation = {|
   removeTimeslot: ? {|
-    id: ?string,
+    id: string,
   |},
 |};
 
 export type SidebarQuery = {|
   channels: ? Array< {|
-    id: ?string,
-    provider: ?string,
-    name: ?string,
+    id: string,
+    provider: string,
+    name: string,
   |} >,
   collections: ? Array< {|
-    id: ?string,
-    name: ?string,
+    id: string,
+    name: string,
   |} >,
 |};
 
 export type TimeslotFieldsInfoQuery = {|
   collections: ? Array< {|
-    id: ?string,
-    name: ?string,
+    id: string,
+    name: string,
   |} >,
   recurrenceType: ? {|
     enumValues: ? Array< {|
@@ -232,13 +232,13 @@ export type UpdatePostContentMutationVariables = {|
 
 export type UpdatePostContentMutation = {|
   updatePostContent: ? {|
-    id: ?string,
-    body: ?string,
-    channels: ? Array< {|
-      id: ?string,
-      name: ?string,
-      provider: ?string,
-      image: ?string,
+    id: string,
+    body: string,
+    channels:  Array< {|
+      id: string,
+      name: string,
+      provider: string,
+      image: string,
     |} >,
   |},
 |};
@@ -250,8 +250,8 @@ export type UpdateScheduleMutationVariables = {|
 
 export type UpdateScheduleMutation = {|
   updateSchedule: ? {|
-    id: ?string,
-    autopilot: ?boolean,
+    id: string,
+    autopilot: boolean,
   |},
 |};
 
@@ -260,9 +260,17 @@ export type UpdatePasswordMutationVariables = {|
 |};
 
 export type UpdatePasswordMutation = {|
-  updatePassword: ? {|
-    id: ?string,
-    email: ?string,
+  updatePassword: {|
+    user: ? {|
+      id: string,
+      email: string,
+    |},
+    userErrors:  Array< {|
+      // Path to input field which caused the error
+      field: Array< ?string >,
+      // The error message
+      message: string,
+    |} >,
   |},
 |};
 
@@ -272,8 +280,8 @@ export type UpdatePreferencesMutationVariables = {|
 
 export type UpdatePreferencesMutation = {|
   updatePreferences: ? {|
-    id: ?string,
-    email: ?string,
+    id: string,
+    email: string,
     timezone: ?string,
   |},
 |};

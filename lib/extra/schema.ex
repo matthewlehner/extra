@@ -121,7 +121,7 @@ defmodule Extra.Schema do
       resolve &PostContent.archive/2
     end
 
-    field :update_password, :password_update_payload do
+    field :update_password, non_null(:password_update_payload) do
       arg :input, non_null(:password_params)
 
       resolve &UserResolver.update_password/2

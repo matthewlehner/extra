@@ -28,53 +28,53 @@ defmodule Extra.Schema.Types do
     value :weekends
   end
 
-  object(:channel) do
-    field :id, :id
-    field :name, :string
-    field :provider, :string
-    field :image, :string
-    field :schedule, :schedule, resolve: assoc(:schedule)
+  object :channel do
+    field :id, non_null(:id)
+    field :name, non_null(:string)
+    field :provider, non_null(:string)
+    field :image, non_null(:string)
+    field :schedule, non_null(:schedule), resolve: assoc(:schedule)
   end
 
-  object(:collection) do
-    field :id, :id
-    field :name, :string
-    field :posts, list_of(:post_content), resolve: assoc(:posts)
+  object :collection do
+    field :id, non_null(:id)
+    field :name, non_null(:string)
+    field :posts, non_null(list_of(:post_content)), resolve: assoc(:posts)
   end
 
-  object(:post_content) do
-    field :id, :id
-    field :body, :string
+  object :post_content do
+    field :id, non_null(:id)
+    field :body, non_null(:string)
     field :collection, :collection, resolve: assoc(:collection)
-    field :channels, list_of(:channel), resolve: assoc(:channels)
+    field :channels, non_null(list_of(:channel)), resolve: assoc(:channels)
   end
 
-  object(:schedule) do
-    field :id, :id
-    field :autopilot, :boolean
-    field :channel, :channel, resolve: assoc(:channel)
-    field :timeslots, list_of(:timeslot), resolve: assoc(:timeslots)
+  object :schedule do
+    field :id, non_null(:id)
+    field :autopilot, non_null(:boolean)
+    field :channel, non_null(:channel), resolve: assoc(:channel)
+    field :timeslots, non_null(list_of(:timeslot)), resolve: assoc(:timeslots)
   end
 
-  object(:timeslot) do
-    field :id, :id
-    field :time, :time
-    field :recurrence, :recurrence
-    field :schedule, :schedule, resolve: assoc(:schedule)
-    field :collection, :collection, resolve: assoc(:collection)
+  object :timeslot do
+    field :id, non_null :id
+    field :time, non_null :time
+    field :recurrence, non_null :recurrence
+    field :schedule, non_null(:schedule), resolve: assoc(:schedule)
+    field :collection, non_null(:collection), resolve: assoc(:collection)
   end
 
-  object(:queued_post) do
-    field :id, :id
-    field :scheduled_for, :datetime
-    field :channel, :channel, resolve: assoc(:channel)
-    field :collection, :collection, resolve: assoc(:collection)
-    field :post_content, :post_content, resolve: assoc(:post_content)
+  object :queued_post do
+    field :id, non_null :id
+    field :scheduled_for, non_null :datetime
+    field :channel, non_null(:channel), resolve: assoc(:channel)
+    field :collection, non_null(:collection), resolve: assoc(:collection)
+    field :post_content, non_null(:post_content), resolve: assoc(:post_content)
   end
 
-  object(:user) do
-    field :id, :id
-    field :email, :string
+  object :user do
+    field :id, non_null :id
+    field :email, non_null :string
     field :timezone, :string
   end
 
