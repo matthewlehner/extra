@@ -80,6 +80,8 @@ defmodule Extra.Schema do
   end
 
   mutation do
+    description "The schema’s entry-point for mutations. This acts as the public, top-level API from which all mutation queries must start."
+
     field :update_schedule, type: :schedule do
       arg :channel_id, non_null(:id)
       arg :schedule, :update_schedule_params
@@ -119,7 +121,7 @@ defmodule Extra.Schema do
       resolve &PostContent.archive/2
     end
 
-    field :update_password, :user do
+    field :update_password, :password_update_payload do
       arg :input, non_null(:password_params)
 
       resolve &UserResolver.update_password/2

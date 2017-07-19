@@ -52,7 +52,7 @@ defmodule Extra.User do
     if checkpw(current, user.password_hash) do
       user
       |> cast(%{password: new}, ~w(password))
-      |> validate_length(:password, min: 8)
+      |> validate_required(:password)
       |> put_pass_hash()
       |> Extra.Repo.update
     else

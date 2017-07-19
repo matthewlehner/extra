@@ -77,4 +77,17 @@ defmodule Extra.Schema.Types do
     field :email, :string
     field :timezone, :string
   end
+
+  object :password_update_payload do
+    field :user, :user
+    field :user_errors, non_null(list_of(non_null :user_error))
+  end
+
+  object :user_error do
+    description "Represents an error in the input of a mutation."
+
+    field :field, non_null(list_of(:string)),
+          description: "Path to input field which caused the error"
+    field :message, non_null(:string), description: "The error message"
+  end
 end

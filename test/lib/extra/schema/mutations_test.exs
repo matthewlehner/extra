@@ -141,8 +141,11 @@ defmodule Extra.Schema.MutationsTest do
 
       assert response == %{
         "updatePassword" => %{
-          "id" => to_string(user.id),
-          "email" => user.email
+          "user" => %{
+            "id" => to_string(user.id),
+            "email" => user.email
+          },
+          "userErrors" => []
         }
       }
     end

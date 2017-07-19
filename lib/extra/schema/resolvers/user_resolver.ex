@@ -19,6 +19,9 @@ defmodule Extra.Schema.Resolvers.UserResolver do
 
   def update_password(%{input: params},
                       %{context: %{current_user: user}}) do
-    User.update_password(user, params)
+    case User.update_password(user, params) do
+      {:ok, next_user} ->  {:ok, %{user: next_user, user_errors: []}}
+      {:error, message} -> {:ok, %{user_errors: %{field: [:current], message: message}}}
+    end
   end
 end
