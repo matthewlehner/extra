@@ -3,9 +3,8 @@
 import React from "react";
 import { graphql, compose } from "react-apollo";
 import type { OperationComponent, QueryProps } from "react-apollo";
-import Loadable from "react-loadable";
+import { ExtraLoadable } from "../../components/async-component";
 
-import ChannelPage from "../components/channel-page";
 import channelPageQuery from "../queries/channel-page.gql";
 import updateScheduleMutation from "../queries/update-schedule.gql";
 import addTimeslotMutation from "../queries/add-timeslot-mutation.gql";
@@ -53,6 +52,10 @@ const ChannelPageComponent: OperationComponent<
       refetchQueries: [{ query: channelPageQuery, variables: { id } }]
     })
   })
-)(ChannelPage);
+)(
+  ExtraLoadable({
+    loader: () => import(/* webpackChunkName: "channel-page" */ "../components/channel-page")
+  })
+);
 
 export default ChannelPageComponent;
