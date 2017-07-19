@@ -1,4 +1,4 @@
-export default [
+const timezones = [
   {
     value: "Pacific/Midway",
     label: "(UTC-11:00) Midway Island, American Samoa"
@@ -183,3 +183,15 @@ export default [
   { value: "Pacific/Apia", label: "(UTC+13:00) Samoa" },
   { value: "Pacific/Kiritimati", label: "(UTC+14:00) Kiritimati Island" }
 ];
+
+export default timezones;
+
+let timezoneValues;
+
+export function validTimezones() {
+  if (!timezoneValues) {
+    timezoneValues = timezones.map(({ value }) => value);
+  }
+
+  return timezoneValues;
+}

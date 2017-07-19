@@ -3,7 +3,7 @@ import React from "react";
 import { Formik } from "formik";
 import { object, string } from "yup";
 import { Select } from "../../lib/forms";
-import timezones from "../../lib/timezones";
+import timezones, { validTimezones } from "../../lib/timezones";
 
 import { form, formActions } from "../../components/account.scss";
 
@@ -48,7 +48,7 @@ const UserPreferencesForm = ({
 export default Formik({
   validationSchema: object().shape({
     email: string().email().required(),
-    timezone: string().required()
+    timezone: string().required().oneOf(validTimezones())
   }),
   mapPropsToValues: ({ formData: { email, timezone } }) => ({
     email,
