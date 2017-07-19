@@ -6,6 +6,7 @@ import { object, string } from "yup";
 import { form, formActions } from "../../components/account.scss";
 
 const UserPasswordForm = ({
+  error,
   values,
   handleChange,
   handleSubmit,
@@ -13,6 +14,11 @@ const UserPasswordForm = ({
   isSubmitting
 }) =>
   <form className={form} onSubmit={handleSubmit}>
+    {error &&
+      error.message &&
+      <div style={{ color: "red" }}>
+        {error.message}
+      </div>}
     <label htmlFor="user[current_password]">Current password</label>
     <input
       id="user[current_password]"
@@ -49,11 +55,19 @@ export default Formik({
     current: string().required(),
     new: string().required()
   }),
-  handleSubmit: (payload, { props, setError, setSubmitting, handleReset }) => {
+  handleSubmit: (payload, { props, setError, setSubmitting, resetForm }) => {
     props.updatePassword(payload).then(
-      res => {
+      ({
+        data: { updatePassword: { userErrors, user } }
+      }: {
+        data: UpdatePasswordMutation
+      }) => {
         setSubmitting(false);
-        handleReset();
+        if (userErrors.length > 0) {
+          setError(userErrors[0]);
+        } else {
+          resetForm();
+        }
       },
       error => {
         setSubmitting(false);
