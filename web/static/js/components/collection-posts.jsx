@@ -1,8 +1,8 @@
 // @flow
 import React from "react";
-import Post from "./post";
+
+import CollectionPost from "./post/collection-post";
 import PostList from "./post/list";
-import PostChannelsFooter from "./post/channels-footer";
 
 type Props = {
   posts: Array<{
@@ -19,12 +19,7 @@ const CollectionPosts = ({ posts }: Props) =>
     </header>
     <PostList>
       {posts.map(({ id, body, channels }) =>
-        <Post key={id}>
-          <p>
-            {body}
-          </p>
-          <PostChannelsFooter channels={channels} id={id} />
-        </Post>
+        <CollectionPost key={id} id={id} body={body} channels={channels} />
       )}
     </PostList>
   </section>;
