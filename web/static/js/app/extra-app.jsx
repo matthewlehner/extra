@@ -7,6 +7,7 @@ import ChannelPage from "./pages/channel";
 import Account from "./pages/account";
 import NewPostContent from "./pages/new-post-content";
 import ChannelNewPage from "./pages/channel-new";
+import CollectionPage from "./pages/collection";
 import CollectionNewPage from "./pages/collection-new";
 import EditPostContent from "./pages/edit-post-content";
 
@@ -20,7 +21,7 @@ const App = () =>
       <Route path="/channels/:id" component={ChannelPage} />
 
       <Route path="/new-collection" component={CollectionNewPage} />
-      <Route path="/collections/:id" component={AsyncCollectionPage} />
+      <Route path="/collections/:id" component={CollectionPage} />
       <Route path="/collections/:id/new" component={NewPostContent} />
       <Route
         path="/collections/:collectionId/edit-post/:postId"

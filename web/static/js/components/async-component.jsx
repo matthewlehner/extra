@@ -22,9 +22,3 @@ export function ExtraLoadable(opts) {
     )
   );
 }
-
-export const AsyncCollectionPage = ExtraLoadable({
-  loader: () => import(
-    /* webpackChunkName: "collection-page" */ "../app/pages/collection"
-  )
-});
