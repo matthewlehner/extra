@@ -39,8 +39,8 @@ exports[`PostList component renders a list of posts 1`] = `
             </svg>
             Edit
           </a>
-          <a
-            href="#"
+          <button
+            className="linkButton"
             onClick={[Function]}
           >
             <svg
@@ -53,7 +53,7 @@ exports[`PostList component renders a list of posts 1`] = `
               />
             </svg>
             Archive
-          </a>
+          </button>
         </nav>
         <ul
           className="postChannels"

@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import { Link } from "react-router-dom";
+import LinkButton from "../ui/link-button";
 
 import Icon from "../icon";
 import ChannelLogo from "../channel-logo";
@@ -21,18 +22,23 @@ const ChannelAvatar = ({ name, image, provider }: Extra$Channel) =>
     />
   </li>;
 
-type Props = { id: string, channels: Array<Extra$Channel> };
-const PostChannelsFooter = ({ id, channels }: Props) =>
+type Props = {
+  id: string,
+  channels: Array<Extra$Channel>,
+  onArchive: () => void
+};
+
+const PostChannelsFooter = ({ id, channels, onArchive }: Props) =>
   <footer className={footer}>
     <nav className={actions}>
       <Link to={`/collections/1/edit-post/${id}`}>
         <Icon name="edit" width={"1.125rem"} height={"1.125rem"} />
         Edit
       </Link>
-      <Link to="#">
+      <LinkButton onClick={onArchive}>
         <Icon name="archive" width={"1.125rem"} height={"1.125rem"} />
         Archive
-      </Link>
+      </LinkButton>
     </nav>
     <ul className={postChannels}>
       {channels.map(channel => <ChannelAvatar key={channel.id} {...channel} />)}
