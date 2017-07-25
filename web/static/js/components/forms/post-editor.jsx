@@ -18,6 +18,7 @@ type Props = {
     channels: Array<{}>
   },
   handleChange: () => void,
+  setFieldValue: () => void,
   handleSubmit: () => void,
   handleCancel: () => void,
   isSubmitting: boolean
@@ -29,7 +30,10 @@ const PostEditor = ({
   handleChange,
   handleSubmit,
   handleCancel,
-  isSubmitting
+  setFieldValue,
+  isSubmitting,
+  errors,
+  touched
 }: Props) =>
   <form className={gridForm} onSubmit={handleSubmit}>
     <dl className={`${gridForm} ${gridRow}`}>
@@ -42,11 +46,13 @@ const PostEditor = ({
     </label>
     <textarea
       id="post-content"
+      name="body"
       className={gridControl}
       value={values.body}
       onChange={handleChange}
       required
     />
+    {errors.body && touched.body && <div>{errors.body}</div>}
 
     <span className={gridLabel}>Channels</span>
     <ChannelSelector
@@ -54,7 +60,9 @@ const PostEditor = ({
       className={gridControl}
       value={values.channels}
       options={channels}
+      onChange={setFieldValue}
     />
+    {errors.channels && touched.body && <div>{errors.body}</div>}
 
     <div className={`form__actions ${gridRow}`}>
       <button
@@ -72,7 +80,7 @@ const PostEditor = ({
 
 export default Formik({
   validationSchema: object().shape({
-    channels: array(object()),
+    channels: object(),
     body: string().required()
   }),
 
@@ -82,5 +90,31 @@ export default Formik({
       (values, { id }) => ({ ...values, [id]: true }),
       {}
     )
-  })
+  }),
+  handleSubmit: (
+    values,
+    { props: { onUpdatePost, post: { id } }, setErrors, setSubmitting }
+  ) => {
+    const { body, channels } = values;
+    const channelIds = Object.keys(channels).reduce((collector, channelId) => {
+      if (channels[channelId]) {
+        return [...collector, channelId];
+      } else {
+        return collector;
+      }
+    }, []);
+
+    const input = { id, body, channelIds };
+
+    onUpdatePost({ variables: { input } }).then(
+      response => {
+        setSubmitting(false);
+      },
+      error => {
+        setSubmitting(false);
+        debugger;
+        setErrors(error);
+      }
+    );
+  }
 })(PostEditor);

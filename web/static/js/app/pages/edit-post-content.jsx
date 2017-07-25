@@ -3,12 +3,14 @@ import { graphql } from "react-apollo";
 import type { OperationComponent, QueryProps } from "react-apollo";
 import type { Match } from "react-router-dom";
 
+import { ExtraLoadable } from "../../components/async-component";
 import getPostQuery from "../queries/get-post-content-query.gql";
-import EditPostModal from "../components/edit-post-modal";
+import updatePostContent from "../queries/update-post-content-mutation.gql";
 
 export type EditPostProps = {
   data: GetPostContentQuery & QueryProps,
-  match: Match
+  match: Match,
+  onUpdatePost: (UpdatePostContentPayload) => void
 };
 
 const EditPostPage: OperationComponent<
@@ -19,6 +21,13 @@ const EditPostPage: OperationComponent<
   options: ({ match }: EditPostProps) => ({
     variables: { id: match.params.postId }
   })
-})(EditPostModal);
+})(graphql(updatePostContent, {
+  props: ({ mutate }) => ({ onUpdatePost: mutate })
+})(ExtraLoadable({
+  loader: () => import(
+    /* webpackChunkName: "edit-post-modal" */
+    "../components/edit-post-modal"
+  )
+})));
 
 export default EditPostPage;

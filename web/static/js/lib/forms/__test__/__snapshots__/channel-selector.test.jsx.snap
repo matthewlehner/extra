@@ -18,6 +18,7 @@ exports[`ChannelSelector component renders correctly 1`] = `
       id="channels-0"
       onChange={[Function]}
       type="checkbox"
+      value="0"
     />
     <span
       className="form__indicator form__indicator_checkbox"

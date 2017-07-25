@@ -12,7 +12,8 @@ const onDismiss = (event: SyntheticEvent): void => {
 };
 
 const EditPostModal = ({
-  data: { loading, error, postContent, channels }
+  data: { loading, error, postContent, channels },
+  onUpdatePost
 }: EditPostProps) =>
   <Modal title="Edit Post" onDismiss={onDismiss}>
     {loading
@@ -21,6 +22,7 @@ const EditPostModal = ({
         ? <div>ERROR</div>
         : <PostEditor
             handleCancel={onDismiss}
+            onUpdatePost={onUpdatePost}
             post={postContent}
             channels={channels}
           />}

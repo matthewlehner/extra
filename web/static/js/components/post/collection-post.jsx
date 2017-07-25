@@ -17,9 +17,7 @@ const CollectionPost = ({ id, body, channels, handleArchive }) =>
   </Post>;
 
 export default graphql(archivePostMutation, {
-  props: ({ mutate }) => ({
-    handleArchive: mutate
-  }),
+  props: ({ mutate }) => ({ handleArchive: mutate }),
   options: ({ id }) => ({
     variables: { id },
     update: (

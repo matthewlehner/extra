@@ -94,6 +94,7 @@ exports[`NewPostContent component renders properly 1`] = `
                 id="channels-10"
                 onChange={[Function]}
                 type="checkbox"
+                value="10"
               />
               <span
                 className="form__indicator form__indicator_checkbox"
