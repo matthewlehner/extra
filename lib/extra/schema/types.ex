@@ -4,6 +4,7 @@ defmodule Extra.Schema.Types do
   """
   use Absinthe.Schema.Notation
   use Absinthe.Ecto, repo: Extra.Repo
+  import Ecto.Query
 
   scalar :datetime, description: "ISOz time" do
     parse &DateTime.from_iso8601(&1.value)
@@ -39,7 +40,10 @@ defmodule Extra.Schema.Types do
   object :collection do
     field :id, non_null(:id)
     field :name, non_null(:string)
-    field :posts, non_null(list_of(:post_content)), resolve: assoc(:posts)
+    field :posts, non_null(list_of(:post_content)), resolve: assoc(:posts, fn(query, _, _) ->
+      query
+      |> where([p], is_nil(p.archived_at))
+    end)
   end
 
   object :post_content do
