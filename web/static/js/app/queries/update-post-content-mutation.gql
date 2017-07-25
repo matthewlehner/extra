@@ -1,4 +1,4 @@
-mutation UpdatePostContent($input: UpdatePostContentPayload!) {
+mutation updatePostContent($input: UpdatePostContentPayload!) {
   updatePostContent(input: $input) {
     id
     body

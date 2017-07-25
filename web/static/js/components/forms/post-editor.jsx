@@ -93,7 +93,11 @@ export default Formik({
   }),
   handleSubmit: (
     values,
-    { props: { onUpdatePost, post: { id } }, setErrors, setSubmitting }
+    {
+      props: { onUpdatePost, post: { id }, handleCancel },
+      setErrors,
+      setSubmitting
+    }
   ) => {
     const { body, channels } = values;
     const channelIds = Object.keys(channels).reduce((collector, channelId) => {
@@ -109,10 +113,10 @@ export default Formik({
     onUpdatePost({ variables: { input } }).then(
       response => {
         setSubmitting(false);
+        handleCancel();
       },
       error => {
         setSubmitting(false);
-        debugger;
         setErrors(error);
       }
     );

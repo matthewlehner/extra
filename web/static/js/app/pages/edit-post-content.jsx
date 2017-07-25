@@ -1,7 +1,7 @@
 // @flow
 import { graphql } from "react-apollo";
 import type { OperationComponent, QueryProps } from "react-apollo";
-import type { Match } from "react-router-dom";
+import type { Match, RouterHistory } from "react-router-dom";
 
 import { ExtraLoadable } from "../../components/async-component";
 import getPostQuery from "../queries/get-post-content-query.gql";
@@ -10,6 +10,7 @@ import updatePostContent from "../queries/update-post-content-mutation.gql";
 export type EditPostProps = {
   data: GetPostContentQuery & QueryProps,
   match: Match,
+  history: RouterHistory,
   onUpdatePost: (UpdatePostContentPayload) => void
 };
 
