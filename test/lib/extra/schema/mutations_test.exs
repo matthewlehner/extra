@@ -248,6 +248,7 @@ defmodule Extra.Schema.MutationsTest do
       assert response == %{
         "archivePostContent" => %{
           "id" => to_string(post.id),
+          "collection" => %{"id" => to_string(collection.id)}
         }
       }
     end
