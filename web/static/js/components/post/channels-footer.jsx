@@ -25,13 +25,19 @@ const ChannelAvatar = ({ name, image, provider }: Extra$Channel) =>
 type Props = {
   id: string,
   channels: Array<Extra$Channel>,
+  collectionPath: string,
   onArchive: () => void
 };
 
-const PostChannelsFooter = ({ id, channels, onArchive }: Props) =>
+const PostChannelsFooter = ({
+  id,
+  channels,
+  onArchive,
+  collectionPath
+}: Props) =>
   <footer className={footer}>
     <nav className={actions}>
-      <Link to={`/collections/1/edit-post/${id}`}>
+      <Link to={`${collectionPath}/edit-post/${id}`}>
         <Icon name="edit" width={"1.125rem"} height={"1.125rem"} />
         Edit
       </Link>

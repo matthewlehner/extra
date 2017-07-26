@@ -8,12 +8,23 @@ import collectionPageQuery from "../../app/queries/collection-page.gql";
 import Post from "../post";
 import PostChannelsFooter from "./channels-footer";
 
-const CollectionPost = ({ id, body, channels, handleArchive }) =>
+const CollectionPost = ({
+  id,
+  body,
+  channels,
+  handleArchive,
+  collectionPath
+}) =>
   <Post>
     <p>
       {body}
     </p>
-    <PostChannelsFooter channels={channels} id={id} onArchive={handleArchive} />
+    <PostChannelsFooter
+      channels={channels}
+      id={id}
+      onArchive={handleArchive}
+      collectionPath={collectionPath}
+    />
   </Post>;
 
 export default graphql(archivePostMutation, {

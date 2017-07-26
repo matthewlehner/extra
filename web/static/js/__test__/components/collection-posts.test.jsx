@@ -14,7 +14,8 @@ describe("PostList component", () => {
           body: "hey buddy.",
           channels: []
         }
-      ]
+      ],
+      collectionPath: "/collections/1"
     };
 
     const tree = renderer.create(

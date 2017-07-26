@@ -32,7 +32,10 @@ export default function ShowCollection({
         </Link>
       </header>
 
-      <CollectionPosts posts={collection.posts} />
+      <CollectionPosts
+        collectionPath={location.pathname}
+        posts={collection.posts}
+      />
     </div>
   );
 }
