@@ -14,40 +14,40 @@ defmodule Extra.Schema do
   import_types Extra.Schema.Types
 
   query do
-    field :channels, non_null(list_of(:channel)) do
+    field :channels, list_of(:channel) do
       resolve &ChannelResolver.all/2
     end
 
-    field :channel, non_null(:channel) do
+    field :channel, :channel do
       arg :id, non_null(:id)
       resolve &ChannelResolver.find/2
     end
 
-    field :collections, non_null(list_of(:collection)) do
+    field :collections, list_of(:collection) do
       resolve &CollectionResolver.all/2
     end
 
-    field :collection, non_null(:collection) do
+    field :collection, :collection do
       arg :id, non_null(:id)
       resolve &CollectionResolver.find/2
     end
 
-    field :schedule, non_null(:schedule) do
+    field :schedule, :schedule do
       arg :channel_id, non_null(:id)
       resolve &Schedule.find_by/3
     end
 
-    field :queued_posts, non_null(list_of(:queued_post)) do
+    field :queued_posts, list_of(:queued_post) do
       arg :channel_id, non_null(:id)
       resolve &QueuedPostResolver.for_channel/3
     end
 
-    field :post_content, non_null(:post_content) do
+    field :post_content, :post_content do
       arg :id, non_null(:id)
       resolve &PostContent.get/2
     end
 
-    field :user_preferences, non_null(:user) do
+    field :user_preferences, :user do
       resolve &UserResolver.get/2
     end
   end
@@ -82,14 +82,14 @@ defmodule Extra.Schema do
   mutation do
     description "The schema’s entry-point for mutations. This acts as the public, top-level API from which all mutation queries must start."
 
-    field :update_schedule, type: :schedule do
+    field :update_schedule, :schedule do
       arg :channel_id, non_null(:id)
       arg :schedule, :update_schedule_params
 
       resolve &Schedule.update/2
     end
 
-    field :add_timeslot, type: :timeslot do
+    field :add_timeslot, :timeslot do
       arg :timeslot, :add_timeslot_params
 
       resolve &Timeslot.create/2
@@ -101,7 +101,7 @@ defmodule Extra.Schema do
       resolve &Timeslot.remove/2
     end
 
-    field :add_post, type: :post_content do
+    field :add_post, :post_content do
       arg :body, non_null(:string)
       arg :collection_id, non_null(:id)
       arg :channel_ids, list_of(:id)
@@ -109,7 +109,7 @@ defmodule Extra.Schema do
       resolve &PostContent.create/2
     end
 
-    field :update_post_content, type: :post_content do
+    field :update_post_content, :post_content do
       arg :input, non_null(:update_post_content_payload)
 
       resolve &PostContent.update/2
