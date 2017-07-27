@@ -94,4 +94,17 @@ defmodule Extra.Schema.Types do
           description: "Path to input field which caused the error"
     field :message, non_null(:string), description: "The error message"
   end
+
+  object :add_collection_payload do
+    field :collection, :collection
+    field :collection_errors, non_null(list_of(non_null(:collection_error)))
+  end
+
+  object :collection_error do
+    description "Represents an error in the input of a mutation."
+
+    field :field, non_null(list_of(:string)),
+          description: "Path to input field which caused the error"
+    field :message, non_null(:string), description: "The error message"
+  end
 end

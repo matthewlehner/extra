@@ -68,6 +68,10 @@ defmodule Extra.Schema do
     field :new, non_null(:string)
   end
 
+  input_object :add_collection_params do
+    field :name, non_null(:string)
+  end
+
   input_object :user_params do
     field :email, :string
     field :timezone, :string
@@ -131,6 +135,12 @@ defmodule Extra.Schema do
       arg :input, non_null(:user_params)
 
       resolve &UserResolver.update/2
+    end
+
+    field :add_collection, non_null(:add_collection_payload) do
+      arg :input, non_null(:add_collection_params)
+
+      resolve &CollectionResolver.create/2
     end
   end
 end
