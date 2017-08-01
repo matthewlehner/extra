@@ -28,7 +28,7 @@ defmodule Extra.Schema.Resolvers.UserResolverTest do
     test "it errors with incorrect password", %{user: user} do
       params = %{input: %{current: "wrong password", new: "new password"}}
       context = %{context: %{current_user: user}}
-      assert {:ok, %{user_errors: %{field: [:current], message: "The password provided is incorrect"}}} = UserResolver.update_password(params, context)
+      assert {:ok, %{user_errors: [%{field: :current, message: "The password provided is incorrect"}]}} = UserResolver.update_password(params, context)
     end
   end
 

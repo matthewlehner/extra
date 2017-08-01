@@ -32,11 +32,27 @@ defmodule Extra.Schema.CollectionResolver do
   def find(_, _), do: {:error, "Not Authorized"}
 
   def create(%{input: params}, %{context: %{current_user: user}}) do
-    changeset = user
-                |> Ecto.build_assoc(:post_collections)
-                |> PostCollection.changeset(params)
+    changeset =
+      user
+      |> Ecto.build_assoc(:post_collections)
+      |> PostCollection.changeset(params)
 
-    case Repo.insert(changeset) do
+      case Repo.insert(changeset) do
+        {:ok, collection} -> {:ok, %{collection: collection, collection_errors: []}}
+        {:error, changeset} -> {:ok, %{collection_errors: errors_on(changeset)}}
+      end
+  end
+
+  def update(%{input: params}, %{context: %{current_user: user}}) do
+    {id, params} = Map.pop(params, :id)
+
+    changeset =
+      PostCollection
+      |> where(user_id: ^user.id)
+      |> Repo.get(id)
+      |> PostCollection.update_changeset(params)
+
+    case Repo.update(changeset) do
       {:ok, collection} -> {:ok, %{collection: collection, collection_errors: []}}
       {:error, changeset} -> {:ok, %{collection_errors: errors_on(changeset)}}
     end

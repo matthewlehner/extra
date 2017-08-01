@@ -25,4 +25,10 @@ defmodule Extra.PostCollection do
     |> validate_required([:name])
     |> assoc_constraint(:user)
   end
+
+  def update_changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, [:name])
+    |> validate_required([:name])
+  end
 end
