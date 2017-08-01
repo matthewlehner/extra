@@ -1,0 +1,6 @@
+query editCollectionPage($id: ID!) {
+  collection(id: $id) {
+    id
+    name
+  }
+}

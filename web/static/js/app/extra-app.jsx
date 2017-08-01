@@ -2,13 +2,13 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-import { AsyncCollectionPage } from "../components/async-component";
 import ChannelPage from "./pages/channel";
 import Account from "./pages/account";
 import NewPostContent from "./pages/new-post-content";
 import ChannelNewPage from "./pages/channel-new";
 import CollectionPage from "./pages/collection";
 import CollectionNewPage from "./pages/collection-new";
+import EditCollectionPage from "./pages/edit-collection-page";
 import EditPostContent from "./pages/edit-post-content";
 
 import Sidebar from "./pages/sidebar";
@@ -22,6 +22,8 @@ const App = () =>
 
       <Route path="/new-collection" component={CollectionNewPage} />
       <Route path="/collections/:id" component={CollectionPage} />
+      <Route path="/collection-settings/:id" component={EditCollectionPage} />
+
       <Route path="/collections/:id/new" component={NewPostContent} />
       <Route
         path="/collections/:collectionId/edit-post/:postId"
