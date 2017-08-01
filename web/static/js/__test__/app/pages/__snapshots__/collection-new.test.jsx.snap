@@ -9,5 +9,35 @@ exports[`CollectionNewPage component renders correctly 1`] = `
       Create a new collection
     </h1>
   </header>
+  <section>
+    <form
+      className="form"
+      onSubmit={[Function]}
+    >
+      <label
+        htmlFor="collection[name]"
+      >
+        Collection Name
+      </label>
+      <input
+        id="collection[name]"
+        name="name"
+        onBlur={[Function]}
+        onChange={[Function]}
+        required={true}
+        value=""
+      />
+      <div
+        className="formActions"
+      >
+        <button
+          className="button"
+          disabled={false}
+        >
+          Create
+        </button>
+      </div>
+    </form>
+  </section>
 </div>
 `;
