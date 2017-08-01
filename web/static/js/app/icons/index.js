@@ -9,6 +9,7 @@ import logo from "../../../assets/images/extra-logo.svg";
 import logout from "./logout.svg";
 import performance from "./performance.svg";
 import remove from "./remove.svg";
+import settingsGear from "./settings-gear.svg";
 import twitter from "./twitter.svg";
 import twitterBadge from "./twitter-badge.svg";
 
@@ -24,6 +25,7 @@ export default {
   logo,
   logout,
   remove,
+  settingsGear,
   twitter,
   twitterBadge
 };

@@ -3,6 +3,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CollectionPosts from "./collection-posts";
+import Icon from "./icon.jsx";
 
 import type { CollectionPageProps } from "../app/pages/collection";
 
@@ -27,6 +28,10 @@ export default function ShowCollection({
         <h1 className="heading__body">
           {collection.name}
         </h1>
+        <Link to={`${location.pathname}/settings`}>
+          <Icon name="settingsGear" />
+          Settings
+        </Link>
         <Link className="button button_small" to={`${location.pathname}/new`}>
           Create new post
         </Link>
