@@ -4771,8 +4771,8 @@ rc@^1.1.7:
     strip-json-comments "~2.0.1"
 
 react-apollo@^1.4.8:
-  version "1.4.9"
-  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-1.4.9.tgz#e7e2ddf13a3fdc62a11ec94e9eca5b664d933456"
+  version "1.4.10"
+  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-1.4.10.tgz#a3c77b120402245ea9d3a518118237c2a314a3a1"
   dependencies:
     apollo-client "^1.4.0"
     graphql-anywhere "^3.0.0"
@@ -4796,12 +4796,12 @@ react-dom@^15.6.1:
     prop-types "^15.5.10"
 
 react-loadable@^4.0.3:
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/react-loadable/-/react-loadable-4.0.3.tgz#296c5cdfba3d402d66d2120d52fc08c2ca1f3088"
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/react-loadable/-/react-loadable-4.0.4.tgz#ae96837729eeb7fd0d3bb1dc01dc0053ac147874"
   dependencies:
     import-inspector "^2.0.0"
     is-webpack-bundle "^1.0.0"
-    webpack-require-weak "^1.0.0"
+    webpack-require-weak "^1.0.1"
 
 react-router-dom@^4.0.0:
   version "4.1.2"
@@ -5833,7 +5833,7 @@ webpack-merge@^4.0.0:
   dependencies:
     lodash "^4.17.4"
 
-webpack-require-weak@^1.0.0:
+webpack-require-weak@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/webpack-require-weak/-/webpack-require-weak-1.0.1.tgz#a6a8e60871bebbe5b085a915ab0af633a412433f"
   dependencies:
