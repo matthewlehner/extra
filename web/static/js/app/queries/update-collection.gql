@@ -1,0 +1,12 @@
+mutation updateCollection($input: UpdateCollectionParams) {
+  updateCollection(input: $input) {
+    collection {
+      id
+      name
+    }
+    collectionErrors {
+      field
+      message
+    }
+  }
+}

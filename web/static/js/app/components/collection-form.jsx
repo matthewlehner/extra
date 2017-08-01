@@ -4,15 +4,18 @@ import { Formik } from "formik";
 import { object, string } from "yup";
 
 import { form, formActions } from "../../components/account.scss";
+import { Link } from "react-router-dom";
 
 const CollectionForm = ({
+  collection: { id },
   values,
   errors,
   touched,
   dirty,
+  handleBlur,
+  handleCancel,
   handleChange,
   handleSubmit,
-  handleBlur,
   isSubmitting
 }) =>
   <form className={form} onSubmit={handleSubmit}>
@@ -33,8 +36,9 @@ const CollectionForm = ({
 
     <div className={formActions}>
       <button className="button" disabled={isSubmitting}>
-        {isSubmitting ? "Saving" : "Create"}
+        {isSubmitting ? "Saving" : id ? "Update" : "Create"}
       </button>
+      {id ? <Link to={`/collections/${id}`}>Cancel</Link> : null}
     </div>
   </form>;
 
