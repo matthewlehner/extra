@@ -1,10 +1,7 @@
 // @flow
 import React from "react";
-import { Form, Select, Label } from "lib/forms";
-import timezones from "../lib/timezones";
 import UserPreferencesForm from "../app/components/user-preferences-form";
 import UserPasswordForm from "../app/components/user-password-form";
-import { form, formActions } from "./account.scss";
 
 import type { AccountPageProps } from "../app/pages/account";
 

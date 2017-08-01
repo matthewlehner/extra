@@ -87,24 +87,20 @@ defmodule Extra.Schema.Types do
     field :user_errors, non_null(list_of(non_null :user_error))
   end
 
-  object :user_error do
+  object :error_object do
     description "Represents an error in the input of a mutation."
 
-    field :field, non_null(list_of(:string)),
+    field :field, non_null(:string),
           description: "Path to input field which caused the error"
     field :message, non_null(:string), description: "The error message"
   end
+
+  object :user_error, do: import_fields :error_object
 
   object :add_collection_payload do
     field :collection, :collection
     field :collection_errors, non_null(list_of(non_null(:collection_error)))
   end
 
-  object :collection_error do
-    description "Represents an error in the input of a mutation."
-
-    field :field, non_null(list_of(:string)),
-          description: "Path to input field which caused the error"
-    field :message, non_null(:string), description: "The error message"
-  end
+  object :collection_error, do: import_fields(:error_object)
 end
