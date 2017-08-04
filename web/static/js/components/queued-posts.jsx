@@ -13,20 +13,17 @@ type Props = {
   }
 };
 
-const QueuedPosts = (
-  { data: { loading, queuedPosts } }: Props
-) => (
+const QueuedPosts = ({ data: { loading, queuedPosts } }: Props) =>
   <section>
     <header>
-      <h2>Queued Posts</h2>
+      <h2>Scheduled Posts</h2>
     </header>
 
     <PostList>
-      { loading ? null :
-          queuedPosts.map(post => (<QueuedPost key={post.id} {...post} />))
-      }
+      {loading
+        ? null
+        : queuedPosts.map(post => <QueuedPost key={post.id} {...post} />)}
     </PostList>
-  </section>
-);
+  </section>;
 
 export default graphql(QueuedPostsQuery)(QueuedPosts);
