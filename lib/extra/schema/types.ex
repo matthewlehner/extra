@@ -24,6 +24,8 @@ defmodule Extra.Schema.Types do
     value :wednesday
     value :thursday
     value :friday
+    value :saturday
+    value :sunday
     value :everyday
     value :weekdays
     value :weekends
