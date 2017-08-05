@@ -75,7 +75,7 @@ defmodule Extra.Schema.Types do
     field :scheduled_for, non_null :datetime
     field :channel, non_null(:channel), resolve: assoc(:channel)
     field :collection, non_null(:collection), resolve: assoc(:collection)
-    field :post_content, non_null(:post_content), resolve: assoc(:post_content)
+    field :post_content, :post_content, resolve: assoc(:post_content)
   end
 
   object :user do
