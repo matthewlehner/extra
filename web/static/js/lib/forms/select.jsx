@@ -12,7 +12,7 @@ const Select = ({ name, options, placeholder, ...props }: Props) =>
   <div className="select">
     <select className="form__control" name={name} id={name} {...props}>
       {placeholder && !props.value
-        ? <option key="placeholder">
+        ? <option key="placeholder" value="">
             {placeholder}
           </option>
         : null}
