@@ -39,6 +39,8 @@ const TimeslotForm = ({
           value={values.time}
           onChange={handleChange}
           onBlur={handleBlur}
+          pattern="^\d{1,2}:\d{2}$"
+          title="24 hour format, with a colon to separate hour from minutes"
           required
         />
       </div>

@@ -13,11 +13,14 @@ exports[`TimeslotForm component renders a form 1`] = `
     >
       <input
         name="time"
+        onBlur={[Function]}
         onChange={[Function]}
+        pattern="^\\\\d{1,2}:\\\\d{2}$"
         placeholder="00:00"
         required={true}
+        title="24 hour format, with a colon to separate hour from minutes"
         type="text"
-        value="01:30"
+        value=""
       />
     </div>
     <div
@@ -30,11 +33,14 @@ exports[`TimeslotForm component renders a form 1`] = `
           className="form__control"
           id="recurrence"
           name="recurrence"
+          onBlur={[Function]}
           onChange={[Function]}
           required={true}
           value=""
         >
-          <option>
+          <option
+            value=""
+          >
             —
           </option>
           <option
@@ -60,11 +66,14 @@ exports[`TimeslotForm component renders a form 1`] = `
           className="form__control"
           id="collectionId"
           name="collectionId"
+          onBlur={[Function]}
           onChange={[Function]}
           required={true}
           value=""
         >
-          <option>
+          <option
+            value=""
+          >
             —
           </option>
           <option
@@ -86,7 +95,6 @@ exports[`TimeslotForm component renders a form 1`] = `
   >
     <button
       className="linkButton"
-      onClick={[Function]}
     >
       Add Timeslot
     </button>
