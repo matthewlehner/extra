@@ -1,5 +1,4 @@
 // @flow
-
 import React, { Component } from "react";
 
 import type { CollectionProps } from "app/pages/channel";
@@ -25,25 +24,21 @@ export default class NewTimeslot extends Component {
     timeslot: timeslotDefaults
   };
 
-  onSubmit = (event: Event) => {
-    this.hideForm(event);
-    this.props.addTimeslot({
-      variables: {
-        scheduleId: this.props.scheduleId,
-        ...this.state.timeslot
-      }
+  onAddTimeslot = values => {
+    const variables = {
+      ...values,
+      time: `${values.time}:00`,
+      scheduleId: this.props.scheduleId
+    };
+    this.props.addTimeslot({ variables }).then(response => {
+      this.setState(() => ({ showForm: false }));
+      return response;
     });
-  };
-
-  setTimeslotState = (key: string, value: string) => {
-    this.setState(({ timeslot }) => ({
-      timeslot: { ...timeslot, [key]: value }
-    }));
   };
 
   hideForm = (event: Event) => {
     event.preventDefault();
-    this.setState(() => ({ showForm: false, timeslot: timeslotDefaults }));
+    this.setState(() => ({ showForm: false }));
   };
 
   showForm = (event: Event) => {
@@ -57,31 +52,17 @@ export default class NewTimeslot extends Component {
     }
 
     const {
-      recurrenceType: { enumValues: recurrenceValues },
+      recurrenceType: { enumValues: recurrences },
       collections
     } = this.props;
 
-    const { timeslot } = this.state;
-
-    const formProps = {
-      time: {
-        value: timeslot.time,
-        onChange: this.setTimeslotState
-      },
-      recurrence: {
-        options: recurrenceValues,
-        value: timeslot.recurrence,
-        onChange: this.setTimeslotState
-      },
-      collection: {
-        options: collections,
-        value: timeslot.collectionId,
-        onChange: this.setTimeslotState
-      },
-      onCancel: this.hideForm,
-      onSubmit: this.onSubmit
-    };
-
-    return <TimeslotForm {...formProps} />;
+    return (
+      <TimeslotForm
+        onAddTimeslot={this.onAddTimeslot}
+        recurrences={recurrences}
+        collections={collections}
+        onCancel={this.hideForm}
+      />
+    );
   }
 }

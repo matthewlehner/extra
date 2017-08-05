@@ -1,29 +1,11 @@
 // @flow
-
 import React from "react";
+import { Formik } from "formik";
+import yup from "yup";
 
 import LinkButton from "components/ui/link-button";
-import { Select, Input } from "lib/forms";
+import { Select } from "lib/forms";
 import { dayTranslations } from "lib/schedule-helpers";
-
-type InputPropsType = {
-  value: string | number,
-  onChange: Function
-};
-
-type SelectPropsType = {
-  options: Array<any>,
-  value: string | number,
-  onChange: Function
-};
-
-type Props = {
-  time: InputPropsType,
-  recurrence: SelectPropsType,
-  collection: SelectPropsType,
-  onCancel: Function,
-  onSubmit: Function
-};
 
 const recurrenceOptions = ({ name }) => ({
   value: name,
@@ -33,50 +15,88 @@ const recurrenceOptions = ({ name }) => ({
 const collectionOptions = ({ id, name }) => ({ value: id, label: name });
 
 const TimeslotForm = ({
-  time,
-  recurrence,
-  collection,
   onCancel,
-  onSubmit
-}: Props) =>
-  <form onSubmit={onSubmit} className="timeslot_form">
+  recurrences,
+  collections,
+
+  values,
+  touched,
+  errors,
+  dirty,
+  isSubmitting,
+  handleChange,
+  handleBlur,
+  handleSubmit,
+  handleReset
+}) =>
+  <form onSubmit={handleSubmit} className="timeslot_form">
     <div className="timeslot_controls">
       <div className="timeslot_time">
-        <Input
+        <input
           name="time"
           type="text"
           placeholder="00:00"
-          value={time.value}
-          onChange={time.onChange}
+          value={values.time}
+          onChange={handleChange}
+          onBlur={handleBlur}
           required
         />
       </div>
+
       <div className="timeslot_recurrence">
         <Select
           name="recurrence"
-          onChange={recurrence.onChange}
-          value={recurrence.value}
-          options={recurrence.options.map(recurrenceOptions)}
+          value={values.recurrence}
+          options={recurrences.map(recurrenceOptions)}
           placeholder="—"
           required
+          onChange={handleChange}
+          onBlur={handleBlur}
         />
       </div>
+
       <div className="timeslot_collection">
         <Select
           name="collectionId"
-          onChange={collection.onChange}
-          value={collection.value}
-          options={collection.options.map(collectionOptions)}
+          value={values.collectionId}
+          options={collections.map(collectionOptions)}
           required
           placeholder="—"
+          onChange={handleChange}
+          onBlur={handleBlur}
         />
       </div>
     </div>
 
     <div className="form_actions">
-      <LinkButton onClick={onSubmit}>Add Timeslot</LinkButton>
+      <LinkButton>Add Timeslot</LinkButton>
       <LinkButton onClick={onCancel}>Cancel</LinkButton>
     </div>
   </form>;
 
-export default TimeslotForm;
+const formLogic = Formik({
+  mapPropsToValues: props => {
+    return {
+      time: "",
+      collectionId: "",
+      recurrence: ""
+    };
+  },
+  validationSchema: yup.object().shape({
+    time: yup
+      .string()
+      .matches(
+        /^\d{1,2}:\d{2}$/,
+        "Must be in 24 hour format, with a colon to separate hour from minutes"
+      )
+      .required(),
+    recurrence: yup.string().required(),
+    collectionId: yup.string().required()
+  }),
+
+  handleSubmit: (values, { props }) => {
+    props.onAddTimeslot(values);
+  }
+});
+
+export default formLogic(TimeslotForm);
