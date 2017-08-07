@@ -4,6 +4,11 @@ defmodule Extra.Schema.Resolvers.TimeslotTest do
   alias Extra.QueuedPost
   alias Extra.Schema.Resolvers.Timeslot, as: TimeslotResolver
 
+  setup do
+    {:ok, registry} = Extra.SchedulerRegistry.start_link(Extra.SchedulerRegistry)
+    {:ok, registry: registry}
+  end
+
   describe "create/2" do
     test "creates new timeslot" do
       %{

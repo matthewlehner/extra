@@ -6,10 +6,17 @@ defmodule Extra.SchedulerSupervisor do
   end
 
   def init(:ok) do
-    children = [
-      worker(Extra.SchedulerRegistry, [Extra.SchedulerRegistry])
-    ]
+    server? = Phoenix.Endpoint.server?(:extra, Extra.Endpoint)
+    children = registry(server?)
 
     supervise(children, strategy: :one_for_one)
+  end
+
+  defp registry(server?) do
+    if server? do
+      [worker(Extra.SchedulerRegistry, [Extra.SchedulerRegistry])]
+    else
+      []
+    end
   end
 end
