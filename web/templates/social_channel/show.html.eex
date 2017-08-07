@@ -1,3 +1,0 @@
-<script>
-  var pageContext = <%= @social_channel |> channel_json |> Poison.encode! |> raw %>
-</script>

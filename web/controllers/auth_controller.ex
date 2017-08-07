@@ -24,12 +24,12 @@ defmodule Extra.AuthController do
       {:ok, channel} ->
         conn
         |> put_flash(:info, "Successfully authenticated")
-        |> redirect(to: social_channel_path(conn, :show, channel))
+        |> redirect(to: app_path(conn, :index, ["channels", to_string(channel.id)]))
 
       {:error, _changeset} ->
         conn
         |> put_flash(:error, "The account you are trying to add has already been added to Extra.")
-        |> redirect(to: social_channel_path(conn, :new))
+        |> redirect(to: app_path(conn, :index, ["new-channel"]))
     end
   end
 end
