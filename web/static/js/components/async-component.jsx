@@ -16,7 +16,16 @@ export function ExtraLoadable(opts) {
   return Loadable(
     Object.assign(
       {
-        loading: LoadingPage
+        loading: LoadingPage,
+        render(loaded, props) {
+          console.log(props);
+          if (props.data && props.data.loading) {
+            return <LoadingPage />;
+          }
+
+          let Component = loaded.default;
+          return <Component {...props} />;
+        }
       },
       opts
     )
