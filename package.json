@@ -21,6 +21,7 @@
     "react-dom": "^15.6.1",
     "react-loadable": "^4.0.3",
     "react-router-dom": "^4.0.0",
+    "react-transition-group": "^2.2.0",
     "redux": "^3.7.2",
     "turbolinks": "^5.0.3",
     "yup": "^0.21.3"
