@@ -24,7 +24,7 @@ const NewPostContentPage: OperationComponent<
   }),
   graphql(addPostContent, {
     name: "addPostContent",
-    options: {
+    options: () => ({
       updateQueries: {
         CollectionPage: (previousData, { mutationResult }) => ({
           ...previousData,
@@ -37,7 +37,7 @@ const NewPostContentPage: OperationComponent<
           }
         })
       }
-    }
+    })
   })
 )(NewPostContent);
 

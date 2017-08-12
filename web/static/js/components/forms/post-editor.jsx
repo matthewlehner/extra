@@ -1,15 +1,11 @@
 // @flow
 import React from "react";
 import { Formik } from "formik";
-import { object, array, string } from "yup";
+import { object, string } from "yup";
 
-import {
-  gridForm,
-  gridLabel,
-  gridControl,
-  gridRow
-} from "../../lib/forms/form.scss";
-import { ChannelSelector } from "../../lib/forms";
+import { label, inputContainer } from "../../lib/forms/form.scss";
+
+import { Textarea, ChannelSelector } from "../../lib/forms";
 
 type Props = {
   channels: Extra$Channel,
@@ -35,36 +31,46 @@ const PostEditor = ({
   errors,
   touched
 }: Props) =>
-  <form className={gridForm} onSubmit={handleSubmit}>
-    <dl className={`${gridForm} ${gridRow}`}>
-      <dt className={gridLabel}>Collection</dt>
-      <dd className={gridControl}>Collection Name</dd>
+  <form onSubmit={handleSubmit}>
+    <dl className="form__control-group">
+      <dt className={label}>Collection</dt>
+      <dd className={inputContainer}>Collection Name</dd>
     </dl>
 
-    <label className={gridLabel} htmlFor="post-content">
-      Content
-    </label>
-    <textarea
-      id="post-content"
-      name="body"
-      className={gridControl}
-      value={values.body}
-      onChange={handleChange}
-      required
-    />
-    {errors.body && touched.body && <div>{errors.body}</div>}
+    <div className="form__control-group">
+      <label className={label} htmlFor="post-content">
+        Content
+      </label>
+      <Textarea
+        id="post-content"
+        name="body"
+        value={values.body}
+        onChange={handleChange}
+        required
+      />
+      {errors.body &&
+        touched.body &&
+        <div>
+          {errors.body}
+        </div>}
+    </div>
 
-    <span className={gridLabel}>Channels</span>
-    <ChannelSelector
-      name="channels"
-      className={gridControl}
-      value={values.channels}
-      options={channels}
-      onChange={setFieldValue}
-    />
-    {errors.channels && touched.body && <div>{errors.body}</div>}
+    <div className="form__control-group">
+      <span className={label}>Channels</span>
+      <ChannelSelector
+        name="channels"
+        value={values.channels}
+        options={channels}
+        onChange={setFieldValue}
+      />
+      {errors.channels &&
+        touched.body &&
+        <div>
+          {errors.body}
+        </div>}
+    </div>
 
-    <div className={`form__actions ${gridRow}`}>
+    <div className="form__actions">
       <button
         className="button button_cancel"
         disabled={isSubmitting}
@@ -110,7 +116,7 @@ export default Formik({
 
     const input = { id, body, channelIds };
 
-    onUpdatePost({ variables: { input } }).then(
+    persistPost({ variables: { input } }).then(
       response => {
         setSubmitting(false);
         handleCancel();

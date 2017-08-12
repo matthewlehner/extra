@@ -32,12 +32,12 @@ class EditPostModal extends PureComponent {
     return (
       <Modal title="Edit Post" onDismiss={this.onDismiss}>
         {loading
-          ? <div>Loading</div>
+          ? "Loading"
           : error
-            ? <div>ERROR</div>
+            ? error.message
             : <PostEditor
                 handleCancel={this.onDismiss}
-                onUpdatePost={onUpdatePost}
+                persistPost={onUpdatePost}
                 post={postContent}
                 channels={channels}
               />}
