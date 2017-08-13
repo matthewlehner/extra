@@ -39,6 +39,7 @@ class EditPostModal extends PureComponent {
                 handleCancel={this.onDismiss}
                 persistPost={onUpdatePost}
                 post={postContent}
+                collection={postContent.collection}
                 channels={channels}
               />}
       </Modal>

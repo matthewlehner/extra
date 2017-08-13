@@ -4,11 +4,13 @@ query getPostContent($id: ID!) {
     provider
     name
   }
-
   postContent(id: $id) {
     id
     body
-
+    collection {
+      id
+      name
+    }
     channels {
       id
     }

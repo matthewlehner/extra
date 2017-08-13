@@ -55,14 +55,14 @@ exports[`NewPostContent component renders properly 1`] = `
         >
           <label
             className="label"
-            htmlFor="Content"
+            htmlFor="post-content"
           >
             Content
           </label>
           <textarea
             className="form__control form_textarea"
-            id="content"
-            name="content"
+            id="body"
+            name="body"
             onChange={[Function]}
             required={true}
             rows="3"

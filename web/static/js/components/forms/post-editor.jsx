@@ -8,6 +8,7 @@ import { label, inputContainer } from "../../lib/forms/form.scss";
 import { Textarea, ChannelSelector } from "../../lib/forms";
 
 type Props = {
+  collection: Extra$PostCollection,
   channels: Extra$Channel,
   values: {
     body: string,
@@ -21,6 +22,7 @@ type Props = {
 };
 
 const PostEditor = ({
+  collection,
   channels,
   values,
   handleChange,
@@ -34,7 +36,9 @@ const PostEditor = ({
   <form onSubmit={handleSubmit}>
     <dl className="form__control-group">
       <dt className={label}>Collection</dt>
-      <dd className={inputContainer}>Collection Name</dd>
+      <dd className={inputContainer}>
+        {collection.name}
+      </dd>
     </dl>
 
     <div className="form__control-group">

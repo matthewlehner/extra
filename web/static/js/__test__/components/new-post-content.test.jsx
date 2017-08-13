@@ -16,7 +16,7 @@ const props = {
 describe("NewPostContent component", () => {
   it("renders properly", () => {
     const tree = renderer.create(
-      <MemoryRouter initialEntries={["/collections/1/new"]}>
+      <MemoryRouter initialEntries={["/collections/45/new"]}>
         <Route
           path="/collections/:id/new"
           render={routerProps => <NewPostContent {...routerProps} {...props} />}

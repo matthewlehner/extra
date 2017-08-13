@@ -35,7 +35,7 @@ export default class NewPostContent extends Component {
   };
 
   render() {
-    const { data: { loading, error, channels } } = this.props;
+    const { data: { loading, error, channels, collection } } = this.props;
 
     return (
       <Modal title="Create new post" onDismiss={this.onCancel}>
@@ -48,6 +48,7 @@ export default class NewPostContent extends Component {
                 persistPost={this.addPostContent}
                 post={defaultPostContent}
                 channels={channels}
+                collection={collection}
               />}
       </Modal>
     );

@@ -15,7 +15,7 @@ exports[`<PostEditor /> renders without crashing 1`] = `
     <dd
       className="inputContainer"
     >
-      Collection Name
+      Name of a Collection
     </dd>
   </dl>
   <div
