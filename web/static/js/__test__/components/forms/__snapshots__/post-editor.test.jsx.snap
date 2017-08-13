@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PostEditor /> renders without crashing 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <dl
+    className="form__control-group"
+  >
+    <dt
+      className="label"
+    >
+      Collection
+    </dt>
+    <dd
+      className="inputContainer"
+    >
+      Collection Name
+    </dd>
+  </dl>
+  <div
+    className="form__control-group"
+  >
+    <label
+      className="label"
+      htmlFor="post-content"
+    >
+      Content
+    </label>
+    <textarea
+      className="form__control form_textarea"
+      id="body"
+      name="body"
+      onChange={[Function]}
+      required={true}
+      rows="3"
+      value={Object {}}
+    />
+  </div>
+  <div
+    className="form__control-group"
+  >
+    <span
+      className="label"
+    >
+      Channels
+    </span>
+    <div
+      className="form__collection-wrapper"
+    />
+  </div>
+  <div
+    className="form__actions"
+  >
+    <button
+      className="button button_cancel"
+      disabled={false}
+      onClick={undefined}
+    >
+      Cancel
+    </button>
+    <button
+      className="button"
+      disabled={false}
+      type="submit"
+    >
+      Create Post
+    </button>
+  </div>
+</form>
+`;
