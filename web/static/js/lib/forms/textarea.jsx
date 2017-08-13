@@ -1,10 +1,9 @@
 // @flow
 import React, { Component } from "react";
-import { handleChange } from "./utils";
 
 class Textarea extends Component {
   props: {
-    onChange: (string, string) => void,
+    onChange: SyntheticInputEvent => void,
     name: string,
     value: string
   };
@@ -16,8 +15,7 @@ class Textarea extends Component {
   };
 
   onTextareaChange = (event: SyntheticInputEvent) => {
-    const { name, onChange } = this.props;
-    handleChange(event, name, onChange);
+    this.props.onChange(event);
     this.adjustTextarea(event.target);
   };
 
@@ -38,9 +36,6 @@ class Textarea extends Component {
     return (
       <textarea
         {...props}
-        ref={input => {
-          this.textarea = input;
-        }}
         id={name}
         name={name}
         value={value}
