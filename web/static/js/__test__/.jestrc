@@ -15,5 +15,6 @@
   "transform": {
     "\\.(gql|graphql)$": "jest-transform-graphql",
     "\\.(js|jsx)$": "babel-jest"
-  }
+  },
+  "snapshotSerializers": ["enzyme-to-json/serializer"]
 }
