@@ -34,7 +34,7 @@ exports[`<PostEditor /> renders without crashing 1`] = `
       onChange={[Function]}
       required={true}
       rows="3"
-      value={Object {}}
+      value=""
     />
   </div>
   <div

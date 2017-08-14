@@ -21,7 +21,7 @@ type Props = {
   isSubmitting: boolean
 };
 
-const PostEditor = ({
+export const PostEditorInner = ({
   collection,
   channels,
   values,
@@ -68,9 +68,9 @@ const PostEditor = ({
         onChange={setFieldValue}
       />
       {errors.channels &&
-        touched.body &&
+        touched.channels &&
         <div>
-          {errors.body}
+          {errors.channels}
         </div>}
     </div>
 
@@ -88,47 +88,48 @@ const PostEditor = ({
     </div>
   </form>;
 
-export default Formik({
-  validationSchema: object().shape({
-    channels: object(),
-    body: string().required()
-  }),
+export const validationSchema = object().shape({
+  channels: object(),
+  body: string().required()
+});
 
-  mapPropsToValues: ({ post: { body, channels } }) => ({
-    body,
-    channels: channels.reduce(
-      (values, { id }) => ({ ...values, [id]: true }),
-      {}
-    )
-  }),
-  handleSubmit: (
-    values,
-    {
-      props: { onUpdatePost, post: { id }, handleCancel },
-      setErrors,
-      setSubmitting
-    }
-  ) => {
-    const { body, channels } = values;
-    const channelIds = Object.keys(channels).reduce((collector, channelId) => {
-      if (channels[channelId]) {
-        return [...collector, channelId];
-      } else {
-        return collector;
-      }
-    }, []);
+export const mapPropsToValues = ({ post: { body, channels } }) => ({
+  body,
+  channels: channels.reduce((values, { id }) => ({ ...values, [id]: true }), {})
+});
 
-    const input = { id, body, channelIds };
-
-    persistPost({ variables: { input } }).then(
-      response => {
-        setSubmitting(false);
-        handleCancel();
-      },
-      error => {
-        setSubmitting(false);
-        setErrors(error);
-      }
-    );
+export const handleSubmit = (
+  values,
+  {
+    props: { persistPost, handleCancel, post: { id } },
+    setErrors,
+    setSubmitting
   }
-})(PostEditor);
+) => {
+  const { body, channels } = values;
+  const channelIds = Object.keys(channels).reduce((collector, channelId) => {
+    if (channels[channelId]) {
+      return [...collector, channelId];
+    }
+    return collector;
+  }, []);
+
+  const input = { id, body, channelIds };
+
+  persistPost({ variables: { input } }).then(
+    response => {
+      setSubmitting(false);
+      handleCancel();
+    },
+    error => {
+      setSubmitting(false);
+      setErrors(error);
+    }
+  );
+};
+
+export default Formik({
+  validationSchema,
+  mapPropsToValues,
+  handleSubmit
+})(PostEditorInner);
