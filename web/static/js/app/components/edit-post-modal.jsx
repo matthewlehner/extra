@@ -3,9 +3,9 @@ import React, { PureComponent } from "react";
 import type { EditPostProps } from "../pages/edit-post-content";
 
 import Modal from "../../components/modal";
-import PostEditor from "../../components/forms/post-editor";
+import ContentEditor from "../../components/forms/content-editor";
 
-class EditPostModal extends PureComponent {
+class EditContentModal extends PureComponent {
   props: EditPostProps;
 
   constructor(props: EditPostProps) {
@@ -35,7 +35,7 @@ class EditPostModal extends PureComponent {
           ? "Loading"
           : error
             ? error.message
-            : <PostEditor
+            : <ContentEditor
                 handleCancel={this.onDismiss}
                 persistPost={onUpdatePost}
                 post={postContent}
@@ -47,4 +47,4 @@ class EditPostModal extends PureComponent {
   }
 }
 
-export default EditPostModal;
+export default EditContentModal;

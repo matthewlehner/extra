@@ -7,7 +7,7 @@ import ContentEditor, {
   validationSchema,
   mapPropsToValues,
   handleSubmit
-} from "../../../components/forms/post-editor";
+} from "../../../components/forms/content-editor";
 
 describe("<ContentEditor />", () => {
   const persistContent = jest.fn();

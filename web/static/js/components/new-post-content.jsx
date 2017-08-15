@@ -6,8 +6,7 @@ import postContentFormData, { updateInput } from "lib/new-post-content-form";
 import type { PostContentFormData } from "lib/new-post-content-form";
 
 import Modal from "./modal";
-import PostEditor from "./forms/post-editor.jsx";
-import PostContentForm from "./forms/post-content";
+import ContentEditor from "./forms/content-editor.jsx";
 
 export default class NewPostContent extends Component {
   props: NewPostContentProps;
@@ -43,7 +42,7 @@ export default class NewPostContent extends Component {
           ? "Loading"
           : error
             ? error.message
-            : <PostEditor
+            : <ContentEditor
                 handleCancel={this.onCancel}
                 persistPost={this.addPostContent}
                 post={defaultPostContent}

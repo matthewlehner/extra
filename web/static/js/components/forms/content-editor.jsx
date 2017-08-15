@@ -21,7 +21,7 @@ type Props = {
   isSubmitting: boolean
 };
 
-export const ContentEditorInner = ({
+const ContentEditorInner = ({
   collection,
   channels,
   values,
