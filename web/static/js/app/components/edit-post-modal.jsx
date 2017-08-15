@@ -8,26 +8,30 @@ import ContentEditor from "../../components/forms/content-editor";
 class EditContentModal extends PureComponent {
   props: EditPostProps;
 
-  constructor(props: EditPostProps) {
-    super(props);
-
-    this.onDismiss = this.onDismiss.bind(this);
-  }
-
-  onDismiss(event: ?SyntheticEvent): void {
+  onDismiss = (event: ?SyntheticEvent): void => {
     if (event) {
       event.preventDefault();
     }
 
     const { history, match: { params: { collectionId } } } = this.props;
     history.push(`/collections/${collectionId}`);
-  }
+  };
+
+  handleSubmit = params => {
+    const {
+      onUpdateContent,
+      match: { params: { postId, collectionId } },
+      history
+    } = this.props;
+    const input = { id: postId, ...params };
+    return onUpdateContent(input).then(content => {
+      this.onDismiss();
+      return content;
+    });
+  };
 
   render() {
-    const {
-      data: { loading, error, postContent, channels },
-      onUpdatePost
-    } = this.props;
+    const { data: { loading, error, postContent, channels } } = this.props;
 
     return (
       <Modal title="Edit Post" onDismiss={this.onDismiss}>
@@ -37,7 +41,7 @@ class EditContentModal extends PureComponent {
             ? error.message
             : <ContentEditor
                 handleCancel={this.onDismiss}
-                persistPost={onUpdatePost}
+                persistContent={this.handleSubmit}
                 post={postContent}
                 collection={postContent.collection}
                 channels={channels}

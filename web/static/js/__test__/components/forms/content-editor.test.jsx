@@ -90,8 +90,6 @@ describe("handleSubmit", () => {
       channelIds: ["1"]
     });
     expect(resolve.mock.calls.length).toEqual(1);
-    expect(setSubmitting.mock.calls.length).toEqual(1);
-    expect(handleCancel.mock.calls.length).toEqual(1);
   });
 
   test("handles errors", async () => {
@@ -100,7 +98,7 @@ describe("handleSubmit", () => {
       channels: { "1": true }
     };
 
-    const errorObject = { body: "not good" };
+    const errorObject = [{ field: "body", message: "not good" }];
 
     const resolve = jest.fn((resolve, reject) => reject(errorObject));
     const persistContent = jest.fn(() => new Promise(resolve));
@@ -121,6 +119,6 @@ describe("handleSubmit", () => {
     expect(resolve.mock.calls.length).toEqual(1);
     expect(setSubmitting.mock.calls.length).toEqual(1);
     expect(handleCancel.mock.calls.length).toEqual(0);
-    expect(setErrors.mock.calls[0][0]).toEqual(errorObject);
+    expect(setErrors.mock.calls[0][0]).toEqual({ body: "not good" });
   });
 });

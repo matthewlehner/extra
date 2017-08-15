@@ -55,9 +55,9 @@ const collectionFormData = Formik({
   ) => {
     onSubmit(payload).then(
       () => {},
-      collectionErrors => {
+      errorResponse => {
         setSubmitting(false);
-        const errors = collectionErrors.reduce(
+        const errors = errorResponse.reduce(
           (errors, { field, message }) => ({
             ...errors,
             [field]: message

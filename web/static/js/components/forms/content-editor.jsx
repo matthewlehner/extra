@@ -111,13 +111,17 @@ export const handleSubmit = (
   }, []);
 
   return persistContent({ body, channelIds }).then(
-    response => {
+    () => {},
+    errorResponse => {
       setSubmitting(false);
-      handleCancel();
-    },
-    error => {
-      setSubmitting(false);
-      setErrors(error);
+      const errors = errorResponse.reduce(
+        (errors, { field, message }) => ({
+          ...errors,
+          [field]: message
+        }),
+        {}
+      );
+      setErrors(errors);
     }
   );
 };

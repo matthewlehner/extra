@@ -11,25 +11,21 @@ import ContentEditor from "./forms/content-editor.jsx";
 export default class NewPostContent extends Component {
   props: NewPostContentProps;
 
-  constructor(props: NewPostContentProps) {
-    super(props);
-    const { channels } = props.data;
-    this.state = { formData: postContentFormData(channels) };
-  }
+  onDismiss = (event: ?SyntheticEvent): void => {
+    if (event) {
+      event.preventDefault();
+    }
 
-  onCancel = (): void => {
     const { history, match: { params } } = this.props;
     history.push(`/collections/${params.id}`);
   };
 
-  addPostContent = (formData): Promise<*> => {
-    const variables: AddPostContentMutationVariables = {
-      ...formData,
-      collectionId: this.props.match.params.id
-    };
-
-    return this.props.addPostContent({ variables }).then(response => {
-      this.onCancel();
+  handleSubmit = (values): Promise<*> => {
+    const { onAddContent, match: { params } } = this.props;
+    const input = { collectionId: params.id, ...values };
+    return onAddContent(input).then(response => {
+      this.onDismiss();
+      return response;
     });
   };
 
@@ -37,14 +33,14 @@ export default class NewPostContent extends Component {
     const { data: { loading, error, channels, collection } } = this.props;
 
     return (
-      <Modal title="Create new post" onDismiss={this.onCancel}>
+      <Modal title="Create new post" onDismiss={this.onDismiss}>
         {loading
           ? "Loading"
           : error
             ? error.message
             : <ContentEditor
-                handleCancel={this.onCancel}
-                persistPost={this.addPostContent}
+                handleCancel={this.onDismiss}
+                persistContent={this.handleSubmit}
                 post={defaultPostContent}
                 channels={channels}
                 collection={collection}

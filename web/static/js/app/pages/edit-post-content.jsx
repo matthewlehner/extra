@@ -8,27 +8,38 @@ import getPostQuery from "../queries/get-post-content-query.gql";
 import updatePostContent from "../queries/update-post-content-mutation.gql";
 
 export type EditPostProps = {
-  data: GetPostContentQuery & QueryProps,
+  data: getPostContentQuery & QueryProps,
   match: Match,
   history: RouterHistory,
-  onUpdatePost: (UpdatePostContentPayload) => void
+  onUpdateContent: UpdatePostContentPayload => void
 };
 
 const EditPostPage: OperationComponent<
-  GetPostContentQuery,
+  getPostContentQuery,
   {},
   EditPostProps
 > = graphql(getPostQuery, {
   options: ({ match }: EditPostProps) => ({
     variables: { id: match.params.postId }
   })
-})(graphql(updatePostContent, {
-  props: ({ mutate }) => ({ onUpdatePost: mutate })
-})(ExtraLoadable({
-  loader: () => import(
-    /* webpackChunkName: "edit-post-modal" */
-    "../components/edit-post-modal"
+})(
+  graphql(updatePostContent, {
+    props: ({ mutate }) => ({
+      onUpdateContent: input =>
+        mutate({
+          variables: { input }
+        }).then(({ data: { updateContent: { content, contentErrors } } }) => {
+          if (content) return content;
+          return Promise.reject(contentErrors);
+        })
+    })
+  })(
+    ExtraLoadable({
+      loader: () =>
+        import(/* webpackChunkName: "edit-post-modal" */
+        "../components/edit-post-modal")
+    })
   )
-})));
+);
 
 export default EditPostPage;

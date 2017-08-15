@@ -1,7 +1,5 @@
 // @flow
 import { graphql } from "react-apollo";
-import type { OperationComponent, QueryProps } from "react-apollo";
-import type { Location } from "react-router-dom";
 
 import editCollectionPageQuery from "../queries/edit-collection-page.gql";
 import updateCollection from "../queries/update-collection.gql";
@@ -19,9 +17,6 @@ const EditCollectionPage = graphql(editCollectionPageQuery, {
           }) => {
             if (collection) return collection;
             return Promise.reject(collectionErrors);
-          },
-          error => {
-            debugger;
           }
         )
     })
