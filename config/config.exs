@@ -15,7 +15,8 @@ config :extra, Extra.Endpoint,
   secret_key_base: "z+F16wmp3ZMZMi12fVGAzHhaP/4hQQOK9lcri5PbIBmHwxoiapikQbBLuA/pdWMo",
   render_errors: [view: Extra.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Extra.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+           adapter: Phoenix.PubSub.PG2],
+  instrumenters: [PryIn.Instrumenter]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -56,6 +57,16 @@ config :extra, Extra.Scheduler,
     {"@reboot", {Extra.QueueBuilder, :enqueue_posts, []}},
     {"@hourly", {Extra.QueueBuilder, :build_from_timeslots, []}}
   ]
+
+config :pryin,
+       api_key: "0ehtr6qjvlrcc7h8rk1vk9v7sik5nedr5o5alpp3jvv1ak5m",
+       otp_app: :extra,
+       enabled: false,
+       env: :dev
+
+config :extra, Extra.Repo,
+  loggers: [PryIn.EctoLogger, Ecto.LogEntry]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

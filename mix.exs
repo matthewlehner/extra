@@ -19,7 +19,7 @@ defmodule Extra.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Extra, []},
-     extra_applications: [:logger]]
+     extra_applications: [:logger, :pryin]]
   end
 
   # Specifies which paths to compile per environment.
@@ -53,6 +53,9 @@ defmodule Extra.Mixfile do
      {:absinthe_plug, "~> 1.3.0-rc.1"},
      {:absinthe_ecto, github: "matthewlehner/absinthe_ecto", branch: "master"},
      {:poison, "~> 2.1"},
+
+
+     {:pryin, "~> 1.0"},
 
      {:ex_machina, "~> 2.0", only: :test},
      {:mix_test_watch, "~> 0.2", only: :dev},

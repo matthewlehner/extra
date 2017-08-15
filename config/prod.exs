@@ -31,6 +31,10 @@ config :extra, Extra.Repo,
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
   ssl: true
 
+config :pryin,
+       enabled: true,
+       env: :prod
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
@@ -67,7 +71,6 @@ config :extra, Extra.Repo,
 #
 #     config :extra, Extra.Endpoint, server: true
 #
-
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
 # import_config "prod.secret.exs"

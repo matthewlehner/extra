@@ -43,5 +43,6 @@ defmodule Extra.Endpoint do
     key: "_extra_key",
     signing_salt: "7AnGC9LB"
 
+  plug PryIn.Plug
   plug Extra.Router
 end
