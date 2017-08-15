@@ -1,16 +1,33 @@
 /* @flow */
 //  This file was automatically generated and should not be edited.
 
+export type AddCollectionParams = {|
+  name: string,
+|};
+
+export type AddContentParams = {|
+  body: string,
+  channelIds?: ?Array< ?string >,
+  collectionId: string,
+|};
+
 export type Recurrence =
   "EVERYDAY" |
   "FRIDAY" |
   "MONDAY" |
+  "SATURDAY" |
+  "SUNDAY" |
   "THURSDAY" |
   "TUESDAY" |
   "WEDNESDAY" |
   "WEEKDAYS" |
   "WEEKENDS";
 
+
+export type UpdateCollectionParams = {|
+  id: string,
+  name: string,
+|};
 
 export type UpdatePostContentPayload = {|
   body: string,
@@ -29,30 +46,55 @@ export type UserParams = {|
 |};
 
 export type AccountPageQuery = {|
-  userPreferences: {|
+  userPreferences: ? {|
     id: string,
     email: string,
     timezone: ?string,
   |},
 |};
 
-export type AddPostContentMutationVariables = {|
-  body: string,
-  collectionId: string,
-  channelIds: Array< ?string >,
+export type addCollectionMutationVariables = {|
+  input: AddCollectionParams,
 |};
 
-export type AddPostContentMutation = {|
-  addPost: ? {|
-    id: string,
-    body: string,
+export type addCollectionMutation = {|
+  addCollection: {|
     collection: ? {|
       id: string,
       name: string,
     |},
-    channels:  Array< {|
+    collectionErrors:  Array< {|
+      // Path to input field which caused the error
+      field: string,
+      // The error message
+      message: string,
+    |} >,
+  |},
+|};
+
+export type addContentMutationVariables = {|
+  input: AddContentParams,
+|};
+
+export type addContentMutation = {|
+  addContent: {|
+    content: ? {|
       id: string,
-      name: string,
+      body: string,
+      collection: ? {|
+        id: string,
+        name: string,
+      |},
+      channels:  Array<? {|
+        id: string,
+        name: string,
+      |} >,
+    |},
+    contentErrors:  Array< {|
+      // Path to input field which caused the error
+      field: string,
+      // The error message
+      message: string,
     |} >,
   |},
 |};
@@ -76,13 +118,16 @@ export type AddTimeslotMutation = {|
   |},
 |};
 
-export type ArchivePostMutationVariables = {|
+export type archivePostMutationVariables = {|
   id: string,
 |};
 
-export type ArchivePostMutation = {|
+export type archivePostMutation = {|
   archivePostContent: ? {|
     id: string,
+    collection: ? {|
+      id: string,
+    |},
   |},
 |};
 
@@ -91,16 +136,16 @@ export type ChannelPageQueryVariables = {|
 |};
 
 export type ChannelPageQuery = {|
-  channel: {|
+  channel: ? {|
     id: string,
     name: string,
     image: string,
     provider: string,
   |},
-  schedule: {|
+  schedule: ? {|
     id: string,
     autopilot: boolean,
-    timeslots:  Array< {|
+    timeslots:  Array<? {|
       id: string,
       time: any,
       recurrence: Recurrence,
@@ -110,7 +155,7 @@ export type ChannelPageQuery = {|
       |},
     |} >,
   |},
-  collections:  Array< {|
+  collections: ? Array<? {|
     id: string,
     name: string,
   |} >,
@@ -126,13 +171,13 @@ export type CollectionPageQueryVariables = {|
 |};
 
 export type CollectionPageQuery = {|
-  collection: {|
+  collection: ? {|
     id: string,
     name: string,
-    posts:  Array< {|
+    posts:  Array<? {|
       id: string,
       body: string,
-      channels:  Array< {|
+      channels:  Array<? {|
         id: string,
         name: string,
         provider: string,
@@ -142,20 +187,35 @@ export type CollectionPageQuery = {|
   |},
 |};
 
-export type GetPostContentQueryVariables = {|
+export type editCollectionPageQueryVariables = {|
   id: string,
 |};
 
-export type GetPostContentQuery = {|
-  channels:  Array< {|
+export type editCollectionPageQuery = {|
+  collection: ? {|
+    id: string,
+    name: string,
+  |},
+|};
+
+export type getPostContentQueryVariables = {|
+  id: string,
+|};
+
+export type getPostContentQuery = {|
+  channels: ? Array<? {|
     id: string,
     provider: string,
     name: string,
   |} >,
-  postContent: {|
+  postContent: ? {|
     id: string,
     body: string,
-    channels:  Array< {|
+    collection: ? {|
+      id: string,
+      name: string,
+    |},
+    channels:  Array<? {|
       id: string,
     |} >,
   |},
@@ -166,11 +226,11 @@ export type NewPostContentFormQueryVariables = {|
 |};
 
 export type NewPostContentFormQuery = {|
-  collection: {|
+  collection: ? {|
     id: string,
     name: string,
   |},
-  channels:  Array< {|
+  channels: ? Array<? {|
     id: string,
     provider: string,
     name: string,
@@ -182,40 +242,40 @@ export type QueuedPostsForChannelQueryVariables = {|
 |};
 
 export type QueuedPostsForChannelQuery = {|
-  queuedPosts:  Array< {|
+  queuedPosts: ? Array<? {|
     id: string,
     scheduledFor: any,
-    postContent: {|
+    postContent: ? {|
       id: string,
       body: string,
     |},
   |} >,
 |};
 
-export type RemoveTimeslotMutationVariables = {|
+export type removeTimeslotMutationVariables = {|
   id: string,
 |};
 
-export type RemoveTimeslotMutation = {|
+export type removeTimeslotMutation = {|
   removeTimeslot: ? {|
     id: string,
   |},
 |};
 
 export type SidebarQuery = {|
-  channels:  Array< {|
+  channels: ? Array<? {|
     id: string,
     provider: string,
     name: string,
   |} >,
-  collections:  Array< {|
+  collections: ? Array<? {|
     id: string,
     name: string,
   |} >,
 |};
 
 export type TimeslotFieldsInfoQuery = {|
-  collections:  Array< {|
+  collections: ? Array<? {|
     id: string,
     name: string,
   |} >,
@@ -226,19 +286,46 @@ export type TimeslotFieldsInfoQuery = {|
   |},
 |};
 
-export type UpdatePostContentMutationVariables = {|
+export type updateCollectionMutationVariables = {|
+  input: UpdateCollectionParams,
+|};
+
+export type updateCollectionMutation = {|
+  updateCollection: {|
+    collection: ? {|
+      id: string,
+      name: string,
+    |},
+    collectionErrors:  Array< {|
+      // Path to input field which caused the error
+      field: string,
+      // The error message
+      message: string,
+    |} >,
+  |},
+|};
+
+export type updateContentMutationVariables = {|
   input: UpdatePostContentPayload,
 |};
 
-export type UpdatePostContentMutation = {|
-  updatePostContent: ? {|
-    id: string,
-    body: string,
-    channels:  Array< {|
+export type updateContentMutation = {|
+  updateContent: {|
+    content: ? {|
       id: string,
-      name: string,
-      provider: string,
-      image: string,
+      body: string,
+      channels:  Array<? {|
+        id: string,
+        name: string,
+        provider: string,
+        image: string,
+      |} >,
+    |},
+    contentErrors:  Array< {|
+      // Path to input field which caused the error
+      field: string,
+      // The error message
+      message: string,
     |} >,
   |},
 |};
@@ -255,11 +342,11 @@ export type UpdateScheduleMutation = {|
   |},
 |};
 
-export type UpdatePasswordMutationVariables = {|
+export type updatePasswordMutationVariables = {|
   input: PasswordParams,
 |};
 
-export type UpdatePasswordMutation = {|
+export type updatePasswordMutation = {|
   updatePassword: {|
     user: ? {|
       id: string,
@@ -267,18 +354,18 @@ export type UpdatePasswordMutation = {|
     |},
     userErrors:  Array< {|
       // Path to input field which caused the error
-      field: Array< ?string >,
+      field: string,
       // The error message
       message: string,
     |} >,
   |},
 |};
 
-export type UpdatePreferencesMutationVariables = {|
+export type updatePreferencesMutationVariables = {|
   input: UserParams,
 |};
 
-export type UpdatePreferencesMutation = {|
+export type updatePreferencesMutation = {|
   updatePreferences: ? {|
     id: string,
     email: string,
