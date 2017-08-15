@@ -40,17 +40,19 @@ defmodule Extra.Schema.Resolvers.PostContentTest do
       body = "something else!"
 
       params = %{
-        body: body,
-        collection_id: collection.id,
-        channel_ids: channel_ids
+        input: %{
+          body: body,
+          collection_id: collection.id,
+          channel_ids: channel_ids
+        }
       }
 
       info = %{context: %{current_user: %{id: user.id}}}
 
-      assert {:ok, post} = PostContentResolver.create(params, info)
-      assert post.body == body
-      assert post.post_collection_id == collection.id
-      assert is_number(post.id)
+      assert {:ok, %{content: content}} = PostContentResolver.create(params, info)
+      assert content.body == body
+      assert content.post_collection_id == collection.id
+      assert is_number(content.id)
     end
 
     test "requires current user" do
@@ -78,7 +80,7 @@ defmodule Extra.Schema.Resolvers.PostContentTest do
       context = %{context: %{current_user: user}}
 
       response = PostContentResolver.update(params, context)
-      assert {:ok, post_content} = response
+      assert {:ok, %{content: post_content}} = response
       post_content = Repo.preload(post_content, :channels)
       assert post_content.id == post.id
       assert post_content.body == "I'm a new body"

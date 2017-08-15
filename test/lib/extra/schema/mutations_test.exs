@@ -81,7 +81,7 @@ defmodule Extra.Schema.MutationsTest do
     "#{@queries_dir}/add-post-content-mutation.gql"
   )
 
-  describe "add_post_content mutation" do
+  describe "add_content mutation" do
     test "it creates a new timeslot" do
       user = insert :user
       collection = insert :post_collection, user: user
@@ -92,9 +92,11 @@ defmodule Extra.Schema.MutationsTest do
       body = "something else!"
 
       variables = %{
-        "body" => body,
-        "collectionId" => collection.id,
-        "channelIds" => channel_ids
+        "input" => %{
+          "body" => body,
+          "collectionId" => collection.id,
+          "channelIds" => channel_ids
+        }
       }
 
       context = %{current_user: user}
@@ -104,17 +106,19 @@ defmodule Extra.Schema.MutationsTest do
                                                      variables: variables,
                                                      context: context
 
-      %{"addPost" => %{"id" => post_id}} = response
-      assert response == %{"addPost" => %{
-        "id" => post_id,
-        "body" => body,
-        "channels" => [
-          %{"id" => to_string(channel1.id), "name" => channel1.name},
-          %{"id" => to_string(channel2.id), "name" => channel2.name},
-        ],
-        "collection" => %{
-          "id" => to_string(collection.id),
-          "name" => collection.name
+      %{"addContent" => %{ "content" => %{"id" => post_id}}} = response
+      assert response == %{"addContent" => %{
+        "content" => %{
+          "id" => post_id,
+          "body" => body,
+          "channels" => [
+            %{"id" => to_string(channel1.id), "name" => channel1.name},
+            %{"id" => to_string(channel2.id), "name" => channel2.name},
+          ],
+          "collection" => %{
+            "id" => to_string(collection.id),
+            "name" => collection.name
+          }
         }
       }}
     end
@@ -210,17 +214,20 @@ defmodule Extra.Schema.MutationsTest do
         |> Absinthe.run(Schema, variables: variables, context: context)
 
       assert response == %{
-        "updatePostContent" => %{
-          "id" => to_string(post.id),
-          "body" => "hi bud",
-          "channels" => [
-            %{
-              "id" => to_string(channel.id),
-              "image" => channel.image,
-              "name" => channel.name,
-              "provider" => channel.provider
-            }
-          ]
+        "updateContent" => %{
+          "content" => %{
+            "id" => to_string(post.id),
+            "body" => "hi bud",
+            "channels" => [
+              %{
+                "id" => to_string(channel.id),
+                "image" => channel.image,
+                "name" => channel.name,
+                "provider" => channel.provider
+              }
+            ]
+          },
+          "contentErrors" => []
         }
       }
     end

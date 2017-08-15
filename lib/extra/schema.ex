@@ -88,6 +88,12 @@ defmodule Extra.Schema do
     field :channel_ids, non_null(list_of(:id))
   end
 
+  input_object :add_content_params do
+    field :body, non_null(:string)
+    field :collection_id, non_null(:id)
+    field :channel_ids, list_of(:id)
+  end
+
   mutation do
     description "The schema’s entry-point for mutations. This acts as the public, top-level API from which all mutation queries must start."
 
@@ -110,15 +116,12 @@ defmodule Extra.Schema do
       resolve &Timeslot.remove/2
     end
 
-    field :add_post, :post_content do
-      arg :body, non_null(:string)
-      arg :collection_id, non_null(:id)
-      arg :channel_ids, list_of(:id)
-
+    field :add_content, non_null(:add_content_payload) do
+      arg :input, non_null(:add_content_params)
       resolve &PostContent.create/2
     end
 
-    field :update_post_content, :post_content do
+    field :update_content, non_null(:update_content_payload) do
       arg :input, non_null(:update_post_content_payload)
 
       resolve &PostContent.update/2

@@ -1,12 +1,18 @@
-mutation updatePostContent($input: UpdatePostContentPayload!) {
-  updatePostContent(input: $input) {
-    id
-    body
-    channels {
+mutation updateContent($input: UpdatePostContentPayload!) {
+  updateContent(input: $input) {
+    content {
       id
-      name
-      provider
-      image
+      body
+      channels {
+        id
+        name
+        provider
+        image
+      }
+    }
+    contentErrors {
+      field
+      message
     }
   }
 }

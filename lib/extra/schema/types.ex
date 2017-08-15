@@ -99,6 +99,7 @@ defmodule Extra.Schema.Types do
 
   object :user_error, do: import_fields :error_object
   object :collection_error, do: import_fields(:error_object)
+  object :content_error, do: import_fields(:error_object)
 
   object :collection_fields do
     field :collection, :collection
@@ -107,4 +108,11 @@ defmodule Extra.Schema.Types do
   object :add_collection_payload, do: import_fields(:collection_fields)
   object :update_collection_payload, do: import_fields(:collection_fields)
 
+  object :content_fields do
+    field :content, :post_content
+    field :content_errors, non_null(list_of(non_null(:content_error)))
+  end
+
+  object :add_content_payload, do: import_fields(:content_fields)
+  object :update_content_payload, do: import_fields(:content_fields)
 end
