@@ -54,8 +54,6 @@ defmodule Extra.Mixfile do
      {:absinthe_ecto, github: "matthewlehner/absinthe_ecto", branch: "master"},
      {:poison, "~> 2.1"},
 
-     {:scout_apm, "~> 0.0"},
-
      {:ex_machina, "~> 2.0", only: :test},
      {:mix_test_watch, "~> 0.2", only: :dev},
      {:dialyxir, "~> 0.4", only: [:dev]},

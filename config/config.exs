@@ -9,10 +9,6 @@ use Mix.Config
 config :extra,
   ecto_repos: [Extra.Repo]
 
-config :extra, Extra.Repo,
-  loggers: [{Ecto.LogEntry, :log, []},
-            {ScoutApm.Instruments.EctoLogger, :log, []}]
-
 # Configures the endpoint
 config :extra, Extra.Endpoint,
   url: [host: "localhost"],
