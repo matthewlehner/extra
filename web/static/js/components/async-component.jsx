@@ -18,7 +18,6 @@ export function ExtraLoadable(opts) {
       {
         loading: LoadingPage,
         render(loaded, props) {
-          console.log(props);
           if (props.data && props.data.loading) {
             return <LoadingPage />;
           }
