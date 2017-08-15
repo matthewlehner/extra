@@ -21,7 +21,7 @@ type Props = {
   isSubmitting: boolean
 };
 
-export const PostEditorInner = ({
+export const ContentEditorInner = ({
   collection,
   channels,
   values,
@@ -100,11 +100,7 @@ export const mapPropsToValues = ({ post: { body, channels } }) => ({
 
 export const handleSubmit = (
   values,
-  {
-    props: { persistPost, handleCancel, post: { id } },
-    setErrors,
-    setSubmitting
-  }
+  { props: { persistContent, handleCancel }, setErrors, setSubmitting }
 ) => {
   const { body, channels } = values;
   const channelIds = Object.keys(channels).reduce((collector, channelId) => {
@@ -114,9 +110,7 @@ export const handleSubmit = (
     return collector;
   }, []);
 
-  const input = { id, body, channelIds };
-
-  persistPost({ variables: { input } }).then(
+  return persistContent({ body, channelIds }).then(
     response => {
       setSubmitting(false);
       handleCancel();
@@ -132,4 +126,4 @@ export default Formik({
   validationSchema,
   mapPropsToValues,
   handleSubmit
-})(PostEditorInner);
+})(ContentEditorInner);

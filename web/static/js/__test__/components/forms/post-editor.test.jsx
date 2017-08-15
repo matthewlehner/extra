@@ -3,29 +3,29 @@ import React from "react";
 import renderer from "react-test-renderer";
 import { mount } from "enzyme";
 
-import PostEditor, {
+import ContentEditor, {
   validationSchema,
   mapPropsToValues,
   handleSubmit
 } from "../../../components/forms/post-editor";
 
-describe("<PostEditor />", () => {
-  const persistPost = jest.fn();
+describe("<ContentEditor />", () => {
+  const persistContent = jest.fn();
   const props = {
     channels: [],
     post: { body: "", channels: [] },
     collection: { name: "Name of a Collection" },
-    persistPost: persistPost
+    persistContent: persistContent
   };
 
   it("renders without crashing", () => {
-    const tree = renderer.create(<PostEditor {...props} />);
+    const tree = renderer.create(<ContentEditor {...props} />);
 
     expect(tree).toMatchSnapshot();
   });
 
   it("displays errors when present", () => {
-    const wrapper = mount(<PostEditor {...props} />);
+    const wrapper = mount(<ContentEditor {...props} />);
     wrapper.find("button[type='submit']").simulate("click");
   });
 });
@@ -64,34 +64,63 @@ describe("mapPropsToValues", () => {
 });
 
 describe("handleSubmit", () => {
-  test("submits the form", () => {
+  test("submits the form", async () => {
     const values = {
       body: "body text",
       channels: { "1": true }
     };
 
-    const resolve = jest.fn();
-    const reject = jest.fn();
-    const persistPost = jest.fn(() => new Promise(resolve, reject));
+    const resolve = jest.fn((resolve, reject) => resolve("response"));
+    const persistContent = jest.fn(() => new Promise(resolve));
     const handleCancel = jest.fn();
     const setErrors = jest.fn();
     const setSubmitting = jest.fn();
 
     const props = {
-      persistPost,
-      handleCancel,
-      post: { id: 1 }
+      persistContent,
+      handleCancel
     };
 
     const formikBag = { props, setErrors, setSubmitting };
 
-    handleSubmit(values, formikBag);
+    await handleSubmit(values, formikBag);
 
-    expect(persistPost.mock.calls[0][0]).toEqual({
-      variables: { input: { body: "body text", channelIds: ["1"], id: 1 } }
+    expect(persistContent.mock.calls[0][0]).toEqual({
+      body: "body text",
+      channelIds: ["1"]
     });
     expect(resolve.mock.calls.length).toEqual(1);
     expect(setSubmitting.mock.calls.length).toEqual(1);
-    expect(reject.mock.calls.length).toEqual(0);
+    expect(handleCancel.mock.calls.length).toEqual(1);
+  });
+
+  test("handles errors", async () => {
+    const values = {
+      body: "body text",
+      channels: { "1": true }
+    };
+
+    const errorObject = { body: "not good" };
+
+    const resolve = jest.fn((resolve, reject) => reject(errorObject));
+    const persistContent = jest.fn(() => new Promise(resolve));
+    const handleCancel = jest.fn();
+    const setErrors = jest.fn();
+    const setSubmitting = jest.fn();
+
+    const props = { persistContent, handleCancel };
+
+    const formikBag = { props, setErrors, setSubmitting };
+
+    await handleSubmit(values, formikBag);
+
+    expect(persistContent.mock.calls[0][0]).toEqual({
+      body: "body text",
+      channelIds: ["1"]
+    });
+    expect(resolve.mock.calls.length).toEqual(1);
+    expect(setSubmitting.mock.calls.length).toEqual(1);
+    expect(handleCancel.mock.calls.length).toEqual(0);
+    expect(setErrors.mock.calls[0][0]).toEqual(errorObject);
   });
 });
