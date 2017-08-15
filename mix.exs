@@ -40,6 +40,7 @@ defmodule Extra.Mixfile do
      {:cowboy, "~> 1.0"},
      {:guardian, "~> 0.14.0"},
      {:comeonin, "~> 4.0"},
+     {:bcrypt_elixir, "~> 0.12.0"},
      {:ueberauth_shopify, "~> 0.1.2"},
      {:ueberauth_twitter, github: "ueberauth/ueberauth_twitter"},
      {:ueberauth_facebook, "~> 0.6"},
