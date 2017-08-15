@@ -5,7 +5,7 @@ export type AddCollectionParams = {|
   name: string,
 |};
 
-export type AddContentParams = {|
+export type AddContentInput = {|
   body: string,
   channelIds?: ?Array< ?string >,
   collectionId: string,
@@ -29,7 +29,7 @@ export type UpdateCollectionParams = {|
   name: string,
 |};
 
-export type UpdatePostContentPayload = {|
+export type UpdateContentInput = {|
   body: string,
   channelIds: Array< ?string >,
   id: string,
@@ -73,7 +73,7 @@ export type addCollectionMutation = {|
 |};
 
 export type addContentMutationVariables = {|
-  input: AddContentParams,
+  input: AddContentInput,
 |};
 
 export type addContentMutation = {|
@@ -306,7 +306,7 @@ export type updateCollectionMutation = {|
 |};
 
 export type updateContentMutationVariables = {|
-  input: UpdatePostContentPayload,
+  input: UpdateContentInput,
 |};
 
 export type updateContentMutation = {|

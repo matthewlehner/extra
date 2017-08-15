@@ -1,4 +1,4 @@
-mutation addContent($input: AddContentParams!) {
+mutation addContent($input: AddContentInput!) {
   addContent(input: $input) {
     content {
       id

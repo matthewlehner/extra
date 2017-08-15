@@ -82,13 +82,13 @@ defmodule Extra.Schema do
     field :timezone, :string
   end
 
-  input_object :update_post_content_payload do
+  input_object :update_content_input do
     field :id, non_null(:id)
     field :body, non_null(:string)
     field :channel_ids, non_null(list_of(:id))
   end
 
-  input_object :add_content_params do
+  input_object :add_content_input do
     field :body, non_null(:string)
     field :collection_id, non_null(:id)
     field :channel_ids, list_of(:id)
@@ -117,12 +117,12 @@ defmodule Extra.Schema do
     end
 
     field :add_content, non_null(:add_content_payload) do
-      arg :input, non_null(:add_content_params)
+      arg :input, non_null(:add_content_input)
       resolve &PostContent.create/2
     end
 
     field :update_content, non_null(:update_content_payload) do
-      arg :input, non_null(:update_post_content_payload)
+      arg :input, non_null(:update_content_input)
 
       resolve &PostContent.update/2
     end

@@ -119,7 +119,8 @@ defmodule Extra.Schema.MutationsTest do
             "id" => to_string(collection.id),
             "name" => collection.name
           }
-        }
+        },
+        "contentErrors" => []
       }}
     end
   end
