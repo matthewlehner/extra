@@ -83,7 +83,7 @@ const ContentEditorInner = ({
         Cancel
       </button>
       <button className="button" type="submit" disabled={isSubmitting}>
-        Create Post
+        Save Content
       </button>
     </div>
   </form>;

@@ -34,7 +34,7 @@ class EditContentModal extends PureComponent {
     const { data: { loading, error, postContent, channels } } = this.props;
 
     return (
-      <Modal title="Edit Post" onDismiss={this.onDismiss}>
+      <Modal title="Edit Content" onDismiss={this.onDismiss}>
         {loading
           ? "Loading"
           : error

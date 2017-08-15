@@ -27,7 +27,7 @@ exports[`NewPostContent component renders properly 1`] = `
         </svg>
       </button>
       <h2>
-        Create new post
+        Add Content
       </h2>
     </header>
     <div
@@ -135,7 +135,7 @@ exports[`NewPostContent component renders properly 1`] = `
             disabled={false}
             type="submit"
           >
-            Create Post
+            Save Content
           </button>
         </div>
       </form>

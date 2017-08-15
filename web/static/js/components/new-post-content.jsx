@@ -33,7 +33,7 @@ export default class NewPostContent extends Component {
     const { data: { loading, error, channels, collection } } = this.props;
 
     return (
-      <Modal title="Create new post" onDismiss={this.onDismiss}>
+      <Modal title="Add Content" onDismiss={this.onDismiss}>
         {loading
           ? "Loading"
           : error

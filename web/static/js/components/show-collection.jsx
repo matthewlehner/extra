@@ -33,7 +33,7 @@ export default function ShowCollection({
           Settings
         </Link>
         <Link className="button button_small" to={`${pathname}/new`}>
-          Create new post
+          Add Content
         </Link>
       </header>
 
