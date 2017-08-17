@@ -1,24 +1,56 @@
 //@flow
-export type FlashMessage = {|
+export type Notification = {|
+  id: number,
   timestamp: Date,
-  message: string
+  type: "info" | "error",
+  body: string
 |};
 
+export type Notifications = Array<Notification>;
+
 // Default state
-let state: Array<FlashMessage> = [];
+let state: Notifications = [];
 let listeners = [];
 
-function getState() {
+function getState(): Notifications {
   return state;
 }
 
-function addMessage(message: string): void {
-  const flash: FlashMessage = { timestamp: new Date(), message };
-  state = [...state, flash];
+function setState(nextState: Notifications) {
+  state = nextState;
   dispatch();
 }
 
-function subscribe(listener: () => void): void {
+let id = 0;
+
+function addMessage(message: Notification): Notification {
+  id++;
+
+  const flash: Notification = {
+    id,
+    timestamp: new Date(),
+    type: "info",
+    ...message
+  };
+
+  setState([...state, flash]);
+
+  setTimeout(() => {
+    removeMessage(flash);
+  }, 5000);
+
+  return flash;
+}
+
+function removeMessage(flash) {
+  const position = state.indexOf(flash);
+
+  if (position !== -1) {
+    setState([...state.slice(0, position), ...state.slice(position + 1)]);
+  }
+}
+
+function subscribe(listener: Notifications => void): void {
   listeners.push(listener);
 }
 

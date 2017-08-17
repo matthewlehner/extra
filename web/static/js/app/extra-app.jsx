@@ -2,7 +2,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-import Notifications from "./notifications";
+import NotificationCenter from "./notifications";
 import ChannelPage from "./pages/channel";
 import Account from "./pages/account";
 import NewPostContent from "./pages/new-post-content";
@@ -33,7 +33,7 @@ const App = () =>
 
       <Route path="/account" component={Account} />
     </main>
-    <Notifications />
+    <NotificationCenter />
   </div>;
 
 export default App;

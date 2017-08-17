@@ -13,7 +13,6 @@
 // to also remove its path from "config.paths.watched".
 // import "phoenix_html";
 import "app/icons";
-import "lib/notifications";
 import "./app/extra";
 // import Turbolinks from "turbolinks";
 //

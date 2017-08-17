@@ -178,9 +178,8 @@ main {
 .flash {
   &_container {
     bottom: 0;
-    position: absolute;
+    position: fixed;
     right: 1.25rem;
-    animation: flash-insert 1s linear;
   }
 
   &_message {
@@ -195,10 +194,6 @@ main {
     margin-bottom: 1.25rem;
     padding: 0.5625rem 1.25rem 0.625rem 2.25rem;
     position: relative;
-
-    &.removing {
-      animation: flash-remove 0.25s ease-in-out;
-    }
 
     &__error,
     &__info {
@@ -225,6 +220,14 @@ main {
         background: $error-color;
       }
     }
+  }
+
+  &-transition-enter-active {
+    animation: flash-insert 1s linear;
+  }
+
+  &-transition-exit-active {
+    animation: flash-remove 251ms ease-in-out;
   }
 }
 

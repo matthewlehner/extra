@@ -1,9 +1,17 @@
 // @flow
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
+import { TransitionGroup } from "react-transition-group";
 import { subscribe, getState } from "./store";
+import type { Notifications } from "./store";
 
-export default class Notifications extends Component {
-  constructor(props) {
+import FlashMessage from "./message";
+
+export default class NotificationCenter extends PureComponent {
+  props: {};
+  state: {
+    messages: Notifications
+  };
+  constructor(props: {}) {
     super(props);
 
     const messages = getState();
@@ -11,20 +19,19 @@ export default class Notifications extends Component {
     subscribe(this.onUpdateMessages);
   }
 
-  onUpdateMessages = messages => {
+  onUpdateMessages = (messages: Notifications): void => {
     this.setState(() => ({ messages }));
   };
 
   render() {
+    const { messages } = this.state;
+
+    const flashes = messages.map(FlashMessage);
+
     return (
-      <div className="flash_container">
-        <div className="flash_message flash_message__info">
-          I'm an info message!
-        </div>
-        <div className="flash_message flash_message__error">
-          I'm an error message!
-        </div>
-      </div>
+      <TransitionGroup className="flash_container">
+        {flashes}
+      </TransitionGroup>
     );
   }
 }
