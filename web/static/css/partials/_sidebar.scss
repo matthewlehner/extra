@@ -1,23 +1,40 @@
 .sidebar {
-  $action-color: rgb(255, 255, 255);
+  $action-color: $white;
+  $sidebar-padding: 1.875rem;
+
   font-size: 0.875rem;
   min-height: 100vh;
-  padding: 1.875rem;
+  padding-top: $sidebar-padding;
+  padding-bottom: $sidebar-padding;
   width: 18.125rem;
 
+  .sidebar-link,
   :any-link {
     color: rgba($action-color, 0.8);
     display: block;
     fill: rgba($action-color, 0.8);
+    line-height: 1.75rem;
     overflow: hidden;
+    padding-left: $sidebar-padding;
     text-decoration: none;
     text-overflow: ellipsis;
+    text-align: left;
+    transition: background-color $base-duration $base-timing;
+    width: 100%;
     white-space: nowrap;
 
     &.active {
       color: $action-color;
       fill: $action-color;
       font-weight: bold;
+    }
+
+    &:focus,
+    &:hover {
+      background-color: rgba($white, 0.10);
+      box-shadow: inset 0 1px rgba($white, 0.05);
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
     }
   }
 
@@ -31,6 +48,7 @@
   .extra-logo {
     height: 2.75rem;
     width: 2.75rem;
+    margin-left: $sidebar-padding;
   }
 
   ul {
@@ -40,7 +58,7 @@
   }
 
   li {
-    margin-top: 0.375rem;
+    margin-right: $sidebar-padding;
   }
 
   section {
@@ -52,7 +70,7 @@
     font-size: 0.625rem;
     font-weight: normal;
     letter-spacing: 0.83px;
-    margin: 0;
+    margin: 0 0 0 $sidebar-padding;
     text-transform: uppercase;
   }
 
