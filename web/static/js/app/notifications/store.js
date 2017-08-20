@@ -23,14 +23,19 @@ function setState(nextState: Notifications) {
 
 let id = 0;
 
-function addMessage(message: Notification): Notification {
+type AddMessageArgs = {|
+  body: string,
+  type?: "info" | "error"
+|};
+
+function addMessage({ body, type }: AddMessageArgs): Notification {
   id++;
 
   const flash: Notification = {
     id,
     timestamp: new Date(),
-    type: "info",
-    ...message
+    type: type || "info",
+    body
   };
 
   setState([...state, flash]);

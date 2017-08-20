@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ChannelNewPage component renders correctly 1`] = `
-<div>
+<div
+  className="app-panel"
+>
   <header
     className="heading"
   >

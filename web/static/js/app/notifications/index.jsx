@@ -6,11 +6,13 @@ import type { Notifications } from "./store";
 
 import FlashMessage from "./message";
 
-export default class NotificationCenter extends PureComponent {
-  props: {};
-  state: {
-    messages: Notifications
-  };
+type Props = {};
+
+type State = {
+  messages: Notifications
+};
+
+export default class NotificationCenter extends PureComponent<Props, State> {
   constructor(props: {}) {
     super(props);
 
