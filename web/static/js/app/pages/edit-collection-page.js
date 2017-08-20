@@ -3,7 +3,7 @@ import { graphql } from "react-apollo";
 
 import editCollectionPageQuery from "../queries/edit-collection-page.gql";
 import updateCollection from "../queries/update-collection.gql";
-import { ExtraLoadable } from "../../components/async-component";
+import { PageLoader } from "../../components/async-component";
 
 const EditCollectionPage = graphql(editCollectionPageQuery, {
   options: ({ match }) => ({ variables: { id: match.params.id } })
@@ -11,7 +11,9 @@ const EditCollectionPage = graphql(editCollectionPageQuery, {
   graphql(updateCollection, {
     props: ({ mutate }) => ({
       handleUpdate: input =>
-        mutate({ variables: { input } }).then(
+        mutate({
+          variables: { input }
+        }).then(
           ({
             data: { updateCollection: { collectionErrors, collection } }
           }) => {
@@ -21,11 +23,10 @@ const EditCollectionPage = graphql(editCollectionPageQuery, {
         )
     })
   })(
-    ExtraLoadable({
-      loader: () =>
-        import(/* webpackChunkName: "edit-collection-page" */
-        "../components/edit-collection-page")
-    })
+    PageLoader(() =>
+      import(/* webpackChunkName: "edit-collection-page" */
+      "../components/edit-collection-page")
+    )
   )
 );
 

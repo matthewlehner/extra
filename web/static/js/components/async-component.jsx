@@ -37,8 +37,11 @@ export function ExtraLoadable(opts: any) {
 export function PageLoader(loader: any) {
   const Loadable = ExtraLoadable({ loader });
 
-  return (props: any) =>
-    <div className="app-panel">
-      <Loadable {...props} />
-    </div>;
+  return (props: any) => {
+    return (
+      <div className="app-panel">
+        <Loadable {...props} />
+      </div>
+    );
+  };
 }

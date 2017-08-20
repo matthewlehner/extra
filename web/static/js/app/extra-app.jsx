@@ -1,7 +1,9 @@
 // @flow
 import React from "react";
-import { Route, Switch, withRouter } from "react-router-dom";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { Route } from "react-router-dom";
+import { TransitionGroup } from "react-transition-group";
+
+import AnimatedRoute from "./components/animated-route";
 
 import NotificationCenter from "./notifications";
 import ChannelPage from "./pages/channel";
@@ -15,37 +17,28 @@ import EditPostContent from "./pages/edit-post-content";
 
 import Sidebar from "./pages/sidebar";
 
-const App = ({ location }) =>
+const App = () =>
   <div style={{ display: "flex" }}>
     <Sidebar />
     <TransitionGroup component="main" role="main">
-      <CSSTransition
-        key={location.key}
-        location={location}
-        classNames="app-panel"
-        timeout={{ enter: 300, exit: 150 }}
-      >
-        <Switch>
-          <Route path="/new-channel" component={ChannelNewPage} />
-          <Route path="/channels/:id" component={ChannelPage} />
+      <AnimatedRoute path="/new-channel" component={ChannelNewPage} />
+      <AnimatedRoute path="/channels/:id" component={ChannelPage} />
 
-          <Route path="/new-collection" component={CollectionNewPage} />
-          <Route path="/collections/:id" component={CollectionPage} />
-          <Route
-            path="/collection-settings/:id"
-            component={EditCollectionPage}
-          />
-
-          <Route path="/collections/:id/new" component={NewPostContent} />
-          <Route
-            path="/collections/:collectionId/edit-post/:postId"
-            component={EditPostContent}
-          />
-          <Route path="/account" component={Account} />
-        </Switch>
-      </CSSTransition>
+      <AnimatedRoute path="/new-collection" component={CollectionNewPage} />
+      <AnimatedRoute path="/collections/:id" component={CollectionPage} />
+      <AnimatedRoute
+        path="/collection-settings/:id"
+        component={EditCollectionPage}
+      />
+      <AnimatedRoute
+        path="/collections/:collectionId/edit-post/:postId"
+        component={EditPostContent}
+      />
+      <AnimatedRoute path="/account" component={Account} />
     </TransitionGroup>
+
+    <Route path="/collections/:id/new" component={NewPostContent} />
     <NotificationCenter />
   </div>;
 
-export default withRouter(App);
+export default App;
