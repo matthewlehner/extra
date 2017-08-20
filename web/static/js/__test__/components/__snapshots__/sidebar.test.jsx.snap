@@ -115,23 +115,6 @@ exports[`Sidebar component renders correctly 1`] = `
       <ul>
         <li>
           <a
-            href="/"
-            onClick={[Function]}
-          >
-            <svg
-              className="icon"
-              height={null}
-              width={null}
-            >
-              <use
-                xlinkHref="#id"
-              />
-            </svg>
-            Performance
-          </a>
-        </li>
-        <li>
-          <a
             className={undefined}
             href="/account"
             onClick={[Function]}

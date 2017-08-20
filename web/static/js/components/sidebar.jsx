@@ -85,12 +85,6 @@ export default function Sidebar({
               <h3>General</h3>
               <ul>
                 <li>
-                  <Link to="/">
-                    <Icon name="performance" />
-                    Performance
-                  </Link>
-                </li>
-                <li>
                   <NavLink to="/account">
                     <Icon name="account" />
                     Account
