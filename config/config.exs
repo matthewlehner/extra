@@ -25,7 +25,7 @@ config :logger, :console,
 
 config :guardian, Guardian,
   issuer: "Extra",
-  ttl: { 30, :days },
+  ttl: {30, :days},
   secret_key: System.get_env("GUARDIAN_KEY"),
   serializer: Extra.GuardianSerializer
 
@@ -33,11 +33,11 @@ config :ueberauth, Ueberauth, providers: [
   shopify: {Ueberauth.Strategy.Shopify, []},
   twitter: {Ueberauth.Strategy.Twitter, []},
   facebook: {Ueberauth.Strategy.Facebook, []},
-  identity: { Ueberauth.Strategy.Identity, [
-      callback_methods: ["POST"],
-      uid_field: :email,
-      nickname_field: :email,
-    ] }
+  identity: {Ueberauth.Strategy.Identity, [
+    callback_methods: ["POST"],
+    uid_field: :email,
+    nickname_field: :email,
+  ]}
 ]
 
 config :ueberauth, Ueberauth.Strategy.Shopify.OAuth,
