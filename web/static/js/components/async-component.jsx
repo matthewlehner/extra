@@ -12,21 +12,33 @@ export default function asyncComponent(loadingComponent: () => Promise<*>) {
   });
 }
 
-export function ExtraLoadable(opts) {
+export function ExtraLoadable(opts: any) {
   return Loadable(
     Object.assign(
       {
         loading: LoadingPage,
         render(loaded, props) {
+          let Component;
+
           if (props.data && props.data.loading) {
-            return <LoadingPage />;
+            Component = LoadingPage;
+          } else {
+            Component = loaded.default;
           }
 
-          let Component = loaded.default;
           return <Component {...props} />;
         }
       },
       opts
     )
   );
+}
+
+export function PageLoader(loader: any) {
+  const Loadable = ExtraLoadable({ loader });
+
+  return (props: any) =>
+    <div className="app-panel">
+      <Loadable {...props} />
+    </div>;
 }

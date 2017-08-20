@@ -1,9 +1,7 @@
 // @flow
-
-import React from "react";
 import { graphql, compose } from "react-apollo";
 import type { OperationComponent, QueryProps } from "react-apollo";
-import { ExtraLoadable } from "../../components/async-component";
+import { PageLoader } from "../../components/async-component";
 
 import channelPageQuery from "../queries/channel-page.gql";
 import updateScheduleMutation from "../queries/update-schedule.gql";
@@ -28,7 +26,7 @@ const ChannelPageComponent: OperationComponent<
   graphql(updateScheduleMutation, { name: "updateSchedule" }),
   graphql(addTimeslotMutation, {
     name: "addTimeslot",
-    options: {
+    options: props => ({
       updateQueries: {
         ChannelPage: (previousData, { mutationResult }) => {
           const newTimeslot = mutationResult.data.addTimeslot;
@@ -42,7 +40,7 @@ const ChannelPageComponent: OperationComponent<
         }
       },
       refetchQueries: ["QueuedPostsForChannel"]
-    }
+    })
   }),
   graphql(removeTimeslotMutation, {
     props: ({ mutate }) => ({
@@ -53,9 +51,9 @@ const ChannelPageComponent: OperationComponent<
     })
   })
 )(
-  ExtraLoadable({
-    loader: () => import(/* webpackChunkName: "channel-page" */ "../components/channel-page")
-  })
+  PageLoader(() =>
+    import(/* webpackChunkName: "channel-page" */ "../components/channel-page")
+  )
 );
 
 export default ChannelPageComponent;

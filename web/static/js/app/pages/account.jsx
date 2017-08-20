@@ -1,7 +1,7 @@
 // @flow
 import { graphql } from "react-apollo";
 import type { OperationComponent, QueryProps } from "react-apollo";
-import { ExtraLoadable } from "../../components/async-component";
+import { PageLoader } from "../../components/async-component";
 
 import accountPage from "../queries/account-page-query.gql";
 import updateUserPreferences from "../queries/update-user-preferences.gql";
@@ -23,18 +23,20 @@ const updatePasswordMutation = graphql(updatePassword, {
     updatePassword: input => mutate({ variables: { input } })
   })
 });
-const componentLoader = ExtraLoadable({
-  loader: () =>
-    import(/* webpackChunkName: "account-page" */
-    "../../components/account")
-});
 
 const AccountPage: OperationComponent<
   AccountPageQuery,
   {},
   AccountPageProps
 > = accountPageQuery(
-  updatePreferencesMutation(updatePasswordMutation(componentLoader))
+  updatePreferencesMutation(
+    updatePasswordMutation(
+      PageLoader(() =>
+        import(/* webpackChunkName: "account-page" */
+        "../../components/account")
+      )
+    )
+  )
 );
 
 export default AccountPage;

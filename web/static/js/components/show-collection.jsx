@@ -9,19 +9,8 @@ import type { CollectionPageProps } from "../app/pages/collection";
 export default function ShowCollection({
   location: { pathname },
   match: { params },
-  data: { loading, error, collection }
+  data: { collection }
 }: CollectionPageProps) {
-  if (error) {
-    return (
-      <div>
-        {error.message}
-      </div>
-    );
-  }
-  if (loading) {
-    return <div>Loading</div>;
-  }
-
   return (
     <div>
       <header className="heading">

@@ -4,7 +4,7 @@ import type { OperationComponent, QueryProps } from "react-apollo";
 import type { Match, Location } from "react-router-dom";
 
 import collectionPageQuery from "../queries/collection-page.gql";
-import { ExtraLoadable } from "../../components/async-component";
+import { PageLoader } from "../../components/async-component";
 
 export type CollectionPageProps = {
   data: CollectionPageQuery & QueryProps,
@@ -19,11 +19,10 @@ const CollectionPage: OperationComponent<
 > = graphql(collectionPageQuery, {
   options: ({ match }) => ({ variables: { id: match.params.id } })
 })(
-  ExtraLoadable({
-    loader: () =>
-      import(/* webpackChunkName: "collection-page" */
-      "../../components/show-collection")
-  })
+  PageLoader(() =>
+    import(/* webpackChunkName: "collection-page" */
+    "../../components/show-collection")
+  )
 );
 
 export default CollectionPage;

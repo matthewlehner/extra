@@ -2,8 +2,8 @@
 import React from "react";
 import Icon from "components/icon";
 
-const ChannelNewPage = () => (
-  <div>
+const ChannelNewPage = () =>
+  <div className="app-panel">
     <header className="heading">
       <h1>Add a new channel</h1>
     </header>
@@ -29,7 +29,6 @@ const ChannelNewPage = () => (
         </li>
       </ul>
     </section>
-  </div>
-);
+  </div>;
 
 export default ChannelNewPage;

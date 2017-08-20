@@ -175,6 +175,29 @@ main {
   }
 }
 
+.app-panel {
+  position: absolute;
+  width: 100%;
+
+  &-enter {
+    opacity: 0.01;
+
+    &-active {
+      opacity: 1;
+      transition: opacity 300ms ease-in;
+    }
+  }
+
+  &-exit {
+    opacity: 1;
+
+    &-active {
+      opacity: 0.01;
+      transition: opacity 150ms ease-out;
+    }
+  }
+}
+
 .flash {
   &_container {
     bottom: 0;

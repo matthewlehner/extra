@@ -42,10 +42,18 @@ const CollectionForm = ({
     </div>
   </form>;
 
+CollectionForm.defaultProps = {
+  collection: { id: null }
+};
+
 const collectionFormData = Formik({
-  mapPropsToValues: ({ collection: { name } }) => ({
-    name
-  }),
+  mapPropsToValues: ({ collection }) => {
+    const name = collection ? collection.name : "";
+
+    return {
+      name
+    };
+  },
   validationSchema: object().shape({
     name: string().required()
   }),
