@@ -7,28 +7,6 @@ exports[`Schedule component renders correctly 1`] = `
   <h2>
     Schedule
   </h2>
-  <p>
-    <span
-      className="toggle-switch"
-    >
-      <input
-        checked={true}
-        className="input"
-        id="toggler"
-        name="checkbox"
-        onChange={[Function]}
-        type="checkbox"
-      />
-      <label
-        className="label"
-        htmlFor="toggler"
-      />
-    </span>
-    <strong>
-      Schedule autopilot.
-    </strong>
-     Great for beginners and those with massive collections.
-  </p>
   <div
     className="tab-container"
   >

@@ -4,13 +4,11 @@ import type { OperationComponent, QueryProps } from "react-apollo";
 import { PageLoader } from "../../components/async-component";
 
 import channelPageQuery from "../queries/channel-page.gql";
-import updateScheduleMutation from "../queries/update-schedule.gql";
 import addTimeslotMutation from "../queries/add-timeslot-mutation.gql";
 import removeTimeslotMutation from "../queries/remove-timeslot-mutation.gql";
 
 export type ChannelPageProps = {
   data: ChannelPageQuery & QueryProps,
-  updateSchedule: ({ variables: UpdateScheduleMutationVariables }) => void,
   addTimeslot: ({ variables: AddTimeslotMutationVariables }) => void,
   removeTimeslot: ({ id: string }) => void
 };
@@ -23,7 +21,6 @@ const ChannelPageComponent: OperationComponent<
   graphql(channelPageQuery, {
     options: ({ match }) => ({ variables: { id: match.params.id } })
   }),
-  graphql(updateScheduleMutation, { name: "updateSchedule" }),
   graphql(addTimeslotMutation, {
     name: "addTimeslot",
     options: props => ({

@@ -30,7 +30,6 @@ function panels(timeslots: Array<Timeslot>, removeTimeslot) {
 }
 
 const Schedule = ({
-  toggleAutopilot,
   addTimeslot,
   removeTimeslot,
   schedule: { id, autopilot, timeslots },
@@ -39,12 +38,6 @@ const Schedule = ({
 }: ChannelPageQuery) =>
   <section className="channel-schedule">
     <h2>Schedule</h2>
-
-    <p>
-      <ToggleSwitch checked={autopilot} onChange={toggleAutopilot} />
-      <strong>Schedule autopilot.</strong> Great for beginners and those with
-      massive collections.
-    </p>
 
     <Tabs name={"schedule"} panels={panels(timeslots, removeTimeslot)}>
       <NewTimeslot
