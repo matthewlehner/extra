@@ -3,7 +3,7 @@ defmodule Extra.Schema.CollectionResolver do
   Collection Resolver for GraphQL Collection object.
   Grabs collections from the db.
   """
-  import Ecto.Query, only: [where: 2]
+  import Ecto.Query, only: [where: 2, order_by: 2]
   import Extra.Schema.ResolverHelpers
   alias Extra.Repo
   alias Extra.PostCollection
@@ -12,6 +12,7 @@ defmodule Extra.Schema.CollectionResolver do
     collections =
       PostCollection
       |> where(user_id: ^id)
+      |> order_by(asc: :name)
       |> Repo.all
 
     {:ok, collections}
