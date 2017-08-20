@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import { Link } from "react-router-dom";
+import DocumentHead from "../app/components/document-head";
 import CollectionPosts from "./collection-posts";
 import Icon from "./icon.jsx";
 
@@ -13,6 +14,8 @@ export default function ShowCollection({
 }: CollectionPageProps) {
   return (
     <div>
+      <DocumentHead title={`${collection.name} Collection`} />
+
       <header className="heading">
         <h1 className="heading__body">
           {collection.name}

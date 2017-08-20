@@ -1,9 +1,11 @@
 // @flow
 import React from "react";
 import Icon from "components/icon";
+import DocumentHead from "../components/document-head";
 
 const ChannelNewPage = () =>
   <div className="app-panel">
+    <DocumentHead title="Add new channel" />
     <header className="heading">
       <h1>Add a new channel</h1>
     </header>

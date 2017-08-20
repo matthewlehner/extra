@@ -1,5 +1,6 @@
 // @flow
 import React, { PureComponent } from "react";
+import DocumentHead from "./document-head";
 import CollectionForm from "./collection-form";
 
 export default class NewCollection extends PureComponent {
@@ -14,6 +15,7 @@ export default class NewCollection extends PureComponent {
   render() {
     return (
       <div>
+        <DocumentHead title="Create a new collection" />
         <header className="heading">
           <h1>Create a new collection</h1>
         </header>

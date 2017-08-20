@@ -1,5 +1,6 @@
 // @flow
 import React from "react";
+import DocumentHead from "./document-head";
 
 const style = {
   loadingPage: {
@@ -28,11 +29,17 @@ export default function LoadingPage({ isLoading, timedOut, pastDelay, error }) {
     // While our other component is loading...
     if (timedOut) {
       // In case we've timed out loading our other component.
-      return <div>Loader timed out!</div>;
+      return (
+        <div>
+          <DocumentHead title="Loading failed." />
+          Loader timed out!
+        </div>
+      );
     } else if (pastDelay) {
       // Display a loading screen after a set delay.
       return (
         <div style={style.loadingPage}>
+          <DocumentHead title="Loading..." />
           <div style={style.loadingTitle} />
           <div style={style.loadingActions} />
         </div>
@@ -43,7 +50,12 @@ export default function LoadingPage({ isLoading, timedOut, pastDelay, error }) {
     }
   } else if (error) {
     // If we aren't loading, maybe
-    return <div>Error! Component failed to load</div>;
+    return (
+      <div>
+        <DocumentHead title="Error" />
+        Error! Component failed to load
+      </div>
+    );
   } else {
     // This case shouldn't happen... but we'll return null anyways.
     return null;

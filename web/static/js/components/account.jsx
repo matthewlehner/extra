@@ -1,5 +1,6 @@
 // @flow
 import React from "react";
+import DocumentHead from "../app/components/document-head";
 import UserPreferencesForm from "../app/components/user-preferences-form";
 import UserPasswordForm from "../app/components/user-password-form";
 
@@ -9,39 +10,25 @@ const Account = ({
   data: { loading, error, userPreferences },
   updatePreferences,
   updatePassword
-}: AccountPageProps) => {
-  if (loading) {
-    return <div>Loading</div>;
-  }
+}: AccountPageProps) =>
+  <div>
+    <DocumentHead title="Account Preferences" />
+    <header className="heading">
+      <h1>Account</h1>
+    </header>
 
-  if (error) {
-    return (
-      <div>
-        Error: {error.message}
-      </div>
-    );
-  }
+    <section>
+      <h2>Preferences</h2>
+      <UserPreferencesForm
+        formData={userPreferences}
+        updatePreferences={updatePreferences}
+      />
+    </section>
 
-  return (
-    <div>
-      <header className="heading">
-        <h1>Account</h1>
-      </header>
-
-      <section>
-        <h2>Preferences</h2>
-        <UserPreferencesForm
-          formData={userPreferences}
-          updatePreferences={updatePreferences}
-        />
-      </section>
-
-      <section>
-        <h2>Password</h2>
-        <UserPasswordForm updatePassword={updatePassword} />
-      </section>
-    </div>
-  );
-};
+    <section>
+      <h2>Password</h2>
+      <UserPasswordForm updatePassword={updatePassword} />
+    </section>
+  </div>;
 
 export default Account;

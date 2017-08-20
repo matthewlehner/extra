@@ -1,20 +1,19 @@
 // @flow
 import React, { Component } from "react";
-
-class Textarea extends Component {
-  props: {
-    onChange: SyntheticInputEvent => void,
+type Props = {
+    onChange: SyntheticInputEvent<*> => void,
     name: string,
     value: string
   };
 
+class Textarea extends Component<Props, {}> {
   textarea: HTMLInputElement;
 
   static defaultProps = {
     className: "form__control form_textarea"
   };
 
-  onTextareaChange = (event: SyntheticInputEvent) => {
+  onTextareaChange = (event: SyntheticInputEvent<*>) => {
     this.props.onChange(event);
     this.adjustTextarea(event.target);
   };
