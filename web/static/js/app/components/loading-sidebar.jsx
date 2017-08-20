@@ -1,9 +1,9 @@
 // @flow
 import React from "react";
 
-export default function LoadingSidebar(props) {
+export default function LoadingSidebar() {
   return (
-    <nav className="site-nav">
+    <nav className="site-nav" style={styles.container}>
       <section>
         <div style={styles.header} />
         <div style={styles.bullet} />
@@ -62,4 +62,9 @@ styles.bullet = {
   float: "left",
   width: "0.5rem",
   marginLeft: "0"
+};
+
+styles.container = {
+  marginLeft: "1.875rem",
+  marginRight: "1.875rem"
 };
