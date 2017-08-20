@@ -1,9 +1,12 @@
 // @flow
 
 import React from "react";
-import { timeslotsFor, daysOfTheWeek } from "lib/schedule-helpers";
+import {
+  timeslotsFor,
+  daysOfTheWeek,
+  orderTimeslots
+} from "lib/schedule-helpers";
 
-import ToggleSwitch from "./forms/toggle-switch";
 import Tabs from "./tabs";
 import DailySchedule from "./daily-schedule";
 import NewTimeslot from "./new-timeslot";
@@ -17,12 +20,13 @@ export type Timeslot = {
 };
 
 function panels(timeslots: Array<Timeslot>, removeTimeslot) {
+  const sortedTimeslots = orderTimeslots(timeslots);
   return daysOfTheWeek.map(day => ({
     label: day,
     content: (
       <DailySchedule
         day={day}
-        timeslots={timeslotsFor(day, timeslots)}
+        timeslots={timeslotsFor(day, sortedTimeslots)}
         handleRemove={removeTimeslot}
       />
     )

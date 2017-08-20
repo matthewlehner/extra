@@ -17,10 +17,14 @@ export const daysOfTheWeek = [...weekdays, ...weekends];
 
 export function shouldAppearOnDay(recurrence, day) {
   switch (recurrence) {
-    case "EVERYDAY": return true;
-    case "WEEKENDS": return weekends.includes(day);
-    case "WEEKDAYS": return weekdays.includes(day);
-    default: return recurrence === day.toUpperCase();
+    case "EVERYDAY":
+      return true;
+    case "WEEKENDS":
+      return weekends.includes(day);
+    case "WEEKDAYS":
+      return weekdays.includes(day);
+    default:
+      return recurrence === day.toUpperCase();
   }
 }
 
@@ -28,4 +32,12 @@ export function timeslotsFor(day, timeslots) {
   return timeslots.filter(({ recurrence }) =>
     shouldAppearOnDay(recurrence, day)
   );
+}
+
+export function orderTimeslots(timeslots) {
+  return [...timeslots].sort(compareTimeslots);
+}
+
+function compareTimeslots(timeslotA, timeslotB) {
+  return timeslotA.time.slice(0, 2) - timeslotB.time.slice(0, 2);
 }
