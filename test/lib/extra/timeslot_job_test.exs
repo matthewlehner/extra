@@ -15,21 +15,27 @@ defmodule Extra.TimeslotJobTest do
   end
 
   test "gets next ocurrence", %{job: job, timeslot: timeslot} do
-    next_date = timeslot
-                |> Timeslot.to_cron_expression()
-                |> Crontab.Scheduler.get_next_run_date()
+    next_date =
+      timeslot
+      |> Timeslot.to_cron_expression()
+      |> Crontab.Scheduler.get_next_run_date()
 
-    assert TimeslotJob.next_occurrence(job) == next_date
+    assert TimeslotJob.next_occurrence(Agent.get(job, &(&1))) == next_date
   end
 
   test "schedule_post", %{job: job} do
-    timer = TimeslotJob.schedule_post(job)
+    timer =
+      job
+      |> Agent.get(&(&1))
+      |> TimeslotJob.schedule_post()
+      |> Map.fetch!(:timer)
     assert is_reference(timer)
   end
 
-  test ".publish_after", %{job: job}  do
-    TimeslotJob.publish_after(10, job, self())
+  test ".set_timer/1" do
+    TimeslotJob.set_timer(10)
 
-    assert_receive {:publish_post, ^job}
+    assert_receive {:"$gen_cast", {:cast, callback}}
+    assert is_function(callback)
   end
 end

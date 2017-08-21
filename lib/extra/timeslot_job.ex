@@ -1,17 +1,18 @@
 defmodule Extra.TimeslotJob do
+  require Logger
+
   @moduledoc """
   Sets up post scheduling for individual timeslots
   """
-
-  require Logger
 
   @doc """
   Starts a new timeslot schedule
   """
   def start_link(timeslot) do
-    Agent.start_link(fn -> initial_state(timeslot) end)
+    {:ok, job} = Agent.start_link(fn -> initial_state(timeslot) end)
+    Agent.cast(job, &schedule_post/1)
+    {:ok, job}
   end
-
 
   @doc """
   Gets timeslot
@@ -27,30 +28,38 @@ defmodule Extra.TimeslotJob do
     }
   end
 
-  def next_occurrence(job) do
-    job
-    |> Agent.get(&Map.get(&1, :schedule))
+  def next_occurrence(state) do
+    state
+    |> Map.get(:schedule)
     |> Crontab.Scheduler.get_next_run_date()
   end
 
-  def next_occurrence!(job) do
-    {:ok, occurrence} = next_occurrence(job)
+  def next_occurrence!(state) do
+    {:ok, occurrence} = next_occurrence(state)
     occurrence
   end
 
-  def schedule_post(job) do
-    job
-    |> next_occurrence!()
-    |> Timex.diff(DateTime.utc_now(), :milliseconds)
-    |> publish_after(job)
+  def schedule_post(state) do
+    timer =
+      state
+      |> next_occurrence!()
+      |> Timex.diff(DateTime.utc_now(), :milliseconds)
+      |> set_timer()
+
+    Map.put(state, :timer, timer)
   end
 
-  def publish_after(duration, job, pid \\ Extra.SchedulerRegistry) do
-    Logger.info fn ->
-      timeslot = Extra.TimeslotJob.timeslot(job)
-      "publishing timeslot #{timeslot.id} in #{duration} milliseconds"
-    end
+  def set_timer(duration) do
+    Process.send_after(self(), {:"$gen_cast", {:cast, &publish/1}}, duration)
+  end
 
-    Process.send_after(pid, {:publish_post, job}, duration)
+  def publish(state) do
+    Agent.cast(self(), &schedule_post/1)
+    Logger.info fn -> "publishing timeslot #{state.timeslot.id}" end
+  end
+
+  def cancel(job) do
+    Agent.get(job, &(Process.cancel_timer(&1.timer)))
+    Agent.stop(job)
   end
 end

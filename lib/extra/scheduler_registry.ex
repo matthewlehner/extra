@@ -1,15 +1,11 @@
 defmodule Extra.SchedulerRegistry do
   @moduledoc """
-  GenServer for publishing posts based timeslots.
+  Registry for the Scheduler for publishing posts based on timeslots.
   """
-
-  use GenServer
-  require Logger
-  alias Extra.TimeslotJob
 
   ## Client API
   def start_link(name) do
-    GenServer.start_link(__MODULE__, :ok, name: name)
+    GenServer.start_link(Extra.SchedulerRegistry.Server, :ok, name: name)
   end
 
   @doc """
@@ -34,59 +30,5 @@ defmodule Extra.SchedulerRegistry do
   """
   def remove_job(server, %{id: timeslot_id}) do
     GenServer.cast(server, {:remove_job, timeslot_id})
-  end
-
-  ## Server Callbacks
-
-  def init(:ok) do
-    # Probably going to want to use ETS here?
-    schedulers = %{}
-    refs = %{}
-    {:ok, {schedulers, refs}}
-  end
-
-  def handle_call({:find_job, timeslot_id}, _from, {schedulers, _} = state) do
-    {:reply, Map.fetch(schedulers, timeslot_id), state}
-  end
-
-  def handle_cast({:add_job, timeslot}, {schedulers, refs}) do
-    if Map.has_key?(schedulers, timeslot.id) do
-      {:noreply, {schedulers, refs}}
-    else
-      {:ok, pid} = TimeslotJob.start_link(timeslot)
-      TimeslotJob.schedule_post(pid)
-      ref = Process.monitor(pid)
-      refs = Map.put(refs, ref, timeslot.id)
-      schedulers = Map.put(schedulers, timeslot.id, pid)
-      {:noreply, {schedulers, refs}}
-    end
-  end
-
-  def handle_cast({:remove_job, timeslot_id}, {schedulers, refs}) do
-    case Map.pop(schedulers, timeslot_id) do
-      {nil, _} ->
-        {:noreply, {schedulers, refs}}
-      {job, schedulers} ->
-        Agent.stop(job)
-        {:noreply, {schedulers, refs}}
-    end
-  end
-
-  def handle_info({:publish_post, job}, state) do
-    timeslot = TimeslotJob.timeslot(job)
-    Logger.info(fn -> "Publishing a post for timeslot #{timeslot.id}" end)
-    TimeslotJob.schedule_post(job)
-
-    {:noreply, state}
-  end
-
-  def handle_info({:DOWN, ref, :process, _pid, _reason}, {schedulers, refs}) do
-    {timeslot_id, refs} = Map.pop(refs, ref)
-    schedulers = Map.delete(schedulers, timeslot_id)
-    {:noreply, {schedulers, refs}}
-  end
-
-  def handle_info(_msg, state) do
-    {:noreply, state}
   end
 end
