@@ -52,7 +52,8 @@ defmodule Extra.TimeslotJob do
 
   def publish(state) do
     Agent.cast(self(), &schedule_post/1)
-    Logger.info fn -> "publishing timeslot #{state.timeslot.id}" end
+    Extra.PublishingManager.publish_next_queued_post_for_timeslot(state.timeslot)
+    state
   end
 
   def cancel(job) do
