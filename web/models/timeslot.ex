@@ -12,6 +12,7 @@ defmodule Extra.Timeslot do
     belongs_to :schedule, Schedule
     has_one :channel, through: [:schedule, :channel]
     belongs_to :collection, Extra.PostCollection
+    has_many :queued_posts, Extra.QueuedPost
 
     timestamps()
   end
