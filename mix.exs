@@ -47,7 +47,7 @@ defmodule Extra.Mixfile do
      {:ueberauth_identity, "~> 0.2.0"},
      {:ecto_enum, "~> 1.0.0"},
      {:timex, "~> 3.0"},
-     {:quantum, github: "c-rack/quantum-elixir", ref: "3c853245d9f8d0cd0127ce44c02372dff22dec95" }, # Cron like scheduling.
+     {:crontab, "~> 1.1"},
 
      {:absinthe, "~> 1.3-beta"},
      {:absinthe_plug, "~> 1.3.0-rc.1"},
