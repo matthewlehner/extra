@@ -52,12 +52,6 @@ config :ueberauth, Ueberauth.Strategy.Facebook.OAuth,
   client_id: System.get_env("FACEBOOK_CLIENT_ID"),
   client_secret: System.get_env("FACEBOOK_CLIENT_SECRET")
 
-config :extra, Extra.Scheduler,
-  jobs: [
-    {"@reboot", {Extra.QueueBuilder, :enqueue_posts, []}},
-    {"@hourly", {Extra.QueueBuilder, :build_from_timeslots, []}}
-  ]
-
 config :pryin,
        api_key: "0ehtr6qjvlrcc7h8rk1vk9v7sik5nedr5o5alpp3jvv1ak5m",
        otp_app: :extra,

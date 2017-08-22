@@ -1,4 +1,4 @@
-defmodule Extra.SchedulerSupervisor do
+defmodule Extra.Scheduler.Supervisor do
   use Supervisor
 
   def start_link do
@@ -14,7 +14,11 @@ defmodule Extra.SchedulerSupervisor do
 
   defp registry(server?) do
     if server? do
-      [worker(Extra.SchedulerRegistry, [Extra.SchedulerRegistry])]
+      [
+        worker(Extra.SchedulerRegistry, [Extra.SchedulerRegistry]),
+        worker(Extra.Scheduler.Builder, []),
+        worker(Task, [&Extra.QueueBuilder.enqueue_posts/0], restart: :temporary)
+      ]
     else
       []
     end
