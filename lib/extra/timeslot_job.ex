@@ -14,13 +14,6 @@ defmodule Extra.TimeslotJob do
     {:ok, job}
   end
 
-  @doc """
-  Gets timeslot
-  """
-  def timeslot(job) do
-    Agent.get(job, &Map.get(&1, :timeslot))
-  end
-
   defp initial_state(timeslot) do
     %{
       timeslot: timeslot,

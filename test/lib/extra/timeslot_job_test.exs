@@ -11,7 +11,7 @@ defmodule Extra.TimeslotJobTest do
   end
 
   test "stores timeslot", %{job: job, timeslot: timeslot} do
-    assert TimeslotJob.timeslot(job) == timeslot
+    assert Agent.get(job, &(&1)).timeslot == timeslot
   end
 
   test "gets next ocurrence", %{job: job, timeslot: timeslot} do
