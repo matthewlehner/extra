@@ -14,7 +14,6 @@ defmodule Extra.Scheduler.Builder do
 
   def init(state) do
     schedule_work()
-    Task.start(&QueueBuilder.enqueue_posts/0)
     {:ok, state}
   end
 
@@ -27,7 +26,7 @@ defmodule Extra.Scheduler.Builder do
   defp schedule_work do
     ms_from_now =
       @hourly
-      |> Crontab.Scheduler.get_next_run_date()
+      |> Crontab.Scheduler.get_next_run_date!()
       |> Timex.diff(DateTime.utc_now(), :milliseconds)
 
     Process.send_after(self(), :work, ms_from_now)

@@ -46,6 +46,10 @@ defmodule Extra.TimeslotJob do
       |> Timex.diff(DateTime.utc_now(), :milliseconds)
       |> set_timer()
 
+    Logger.info(fn ->
+      "Scheduling timeslot #{state.timeslot.id} in" <>
+      " #{Process.read_timer(timer)}ms"
+    end)
     Map.put(state, :timer, timer)
   end
 
