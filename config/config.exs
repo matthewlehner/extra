@@ -48,6 +48,10 @@ config :pryin,
        enabled: false,
        env: :dev
 
+config :extwitter, :oauth,
+  consumer_key: System.get_env("TWITTER_CONSUMER_KEY"),
+  consumer_secret: System.get_env("TWITTER_CONSUMER_SECRET")
+
 config :extra, Extra.Repo,
   loggers: [PryIn.EctoLogger, Ecto.LogEntry]
 
