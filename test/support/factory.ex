@@ -81,6 +81,17 @@ defmodule Extra.Factory do
     }
   end
 
+  def social_post_factory do
+    %Extra.SocialPost {
+      channel_post_id: sequence(:channel_post_id, &"platform post #{&1}"),
+      content: "some content",
+      published_at: DateTime.utc_now(),
+      response: %{
+        "attributes" => "from the platform"
+      }
+    }
+  end
+
   @spec insert_channel_resources() :: %{
     user: %Extra.User{}, channel: %Extra.SocialChannel{},
     schedule: %Extra.Schedule{}, collection: %Extra.PostCollection{}
