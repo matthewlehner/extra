@@ -16,8 +16,9 @@ defmodule Extra.SocialPost do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:content, :channel_post_id, :response, :published_at])
+    |> cast(params, [:content, :channel_post_id, :response, :published_at, :social_channel_id])
     |> validate_required([:content, :channel_post_id, :response, :published_at])
     |> unique_constraint(:channel_post_id)
+    |> assoc_constraint(:social_channel)
   end
 end
