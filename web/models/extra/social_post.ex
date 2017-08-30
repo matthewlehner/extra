@@ -1,11 +1,11 @@
-defmodule Extra.Extra.SocialPost do
+defmodule Extra.SocialPost do
   use Extra.Web, :model
 
   schema "posts" do
     field :content, :string
     field :channel_post_id, :string
     field :response, :map
-    field :published_at, Ecto.DateTime
+    field :published_at, :utc_datetime
     belongs_to :social_channel, Extra.SocialChannel
 
     timestamps()
