@@ -18,7 +18,8 @@ defmodule Extra.Factory do
       expires_at: 42,
       provider: "twitter",
       refresh_token: "some content",
-      token: "some content",
+      token: "some token",
+      secret: "some secret",
       uid: "some content"
     }
   end

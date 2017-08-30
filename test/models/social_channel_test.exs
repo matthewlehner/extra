@@ -38,7 +38,8 @@ defmodule Extra.SocialChannelTest do
           image: "A url! For real"
         },
         credentials: %Ueberauth.Auth.Credentials{
-          token: "I am a great token. Very secure."
+          token: "I am a great token. The best token. Very secure.",
+          secret: "This is a secret."
         }
       }
       changeset = SocialChannel.changeset_from_auth(params, user)
