@@ -48,7 +48,8 @@ defmodule Extra.SocialChannel do
       authorization: %{
         provider: to_string(auth.provider),
         uid: auth.uid,
-        token: to_string(auth.credentials.token)
+        token: to_string(auth.credentials.token),
+        secret: to_string(auth.credentials.secret)
       }
     }
   end

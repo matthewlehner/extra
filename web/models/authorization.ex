@@ -5,6 +5,7 @@ defmodule Extra.Authorization do
     field :provider, :string
     field :uid, :string
     field :token, :string
+    field :secret, :string
     field :refresh_token, :string
     field :expires_at, :integer
     field :scopes, {:array, :string}
@@ -18,8 +19,8 @@ defmodule Extra.Authorization do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:provider, :uid, :token, :refresh_token, :expires_at])
-    |> validate_required([:provider, :uid, :token])
+    |> cast(params, [:provider, :uid, :token, :secret, :refresh_token, :expires_at])
+    |> validate_required([:provider, :uid, :token, :secret])
     |> unique_constraint(:uid, name: :authorizations_provider_uid_index)
   end
 end
