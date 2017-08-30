@@ -30,9 +30,7 @@ config :guardian, Guardian,
   serializer: Extra.GuardianSerializer
 
 config :ueberauth, Ueberauth, providers: [
-  shopify: {Ueberauth.Strategy.Shopify, []},
   twitter: {Ueberauth.Strategy.Twitter, []},
-  facebook: {Ueberauth.Strategy.Facebook, []},
   identity: {Ueberauth.Strategy.Identity, [
     callback_methods: ["POST"],
     uid_field: :email,
@@ -40,17 +38,9 @@ config :ueberauth, Ueberauth, providers: [
   ]}
 ]
 
-config :ueberauth, Ueberauth.Strategy.Shopify.OAuth,
-  client_id: System.get_env("SHOPIFY_CLIENT_ID"),
-  client_secret: System.get_env("SHOPIFY_CLIENT_SECRET")
-
 config :ueberauth, Ueberauth.Strategy.Twitter.OAuth,
   consumer_key: System.get_env("TWITTER_CONSUMER_KEY"),
   consumer_secret: System.get_env("TWITTER_CONSUMER_SECRET")
-
-config :ueberauth, Ueberauth.Strategy.Facebook.OAuth,
-  client_id: System.get_env("FACEBOOK_CLIENT_ID"),
-  client_secret: System.get_env("FACEBOOK_CLIENT_SECRET")
 
 config :pryin,
        api_key: "0ehtr6qjvlrcc7h8rk1vk9v7sik5nedr5o5alpp3jvv1ak5m",
