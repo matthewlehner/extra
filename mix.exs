@@ -40,7 +40,7 @@ defmodule Extra.Mixfile do
      {:cowboy, "~> 1.0"},
      {:guardian, "~> 0.14.0"},
      {:comeonin, "~> 4.0"},
-     {:bcrypt_elixir, "~> 0.12.0"},
+     {:bcrypt_elixir, "~> 1.0"},
      {:ueberauth_shopify, "~> 0.1.2"},
      {:ueberauth_twitter, github: "ueberauth/ueberauth_twitter"},
      {:ueberauth_facebook, "~> 0.6"},
@@ -51,7 +51,7 @@ defmodule Extra.Mixfile do
 
      {:absinthe, "~> 1.3-beta"},
      {:absinthe_plug, "~> 1.3.0-rc.1"},
-     {:absinthe_ecto, github: "matthewlehner/absinthe_ecto", branch: "master"},
+     {:absinthe_ecto, "~> 0.1"},
      {:poison, "~> 2.1"},
 
      {:pryin, "~> 1.0"},
