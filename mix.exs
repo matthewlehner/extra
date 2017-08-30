@@ -46,11 +46,11 @@ defmodule Extra.Mixfile do
      {:ecto_enum, "~> 1.0.0"},
      {:timex, "~> 3.0"},
      {:crontab, "~> 1.1"},
-
      {:absinthe, "~> 1.3-beta"},
      {:absinthe_plug, "~> 1.3.0-rc.1"},
      {:absinthe_ecto, "~> 0.1"},
-     {:poison, "~> 2.1"},
+     {:poison, "~> 3.0", override: true},
+     {:extwitter, "~> 0.8.6"},
 
      {:pryin, "~> 1.0"},
 
