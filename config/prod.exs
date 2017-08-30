@@ -16,7 +16,7 @@ config :extra, Extra.Endpoint,
   url: [scheme: "https", host: "www.extra.ai", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto],
               hsts: :true],
-  cache_static_manifest: "priv/static/manifest.json",
+  cache_static_manifest: "priv/static/cache_manifest.json",
   static_url: [scheme: "https", host: "cdn.extra.ai", port: 443],
   secret_key_base: System.get_env("SECRET_KEY_BASE"),
   redirect_to_www: true
