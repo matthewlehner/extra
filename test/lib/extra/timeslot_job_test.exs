@@ -14,13 +14,22 @@ defmodule Extra.TimeslotJobTest do
     assert Agent.get(job, &(&1)).timeslot == timeslot
   end
 
+  test "sets default timezone when not passed in", %{job: job} do
+    assert Agent.get(job, &(&1)).timezone == "America/Vancouver"
+  end
+
   test "gets next ocurrence", %{job: job, timeslot: timeslot} do
+    state = Agent.get(job, &(&1))
+
     next_date =
       timeslot
       |> Timeslot.to_cron_expression()
-      |> Crontab.Scheduler.get_next_run_date()
+      |> Crontab.Scheduler.get_next_run_date!()
+      |> Timex.to_datetime("America/Vancouver")
 
-    assert TimeslotJob.next_occurrence(Agent.get(job, &(&1))) == next_date
+    expected_date = TimeslotJob.next_occurrence!(state)
+
+    assert next_date == expected_date
   end
 
   test "schedule_post", %{job: job} do
