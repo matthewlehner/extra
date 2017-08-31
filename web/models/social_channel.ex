@@ -15,6 +15,7 @@ defmodule Extra.SocialChannel do
     has_one :schedule, Extra.Schedule
 
     has_many :queued_posts, Extra.QueuedPost
+    has_many :social_posts, Extra.SocialPost
 
     timestamps()
   end

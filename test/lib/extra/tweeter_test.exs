@@ -41,8 +41,8 @@ defmodule Extra.TweeterTest do
 
     expected_params = %{
       content: @published_tweet.text,
-      channel_post_id: @published_tweet.id,
-      response: @published_tweet,
+      channel_post_id: @published_tweet.id_str,
+      response: Map.from_struct(@published_tweet),
       published_at: Tweeter.parse_timestamp(@published_tweet.created_at)
     }
 
