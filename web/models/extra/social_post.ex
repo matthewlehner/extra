@@ -3,8 +3,8 @@ defmodule Extra.SocialPost do
 
   schema "posts" do
     field :content, :string
-    field :channel_post_id, :string
-    field :response, :map
+    field :platform_entity_id, :string
+    field :raw_response, :map
     field :published_at, :utc_datetime
     belongs_to :social_channel, Extra.SocialChannel
 
@@ -16,9 +16,8 @@ defmodule Extra.SocialPost do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:content, :channel_post_id, :response, :published_at, :social_channel_id])
-    |> validate_required([:content, :channel_post_id, :response, :published_at])
-    |> unique_constraint(:channel_post_id)
+    |> cast(params, [:content, :platform_entity_id, :raw_response, :published_at, :social_channel_id])
+    |> validate_required([:content, :platform_entity_id, :raw_response, :published_at])
     |> assoc_constraint(:social_channel)
   end
 end
