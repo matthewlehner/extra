@@ -28,7 +28,7 @@ defmodule Extra.Schema.Resolvers.TimeslotTest do
 
       assert %QueuedPost{} = queued_post = Extra.Repo.one(QueuedPost)
       assert {:ok, job} = Extra.SchedulerRegistry.find_job(Extra.SchedulerRegistry, timeslot)
-      assert timeslot == Agent.get(job, &(&1)).timeslot
+      assert timeslot.id == Agent.get(job, &(&1)).timeslot_id
       assert queued_post.id
     end
   end

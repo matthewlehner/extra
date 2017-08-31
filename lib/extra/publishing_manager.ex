@@ -4,7 +4,6 @@ defmodule Extra.PublishingManager do
   """
 
   import Ecto.Query
-  import Ecto, only: [assoc: 2]
   alias Extra.Repo
   alias Extra.Tweeter
   alias Extra.SocialPost
@@ -17,9 +16,9 @@ defmodule Extra.PublishingManager do
     end
   end
 
-  def next_queued_post(timeslot) do
-    timeslot
-    |> assoc(:queued_posts)
+  def next_queued_post(timeslot_id) when is_integer(timeslot_id) do
+    Extra.QueuedPost
+    |> where(timeslot_id: ^timeslot_id)
     |> order_by(asc: :scheduled_for)
     |> limit(1)
     |> join(:left, [p], c in assoc(p, :channel))
