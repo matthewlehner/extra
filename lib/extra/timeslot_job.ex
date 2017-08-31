@@ -15,21 +15,23 @@ defmodule Extra.TimeslotJob do
   end
 
   defp initial_state(timeslot) do
+    timezone =
+      timeslot
+      |> Map.get(:schedule, %{})
+      |> Map.get(:timezone, "America/Vancouver")
+
     %{
+      timezone: timezone,
       timeslot: timeslot,
       schedule: Extra.Timeslot.to_cron_expression(timeslot)
     }
   end
 
-  def next_occurrence(state) do
+  def next_occurrence!(state) do
     state
     |> Map.get(:schedule)
-    |> Crontab.Scheduler.get_next_run_date()
-  end
-
-  def next_occurrence!(state) do
-    {:ok, occurrence} = next_occurrence(state)
-    occurrence
+    |> Crontab.Scheduler.get_next_run_date!()
+    |> Timex.to_datetime(state.timezone)
   end
 
   def schedule_post(state) do
@@ -52,7 +54,7 @@ defmodule Extra.TimeslotJob do
 
   def publish(state) do
     Agent.cast(self(), &schedule_post/1)
-    Extra.PublishingManager.publish_next_queued_post_for_timeslot(state.timeslot)
+    Extra.PublishingManager.publish_next_queued_post_for_timeslot(state.timeslot.id)
     state
   end
 
