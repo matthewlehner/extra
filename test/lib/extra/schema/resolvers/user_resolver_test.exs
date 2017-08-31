@@ -34,16 +34,16 @@ defmodule Extra.Schema.Resolvers.UserResolverTest do
 
   describe ".update/2" do
     test "it updates the user's info", %{user: user} do
-      params = %{input: %{email: "hi@hello.com", timezone: "Canada/Pacific"}}
+      params = %{input: %{email: "hi@hello.com"}}
       context = %{context: %{current_user: user}}
-      assert {:ok, %{email: "hi@hello.com", timezone: "Canada/Pacific"}} =
+      assert {:ok, %{email: "hi@hello.com"}} =
         UserResolver.update(params, context)
     end
 
     test "it errors intelligently", %{user: user} do
-      params = %{input: %{email: "hi", timezone: "Lalaland"}}
+      params = %{input: %{email: "hi"}}
       context = %{context: %{current_user: user}}
-      assert {:error, %{email: ["has invalid format"], timezone: ["is invalid"]}} =
+      assert {:error, %{email: ["has invalid format"]}} =
         UserResolver.update(params, context)
     end
   end

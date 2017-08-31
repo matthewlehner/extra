@@ -15,7 +15,14 @@ defmodule Extra.TimeslotJobTest do
       assert Agent.get(job, &(&1)).timeslot_id == timeslot.id
     end
 
-    test "sets default timezone when not passed in", %{job: job} do
+    test "sets timezone", %{job: job, timeslot: timeslot} do
+      assert Agent.get(job, &(&1)).timezone == timeslot.schedule.timezone
+    end
+
+    test"sets default timezone when not passed in", %{timeslot: timeslot} do
+      timeslot = Repo.get(Timeslot, timeslot.id)
+      {:ok, job} = TimeslotJob.start_link(timeslot)
+
       assert Agent.get(job, &(&1)).timezone == "America/Vancouver"
     end
 
@@ -34,7 +41,7 @@ defmodule Extra.TimeslotJobTest do
       timeslot
       |> Timeslot.to_cron_expression()
       |> Crontab.Scheduler.get_next_run_date!()
-      |> Timex.to_datetime("America/Vancouver")
+      |> Timex.to_datetime(timeslot.schedule.timezone)
 
     expected_date = TimeslotJob.next_occurrence!(state)
 

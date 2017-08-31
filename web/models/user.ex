@@ -10,7 +10,6 @@ defmodule Extra.User do
     field :full_name, :string
     field :nickname, :string
     field :email, :string
-    field :timezone, :string
     field :password, :string, virtual: true
     field :password_hash, :string
 
@@ -27,10 +26,9 @@ defmodule Extra.User do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, ~w(email timezone))
+    |> cast(params, ~w(email))
     |> validate_format(:email, ~r/.+@.+\..+/)
     |> unique_constraint(:email)
-    |> validate_inclusion(:timezone, Tzdata.zone_list)
   end
 
   def registration_changeset(struct, params \\ %{}) do

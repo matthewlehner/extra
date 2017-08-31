@@ -7,4 +7,8 @@ defmodule Extra.ScheduleTest do
     changeset = Schedule.changeset(%Schedule{}, params_for(:schedule))
     assert changeset.valid?
   end
+
+  test "validates timezone" do
+    assert {:timezone, "is invalid"} in errors_on(%Schedule{}, %{timezone: "HI"})
+  end
 end

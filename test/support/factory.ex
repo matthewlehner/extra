@@ -62,6 +62,7 @@ defmodule Extra.Factory do
   def schedule_factory do
     %Extra.Schedule {
       autopilot: true,
+      timezone: "Canada/Pacific",
       channel: build(:social_channel)
     }
   end

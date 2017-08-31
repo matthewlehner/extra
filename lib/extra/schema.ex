@@ -54,6 +54,7 @@ defmodule Extra.Schema do
 
   input_object :update_schedule_params do
     field :autopilot, non_null(:boolean)
+    field :timezone, :string
   end
 
   input_object :add_timeslot_params do

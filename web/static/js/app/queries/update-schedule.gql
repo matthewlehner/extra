@@ -1,6 +1,14 @@
-mutation UpdateSchedule($channelId: ID!, $autopilot: Boolean) {
-  updateSchedule(channelId: $channelId, schedule: { autopilot: $autopilot }) {
+mutation UpdateSchedule(
+  $channelId: ID!
+  $autopilot: Boolean
+  $timezone: String
+) {
+  updateSchedule(
+    channelId: $channelId
+    schedule: { autopilot: $autopilot, timezone: $timezone }
+  ) {
     id
     autopilot
+    timezone
   }
 }
