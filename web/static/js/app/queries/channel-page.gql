@@ -8,10 +8,11 @@ query ChannelPage($id: ID!) {
   schedule(channelId: $id) {
     id
     autopilot
+    timezone
     timeslots {
       id
       time
-      recurrence,
+      recurrence
       collection {
         id
         name
@@ -22,7 +23,7 @@ query ChannelPage($id: ID!) {
     id
     name
   }
-  recurrenceType: __type(name: "Recurrence"){
+  recurrenceType: __type(name: "Recurrence") {
     enumValues {
       name
     }

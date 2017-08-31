@@ -18,6 +18,7 @@ defmodule Extra.Schema.MutationsTest do
       context = %{current_user: user}
       mutation_variables = %{
         "channelId" => schedule.social_channel_id,
+        "timezone" => "Canada/Pacific",
         "autopilot" => false
       }
 
@@ -28,6 +29,7 @@ defmodule Extra.Schema.MutationsTest do
 
       assert response == %{data: %{"updateSchedule" => %{
         "autopilot" => false,
+        "timezone" => "Canada/Pacific",
         "id" => to_string(schedule.id)
       }}}
     end
@@ -165,8 +167,7 @@ defmodule Extra.Schema.MutationsTest do
       user = insert :user
       variables = %{
         "input" => %{
-          "email" => "mynew@email.com",
-          "timezone" => "Canada/Pacific",
+          "email" => "mynew@email.com"
         }
       }
 
@@ -179,8 +180,7 @@ defmodule Extra.Schema.MutationsTest do
       assert response == %{
         "updatePreferences" => %{
           "id" => to_string(user.id),
-          "email" => "mynew@email.com",
-          "timezone" => "Canada/Pacific"
+          "email" => "mynew@email.com"
         }
       }
     end

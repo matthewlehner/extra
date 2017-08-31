@@ -58,6 +58,7 @@ defmodule Extra.Schema.Types do
   object :schedule do
     field :id, non_null(:id)
     field :autopilot, non_null(:boolean)
+    field :timezone, non_null(:string)
     field :channel, non_null(:channel), resolve: assoc(:channel)
     field :timeslots, non_null(list_of(:timeslot)), resolve: assoc(:timeslots)
   end
@@ -81,7 +82,6 @@ defmodule Extra.Schema.Types do
   object :user do
     field :id, non_null :id
     field :email, non_null :string
-    field :timezone, :string
   end
 
   object :password_update_payload do

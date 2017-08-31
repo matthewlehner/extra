@@ -6,6 +6,7 @@ defmodule Extra.Schedule do
 
   schema "schedules" do
     field :autopilot, :boolean, default: true
+    field :timezone, :string
     belongs_to :channel, Extra.SocialChannel, foreign_key: :social_channel_id
     has_many :timeslots, Extra.Timeslot
 
@@ -25,7 +26,8 @@ defmodule Extra.Schedule do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:autopilot])
+    |> cast(params, [:autopilot, :timezone])
+    |> validate_inclusion(:timezone, Tzdata.zone_list)
   end
 
   def build_queue(schedule) do
