@@ -15,7 +15,7 @@ defmodule Extra.SchedulerRegistryTest do
 
     SchedulerRegistry.add_job(registry, timeslot)
     assert {:ok, scheduler} = SchedulerRegistry.find_job(registry, timeslot)
-    assert timeslot == Agent.get(scheduler, &(&1)).timeslot
+    assert timeslot.id == Agent.get(scheduler, &(&1)).timeslot_id
   end
 
   test ".remove_job", %{registry: registry} do

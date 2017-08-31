@@ -15,15 +15,15 @@ defmodule Extra.TimeslotJob do
   end
 
   defp initial_state(timeslot) do
-    timezone =
-      timeslot
-      |> Map.get(:schedule, %{})
-      |> Map.get(:timezone, "America/Vancouver")
+    timezone = timeslot
+               |> Map.get(:schedule, %{})
+               |> Map.get(:timezone, "America/Vancouver")
 
     %{
       timezone: timezone,
-      timeslot: timeslot,
-      schedule: Extra.Timeslot.to_cron_expression(timeslot)
+      timeslot_id: timeslot.id,
+      schedule: Extra.Timeslot.to_cron_expression(timeslot),
+      timer: nil
     }
   end
 
@@ -41,10 +41,6 @@ defmodule Extra.TimeslotJob do
       |> Timex.diff(DateTime.utc_now(), :milliseconds)
       |> set_timer()
 
-    Logger.info(fn ->
-      "Scheduling timeslot #{state.timeslot.id} in" <>
-      " #{Process.read_timer(timer)}ms"
-    end)
     Map.put(state, :timer, timer)
   end
 
@@ -54,7 +50,7 @@ defmodule Extra.TimeslotJob do
 
   def publish(state) do
     Agent.cast(self(), &schedule_post/1)
-    Extra.PublishingManager.publish_next_queued_post_for_timeslot(state.timeslot.id)
+    Extra.PublishingManager.publish_next_queued_post_for_timeslot(state.timeslot_id)
     state
   end
 

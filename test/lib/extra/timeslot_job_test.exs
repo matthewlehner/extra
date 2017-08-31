@@ -10,12 +10,21 @@ defmodule Extra.TimeslotJobTest do
     {:ok, job: job, timeslot: timeslot}
   end
 
-  test "stores timeslot", %{job: job, timeslot: timeslot} do
-    assert Agent.get(job, &(&1)).timeslot == timeslot
-  end
+  describe "state" do
+    test "stores timeslot_id", %{job: job, timeslot: timeslot} do
+      assert Agent.get(job, &(&1)).timeslot_id == timeslot.id
+    end
 
-  test "sets default timezone when not passed in", %{job: job} do
-    assert Agent.get(job, &(&1)).timezone == "America/Vancouver"
+    test "sets default timezone when not passed in", %{job: job} do
+      assert Agent.get(job, &(&1)).timezone == "America/Vancouver"
+    end
+
+    test "schedule", %{job: job, timeslot: timeslot} do
+      schedule = Agent.get(job, &(&1)).schedule
+      expected_schedule = Timeslot.to_cron_expression(timeslot)
+
+      assert schedule == expected_schedule
+    end
   end
 
   test "gets next ocurrence", %{job: job, timeslot: timeslot} do

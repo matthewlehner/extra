@@ -3,6 +3,7 @@ defmodule Extra.QueueBuilder do
   Functions for managing scheduling and posting for channels.
   """
 
+  import Ecto.Query
   alias Extra.Repo
   alias Extra.Timeslot
   alias Extra.QueuedPost
@@ -15,13 +16,20 @@ defmodule Extra.QueueBuilder do
     Repo.transaction fn ->
       Logger.info "Enqueuing posts."
 
-      Extra.Timeslot
-      |> Extra.Repo.stream
+      Timeslot
+      |> timeslot_query()
+      |> Repo.stream()
       |> Stream.each(fn(timeslot) ->
         SchedulerRegistry.add_job(Extra.SchedulerRegistry, timeslot)
       end)
-      |> Stream.run
+      |> Stream.run()
     end
+  end
+
+  defp timeslot_query(query) do
+    from ts in query,
+      join: s in assoc(ts, :schedule),
+      preload: [schedule: s]
   end
 
   def build_from_timeslots do
