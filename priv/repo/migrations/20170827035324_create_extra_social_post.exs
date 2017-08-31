@@ -4,14 +4,13 @@ defmodule Extra.Repo.Migrations.CreateExtra.SocialPost do
   def change do
     create table(:posts) do
       add :content, :string
-      add :channel_post_id, :string
-      add :response, :map
+      add :platform_entity_id, :string
+      add :raw_response, :map
       add :published_at, :utc_datetime
       add :social_channel_id, references(:social_channels, on_delete: :nothing)
 
       timestamps()
     end
-    create unique_index(:posts, [:channel_post_id])
     create index(:posts, [:social_channel_id])
 
   end

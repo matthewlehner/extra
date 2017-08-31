@@ -12,8 +12,8 @@ defmodule Extra.Tweeter do
   def to_social_post_params(response) do
     %{
       content: response.text,
-      channel_post_id: response.id_str,
-      response: Map.from_struct(response),
+      platform_entity_id: response.id_str,
+      raw_response: Map.from_struct(response),
       published_at: parse_timestamp(response.created_at)
     }
   end

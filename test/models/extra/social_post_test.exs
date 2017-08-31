@@ -14,8 +14,8 @@ defmodule Extra.SocialPostTest do
     test "required attributes" do
       errors = errors_on(%SocialPost{})
       assert {:content, "can't be blank"} in errors
-      assert {:channel_post_id, "can't be blank"} in errors
-      assert {:response, "can't be blank"} in errors
+      assert {:platform_entity_id, "can't be blank"} in errors
+      assert {:raw_response, "can't be blank"} in errors
       assert {:published_at, "can't be blank"} in errors
     end
   end

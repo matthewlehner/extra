@@ -84,10 +84,10 @@ defmodule Extra.Factory do
 
   def social_post_factory do
     %Extra.SocialPost {
-      channel_post_id: sequence(:channel_post_id, &"platform post #{&1}"),
+      platform_entity_id: sequence(:platform_entity_id, &"platform post #{&1}"),
       content: "some content",
       published_at: DateTime.utc_now(),
-      response: %{
+      raw_response: %{
         "attributes" => "from the platform"
       }
     }
