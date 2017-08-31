@@ -191,6 +191,12 @@ exports[`Sidebar component renders loading state 1`] = `
   </svg>
   <nav
     className="site-nav"
+    style={
+      Object {
+        "marginLeft": "1.875rem",
+        "marginRight": "1.875rem",
+      }
+    }
   >
     <section>
       <div
