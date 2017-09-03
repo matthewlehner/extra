@@ -2,8 +2,6 @@ defmodule Extra.Authorization do
   use Extra.Web, :model
 
   schema "authorizations" do
-    field :provider, :string
-    field :uid, :string
     field :token, :string
     field :secret, :string
     field :refresh_token, :string
@@ -11,7 +9,7 @@ defmodule Extra.Authorization do
     field :scopes, {:array, :string}
     belongs_to :social_channel, Extra.SocialChannel
 
-    timestamps()
+    timestamps(type: :utc_datetime)
   end
 
   @doc """
@@ -19,8 +17,7 @@ defmodule Extra.Authorization do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:provider, :uid, :token, :secret, :refresh_token, :expires_at])
-    |> validate_required([:provider, :uid, :token, :secret])
-    |> unique_constraint(:uid, name: :authorizations_provider_uid_index)
+    |> cast(params, [:token, :secret, :refresh_token, :expires_at])
+    |> validate_required([:token, :secret])
   end
 end

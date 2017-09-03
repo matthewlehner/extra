@@ -1,5 +1,6 @@
 defmodule Extra.Repo.Migrations.CreateSchedule do
   use Ecto.Migration
+  import Ecto.Query
 
   def change do
     create table(:schedules) do
@@ -12,10 +13,11 @@ defmodule Extra.Repo.Migrations.CreateSchedule do
 
     if direction() == :up do
       flush()
-      Extra.SocialChannel
-      |> Extra.Repo.all
-      |> Enum.map(&Ecto.build_assoc(&1, :schedule))
-      |> Enum.each(&Extra.Repo.insert(&1))
+
+      schedules = from(c in "social_channels",
+                       select: %{social_channel_id: c.id})
+                  |> Extra.Repo.all()
+      Extra.Repo.insert_all("schedules", schedules)
     end
   end
 end

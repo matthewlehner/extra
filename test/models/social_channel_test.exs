@@ -25,6 +25,7 @@ defmodule Extra.SocialChannelTest do
     assert {:name, "can't be blank"} in errors
     assert {:provider, "can't be blank"} in errors
     assert {:authorization, "can't be blank"} in errors
+    assert {:uid, "can't be blank"} in errors
   end
 
   describe "changeset_from_auth" do
@@ -54,6 +55,7 @@ defmodule Extra.SocialChannelTest do
       # It inserts a schedule
       assert %Extra.Schedule{} = channel.schedule
       assert channel.schedule.social_channel_id == channel.id
+      assert channel.user_id == user.id
     end
   end
 end
