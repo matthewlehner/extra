@@ -16,11 +16,9 @@ defmodule Extra.Factory do
   def authorization_factory do
     %Extra.Authorization{
       expires_at: 42,
-      provider: "twitter",
       refresh_token: "some content",
       token: "some token",
       secret: "some secret",
-      uid: "some content"
     }
   end
 
@@ -40,8 +38,9 @@ defmodule Extra.Factory do
   def social_channel_factory do
     %Extra.SocialChannel{
       name: sequence(:name, &"Social Media Account ##{&1}"),
-      provider: "Twitter",
-      image: "https://an.image.url/picture.jpg"
+      provider: "twitter",
+      image: "https://an.image.url/picture.jpg",
+      uid: sequence(:uid, &"some uid #{&1}")
     }
   end
 

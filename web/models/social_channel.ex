@@ -9,6 +9,7 @@ defmodule Extra.SocialChannel do
     field :name, :string
     field :image, :string
     field :provider, :string
+    field :uid, :string
     has_one :authorization, Extra.Authorization
     belongs_to :user, Extra.User
     has_many :templates, Extra.PostTemplate
@@ -25,20 +26,21 @@ defmodule Extra.SocialChannel do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name, :image, :provider, :user_id])
-    |> validate_required([:name, :provider])
+    |> cast(params, [:name, :image, :provider, :uid])
+    |> validate_required([:name, :provider, :uid])
     |> cast_assoc(:authorization, required: true)
     |> cast_assoc(:schedule, required: true)
     |> assoc_constraint(:user)
   end
 
-  def changeset_from_auth(auth, %Extra.User{id: user_id}) do
+  def changeset_from_auth(auth, user) do
     params = auth
              |> to_channel_params()
-             |> Map.put(:user_id, user_id)
              |> Map.put(:schedule, %{})
 
-    changeset(%Extra.SocialChannel{}, params)
+    user
+    |> build_assoc(:social_channels)
+    |> changeset(params)
   end
 
   defp to_channel_params(%Ueberauth.Auth{provider: :twitter} = auth) do
@@ -46,9 +48,8 @@ defmodule Extra.SocialChannel do
       name: auth.info.nickname,
       image: auth.info.image,
       provider: to_string(auth.provider),
+      uid: auth.uid,
       authorization: %{
-        provider: to_string(auth.provider),
-        uid: auth.uid,
         token: to_string(auth.credentials.token),
         secret: to_string(auth.credentials.secret)
       }
