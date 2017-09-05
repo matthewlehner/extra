@@ -19,6 +19,7 @@ defmodule Extra.Factory do
       refresh_token: "some content",
       token: "some token",
       secret: "some secret",
+      scopes: []
     }
   end
 
@@ -40,7 +41,8 @@ defmodule Extra.Factory do
       name: sequence(:name, &"Social Media Account ##{&1}"),
       provider: "twitter",
       image: "https://an.image.url/picture.jpg",
-      uid: sequence(:uid, &"some uid #{&1}")
+      uid: sequence(:uid, &"some uid #{&1}"),
+      authorization: build(:authorization)
     }
   end
 

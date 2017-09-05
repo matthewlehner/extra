@@ -5,6 +5,7 @@ defmodule Extra.AuthController do
 
   use Extra.Web, :controller
   plug Ueberauth
+  alias Extra.PublishingChannels
 
   def request(conn, _params) do
     conn
@@ -17,10 +18,10 @@ defmodule Extra.AuthController do
     |> redirect(to: "/")
   end
 
-  def callback(%{assigns: %{ueberauth_auth: auth, current_user: current_user}} = conn, _params) do
-    changeset = Extra.SocialChannel.changeset_from_auth(auth, current_user)
+  def callback(%{assigns: %{ueberauth_auth: auth, current_user: user}} = conn, _params) do
+    response = PublishingChannels.persist_ueberauth_response(auth, user)
 
-    case Repo.insert(changeset) do
+    case response do
       {:ok, channel} ->
         conn
         |> put_flash(:info, "Successfully authenticated")
