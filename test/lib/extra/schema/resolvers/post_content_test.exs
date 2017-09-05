@@ -81,7 +81,7 @@ defmodule Extra.Schema.Resolvers.PostContentTest do
 
       response = PostContentResolver.update(params, context)
       assert {:ok, %{content: post_content}} = response
-      post_content = Repo.preload(post_content, :channels)
+      post_content = Repo.preload(post_content, channels: :authorization)
       assert post_content.id == post.id
       assert post_content.body == "I'm a new body"
       assert post_content.channels == [channel1, channel3]

@@ -15,9 +15,14 @@ defmodule Extra.Authorization do
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
-  def changeset(struct, params \\ %{}) do
+  def changeset(%{__meta__: %{state: :built}} = struct, params) do
     struct
     |> cast(params, [:token, :secret, :refresh_token, :expires_at])
     |> validate_required([:token, :secret])
+  end
+
+  def changeset(%{__meta__: %{state: :loaded}} = struct, params) do
+    struct
+    |> cast(params, [:token, :secret, :refresh_token, :expires_at])
   end
 end

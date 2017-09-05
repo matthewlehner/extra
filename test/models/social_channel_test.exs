@@ -28,8 +28,8 @@ defmodule Extra.SocialChannelTest do
     assert {:uid, "can't be blank"} in errors
   end
 
-  describe "changeset_from_auth" do
-    test "creates new records" do
+  describe ".changeset/2" do
+    setup do
       user = insert(:user)
       params = %Ueberauth.Auth{
         provider: :twitter,
@@ -43,10 +43,16 @@ defmodule Extra.SocialChannelTest do
           secret: "This is a secret."
         }
       }
-      changeset = SocialChannel.changeset_from_auth(params, user)
 
-      # It inserts a channel
-      assert {:ok, channel} = Repo.insert(changeset)
+      {:ok, user: user, params: params}
+    end
+
+    test "with a new channel", %{params: params, user: user} do
+      assert {:ok, channel} =
+        user
+        |> Ecto.build_assoc(:social_channels)
+        |> SocialChannel.changeset(params)
+        |> Repo.insert()
 
       # It inserts an authorization
       assert %Extra.Authorization{} = channel.authorization
@@ -56,6 +62,37 @@ defmodule Extra.SocialChannelTest do
       assert %Extra.Schedule{} = channel.schedule
       assert channel.schedule.social_channel_id == channel.id
       assert channel.user_id == user.id
+    end
+
+    test "with an existing channel", %{params: params, user: user} do
+      {:ok, channel} =
+        user
+        |> Ecto.build_assoc(:social_channels)
+        |> SocialChannel.changeset(params)
+        |> Repo.insert()
+
+      next_params = %Ueberauth.Auth{
+        provider: :twitter,
+        uid: "rando uid thingy",
+        info: %Ueberauth.Auth.Info{
+          nickname: "New Name",
+          image: "A new url!"
+        },
+        credentials: %Ueberauth.Auth.Credentials{
+          token: "I am a new token. Very secure.",
+          secret: "This is a new secret."
+        }
+      }
+
+      assert {:ok, next_channel} =
+        channel
+        |> SocialChannel.changeset(next_params)
+        |> Repo.update()
+
+      assert next_channel.name == next_params.info.nickname
+      assert next_channel.image == next_params.info.image
+      assert next_channel.authorization.token == next_params.credentials.token
+      assert next_channel.authorization.secret == next_params.credentials.secret
     end
   end
 end
