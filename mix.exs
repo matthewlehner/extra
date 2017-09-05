@@ -55,7 +55,7 @@ defmodule Extra.Mixfile do
      {:pryin, "~> 1.0"},
 
      {:ex_machina, "~> 2.0", only: :test},
-     {:mix_test_watch, "~> 0.2", only: :dev},
+     {:mix_test_watch, "~> 0.2", only: :dev, runtime: false},
      {:dialyxir, "~> 0.4", only: [:dev]},
      {:credo, "~> 0.4", only: [:dev, :test]}]
   end
