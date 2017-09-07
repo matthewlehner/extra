@@ -46,12 +46,6 @@ config :ueberauth, Ueberauth.Strategy.Twitter.OAuth,
   consumer_key: System.get_env("TWITTER_CONSUMER_KEY"),
   consumer_secret: System.get_env("TWITTER_CONSUMER_SECRET")
 
-config :pryin,
-       api_key: "0ehtr6qjvlrcc7h8rk1vk9v7sik5nedr5o5alpp3jvv1ak5m",
-       otp_app: :extra,
-       enabled: false,
-       env: :dev
-
 config :extwitter, :oauth,
   consumer_key: System.get_env("TWITTER_CONSUMER_KEY"),
   consumer_secret: System.get_env("TWITTER_CONSUMER_SECRET")
