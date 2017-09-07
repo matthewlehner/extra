@@ -92,8 +92,4 @@ defmodule Extra.Router do
     get "/:provider/callback", AuthController, :callback
     post "/:provider/callback", AuthController, :callback
   end
-
-  scope "/.well-known/acme-challenge", Extra do
-    get "/:id", LetsEncrypt, :verify
-  end
 end
