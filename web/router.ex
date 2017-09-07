@@ -25,6 +25,26 @@ defmodule Extra.Router do
     plug Extra.LoadSidebarEntities, repo: Extra.Repo
   end
 
+  pipeline :api do
+    plug Extra.AbsinthePryInPlug
+    plug :fetch_session
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+    plug Guardian.Plug.VerifySession
+    plug Guardian.Plug.LoadResource
+    plug Guardian.Plug.EnsureAuthenticated
+    plug Extra.Plugs.GraphqlContext
+  end
+
+  pipeline :graphiql do
+    plug :fetch_session
+    plug :put_secure_browser_headers
+    plug Guardian.Plug.VerifySession
+    plug Guardian.Plug.LoadResource
+    plug Guardian.Plug.EnsureAuthenticated
+    plug Extra.Plugs.GraphqlContext
+  end
+
   scope "/", Extra do
     pipe_through [:browser]
     get "/", PublicPageController, :index
@@ -54,30 +74,10 @@ defmodule Extra.Router do
     get "/", DashboardController, :index
   end
 
-  pipeline :api do
-    plug Extra.AbsinthePryInPlug
-    plug :fetch_session
-    plug :protect_from_forgery
-    plug :put_secure_browser_headers
-    plug Guardian.Plug.VerifySession
-    plug Guardian.Plug.LoadResource
-    plug Guardian.Plug.EnsureAuthenticated
-    plug Extra.Plugs.GraphqlContext
-  end
-
   # GraphQL Endpoints
   scope "/" do
     pipe_through :api
     forward "/graphql", Absinthe.Plug, schema: Extra.Schema
-  end
-
-  pipeline :graphiql do
-    plug :fetch_session
-    plug :put_secure_browser_headers
-    plug Guardian.Plug.VerifySession
-    plug Guardian.Plug.LoadResource
-    plug Guardian.Plug.EnsureAuthenticated
-    plug Extra.Plugs.GraphqlContext
   end
 
   scope "/admin" do
