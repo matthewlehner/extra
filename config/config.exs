@@ -16,7 +16,11 @@ config :extra, Extra.Endpoint,
   render_errors: [view: Extra.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Extra.PubSub,
            adapter: Phoenix.PubSub.PG2],
-  instrumenters: [PryIn.Instrumenter]
+  instrumenters: [Appsignal.Phoenix.Instrumenter]
+
+config :phoenix, :template_engines,
+  eex: Appsignal.Phoenix.Template.EExEngine,
+  exs: Appsignal.Phoenix.Template.ExsEngine
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -53,7 +57,7 @@ config :extwitter, :oauth,
   consumer_secret: System.get_env("TWITTER_CONSUMER_SECRET")
 
 config :extra, Extra.Repo,
-  loggers: [PryIn.EctoLogger, Ecto.LogEntry]
+  loggers: [Appsignal.Ecto, Ecto.LogEntry]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

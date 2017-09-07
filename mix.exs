@@ -19,7 +19,7 @@ defmodule Extra.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Extra, []},
-     extra_applications: [:logger, :pryin]]
+     extra_applications: [:logger, :appsignal]]
   end
 
   # Specifies which paths to compile per environment.
@@ -52,7 +52,7 @@ defmodule Extra.Mixfile do
      {:poison, "~> 3.0", override: true},
      {:extwitter, "~> 0.8.6"},
 
-     {:pryin, "~> 1.0"},
+     {:appsignal, "~> 1.0"},
 
      {:ex_machina, "~> 2.0", only: :test},
      {:mix_test_watch, "~> 0.2", only: :dev, runtime: false},

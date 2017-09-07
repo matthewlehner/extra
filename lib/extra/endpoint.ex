@@ -43,6 +43,6 @@ defmodule Extra.Endpoint do
     key: "_extra_key",
     signing_salt: "7AnGC9LB"
 
-  plug PryIn.Plug
+  use Appsignal.Phoenix
   plug Extra.Router
 end
