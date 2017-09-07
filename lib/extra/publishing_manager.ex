@@ -7,6 +7,7 @@ defmodule Extra.PublishingManager do
   alias Extra.Repo
   alias Extra.Tweeter
   alias Extra.SocialPost
+  alias Extra.QueuedPost
 
   def publish_next_queued_post_for_timeslot(timeslot) do
     query = next_queued_post(timeslot)
@@ -16,8 +17,10 @@ defmodule Extra.PublishingManager do
     end
   end
 
+  # This _mayyyyy_ be problematic – if something bad happens, the next post
+  # might actually have been the post before what should be posted. 😱
   def next_queued_post(timeslot_id) when is_integer(timeslot_id) do
-    Extra.QueuedPost
+    QueuedPost
     |> where(timeslot_id: ^timeslot_id)
     |> order_by(asc: :scheduled_for)
     |> limit(1)

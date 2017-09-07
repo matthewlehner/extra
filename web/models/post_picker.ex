@@ -8,6 +8,7 @@ defmodule Extra.PostPicker do
   alias Extra.QueuedPost
   alias Extra.PostTemplate
   alias Extra.PostCollection
+  alias Extra.WeightedChoice
 
   @type t :: %__MODULE__{
     post_templates: %{},
@@ -64,7 +65,7 @@ defmodule Extra.PostPicker do
       weight = PostTemplate.weight_for(template)
       Map.put(acc, template.id, weight)
     end)
-    |> Extra.WeightedChoice.resource()
+    |> WeightedChoice.resource()
   end
 
   @spec assign_posts_to_queue_slots([{{:weight, [any]}, [%QueuedPost{}]}]) :: []
@@ -88,7 +89,7 @@ defmodule Extra.PostPicker do
   end
 
   def template_changeset(post, resource) do
-    choice = Extra.WeightedChoice.choice(resource)
+    choice = WeightedChoice.choice(resource)
     QueuedPost.changeset(post, %{post_template_id: choice})
   end
 
