@@ -1,5 +1,5 @@
-defmodule Extra.RegistrationControllerTest do
-  use Extra.ConnCase, async: true
+defmodule ExtraWeb.RegistrationControllerTest do
+  use ExtraWeb.ConnCase, async: true
 
   @valid_attrs %{
     email: "hi@there.com", password: "cool password", full_name: "Henry Ford"

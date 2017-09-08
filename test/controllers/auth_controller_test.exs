@@ -1,3 +1,3 @@
-defmodule Extra.AuthControllerTest do
-  use Extra.ConnCase, async: true
+defmodule ExtraWeb.AuthControllerTest do
+  use ExtraWeb.ConnCase, async: true
 end

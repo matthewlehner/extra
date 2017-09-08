@@ -1,21 +1,22 @@
-defmodule Extra.ErrorViewTest do
-  use Extra.ConnCase, async: true
+defmodule ExtraWeb.ErrorViewTest do
+  use ExtraWeb.ConnCase, async: true
 
   # Bring render/3 and render_to_string/3 for testing custom views
   import Phoenix.View
+  alias ExtraWeb.ErrorView
 
   test "renders 404.html" do
-    assert render_to_string(Extra.ErrorView, "404.html", []) ==
+    assert render_to_string(ErrorView, "404.html", []) ==
            "Page not found"
   end
 
   test "render 500.html" do
-    assert render_to_string(Extra.ErrorView, "500.html", []) ==
+    assert render_to_string(ErrorView, "500.html", []) ==
            "Internal server error"
   end
 
   test "render any other" do
-    assert render_to_string(Extra.ErrorView, "505.html", []) ==
+    assert render_to_string(ErrorView, "505.html", []) ==
            "Internal server error"
   end
 end
