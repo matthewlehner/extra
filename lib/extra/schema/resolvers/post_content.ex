@@ -9,6 +9,7 @@ defmodule Extra.Schema.Resolvers.PostContent do
   alias Extra.Repo
   alias Extra.PostContent
   alias Extra.PostCollection
+  alias Extra.PostManager
 
   def get(%{id: id}, %{context: %{current_user: user}}) do
     post = get_post_content_for_user(user, id)

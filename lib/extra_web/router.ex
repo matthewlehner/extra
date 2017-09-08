@@ -25,7 +25,7 @@ defmodule ExtraWeb.Router do
   end
 
   pipeline :api do
-    plug ExtraWeb.AbsintheInstrumentation
+    plug ExtraWeb.Plug.AbsintheInstrumentation
     plug :fetch_session
     plug :protect_from_forgery
     plug :put_secure_browser_headers

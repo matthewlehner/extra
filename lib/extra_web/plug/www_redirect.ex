@@ -1,4 +1,4 @@
-defmodule ExtraWeb.Plugs.WWWRedirect do
+defmodule ExtraWeb.Plug.WWWRedirect do
   @moduledoc """
   Plug for redirecting bare domain to www.hostname
   """

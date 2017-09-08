@@ -1,7 +1,7 @@
-defmodule Extra.Plugs.WWWRedirectTest do
-  use Extra.ConnCase, async: true
+defmodule ExtraWeb.Plug.WWWRedirectTest do
+  use ExtraWeb.ConnCase, async: true
 
-  alias Extra.Plugs.WWWRedirect
+  alias ExtraWeb.Plug.WWWRedirect
 
   test "does nothing to www domains" do
     conn = build_conn()

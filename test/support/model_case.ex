@@ -60,7 +60,7 @@ defmodule Extra.ModelCase do
   """
   def errors_on(changeset = %Ecto.Changeset{}) do
     changeset
-    |> Ecto.Changeset.traverse_errors(&Extra.ErrorHelpers.translate_error/1)
+    |> Ecto.Changeset.traverse_errors(&ExtraWeb.ErrorHelpers.translate_error/1)
     |> Enum.flat_map(fn {key, errors} -> for msg <- errors, do: {key, msg} end)
   end
 

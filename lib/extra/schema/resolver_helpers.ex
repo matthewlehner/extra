@@ -5,7 +5,7 @@ defmodule Extra.Schema.ResolverHelpers do
 
   def errors_on(changeset) do
     changeset
-    |> Ecto.Changeset.traverse_errors(&Extra.ErrorHelpers.translate_error/1)
+    |> Ecto.Changeset.traverse_errors(&ExtraWeb.ErrorHelpers.translate_error/1)
     |> Enum.flat_map(fn {key, errors} ->
       for msg <- errors, do: %{field: key, message: msg}
     end)

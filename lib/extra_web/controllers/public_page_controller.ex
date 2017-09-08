@@ -1,7 +1,7 @@
-defmodule Extra.PublicPageController do
-  use Extra.Web, :controller
+defmodule ExtraWeb.PublicPageController do
+  use ExtraWeb, :controller
 
-  plug :put_layout, {Extra.LayoutView, :marketing}
+  plug :put_layout, {ExtraWeb.LayoutView, :marketing}
 
   def index(conn, _params) do
     render conn, "index.html", show_login: true
