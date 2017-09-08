@@ -6,7 +6,7 @@ defmodule Extra.Scheduler.Supervisor do
   end
 
   def init(:ok) do
-    server? = Phoenix.Endpoint.server?(:extra, Extra.Endpoint)
+    server? = Phoenix.Endpoint.server?(:extra, ExtraWeb.Endpoint)
     children = registry(server?)
 
     supervise(children, strategy: :one_for_one)

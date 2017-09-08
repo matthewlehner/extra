@@ -1,0 +1,20 @@
+{
+
+  "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
+  "moduleFileExtensions": [
+    "js",
+    "jsx"
+  ],
+  "moduleDirectories": [
+    "node_modules",
+    "assets/js"
+  ],
+  "moduleNameMapper": {
+    "\\.(css|scss|svg)$": "identity-obj-proxy"
+  },
+  "transform": {
+    "\\.(gql|graphql)$": "jest-transform-graphql",
+    "\\.(js|jsx)$": "babel-jest"
+  },
+  "snapshotSerializers": ["enzyme-to-json/serializer"]
+}

@@ -21,7 +21,7 @@ defmodule EasyInput do
 
     label = EasyInput.Label.render(field, label_options)
     input = EasyInput.Input.render(field_type, form, field, input_options)
-    error = Extra.ErrorHelpers.error_tag(form, field) || ""
+    error = ExtraWeb.ErrorHelpers.error_tag(form, field) || ""
 
     content_tag :div, wrapper_options do
       [label, input, error]
@@ -37,7 +37,7 @@ defmodule EasyInput do
 
     label = EasyInput.Label.render(form, field, label_options)
     input = EasyInput.Input.render(field_type, form, field, input_options)
-    error = Extra.ErrorHelpers.error_tag(form, field) || ""
+    error = ExtraWeb.ErrorHelpers.error_tag(form, field) || ""
 
     content_tag :div, wrapper_options do
       [label, input, error]

@@ -4,7 +4,7 @@ defmodule Extra.Schema.Resolvers.UserResolver do
   """
   alias Extra.User
   import Ecto.Changeset, only: [traverse_errors: 2]
-  import Extra.ErrorHelpers, only: [translate_error: 1]
+  import ExtraWeb.ErrorHelpers, only: [translate_error: 1]
 
   def get(_, %{context: %{current_user: user}}), do: {:ok, user}
 

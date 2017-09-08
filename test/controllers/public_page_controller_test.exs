@@ -1,5 +1,5 @@
-defmodule Extra.PublicPageControllerTest do
-  use Extra.ConnCase, async: true
+defmodule ExtraWeb.PublicPageControllerTest do
+  use ExtraWeb.ConnCase, async: true
 
   test "GET :index", %{conn: conn} do
     conn = get conn, public_page_path(conn, :index)

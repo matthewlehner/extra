@@ -3,7 +3,7 @@ defmodule Extra.Schema.MutationsTest do
 
   alias Extra.Schema
 
-  @queries_dir "web/static/js/app/queries"
+  @queries_dir "assets/js/app/queries"
 
   @update_schedule_mutation File.read!(
     "#{@queries_dir}/update-schedule.gql"
