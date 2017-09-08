@@ -24,7 +24,7 @@ defmodule ExtraWeb.Endpoint do
   plug Plug.Logger
 
   if config[:redirect_to_www] do
-    plug ExtraWeb.Plugs.WWWRedirect
+    plug ExtraWeb.Plug.WWWRedirect
   end
 
   plug Plug.Parsers,
