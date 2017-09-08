@@ -1,3 +1,3 @@
-defmodule Extra.AppView do
-  use Extra.Web, :view
+defmodule ExtraWeb.AppView do
+  use ExtraWeb, :view
 end

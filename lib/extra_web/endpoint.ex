@@ -1,7 +1,7 @@
-defmodule Extra.Endpoint do
+defmodule ExtraWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :extra
 
-  socket "/socket", Extra.UserSocket
+  socket "/socket", ExtraWeb.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -24,7 +24,7 @@ defmodule Extra.Endpoint do
   plug Plug.Logger
 
   if config[:redirect_to_www] do
-    plug Extra.Plugs.WWWRedirect
+    plug ExtraWeb.Plugs.WWWRedirect
   end
 
   plug Plug.Parsers,
@@ -44,5 +44,5 @@ defmodule Extra.Endpoint do
     signing_salt: "7AnGC9LB"
 
   use Appsignal.Phoenix
-  plug Extra.Router
+  plug ExtraWeb.Router
 end

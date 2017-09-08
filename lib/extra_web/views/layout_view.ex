@@ -1,5 +1,5 @@
-defmodule Extra.LayoutView do
-  use Extra.Web, :view
+defmodule ExtraWeb.LayoutView do
+  use ExtraWeb, :view
 
   def body_class_name(conn) do
     "#{controller_name(conn)}-#{Phoenix.Controller.action_name(conn)}"

@@ -1,4 +1,4 @@
-defmodule PostManager do
+defmodule Extra.PostManager do
   @moduledoc """
   Functions for archiving post content and associated records.
   """

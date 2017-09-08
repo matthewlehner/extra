@@ -1,5 +1,5 @@
-defmodule Extra.AuthView do
+defmodule ExtraWeb.AuthView do
   @moduledoc false
 
-  use Extra.Web, :view
+  use ExtraWeb, :view
 end

@@ -1,10 +1,10 @@
-defmodule Extra.ExtraHelpers do
+defmodule ExtraWeb.ExtraHelpers do
   @moduledoc """
   Global helpers for use in any view or template.
   """
 
   use Phoenix.HTML
-  import Extra.Router.Helpers
+  import ExtraWeb.Router.Helpers
 
   @doc """
   Generates svg tags for icon sprite usage.
@@ -25,7 +25,7 @@ defmodule Extra.ExtraHelpers do
   end
 
   defp get_template_name(conn) do
-    {Extra.LayoutView, template} = conn.assigns[:layout]
+    {ExtraWeb.LayoutView, template} = conn.assigns[:layout]
     template
   end
 end

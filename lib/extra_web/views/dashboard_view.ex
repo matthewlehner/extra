@@ -1,3 +1,3 @@
-defmodule Extra.DashboardView do
-  use Extra.Web, :view
+defmodule ExtraWeb.DashboardView do
+  use ExtraWeb, :view
 end

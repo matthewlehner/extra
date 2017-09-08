@@ -1,5 +1,5 @@
-defmodule Extra.ErrorView do
-  use Extra.Web, :view
+defmodule ExtraWeb.ErrorView do
+  use ExtraWeb, :view
 
   def render("404.html", _assigns) do
     "Page not found"

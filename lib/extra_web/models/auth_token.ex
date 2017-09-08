@@ -1,5 +1,5 @@
 defmodule Extra.AuthToken do
-  use Extra.Web, :model
+  use ExtraWeb, :model
 
   @moduledoc """
   Provides storage for other application authorization tokens.

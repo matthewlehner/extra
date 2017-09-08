@@ -3,7 +3,7 @@ defmodule Extra.QueuedPost do
   Schema for queued posts. Persistence for BG jobs. Kinda dumb, but necessary,
   for now.
   """
-  use Extra.Web, :model
+  use ExtraWeb, :model
   alias Extra.Timeslot
   alias Extra.PostTemplate
 

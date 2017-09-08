@@ -1,5 +1,5 @@
 defmodule Extra.Authorization do
-  use Extra.Web, :model
+  use ExtraWeb, :model
 
   schema "authorizations" do
     field :token, :string

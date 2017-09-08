@@ -1,3 +1,3 @@
-defmodule Extra.RegistrationView do
-  use Extra.Web, :view
+defmodule ExtraWeb.RegistrationView do
+  use ExtraWeb, :view
 end

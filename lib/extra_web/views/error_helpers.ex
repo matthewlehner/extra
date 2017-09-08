@@ -1,4 +1,4 @@
-defmodule Extra.ErrorHelpers do
+defmodule ExtraWeb.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -34,9 +34,9 @@ defmodule Extra.ErrorHelpers do
     #     dgettext "errors", "is invalid"
     #
     if count = opts[:count] do
-      Gettext.dngettext(Extra.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(ExtraWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(Extra.Gettext, "errors", msg, opts)
+      Gettext.dgettext(ExtraWeb.Gettext, "errors", msg, opts)
     end
   end
 end

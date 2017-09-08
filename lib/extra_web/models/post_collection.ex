@@ -1,5 +1,5 @@
 defmodule Extra.PostCollection do
-  use Extra.Web, :model
+  use ExtraWeb, :model
 
   schema "post_collections" do
     field :name, :string

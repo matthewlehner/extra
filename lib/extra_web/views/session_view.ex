@@ -1,5 +1,5 @@
-defmodule Extra.SessionView do
-  use Extra.Web, :view
+defmodule ExtraWeb.SessionView do
+  use ExtraWeb, :view
 
   # <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
   # <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>

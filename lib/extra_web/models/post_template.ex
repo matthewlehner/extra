@@ -1,5 +1,5 @@
 defmodule Extra.PostTemplate do
-  use Extra.Web, :model
+  use ExtraWeb, :model
 
   schema "post_templates" do
     # Rather than having this column, it'll be better to just delete the post

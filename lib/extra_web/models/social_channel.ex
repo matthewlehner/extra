@@ -3,7 +3,7 @@ defmodule Extra.SocialChannel do
   Publishing channels for Extra.
   """
 
-  use Extra.Web, :model
+  use ExtraWeb, :model
   alias Extra.Authorization
 
   schema "social_channels" do

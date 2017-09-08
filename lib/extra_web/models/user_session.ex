@@ -3,7 +3,7 @@ defmodule Extra.UserSession do
   User Session is used for individual device sessions. Users have many sessions
   which can be invalidated.
   """
-  use Extra.Web, :model
+  use ExtraWeb, :model
 
   schema "user_sessions" do
     field :user_agent, :string

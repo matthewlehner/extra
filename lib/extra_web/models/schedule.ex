@@ -2,7 +2,7 @@ defmodule Extra.Schedule do
   @moduledoc """
   A schedule for publishing posts.
   """
-  use Extra.Web, :model
+  use ExtraWeb, :model
 
   schema "schedules" do
     field :autopilot, :boolean, default: true

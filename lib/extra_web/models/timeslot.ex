@@ -3,7 +3,7 @@ defmodule Extra.Timeslot do
   Timeslot schema. Used for adding timeslots to a schedule, and associating
   them with collections.
   """
-  use Extra.Web, :model
+  use ExtraWeb, :model
   alias Extra.Schedule
 
   schema "timeslots" do

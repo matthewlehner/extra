@@ -3,7 +3,7 @@ defmodule Extra.User do
   The User module is for storing individual user data.
   """
 
-  use Extra.Web, :model
+  use ExtraWeb, :model
   import Comeonin.Bcrypt, only: [hashpwsalt: 1, checkpw: 2, dummy_checkpw: 0]
 
   schema "users" do

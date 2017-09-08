@@ -1,5 +1,5 @@
 defmodule Extra.SocialPost do
-  use Extra.Web, :model
+  use ExtraWeb, :model
 
   schema "posts" do
     field :content, :string
