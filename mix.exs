@@ -56,6 +56,7 @@ defmodule Extra.Mixfile do
 
      {:ex_machina, "~> 2.0", only: :test},
      {:mix_test_watch, "~> 0.2", only: :dev, runtime: false},
+     {:ex_unit_notifier, "~> 0.1", only: :test},
      {:dialyxir, "~> 0.4", only: [:dev]},
      {:credo, "~> 0.4", only: [:dev, :test]}]
   end
@@ -69,6 +70,7 @@ defmodule Extra.Mixfile do
   defp aliases do
     ["ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
      "ecto.reset": ["ecto.drop", "ecto.setup"],
-     "test": ["ecto.create --quiet", "ecto.migrate", "test"]]
+     "test": ["ecto.create --quiet", "ecto.migrate", "test"],
+     "test.watch": ["test.watch --stale"]]
   end
 end
