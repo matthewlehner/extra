@@ -1,4 +1,4 @@
-defmodule Extra do
+defmodule Extra.Application do
   @moduledoc """
   The core module for the Phoenix application, Extra.
   """
@@ -15,7 +15,7 @@ defmodule Extra do
       # Start the Ecto repository
       supervisor(Extra.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(Extra.Endpoint, []),
+      supervisor(ExtraWeb.Endpoint, []),
       # Start your own worker by calling: Extra.Worker.start_link(arg1, arg2, arg3)
       # worker(Extra.Worker, [arg1, arg2, arg3]),
       worker(Extra.Scheduler.Supervisor, [])
@@ -30,7 +30,7 @@ defmodule Extra do
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    Extra.Endpoint.config_change(changed, removed)
+    ExtraWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

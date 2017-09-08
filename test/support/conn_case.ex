@@ -1,4 +1,4 @@
-defmodule Extra.ConnCase do
+defmodule ExtraWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -25,13 +25,13 @@ defmodule Extra.ConnCase do
       import Ecto.Changeset
       import Ecto.Query
 
-      import Extra.Router.Helpers
+      import ExtraWeb.Router.Helpers
 
       # Imports ExMachina factories
       import Extra.Factory
 
       # The default endpoint for testing
-      @endpoint Extra.Endpoint
+      @endpoint ExtraWeb.Endpoint
     end
   end
 

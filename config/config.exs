@@ -10,10 +10,10 @@ config :extra,
   ecto_repos: [Extra.Repo]
 
 # Configures the endpoint
-config :extra, Extra.Endpoint,
+config :extra, ExtraWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "z+F16wmp3ZMZMi12fVGAzHhaP/4hQQOK9lcri5PbIBmHwxoiapikQbBLuA/pdWMo",
-  render_errors: [view: Extra.ErrorView, accepts: ~w(html json)],
+  render_errors: [view: ExtraWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Extra.PubSub,
            adapter: Phoenix.PubSub.PG2],
   instrumenters: [Appsignal.Phoenix.Instrumenter]
