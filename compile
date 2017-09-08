@@ -1,2 +1,3 @@
-yarn run deploy
+cd assets && yarn run deploy
+cd -
 mix phoenix.digest
