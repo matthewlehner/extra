@@ -2,9 +2,6 @@
 import React from "react";
 import { Formik } from "formik";
 import { object, string } from "yup";
-import { Select } from "../../lib/forms";
-import timezones, { validTimezones } from "../../lib/timezones";
-
 import { form, formActions } from "../../components/account.scss";
 
 const UserPreferencesForm = ({
@@ -26,18 +23,6 @@ const UserPreferencesForm = ({
       required
     />
 
-    <label htmlFor="user[timezone]">Timezone</label>
-    <Select
-      id="user[timezone]"
-      name="timezone"
-      options={timezones}
-      placeholder=" "
-      value={values.timezone}
-      onChange={handleChange}
-      onBlur={handleBlur}
-      required
-    />
-
     <div className={formActions}>
       <button className="button" disabled={isSubmitting}>
         {isSubmitting ? "Saving" : "Update"}
@@ -47,12 +32,10 @@ const UserPreferencesForm = ({
 
 export default Formik({
   validationSchema: object().shape({
-    email: string().email().required(),
-    timezone: string().required().oneOf(validTimezones())
+    email: string().email().required()
   }),
-  mapPropsToValues: ({ formData: { email, timezone } }) => ({
-    email,
-    timezone
+  mapPropsToValues: ({ formData: { email } }) => ({
+    email
   }),
   handleSubmit: (payload, { props, setError, setSubmitting }) => {
     props.updatePreferences(payload).then(
