@@ -1,3 +1,6 @@
-cd assets && yarn run deploy
-cd -
+cd $phoenix_dir
+cd assets
+yarn run deploy
+
+cd $phoenix_dir
 mix phoenix.digest
