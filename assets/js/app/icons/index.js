@@ -5,7 +5,7 @@ import checkmark from "./checkmark.svg";
 import close from "./close.svg";
 import collection from "./collection.svg";
 import edit from "./edit.svg";
-import logo from "../../../assets/images/extra-logo.svg";
+import logo from "../../../static/images/extra-logo.svg";
 import logout from "./logout.svg";
 import performance from "./performance.svg";
 import remove from "./remove.svg";

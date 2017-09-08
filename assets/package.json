@@ -4,8 +4,8 @@
   "scripts": {
     "deploy": "webpack -p",
     "watch": "NODE_ENV=development webpack --watch-stdin --progress --color",
-    "lint": "eslint web/static/js --ext .js --ext .jsx",
-    "test": "jest --config web/static/js/__test__/.jestrc",
+    "lint": "eslint js --ext .js --ext .jsx",
+    "test": "jest --config js/__test__/.jestrc",
     "generate-graphql-types": "mix absinthe.schema.json --schema Extra.Schema && apollo-codegen generate **/*.gql --schema schema.json --target flow --output flow-typed/schema.js.flow"
   },
   "engine": "node >= 6.8.0",

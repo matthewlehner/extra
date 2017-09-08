@@ -7,7 +7,7 @@
   ],
   "moduleDirectories": [
     "node_modules",
-    "web/static/js"
+    "assets/js"
   ],
   "moduleNameMapper": {
     "\\.(css|scss|svg)$": "identity-obj-proxy"

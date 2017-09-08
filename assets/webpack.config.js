@@ -54,7 +54,7 @@ const common = {
       },
       {
         test: /\.scss$/,
-        exclude: [/node_modules/, path.resolve(__dirname, "web/static/js")],
+        exclude: [/node_modules/, path.resolve(__dirname, "js")],
         use: extractCSS.extract({
           fallback: "style-loader",
           use: [
@@ -75,7 +75,7 @@ const common = {
               loader: "sass-loader",
               options: {
                 sourceMap: true,
-                includePaths: [path.join(__dirname, "/web/static/css")]
+                includePaths: [path.join(__dirname, "/css")]
               }
             }
           ]
@@ -83,7 +83,7 @@ const common = {
       },
       {
         test: /\.scss$/,
-        include: path.resolve(__dirname, "web/static/js"),
+        include: path.resolve(__dirname, "js"),
         use: extractCSS.extract({
           fallback: "style-loader",
           use: [
@@ -106,7 +106,7 @@ const common = {
               loader: "sass-loader",
               options: {
                 sourceMap: true,
-                includePaths: [path.join(__dirname, "/web/static/css")]
+                includePaths: [path.join(__dirname, "/css")]
               }
             }
           ]
@@ -124,7 +124,7 @@ const common = {
     new CopyWebpackPlugin([
       {
         from: { glob: "**/*", dot: false },
-        context: "./web/static/assets"
+        context: path.resolve(__dirname, "static")
       }
     ]),
     extractCSS
