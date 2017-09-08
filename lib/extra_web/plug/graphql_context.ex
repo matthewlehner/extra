@@ -1,4 +1,4 @@
-defmodule Extra.Plugs.GraphqlContext do
+defmodule Extra.Plug.GraphqlContext do
   @behaviour Plug
   import Plug.Conn
 

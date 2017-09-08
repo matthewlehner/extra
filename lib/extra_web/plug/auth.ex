@@ -1,4 +1,4 @@
-defmodule Extra.Auth do
+defmodule ExtraWeb.Plug.Auth do
   @moduledoc """
   Authentication helper methods and plugs.
   """

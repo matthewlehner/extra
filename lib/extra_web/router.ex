@@ -1,5 +1,5 @@
-defmodule Extra.Router do
-  use Extra.Web, :router
+defmodule ExtraWeb.Router do
+  use ExtraWeb, :router
   require Ueberauth
 
   pipeline :browser do
@@ -11,29 +11,28 @@ defmodule Extra.Router do
   end
 
   pipeline :public_layout do
-    plug :put_layout, {Extra.LayoutView, :public}
+    plug :put_layout, {ExtraWeb.LayoutView, :public}
   end
 
   pipeline :browser_session do
     plug Guardian.Plug.VerifySession
     plug Guardian.Plug.LoadResource
-    plug Extra.Auth
+    plug ExtraWeb.Plug.Auth
   end
 
   pipeline :require_login do
-    plug Guardian.Plug.EnsureAuthenticated, handler: Extra.GuardianErrorHandler
-    plug Extra.LoadSidebarEntities, repo: Extra.Repo
+    plug Guardian.Plug.EnsureAuthenticated, handler: ExtraWeb.GuardianErrorHandler
   end
 
   pipeline :api do
-    plug Extra.AbsintheInstrumentationPlug
+    plug ExtraWeb.AbsintheInstrumentation
     plug :fetch_session
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug Guardian.Plug.VerifySession
     plug Guardian.Plug.LoadResource
     plug Guardian.Plug.EnsureAuthenticated
-    plug Extra.Plugs.GraphqlContext
+    plug ExtraWeb.Plug.GraphqlContext
   end
 
   pipeline :graphiql do
@@ -42,10 +41,10 @@ defmodule Extra.Router do
     plug Guardian.Plug.VerifySession
     plug Guardian.Plug.LoadResource
     plug Guardian.Plug.EnsureAuthenticated
-    plug Extra.Plugs.GraphqlContext
+    plug ExtraWeb.Plug.GraphqlContext
   end
 
-  scope "/", Extra do
+  scope "/", ExtraWeb do
     pipe_through [:browser]
     get "/", PublicPageController, :index
     get "/alpha-list/thanks", PublicPageController, :alpha_thanks
@@ -53,7 +52,7 @@ defmodule Extra.Router do
     get "/seven-tactics", PublicPageController, :seven_tactics
   end
 
-  scope "/", Extra do
+  scope "/", ExtraWeb do
     pipe_through [:browser, :browser_session, :public_layout]
 
     get "/login", SessionController, :new
@@ -62,7 +61,7 @@ defmodule Extra.Router do
     resources "/registrations", RegistrationController, only: [:new, :create]
   end
 
-  scope "/app", Extra do
+  scope "/app", ExtraWeb do
     pipe_through [:browser, :browser_session, :require_login]
     get "/*app_params", AppController, :index
 
@@ -85,7 +84,7 @@ defmodule Extra.Router do
     forward "/graphiql", Absinthe.Plug.GraphiQL, schema: Extra.Schema
   end
 
-  scope "/auth", Extra do
+  scope "/auth", ExtraWeb do
     pipe_through [:browser, :browser_session, :require_login]
 
     get "/:provider", AuthController, :request

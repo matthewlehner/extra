@@ -1,4 +1,4 @@
-defmodule Extra.AbsintheInstrumentationPlug do
+defmodule Extra.AbsintheInstrumentation do
   @behaviour Plug
   import Appsignal.Instrumentation.Helpers, only: [instrument: 3]
 
