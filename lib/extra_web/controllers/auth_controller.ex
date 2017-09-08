@@ -1,9 +1,9 @@
-defmodule Extra.AuthController do
+defmodule ExtraWeb.AuthController do
   @moduledoc """
   Auth controller responsible for handling Ueberauth responses
   """
 
-  use Extra.Web, :controller
+  use ExtraWeb, :controller
   plug Ueberauth
   alias Extra.PublishingChannels
 

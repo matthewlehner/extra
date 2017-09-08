@@ -1,8 +1,8 @@
-defmodule Extra.UserSocket do
+defmodule ExtraWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", Extra.RoomChannel
+  # channel "room:*", ExtraWeb.RoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket,
@@ -31,7 +31,7 @@ defmodule Extra.UserSocket do
   # Would allow you to broadcast a "disconnect" event and terminate
   # all active sockets and channels for a given user:
   #
-  #     Extra.Endpoint.broadcast("users_socket:#{user.id}", "disconnect", %{})
+  #     ExtraWeb.Endpoint.broadcast("users_socket:#{user.id}", "disconnect", %{})
   #
   # Returning `nil` makes this socket anonymous.
   def id(_socket), do: nil

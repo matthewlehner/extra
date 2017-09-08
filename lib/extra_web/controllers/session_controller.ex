@@ -1,7 +1,9 @@
-defmodule Extra.SessionController do
-  use Extra.Web, :controller
+defmodule ExtraWeb.SessionController do
+  use ExtraWeb, :controller
   alias Extra.User
-  plug :put_layout, {Extra.LayoutView, :public}
+  alias ExtraWeb.Plug.Auth
+
+  plug :put_layout, {ExtraWeb.LayoutView, :public}
 
   def new(%{assigns: %{current_user: %User{}}} = conn, _) do
     conn
@@ -14,7 +16,7 @@ defmodule Extra.SessionController do
   end
 
   def create(conn, %{"user" => %{"email" => email, "password" => password}}) do
-    case Extra.Auth.login_by_email_and_pass(conn, email, password, repo: Repo) do
+    case Auth.login_by_email_and_pass(conn, email, password, repo: Repo) do
       {:ok, user} ->
         conn
         |> Guardian.Plug.sign_in(user)

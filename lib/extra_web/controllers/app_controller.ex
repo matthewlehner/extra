@@ -1,5 +1,5 @@
-defmodule Extra.AppController do
-  use Extra.Web, :controller
+defmodule ExtraWeb.AppController do
+  use ExtraWeb, :controller
 
   def index(conn, _) do
     render(conn)

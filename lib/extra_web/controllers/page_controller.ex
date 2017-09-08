@@ -1,10 +1,10 @@
-defmodule Extra.PageController do
-  use Extra.Web, :controller
+defmodule ExtraWeb.PageController do
+  use ExtraWeb, :controller
 
-  plug :put_layout, {Extra.LayoutView, :app}
+  plug :put_layout, {ExtraWeb.LayoutView, :app}
 
   def index(conn, _params) do
-    render conn, "index.html", layout: {Extra.LayoutView, "public.html"}
+    render conn, "index.html", layout: {ExtraWeb.LayoutView, "public.html"}
   end
 
   def styleguide(conn, _) do

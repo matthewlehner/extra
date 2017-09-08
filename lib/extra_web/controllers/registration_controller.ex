@@ -1,6 +1,5 @@
-defmodule Extra.RegistrationController do
-  use Extra.Web, :controller
-
+defmodule ExtraWeb.RegistrationController do
+  use ExtraWeb, :controller
   alias Extra.User
 
   def new(conn, _params) do
