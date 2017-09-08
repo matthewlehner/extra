@@ -1,12 +1,12 @@
-defmodule Extra.Web do
+defmodule ExtraWeb do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use Extra.Web, :controller
-      use Extra.Web, :view
+      use ExtraWeb, :controller
+      use ExtraWeb, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -28,20 +28,21 @@ defmodule Extra.Web do
 
   def controller do
     quote do
-      use Phoenix.Controller
+      use Phoenix.Controller, namespace: ExtraWeb
 
       alias Extra.Repo
       import Ecto
       import Ecto.Query
 
-      import Extra.Router.Helpers
-      import Extra.Gettext
+      import ExtraWeb.Router.Helpers
+      import ExtraWeb.Gettext
     end
   end
 
   def view do
     quote do
-      use Phoenix.View, root: "web/templates"
+      use Phoenix.View, root: "lib/extra_web/templates",
+                        namespace: ExtraWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_csrf_token: 0, get_flash: 2, view_module: 1]
@@ -49,10 +50,10 @@ defmodule Extra.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import Extra.Router.Helpers
-      import Extra.ErrorHelpers
-      import Extra.Gettext
-      import Extra.ExtraHelpers
+      import ExtraWeb.Router.Helpers
+      import ExtraWeb.ErrorHelpers
+      import ExtraWeb.Gettext
+      import ExtraWeb.ExtraHelpers
       import EasyInput
     end
   end
@@ -70,7 +71,7 @@ defmodule Extra.Web do
       alias Extra.Repo
       import Ecto
       import Ecto.Query
-      import Extra.Gettext
+      import ExtraWeb.Gettext
     end
   end
 
