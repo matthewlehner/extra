@@ -10,6 +10,7 @@ import {
 import Tabs from "./tabs";
 import DailySchedule from "./daily-schedule";
 import NewTimeslot from "./new-timeslot";
+import TimezoneForm from "../app/components/timezone-form";
 
 export type Timeslot = {
   recurrence: string,
@@ -36,12 +37,13 @@ function panels(timeslots: Array<Timeslot>, removeTimeslot) {
 const Schedule = ({
   addTimeslot,
   removeTimeslot,
-  schedule: { id, autopilot, timeslots },
+  updateSchedule,
+  schedule: { id, timezone, timeslots },
   collections,
   recurrenceType
 }: ChannelPageQuery) =>
   <section className="channel-schedule">
-    <h2>Schedule</h2>
+    <TimezoneForm timezone={timezone} updateSchedule={updateSchedule} />
 
     <Tabs name={"schedule"} panels={panels(timeslots, removeTimeslot)}>
       <NewTimeslot

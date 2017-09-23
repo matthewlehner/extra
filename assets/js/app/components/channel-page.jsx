@@ -12,14 +12,10 @@ const ChannelPage = ({
   removeTimeslot,
   data: { loading, error, schedule, channel, collections, recurrenceType }
 }: ChannelPageProps) => {
-  const toggleAutopilot = () =>
-    updateSchedule({
-      variables: { channelId: channel.id, autopilot: !schedule.autopilot }
-    });
   const scheduleProps = {
-    toggleAutopilot,
     addTimeslot,
     removeTimeslot,
+    updateSchedule,
     schedule,
     collections,
     recurrenceType
@@ -43,11 +39,6 @@ const ChannelPage = ({
         </div>
         <div className="button button_small">Delete account</div>
       </header>
-
-      <section className="channel-stats">
-        <h2>Stats</h2>
-        <p>Here are some stats about the channel.</p>
-      </section>
 
       <Schedule {...scheduleProps} />
 

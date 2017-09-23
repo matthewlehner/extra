@@ -9,7 +9,7 @@ const timezones = [
   { value: "America/Anchorage", label: "(UTC-09:00) Alaska" },
   { value: "America/Tijuana", label: "(UTC-08:00) Baja California" },
   {
-    value: "America/Los_Angeles",
+    value: "America/Vancouver",
     label: "(UTC-08:00) Pacific Time (US and Canada)"
   },
   { value: "America/Phoenix", label: "(UTC-07:00) Arizona" },

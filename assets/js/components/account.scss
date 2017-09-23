@@ -1,3 +1,6 @@
+@import "../../css/modules/colors";
+@import "../../css/modules/variables";
+
 .form {
   display: grid;
   grid-gap: 1rem;
@@ -5,9 +8,12 @@
   margin: 1rem auto;
 
   label {
+    font-weight: 600;
     grid-column: 1/2;
     width: auto;
     min-width: auto;
+    padding-bottom: $input-padding-bottom;
+    padding-top: $input-padding-top;
     text-transform: capitalize;
   }
 
@@ -16,6 +22,12 @@
   input {
     grid-column: 2/3;
   }
+}
+
+.underlinedForm {
+  border-bottom: $light-border;
+  margin-bottom: 0;
+  padding-bottom: 1rem;
 }
 
 .formActions {
