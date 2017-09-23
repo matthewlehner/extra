@@ -41,6 +41,8 @@ defmodule Extra.QueuedPost do
   def for_timeslot(timeslot) do
     now = DateTime.utc_now
     next_week = Timex.shift(now, weeks: 1)
+    timeslot = Extra.Repo.preload(timeslot, :schedule)
+    timezone = timeslot.schedule.timezone
 
     timeslot
     |> Timeslot.to_cron_expression()
@@ -50,12 +52,18 @@ defmodule Extra.QueuedPost do
     end)
     |> Stream.map(fn(datetime) ->
       %{
-        scheduled_for: DateTime.from_naive!(datetime, "Etc/UTC"),
+        scheduled_for: set_timezone_time(datetime, timezone),
         timeslot_id: timeslot.id,
         inserted_at: now,
         updated_at: now
       }
     end)
     |> Enum.to_list()
+  end
+
+  defp set_timezone_time(datetime, timezone) do
+    datetime
+    |> Timex.to_datetime(timezone) # Returns a datetime with scheduled timezone
+    |> Timex.to_datetime("Etc/UTC") # Shifts datetime to when it will happen in UTC
   end
 end
