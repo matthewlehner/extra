@@ -18,8 +18,9 @@ defmodule Extra.Schema.MutationsTest do
       context = %{current_user: user}
       mutation_variables = %{
         "channelId" => schedule.social_channel_id,
-        "timezone" => "Canada/Pacific",
-        "autopilot" => false
+        "scheduleInput" => %{
+          "timezone" => "Canada/Pacific"
+        }
       }
 
       assert {:ok, response} = Absinthe.run @update_schedule_mutation,
@@ -28,7 +29,6 @@ defmodule Extra.Schema.MutationsTest do
                                             context: context
 
       assert response == %{data: %{"updateSchedule" => %{
-        "autopilot" => false,
         "timezone" => "Canada/Pacific",
         "id" => to_string(schedule.id)
       }}}

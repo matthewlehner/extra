@@ -17,7 +17,7 @@ defmodule Extra.Schema.Resolvers.Schedule do
     end
   end
 
-  def update(%{channel_id: channel_id, schedule: schedule_params}, %{context: %{current_user: user}}) do
+  def update(%{channel_id: channel_id, schedule_input: schedule_params}, %{context: %{current_user: user}}) do
     Schedule
     |> Schedule.for_user(user)
     |> Repo.get_by!(social_channel_id: channel_id)

@@ -11,9 +11,8 @@ defmodule Extra.Schema.Resolvers.ScheduleResolverTest do
     test "updates schedule attributes", %{schedule: schedule, user: user} do
       params = %{
         channel_id: schedule.social_channel_id,
-        schedule: %{
-          timezone: "Canada/Pacific",
-          autopilot: true
+        schedule_input: %{
+          timezone: "Canada/Pacific"
         }
       }
 
@@ -21,7 +20,6 @@ defmodule Extra.Schema.Resolvers.ScheduleResolverTest do
 
       assert {:ok, schedule} = ScheduleResolver.update(params, context)
       assert schedule.timezone == "Canada/Pacific"
-      assert schedule.autopilot == true
     end
   end
 end
