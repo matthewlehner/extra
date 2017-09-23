@@ -52,8 +52,7 @@ defmodule Extra.Schema do
     end
   end
 
-  input_object :update_schedule_params do
-    field :autopilot, non_null(:boolean)
+  input_object :update_schedule_input do
     field :timezone, :string
   end
 
@@ -100,7 +99,7 @@ defmodule Extra.Schema do
 
     field :update_schedule, :schedule do
       arg :channel_id, non_null(:id)
-      arg :schedule, :update_schedule_params
+      arg :schedule_input, non_null(:update_schedule_input)
 
       resolve &Schedule.update/2
     end
