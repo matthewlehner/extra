@@ -6,6 +6,7 @@ import { PageLoader } from "../../components/async-component";
 import channelPageQuery from "../queries/channel-page.gql";
 import addTimeslotMutation from "../queries/add-timeslot-mutation.gql";
 import removeTimeslotMutation from "../queries/remove-timeslot-mutation.gql";
+import updateScheduleMutation from "../queries/update-schedule.gql";
 
 export type ChannelPageProps = {
   data: ChannelPageQuery & QueryProps,
@@ -45,6 +46,12 @@ const ChannelPageComponent: OperationComponent<
     }),
     options: ({ match: { params: { id } } }) => ({
       refetchQueries: [{ query: channelPageQuery, variables: { id } }]
+    })
+  }),
+  graphql(updateScheduleMutation, {
+    props: ({ mutate, ownProps: { match: { params } } }) => ({
+      updateSchedule: scheduleInput =>
+        mutate({ variables: { channelId: params.id, scheduleInput } })
     })
   })
 )(
