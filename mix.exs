@@ -51,6 +51,7 @@ defmodule Extra.Mixfile do
      {:absinthe_ecto, "~> 0.1"},
      {:poison, "~> 3.0", override: true},
      {:extwitter, "~> 0.8.6"},
+     {:gen_stage, "~> 0.12"},
 
      {:appsignal, "~> 1.0"},
 
