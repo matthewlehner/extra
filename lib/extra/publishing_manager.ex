@@ -9,6 +9,12 @@ defmodule Extra.PublishingManager do
   alias Extra.SocialPost
   alias Extra.QueuedPost
 
+  def start_link(timeslot_id) do
+    Task.start_link(fn ->
+      publish_next_queued_post_for_timeslot(timeslot_id)
+    end)
+  end
+
   def publish_next_queued_post_for_timeslot(timeslot) do
     query = next_queued_post(timeslot)
 
