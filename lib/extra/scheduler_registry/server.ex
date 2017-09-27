@@ -17,6 +17,10 @@ defmodule Extra.SchedulerRegistry.Server do
     {:reply, Map.fetch(schedulers, timeslot_id), state}
   end
 
+  def handle_call({:list_jobs}, _from, {schedulers, _} = state) do
+    {:reply, Map.values(schedulers), state}
+  end
+
   def handle_cast({:add_job, timeslot}, {schedulers, refs}) do
     if Map.has_key?(schedulers, timeslot.id) do
       {:noreply, {schedulers, refs}}

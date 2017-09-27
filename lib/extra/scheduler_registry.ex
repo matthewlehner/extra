@@ -31,4 +31,8 @@ defmodule Extra.SchedulerRegistry do
   def remove_job(server, %{id: timeslot_id}) do
     GenServer.cast(server, {:remove_job, timeslot_id})
   end
+
+  def list_jobs(server) do
+    GenServer.call(server, {:list_jobs})
+  end
 end

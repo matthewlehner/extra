@@ -34,4 +34,19 @@ defmodule Extra.SchedulerRegistryTest do
 
     assert SchedulerRegistry.find_job(registry, timeslot) == :error
   end
+
+  test ".list_jobs", %{registry: registry} do
+    timeslot = insert(:timeslot)
+    SchedulerRegistry.add_job(registry, timeslot)
+
+    jobs = SchedulerRegistry.list_jobs(registry)
+
+    assert is_list(jobs)
+
+    [pid] = jobs
+    job = Agent.get(pid, &(&1))
+
+    assert %{timeslot_id: timeslot_id} = job
+    assert timeslot_id == timeslot.id
+  end
 end
