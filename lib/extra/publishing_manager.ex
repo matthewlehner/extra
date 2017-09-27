@@ -9,6 +9,8 @@ defmodule Extra.PublishingManager do
   alias Extra.SocialPost
   alias Extra.QueuedPost
 
+  require Logger
+
   def start_link(timeslot_id) do
     Task.start_link(fn ->
       publish_next_queued_post_for_timeslot(timeslot_id)
@@ -41,6 +43,8 @@ defmodule Extra.PublishingManager do
   end
 
   def publish_queued_post(queued_post) do
+    Logger.info(fn -> "publishing a post: #{inspect(queued_post)}" end)
+
     queued_post
     |> build_post
     |> Tweeter.publish_status(queued_post.channel.authorization)
