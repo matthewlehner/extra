@@ -39,18 +39,18 @@ defmodule Extra.QueuedPost do
 
   @spec for_timeslot(%Timeslot{}) :: list(%{})
   def for_timeslot(timeslot) do
-    now = DateTime.utc_now
-    next_week = Timex.shift(now, weeks: 1)
     timeslot = Extra.Repo.preload(timeslot, :schedule)
     timezone = timeslot.schedule.timezone
+    now = Timex.now(timezone) |> DateTime.to_naive()
+    next_week = Timex.shift(now, weeks: 1)
 
     timeslot
     |> Timeslot.to_cron_expression()
-    |> Crontab.Scheduler.get_next_run_dates()
-    |> Stream.take_while(fn(datetime) ->
+    |> Crontab.Scheduler.get_next_run_dates(now)
+    |> Stream.take_while(fn datetime ->
       Timex.compare(next_week, datetime) > 0
     end)
-    |> Stream.map(fn(datetime) ->
+    |> Stream.map(fn datetime ->
       %{
         scheduled_for: set_timezone_time(datetime, timezone),
         timeslot_id: timeslot.id,
