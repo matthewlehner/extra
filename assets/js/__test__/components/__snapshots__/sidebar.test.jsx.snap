@@ -25,6 +25,7 @@ exports[`Sidebar component renders correctly 1`] = `
       <ul>
         <li>
           <a
+            aria-current={false}
             className={undefined}
             href="/collections/1"
             onClick={[Function]}
@@ -44,6 +45,7 @@ exports[`Sidebar component renders correctly 1`] = `
         </li>
         <li>
           <a
+            aria-current={false}
             className={undefined}
             href="/new-collection"
             onClick={[Function]}
@@ -70,6 +72,7 @@ exports[`Sidebar component renders correctly 1`] = `
       <ul>
         <li>
           <a
+            aria-current={false}
             className={undefined}
             href="/channels/1"
             onClick={[Function]}
@@ -89,6 +92,7 @@ exports[`Sidebar component renders correctly 1`] = `
         </li>
         <li>
           <a
+            aria-current={false}
             className={undefined}
             href="/new-channel"
             onClick={[Function]}
@@ -115,6 +119,7 @@ exports[`Sidebar component renders correctly 1`] = `
       <ul>
         <li>
           <a
+            aria-current={false}
             className={undefined}
             href="/account"
             onClick={[Function]}
